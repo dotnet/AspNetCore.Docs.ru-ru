@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/configuration
-ms.openlocfilehash: 7dac8c84683553a52e07ecc61c8bcf8616e77dc6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cef05b32731e0930d7a3cfc6fe4502236b07a236
+ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061240"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97972071"
 ---
 # <a name="aspnet-core-no-locsignalr-configuration"></a>Конфигурация SignalR ASP.NET Core
 
@@ -197,7 +197,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-В следующей таблице перечислены доступные уровни ведения журнала. Значение, которое вы `configureLogging` указываете для установки **минимального** уровня ведения журнала, который будет записан в журнал. Сообщения, зарегистрированные на этом уровне **или перечисленные в таблице уровни** , будут занесены в журнал.
+В следующей таблице перечислены доступные уровни ведения журнала. Значение, которое вы `configureLogging` указываете для установки **минимального** уровня ведения журнала, который будет записан в журнал. Сообщения, зарегистрированные на этом уровне **или перечисленные в таблице уровни**, будут занесены в журнал.
 
 | Строка                      | LogLevel               |
 | --------------------------- | ---------------------- |
@@ -293,7 +293,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
+В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -343,7 +343,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | Параметр .NET |  Значение по умолчанию | Описание |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `ClientCertificates` | Empty | Коллекция сертификатов TLS для отправки в запросы проверки подлинности. |
 | `Cookies` | Empty | Коллекция HTTP cookie s для отправки с каждым HTTP-запросом. |
 | `Credentials` | Empty | Учетные данные для отправки с каждым HTTP-запросом. |
@@ -362,7 +362,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Значение, указывающее транспорт, используемый для соединения. |
 | `headers` | `null` | Словарь заголовков, отправленных с каждым HTTP-запросом. Отправка заголовков в браузере не работает для WebSockets или <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents> потока. |
 | `logMessageContent` | `null` | Задайте значение `true` , чтобы записывать в журнал байты и символы сообщений, отправленных и полученных клиентом. |
-| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `withCredentials` | `true` | Указывает, будут ли учетные данные отправляться с запросом CORS. Служба приложений Azure использует cookie для прикрепленных сеансов s и требует, чтобы этот параметр был включен правильно. Дополнительные сведения о CORS с SignalR см. в разделе <xref:signalr/security#cross-origin-resource-sharing> . |
 
 # <a name="java"></a>[Java](#tab/java)
@@ -370,7 +370,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | Параметр Java | Значение по умолчанию | Описание |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `withHeader` `withHeaders` | Empty | Таблица дополнительных заголовков HTTP для отправки с каждым HTTP-запросом. |
 
 ---
@@ -589,7 +589,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-В следующей таблице перечислены доступные уровни ведения журнала. Значение, которое вы `configureLogging` указываете для установки **минимального** уровня ведения журнала, который будет записан в журнал. Сообщения, зарегистрированные на этом уровне **или перечисленные в таблице уровни** , будут занесены в журнал.
+В следующей таблице перечислены доступные уровни ведения журнала. Значение, которое вы `configureLogging` указываете для установки **минимального** уровня ведения журнала, который будет записан в журнал. Сообщения, зарегистрированные на этом уровне **или перечисленные в таблице уровни**, будут занесены в журнал.
 
 | Строка                      | LogLevel               |
 | --------------------------- | ---------------------- |
@@ -685,7 +685,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
+В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -735,7 +735,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | Параметр .NET |  Значение по умолчанию | Описание |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `ClientCertificates` | Empty | Коллекция сертификатов TLS для отправки в запросы проверки подлинности. |
 | `Cookies` | Empty | Коллекция HTTP cookie s для отправки с каждым HTTP-запросом. |
 | `Credentials` | Empty | Учетные данные для отправки с каждым HTTP-запросом. |
@@ -753,14 +753,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `accessTokenFactory` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Значение, указывающее транспорт, используемый для соединения. |
 | `logMessageContent` | `null` | Задайте значение `true` , чтобы записывать в журнал байты и символы сообщений, отправленных и полученных клиентом. |
-| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Параметр Java | Значение по умолчанию | Описание |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `withHeader` `withHeaders` | Empty | Таблица дополнительных заголовков HTTP для отправки с каждым HTTP-запросом. |
 
 ---
@@ -975,7 +975,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-В следующей таблице перечислены доступные уровни ведения журнала. Значение, которое вы `configureLogging` указываете для установки **минимального** уровня ведения журнала, который будет записан в журнал. Сообщения, зарегистрированные на этом уровне **или перечисленные в таблице уровни** , будут занесены в журнал.
+В следующей таблице перечислены доступные уровни ведения журнала. Значение, которое вы `configureLogging` указываете для установки **минимального** уровня ведения журнала, который будет записан в журнал. Сообщения, зарегистрированные на этом уровне **или перечисленные в таблице уровни**, будут занесены в журнал.
 
 | Строка                      | LogLevel               |
 | --------------------------- | ---------------------- |
@@ -1071,7 +1071,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
+В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -1121,7 +1121,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | Параметр .NET |  Значение по умолчанию | Описание |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `ClientCertificates` | Empty | Коллекция сертификатов TLS для отправки в запросы проверки подлинности. |
 | `Cookies` | Empty | Коллекция HTTP cookie s для отправки с каждым HTTP-запросом. |
 | `Credentials` | Empty | Учетные данные для отправки с каждым HTTP-запросом. |
@@ -1139,14 +1139,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `accessTokenFactory` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Значение, указывающее транспорт, используемый для соединения. |
 | `logMessageContent` | `null` | Задайте значение `true` , чтобы записывать в журнал байты и символы сообщений, отправленных и полученных клиентом. |
-| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Параметр Java | Значение по умолчанию | Описание |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `withHeader` `withHeaders` | Empty | Таблица дополнительных заголовков HTTP для отправки с каждым HTTP-запросом. |
 
 ---
@@ -1421,7 +1421,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
+В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -1471,7 +1471,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | Параметр .NET |  Значение по умолчанию | Описание |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `ClientCertificates` | Empty | Коллекция сертификатов TLS для отправки в запросы проверки подлинности. |
 | `Cookies` | Empty | Коллекция HTTP cookie s для отправки с каждым HTTP-запросом. |
 | `Credentials` | Empty | Учетные данные для отправки с каждым HTTP-запросом. |
@@ -1489,14 +1489,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `accessTokenFactory` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Значение, указывающее транспорт, используемый для соединения. |
 | `logMessageContent` | `null` | Задайте значение `true` , чтобы записывать в журнал байты и символы сообщений, отправленных и полученных клиентом. |
-| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Параметр Java | Значение по умолчанию | Описание |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `withHeader` `withHeaders` | Empty | Таблица дополнительных заголовков HTTP для отправки с каждым HTTP-запросом. |
 
 ---
@@ -1768,7 +1768,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
+В SignalR клиенте Java можно настроить токен носителя для использования при проверке подлинности, предоставив фабрику маркеров доступа для [хттфубконнектионбуилдер](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Используйте [висакцесстокенфактори](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) для предоставления [рксжава](https://github.com/ReactiveX/RxJava) [Single \<String> ](https://reactivex.io/documentation/single.html). При вызове [Single. отсрочки](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)можно написать логику для создания маркеров доступа для клиента.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -1815,7 +1815,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | Параметр .NET |  Значение по умолчанию | Описание |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `SkipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `ClientCertificates` | Empty | Коллекция сертификатов TLS для отправки в запросы проверки подлинности. |
 | `Cookies` | Empty | Коллекция HTTP cookie s для отправки с каждым HTTP-запросом. |
 | `Credentials` | Empty | Учетные данные для отправки с каждым HTTP-запросом. |
@@ -1833,14 +1833,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | `accessTokenFactory` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Значение, указывающее транспорт, используемый для соединения. |
 | `logMessageContent` | `null` | Задайте значение `true` , чтобы записывать в журнал байты и символы сообщений, отправленных и полученных клиентом. |
-| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `skipNegotiation` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Параметр Java | Значение по умолчанию | Описание |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Функция, возвращающая строку, которая предоставляется в качестве маркера проверки подлинности носителя в HTTP-запросах. |
-| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом** . Этот параметр нельзя включить при использовании SignalR службы Azure. |
+| `shouldSkipNegotiate` | `false` | Установите этот параметр в значение `true` , чтобы пропустить шаг согласования. **Поддерживается только в том случае, если транспорт WebSocket является единственным включенным транспортом**. Этот параметр нельзя включить при использовании SignalR службы Azure. |
 | `withHeader` `withHeaders` | Empty | Таблица дополнительных заголовков HTTP для отправки с каждым HTTP-запросом. |
 
 ---

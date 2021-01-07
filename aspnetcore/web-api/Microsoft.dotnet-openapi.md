@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: 28a71c7040667c7544cc17c1184c09b5b39959b9
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5d9f1684aa333c38c73673138a703b04d318c6df
+ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052556"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97972032"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>Разработка приложений ASP.NET Core с использованием средств OpenAPI
 
@@ -88,7 +88,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 |-------|------|-------------|---------|
 | -p|--updateProject | Проект для выполнения операции. |dotnet openapi add url *--updateProject .\Ref.csproj* `https://contoso.com/openapi.json` |
 | -o|--output-file | Место размещения локальной копии файла OpenAPI. |dotnet openapi add url `https://contoso.com/openapi.json` *--output-file myclient.json* |
-| -c|--code-generator| Генератор кода, применяемый к ссылке. Возможные значения: `NSwagCSharp` и `NSwagTypeScript`. |dotnet openapi add file .\OpenApi.json --code-generator
+| -c|--code-generator| Генератор кода, применяемый к ссылке. Возможные значения: `NSwagCSharp` и `NSwagTypeScript`. |Добавление URL-адреса DotNet openapi `https://contoso.com/openapi.json` — генератор кода
 | -H|--help|Отображение справочных сведений.|dotnet openapi add url --help|
 
 #### <a name="arguments"></a>Аргументы
@@ -99,7 +99,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 ## <a name="remove"></a>Удалить
 
-Удаляет ссылку на OpenAPI, соответствующую заданному имени файла, из файла *CSPROJ* . При удалении ссылки OpenAPI клиенты не будут создаваться. Локальные файлы *JSON* и *YAML* удаляются.
+Удаляет ссылку на OpenAPI, соответствующую заданному имени файла, из файла *CSPROJ*. При удалении ссылки OpenAPI клиенты не будут создаваться. Локальные файлы *JSON* и *YAML* удаляются.
 
 ### <a name="options"></a>Параметры
 
