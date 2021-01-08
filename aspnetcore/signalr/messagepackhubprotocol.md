@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: e7d19a42e48048d2be4b87d6b0ac1ba6b2596ff1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7c3640e9cd2c5d392400a115813584861f789554
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058172"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024695"
 ---
 # <a name="use-messagepack-hub-protocol-in-no-locsignalr-for-aspnet-core"></a>Использование протокола концентратора MessagePack в SignalR для ASP.NET Core
 
@@ -97,10 +97,10 @@ npm install @microsoft/signalr-protocol-msgpack
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-В браузере `msgpack5` также должна быть ссылка на библиотеку. Используйте `<script>` тег для создания ссылки. Библиотеку можно найти по адресу *node_modules\msgpack5\dist\msgpack5.js* .
+В браузере `msgpack5` также должна быть ссылка на библиотеку. Используйте `<script>` тег для создания ссылки. Библиотеку можно найти по адресу *node_modules\msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
-> При использовании `<script>` элемента важен порядок. Если на *signalr-protocol-msgpack.js* имеется ссылка до *msgpack5.js* , то при попытке соединения с MessagePack возникает ошибка. *signalr.js* также требуется перед *signalr-protocol-msgpack.js* .
+> При использовании `<script>` элемента важен порядок. Если на *signalr-protocol-msgpack.js* имеется ссылка до *msgpack5.js*, то при попытке соединения с MessagePack возникает ошибка. *signalr.js* также требуется перед *signalr-protocol-msgpack.js*.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -119,6 +119,26 @@ const connection = new signalR.HubConnectionBuilder()
 
 > [!NOTE]
 > В настоящее время параметры конфигурации для протокола MessagePack на клиенте JavaScript отсутствуют.
+
+### <a name="java-client"></a>Клиент Java
+
+Чтобы включить MessagePack с помощью Java, установите `com.microsoft.signalr.messagepack` пакет. При использовании Gradle добавьте следующую строку в `dependencies` раздел файла *Build. Gradle* :
+
+```gradle
+implementation 'com.microsoft.signalr.messagepack:signalr-messagepack:5.0.0'
+```
+
+При использовании Maven добавьте следующие строки в `<dependencies>` элемент файла *pom.xml* :
+
+[!code-xml[pom.xml dependency element messagePack](java-client/sample/pom.xml?name=snippet_dependencyElement_messagePack)]
+
+Вызов `withHubProtocol(new MessagePackHubProtocol())` в `HubConnectionBuilder` .
+
+```java
+HubConnection messagePackConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
+    .withHubProtocol(new MessagePackHubProtocol())
+    .build();
+```
 
 ## <a name="messagepack-quirks"></a>Особенности MessagePack
 
@@ -187,6 +207,10 @@ InvalidDataException: Error binding arguments. Make sure that the types of the p
 ```
 
 Дополнительные сведения об этом ограничении см. в разделе Проблема с GitHub [ASPNET/ SignalR #2937](https://github.com/aspnet/SignalR/issues/2937).
+
+### <a name="chars-and-strings-in-java"></a>Символы и строки в Java
+
+В клиенте Java `char` объекты будут сериализованы как объекты одного символа `String` . Это отличается от клиента C# и JavaScript, который сериализует их как `short` объекты. Сама спецификация MessagePack не определяет поведение `char` объектов, поэтому разработчик библиотеки может определить способ их сериализации. Различие в поведении между клиентами является результатом использования библиотек, которые мы использовали для наших реализаций.
 
 ## <a name="related-resources"></a>Связанные ресурсы
 
@@ -277,10 +301,10 @@ npm install @microsoft/signalr-protocol-msgpack
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-В браузере `msgpack5` также должна быть ссылка на библиотеку. Используйте `<script>` тег для создания ссылки. Библиотеку можно найти по адресу *node_modules\msgpack5\dist\msgpack5.js* .
+В браузере `msgpack5` также должна быть ссылка на библиотеку. Используйте `<script>` тег для создания ссылки. Библиотеку можно найти по адресу *node_modules\msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
-> При использовании `<script>` элемента важен порядок. Если на *signalr-protocol-msgpack.js* имеется ссылка до *msgpack5.js* , то при попытке соединения с MessagePack возникает ошибка. *signalr.js* также требуется перед *signalr-protocol-msgpack.js* .
+> При использовании `<script>` элемента важен порядок. Если на *signalr-protocol-msgpack.js* имеется ссылка до *msgpack5.js*, то при попытке соединения с MessagePack возникает ошибка. *signalr.js* также требуется перед *signalr-protocol-msgpack.js*.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -457,10 +481,10 @@ npm install @aspnet/signalr-protocol-msgpack
 
 *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js*
 
-В браузере `msgpack5` также должна быть ссылка на библиотеку. Используйте `<script>` тег для создания ссылки. Библиотеку можно найти по адресу *node_modules\msgpack5\dist\msgpack5.js* .
+В браузере `msgpack5` также должна быть ссылка на библиотеку. Используйте `<script>` тег для создания ссылки. Библиотеку можно найти по адресу *node_modules\msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
-> При использовании `<script>` элемента важен порядок. Если на *signalr-protocol-msgpack.js* имеется ссылка до *msgpack5.js* , то при попытке соединения с MessagePack возникает ошибка. *signalr.js* также требуется перед *signalr-protocol-msgpack.js* .
+> При использовании `<script>` элемента важен порядок. Если на *signalr-protocol-msgpack.js* имеется ссылка до *msgpack5.js*, то при попытке соединения с MessagePack возникает ошибка. *signalr.js* также требуется перед *signalr-protocol-msgpack.js*.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>

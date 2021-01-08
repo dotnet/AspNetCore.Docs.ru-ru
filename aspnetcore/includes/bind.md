@@ -15,11 +15,11 @@
 
 * Должен быть неабстрактным с открытым конструктором без параметров.
 * Все открытые свойства чтения и записи типа привязаны.
-* Поля ***не*** привязаны. В приведенном выше коде свойство `Position` не привязано. Свойство `Position` используется так, что строку `"Position"` не требуется жестко кодировать в приложении при привязке класса к поставщику конфигурации.
+* Поля **не** привязаны. В приведенном выше коде свойство `Position` не привязано. Свойство `Position` используется так, что строку `"Position"` не требуется жестко кодировать в приложении при привязке класса к поставщику конфигурации.
 
 В приведенном ниже коде
 
-* Вызывает [ConfigurationBinder.Bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*) для привязки класса `PositionOptions` к разделу `Position`.
+_ Вызывает [ConfigurationBinder.Bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*) для привязки класса `PositionOptions` к разделу `Position`.
 * Отображает данные конфигурации `Position`.
 
 [!code-csharp[](~/fundamentals/configuration/index/samples/3.x/ConfigSample/Pages/Test22.cshtml.cs?name=snippet)]
@@ -32,7 +32,7 @@
 
 По умолчанию в приведенном выше коде изменения в файле конфигурации JSON, внесенные после запуска приложения, считываются.
 
-Альтернативный подход при использовании ***шаблона параметров*** — привязка раздела `Position` и добавление его в [контейнер службы внедрения зависимостей](xref:fundamentals/dependency-injection). В следующем коде `PositionOptions` добавляется в контейнер службы с помощью интерфейса <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> и привязывается к конфигурации:
+Альтернативный подход при использовании ***шаблона параметров** _ — привязка раздела `Position` и добавление его в [контейнер службы внедрения зависимостей](xref:fundamentals/dependency-injection). В следующем коде `PositionOptions` добавляется в контейнер службы с помощью интерфейса <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure_> и привязывается к конфигурации:
 
 [!code-csharp[](~/fundamentals/configuration/index/samples/3.x/ConfigSample/Startup.cs?name=snippet)]
 

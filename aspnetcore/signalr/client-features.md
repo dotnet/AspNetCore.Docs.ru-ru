@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: 1d1778f95c53179ca05eaced3d1913f208220df4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 65ad619bb943a0e5ffbaec7ec80243972dafc49f
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050983"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024669"
 ---
 # <a name="aspnet-core-no-locsignalr-clients"></a>SignalRКлиенты ASP.NET Core
 
@@ -57,7 +57,7 @@ SignalRКлиенты поставляются вместе с серверны�
 | Транспорт событий Server-Sent |2.1.0|1.0.0|1.0.0|❌|
 | Длинный опрашивающий транспорт |2.1.0|1.0.0|1.0.0|3.0.0|
 | Протокол концентратора JSON |2.1.0|1.0.0|1.0.0|1.0.0|
-| Протокол MessagePack для концентратора |2.1.0|1.0.0|1.0.0|❌|
+| Протокол MessagePack для концентратора |2.1.0|1.0.0|1.0.0|5.0.0|
 
 Поддержка включения дополнительных клиентских функций будет прослеживаться в средстве [записи проблем](https://github.com/dotnet/AspNetCore/issues).
 

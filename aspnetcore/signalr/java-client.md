@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/java-client
-ms.openlocfilehash: da6876e0540579dac5fb9e92362b38a398bca4d5
-ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
+ms.openlocfilehash: 92941d21820de90eb2ae8fb76c21c588ed9f1ffb
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97972084"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024760"
 ---
 # <a name="aspnet-core-no-locsignalr-java-client"></a>SignalRКлиент Java ASP.NET Core
 
@@ -108,12 +108,43 @@ HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
     })).build();
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="passing-class-information-in-java"></a>Передача сведений о классах в Java
+
+При вызове `on` `invoke` методов, или `stream` `HubConnection` в клиенте Java пользователи должны передать объект, а не `Type` `Class<?>` объект для описания любого универсального `Object` метода, переданного в метод. `Type`Можно получить с помощью указанного `TypeReference` класса. Например, с помощью пользовательского универсального класса с именем `Foo<T>` следующий код получает `Type` :
+
+```java
+Type fooType = new TypeReference<Foo<String>>() { }).getType();
+```
+
+Для неуниверсальных типов, таких как примитивы или другие непараметризованные типы, такие как `String` , можно просто использовать встроенный `.class` .
+
+При вызове одного из этих методов с одним или несколькими типами объектов используйте синтаксис универсальных шаблонов при вызове метода. Например, при регистрации `on` обработчика для метода с именем `func` , который принимает в качестве аргументов строку и `Foo<String>` объект, используйте следующий код, чтобы задать действие для печати аргументов:
+
+```java
+hubConnection.<String, Foo<String>>on("func", (param1, param2) ->{
+    System.out.println(param1);
+    System.out.println(param2);
+}, String.class, fooType);
+```
+
+Это соглашение необходимо, так как мы не можем получить полные сведения о сложных типах с помощью `Object.getClass` метода из-за типа очистки в Java. Например, вызов метода `getClass` для `ArrayList<String>` не возвращает, а `Class<ArrayList<String>>` `Class<ArrayList>` , скорее, не предоставляет Десериализатору достаточно информации для правильной десериализации входящего сообщения. То же самое справедливо и для пользовательских объектов.
+
+::: moniker-end
+
 ## <a name="known-limitations"></a>Известные ограничения
 
-::: moniker range=">= aspnetcore-3.0"
+::: moniker range=">= aspnetcore-5.0"
 
-* Поддерживается только протокол JSON.
 * Транспортировка транспорта и транспорт событий отправки сервера не поддерживаются.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
+* Транспортировка транспорта и транспорт событий отправки сервера не поддерживаются.
+* Поддерживается только протокол JSON.
 
 ::: moniker-end
 
