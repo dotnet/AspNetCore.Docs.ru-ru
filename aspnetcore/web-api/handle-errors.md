@@ -5,7 +5,7 @@ description: Сведения об обработке ошибок с помощ
 monikerRange: '>= aspnetcore-2.1'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 07/23/2020
+ms.date: 1/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: 0efcf1bbeeb65cf7f4420f8c50fb4adf7d1d016d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 92e9350a7892f8f38f64d4ebd68d54a97ec7e994
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052530"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058380"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>Обработка ошибок в веб-API ASP.NET Core
 
@@ -80,7 +80,7 @@ Host: localhost:44312
 User-Agent: curl/7.55.1
 ```
 
-Чтобы вместо этого отображался отформатированный HTML-запрос, задайте для заголовка HTTP-запроса `Accept` тип носителя `text/html`. Пример:
+Чтобы вместо этого отображался отформатированный HTML-запрос, задайте для заголовка HTTP-запроса `Accept` тип носителя `text/html`. Например:
 
 ```bash
 curl -i -H "Accept: text/html" https://localhost:5001/weatherforecast/chicago
@@ -127,7 +127,9 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 ::: moniker-end
 
 > [!WARNING]
-> Включать страницу исключений для разработчика следует **только тогда, когда приложение выполняется в среде разработки** . Подробные сведения об исключениях не должны быть общедоступными при выполнении приложения в рабочей среде. Дополнительные сведения о настройке среды см. в статье <xref:fundamentals/environments>.
+> Включать страницу исключений для разработчика следует **только тогда, когда приложение выполняется в среде разработки**. Не предоставляйте общий доступ к подробным сведениям об исключении при запуске приложения в рабочей среде. Дополнительные сведения о настройке среды см. в статье <xref:fundamentals/environments>.
+>
+> Не следует помечать метод действия обработки ошибок атрибутами метода HTTP, например `HttpGet`. Из-за использования явных команд некоторые запросы могут не передаваться в метод действия. Разрешить анонимный доступ к методу, если пользователи, не прошедшие проверку подлинности, должны увидеть ошибку.
 
 ## <a name="exception-handler"></a>Обработчик исключений
 
@@ -222,6 +224,8 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
+    Приведенный выше код вызывает [ControllerBase. проблема](xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A) создания <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> ответа.
+
 ## <a name="use-exceptions-to-modify-the-response"></a>Изменение ответа с помощью исключений
 
 Содержимое ответа можно изменить за пределами контроллера. В веб-API ASP.NET 4.x один из способов это сделать — использовать тип <xref:System.Web.Http.HttpResponseException>. ASP.NET Core не содержит эквивалентный тип. Поддержку `HttpResponseException` можно добавить, сделав следующее:
@@ -234,7 +238,7 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     [!code-csharp[](handle-errors/samples/3.x/Filters/HttpResponseExceptionFilter.cs?name=snippet_HttpResponseExceptionFilter)]
 
-    В предыдущем фильтре магическое число 10 вычитается из максимального целого значения. Вычитание этого числа позволяет другим фильтрам выполняться в самом конце конвейера.
+    Предыдущий фильтр указывает `Order` максимальное целое значение минус 10. Это позволяет другим фильтрам выполняться в конце конвейера.
 
 1. В `Startup.ConfigureServices` добавьте фильтр действий в коллекцию фильтров:
 
@@ -337,3 +341,7 @@ public void ConfigureServices(IServiceCollection serviceCollection)
 [!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=9-10)]
 
 ::: moniker-end
+
+## <a name="custom-middleware-to-handle-exceptions"></a>Настраиваемое по промежуточного слоя для управления исключениями
+
+Значения по умолчанию в по промежуточного слоя обработки исключений прекрасно подходят для большинства приложений. Для приложений, требующих специализированной обработки исключений, рассмотрите возможность [настройки по промежуточного слоя обработки исключений](xref:fundamentals/error-handling#exception-handler-lambda).

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 91e35a7cbd97e2bd6e77566362f02409915de7d7
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: cb9ffab19062bf726dd519c782d502f76e372073
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035714"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058289"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor Справочник по синтаксису для ASP.NET Core
 
@@ -497,7 +497,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 ::: moniker-end
 
-Пример:
+Например:
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -611,7 +611,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 *Этот сценарий применим только к Razor компонентам (. Razor).*
 
-`@layout`Директива задает макет для Razor компонента. Компоненты макета используются, чтобы избежать дублирования и несогласованности кода. Для получения дополнительной информации см. <xref:blazor/layouts>.
+`@layout`Директива задает макет для маршрутизируемых Razor компонентов, имеющих [`@page`](#page) директиву. Компоненты макета используются, чтобы избежать дублирования и несогласованности кода. Для получения дополнительной информации см. <xref:blazor/layouts>.
 
 ::: moniker-end
 
@@ -705,9 +705,9 @@ Razor предоставляет `Model` свойство для доступа 
 
 Если задано значение `false` (по умолчанию), пробелы в отображаемой разметке Razor компонентов ( `.razor` ) удаляются, если:
 
-* Начальная или конечная в элементе.
-* Начальная или конечная в `RenderFragment` параметре. Например, дочернее содержимое передается другому компоненту.
-* Он предшествует или следует за блоком кода C#, например `@if` или `@foreach` .
+* Они находятся в начале или конце элемента.
+* Они находятся в начале или конце параметра `RenderFragment`. Например, когда дочернее содержимое передается другому компоненту.
+* Они находятся в начале или конце блока кода C#, например `@if` и `@foreach`.
 
 ::: moniker-end
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: e0ff97b53d12fbf6c6a89e94704de1aee9d7f9e6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 61fcc07aeb30db15014fb716194328d366f27859
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060590"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058341"
 ---
 # <a name="view-components-in-aspnet-core"></a>Просмотр компонентов в ASP.NET Core
 
@@ -54,7 +54,7 @@ ms.locfileid: "93060590"
 
 Компонент представления состоит из двух частей: класса (обычно производного от [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) и возвращаемого результата (обычно это представление). Как и контроллеры, компонент представления может быть объектом POCO, но большинству разработчиков потребуются преимущества методов и свойств, доступные при наследовании от `ViewComponent`.
 
-При рассмотрении того, соответствуют ли компоненты представления спецификациям приложения, рекомендуется использовать Razor компоненты. Razor Компоненты также сочетают разметку с кодом C# для создания повторно используемых единиц пользовательского интерфейса. Razor Компоненты предназначены для повышения производительности разработки при предоставлении логики пользовательского интерфейса и компоновки на стороне клиента. Для получения дополнительной информации см. <xref:blazor/components/index>.
+При рассмотрении того, соответствуют ли компоненты представления спецификациям приложения, рекомендуется использовать Razor компоненты. Razor компоненты также сочетают разметку с кодом C# для создания повторно используемых единиц пользовательского интерфейса. Razor компоненты предназначены для повышения производительности разработки при предоставлении логики пользовательского интерфейса и компоновки на стороне клиента. Для получения дополнительной информации см. <xref:blazor/components/index>. Сведения о том, как внедрить Razor компоненты в приложение MVC или Razor pages, см <xref:blazor/components/prerendering-and-integration?pivots=server> . в разделе.
 
 ## <a name="creating-a-view-component"></a>Создание компонента представления
 
@@ -96,9 +96,9 @@ ms.locfileid: "93060590"
 
 Путь поиска применяется к проектам с использованием контроллеров и представлений и Razor страниц.
 
-По умолчанию для компонента представления используется имя *Default* , то есть файл представления обычно называется *Default.cshtml* . При создании результата компонента представления или при вызове метода `View` можно указать другое имя представления.
+По умолчанию для компонента представления используется имя *Default*, то есть файл представления обычно называется *Default.cshtml*. При создании результата компонента представления или при вызове метода `View` можно указать другое имя представления.
 
-Мы рекомендуем назвать файл представления *Default.cshtml* и использовать путь *Views/Shared/Components/{Имя компонента представления}/{Имя представления}* . Компонент представления `PriorityList` в этом примере использует представление компонента представления *Views/Shared/Components/PriorityList/Default.cshtml* .
+Мы рекомендуем назвать файл представления *Default.cshtml* и использовать путь *Views/Shared/Components/{Имя компонента представления}/{Имя представления}*. Компонент представления `PriorityList` в этом примере использует представление компонента представления *Views/Shared/Components/PriorityList/Default.cshtml*.
 
 ### <a name="customize-the-view-search-path"></a>Настройка пути поиска представления
 
@@ -116,7 +116,7 @@ ms.locfileid: "93060590"
 @await Component.InvokeAsync("Name of view component", {Anonymous Type Containing Parameters})
 ```
 
-Эти параметры передаются в метод `InvokeAsync`. Компонент представления `PriorityList`, разрабатываемый в рамках этой статьи, вызывается из файла представления *Views/ToDo/Index.cshtml* . Следующий код вызывает метод `InvokeAsync` с двумя параметрами:
+Эти параметры передаются в метод `InvokeAsync`. Компонент представления `PriorityList`, разрабатываемый в рамках этой статьи, вызывается из файла представления *Views/ToDo/Index.cshtml*. Следующий код вызывает метод `InvokeAsync` с двумя параметрами:
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexFinal.cshtml?range=35)]
 
@@ -180,7 +180,7 @@ ms.locfileid: "93060590"
 Примечания к коду:
 
 * Классы компонентов представлений могут находиться в **любой** папке проекта.
-* Так как имя класса PriorityList **ViewComponent** заканчивается суффиксом **ViewComponent** , среда выполнения использует строку "PriorityList" при ссылке на компонент класса из представления. Я подробнее расскажу об этом чуть позже.
+* Так как имя класса PriorityList **ViewComponent** заканчивается суффиксом **ViewComponent**, среда выполнения использует строку "PriorityList" при ссылке на компонент класса из представления. Я подробнее расскажу об этом чуть позже.
 * Атрибут `[ViewComponent]` может изменить имя, используемое для ссылки на компонент представления. Например, мы могли назвать класс `XYZ` и применить атрибут `ViewComponent`:
 
   ```csharp
@@ -195,18 +195,18 @@ ms.locfileid: "93060590"
 
 ### <a name="create-the-view-component-no-locrazor-view"></a>Создание представления компонента представления Razor
 
-* Создайте папку *Views/Shared/Components* . Она **должна** называться *Components* .
+* Создайте папку *Views/Shared/Components*. Она **должна** называться *Components*.
 
-* Создайте папку *Views/Shared/Components/PriorityList* . Ее имя должно соответствовать имени класса представлений компонентов или имени класса без суффикса (если мы следовали соглашению и использовали суффикс *ViewComponent* в имени класса). Если вы использовали атрибут `ViewComponent`, имя класса должно соответствовать его обозначению.
+* Создайте папку *Views/Shared/Components/PriorityList*. Ее имя должно соответствовать имени класса представлений компонентов или имени класса без суффикса (если мы следовали соглашению и использовали суффикс *ViewComponent* в имени класса). Если вы использовали атрибут `ViewComponent`, имя класса должно соответствовать его обозначению.
 
 * Создайте представление views */Shared/Components/PriorityList/Default. cshtml* Razor :
 
 
   [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
 
-   RazorПредставление принимает список `TodoItem` и отображает их. Если метод `InvokeAsync` компонента представления не передает имя представления (как в нашем примере), по соглашению используется имя *Default* . Далее в этом учебнике я покажу, как передать имя представления. Чтобы переопределить стиль по умолчанию для конкретного контроллера, добавьте представление в папку представления для конкретного контроллера (например, views */TODO/Components/PriorityList/Default. cshtml)* .
+   RazorПредставление принимает список `TodoItem` и отображает их. Если метод `InvokeAsync` компонента представления не передает имя представления (как в нашем примере), по соглашению используется имя *Default*. Далее в этом учебнике я покажу, как передать имя представления. Чтобы переопределить стиль по умолчанию для конкретного контроллера, добавьте представление в папку представления для конкретного контроллера (например, views */TODO/Components/PriorityList/Default. cshtml)*.
 
-    Если компонент представления связан с конкретным контроллером, его можно добавить в папку этого контроллера ( *Views/ToDo/Components/PriorityList/Default.cshtml* ).
+    Если компонент представления связан с конкретным контроллером, его можно добавить в папку этого контроллера (*Views/ToDo/Components/PriorityList/Default.cshtml*).
 
 * Добавьте объект, `div` содержащий вызов компонента списка приоритетов, в нижнюю часть файла *views/TODO/index. cshtml* :
 
@@ -230,11 +230,11 @@ ms.locfileid: "93060590"
 
 [!code-csharp[](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9&range=28-39)]
 
-Скопируйте файл *Views/Shared/Components/PriorityList/Default.cshtml* в представление *Views/Shared/Components/PriorityList/PVC.cshtml* . Добавьте заголовок, чтобы указать используемое представление PVC.
+Скопируйте файл *Views/Shared/Components/PriorityList/Default.cshtml* в представление *Views/Shared/Components/PriorityList/PVC.cshtml*. Добавьте заголовок, чтобы указать используемое представление PVC.
 
 [!code-cshtml[](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
 
-Измените *Views/ToDo/Index.cshtml* :
+Измените *Views/ToDo/Index.cshtml*:
 
 <!-- Views/ToDo/Index.cshtml is never imported, so change to test tutorial -->
 
@@ -249,7 +249,7 @@ ms.locfileid: "93060590"
 ### <a name="examine-the-view-path"></a>Проверка пути к представлению
 
 * Задайте для параметра приоритета значение 3 или меньше, чтобы представление с приоритетом не возвращалось.
-* Временно переименуйте *Views/ToDo/Components/PriorityList/Default.cshtml* в *1Default.cshtml* .
+* Временно переименуйте *Views/ToDo/Components/PriorityList/Default.cshtml* в *1Default.cshtml*.
 * Проверьте приложение, при этом происходит следующая ошибка:
 
    ```
@@ -260,9 +260,9 @@ ms.locfileid: "93060590"
    EnsureSuccessful
    ```
 
-* Скопируйте *views/TODO/Components/PriorityList/1Default. cshtml* в *views/Shared/Components/PriorityList/Default. cshtml* .
-* Добавьте разметку в представление компонента представления дел *Shared* , чтобы указать, что это представление из папки *Shared* .
-* Протестируйте представление компонента **Shared** .
+* Скопируйте *views/TODO/Components/PriorityList/1Default. cshtml* в *views/Shared/Components/PriorityList/Default. cshtml*.
+* Добавьте разметку в представление компонента представления дел *Shared*, чтобы указать, что это представление из папки *Shared*.
+* Протестируйте представление компонента **Shared**.
 
 ![Выходные данные дел с представлением компонента Shared](view-components/_static/shared.png)
 
@@ -291,7 +291,7 @@ public class PriorityList : ViewComponent
 }
 ```
 
-В файле компонента представления Razor перечислены строки, передаваемые `Invoke` методу ( *Views/Home/Components/PriorityList/Default. cshtml* ):
+В файле компонента представления Razor перечислены строки, передаваемые `Invoke` методу (*Views/Home/Components/PriorityList/Default. cshtml*):
 
 ```cshtml
 @model List<string>
@@ -307,7 +307,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range=">= aspnetcore-1.1"
 
-Компонент представления вызывается в Razor файле (например, *Views/Home/Index. cshtml* ) с помощью одного из следующих подходов:
+Компонент представления вызывается в Razor файле (например, *Views/Home/Index. cshtml*) с помощью одного из следующих подходов:
 
 * <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>
 * [Вспомогательное приложение тегов](xref:mvc/views/tag-helpers/intro)
@@ -318,7 +318,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range="< aspnetcore-1.1"
 
-Компонент представления вызывается в Razor файле (например, *Views/Home/Index. cshtml* ) с <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .
+Компонент представления вызывается в Razor файле (например, *Views/Home/Index. cshtml*) с <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .
 
 Вызов `Component.InvokeAsync`:
 
