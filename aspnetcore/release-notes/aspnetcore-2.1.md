@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: 62fc9d866adcf05ff024501db68cce8bb8b11a98
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 199ca62f71df5c0ee5ca2f78caf53ad8d6be1179
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059719"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854565"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Новые возможности ASP.NET Core 2.1
 
@@ -93,7 +93,7 @@ ASP.NET Core предоставляет API-интерфейсы и шаблон
 
 Добавлен новый пакет, который оптимизирует создание и выполнение тестов. Пакет [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) выполняет следующие задачи:
 
-* Копирует файл зависимостей ( *\*.deps* ) из протестированного приложения в папку *bin* тестового проекта.
+* Копирует файл зависимостей ( *\*.deps*) из протестированного приложения в папку *bin* тестового проекта.
 * Задает корневую папку содержимого в корневой папке проекта тестируемого приложения, чтобы можно было найти статические файлы и страницы или представления при выполнении тестов.
 * Предоставляет класс [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) для оптимизации начальной загрузки тестируемого приложения на [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver).
 
@@ -141,9 +141,9 @@ ASP.NET Core 2.1 содержит новую службу `IHttpClientFactory`, 
 
 Дополнительные сведения см. в разделе [Инициирование HTTP-запросов](xref:fundamentals/http-requests).
 
-## <a name="kestrel-transport-configuration"></a>Конфигурация транспорта Kestrel
+## <a name="kestrel-libuv-transport-configuration"></a>Конфигурация транспорта Kestrel Libuv
 
-После выпуска ASP.NET Core 2.1 транспорт Kestrel по умолчанию основан не на Libuv, а на управляемых сокетах. Дополнительные сведения см. в руководстве по [реализации веб-сервера Kestrel. Конфигурация транспортировки](xref:fundamentals/servers/kestrel#transport-configuration).
+После выпуска ASP.NET Core 2.1 транспорт Kestrel по умолчанию основан не на Libuv, а на управляемых сокетах. Дополнительные сведения см. в руководстве по [реализации веб-сервера Kestrel. Конфигурация транспорта Libuv](xref:fundamentals/servers/kestrel#libuv-transport-configuration).
 
 ## <a name="generic-host-builder"></a>Построитель универсальных узлов
 

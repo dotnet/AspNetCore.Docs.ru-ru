@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 5983cbc1e0256f7cf8e85fb07f9ba1bbc1bf08db
-ms.sourcegitcommit: c321518bfe367280ef262aecaada287f17fe1bc5
+ms.openlocfilehash: 55289dd7048c08ac61432c7cc062e74d2e69ee24
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97011875"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753131"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Размещение и развертывание ASP.NET Core Blazor WebAssembly
 
@@ -135,9 +135,17 @@ dotnet publish -p:BlazorEnableCompression=false
 
 ### <a name="app-configuration"></a>Конфигурация приложения
 
-Чтобы настроить размещенное решение Blazor для обслуживания нескольких приложений Blazor WebAssembly:
+Размещенные решения Blazor могут обслуживать несколько приложений Blazor WebAssembly.
 
-* Используйте существующее размещенное решение Blazor или создайте новое решение из размещенного шаблона проекта Blazor.
+> [!NOTE]
+> Пример в этом разделе предусматривает использование *решения* Visual Studio, но использование Visual Studio и решения Visual Studio не требуется для работы нескольких клиентских приложений в сценарии размещенных приложений Blazor WebAssembly. Если вы не используете Visual Studio, игнорируйте файл `{SOLUTION NAME}.sln` и другие файлы, созданные для Visual Studio.
+
+В следующем примере:
+
+* Исходное (первое) клиентское приложение — это стандартный клиентский проект решения на основе шаблона проекта Blazor WebAssembly. Первое клиентское приложение доступно в браузере по URL-адресу `/FirstApp` на порте 5001 или узле `firstapp.com`.
+* В решение добавляется второе клиентское приложение `SecondBlazorApp.Client`. Второе клиентское приложение доступно в браузере по URL-адресу `/SecondApp` на порте 5002 или узле `secondapp.com`.
+
+Используйте существующее размещенное решение Blazor или создайте новое решение из размещенного шаблона проекта Blazor:
 
 * В файле проекта клиентского приложения добавьте свойство `<StaticWebAssetBasePath>` в `<PropertyGroup>` со значением `FirstApp`, чтобы задать базовый путь для статических ресурсов проекта.
 
@@ -150,9 +158,19 @@ dotnet publish -p:BlazorEnableCompression=false
 
 * Добавьте в решение второе клиентское приложение:
 
-  * Добавьте папку с именем `SecondClient` в папку решения.
+  * Добавьте папку с именем `SecondClient` в папку решения. Папка решения, созданная из шаблона проекта, содержит следующий файл решения и папки после добавления папки `SecondClient`:
+  
+    * `Client` (папка);
+    * `SecondClient` (папка);
+    * `Server` (папка);
+    * `Shared` (папка);
+    * `{SOLUTION NAME}.sln` (файл).
+    
+    Заполнитель `{SOLUTION NAME}` — это имя решения.
+
   * Создайте приложение Blazor WebAssembly с именем `SecondBlazorApp.Client` в папке `SecondClient` из шаблона проекта Blazor WebAssembly.
-  * В файле проекта приложения:
+
+  * В файле проекта приложения `SecondBlazorApp.Client` сделайте следующее:
 
     * Добавьте свойство `<StaticWebAssetBasePath>` в `<PropertyGroup>` со значением `SecondApp`:
 
@@ -173,14 +191,17 @@ dotnet publish -p:BlazorEnableCompression=false
 
       Заполнитель `{SOLUTION NAME}` — это имя решения.
 
-* В файле проекта серверного приложения создайте ссылку на проект для добавленного клиентского приложения:
+* В файле проекта серверного приложения создайте ссылку на проект для добавленного клиентского приложения `SecondBlazorApp.Client`:
 
   ```xml
   <ItemGroup>
-    ...
+    <ProjectReference Include="..\Client\{SOLUTION NAME}.Client.csproj" />
     <ProjectReference Include="..\SecondClient\SecondBlazorApp.Client.csproj" />
+    <ProjectReference Include="..\Shared\{SOLUTION NAME}.Shared.csproj" />
   </ItemGroup>
   ```
+  
+  Заполнитель `{SOLUTION NAME}` — это имя решения.
 
 * В файле серверного приложения `Properties/launchSettings.json` настройте `applicationUrl` профиля Kestrel (`{SOLUTION NAME}.Server`), чтобы получить доступ к клиентским приложениям через порты 5001 и 5002:
 

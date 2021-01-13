@@ -5,7 +5,7 @@ description: Сведения о ведении журналов в Blazor пр�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/11/2020
+ms.date: 12/16/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/logging
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 78117fa6e9c7d5aed3fb31bbd3afee55b3b5b875
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 10c96bd2d0cc64f3bd035e7079b0996eb5768595
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506712"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97666837"
 ---
 # <a name="aspnet-core-no-locblazor-logging"></a>Ведение журналов ASP.NET Core Blazor
 
@@ -55,6 +55,9 @@ builder.Logging.AddProvider(new CustomLoggingProvider());
 ## <a name="no-locsignalr-net-client-logging"></a>Ведение журнала клиента SignalR .NET
 
 Вставьте <xref:Microsoft.Extensions.Logging.ILoggerProvider>, чтобы добавить `WebAssemblyConsoleLogger` к регистраторам, передаваемым в <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>. В отличие от традиционных <xref:Microsoft.Extensions.Logging.Console.ConsoleLogger>, `WebAssemblyConsoleLogger` является оболочкой для API-интерфейсов ведения журнала, характерных для браузера (например, `console.log`). Использование `WebAssemblyConsoleLogger` делает возможным ведение журнала в Mono внутри контекста браузера.
+
+> [!NOTE]
+> `WebAssemblyConsoleLogger` является [внутренними](/dotnet/csharp/language-reference/keywords/internal) компонентом, который недоступен для непосредственного использования в коде разработчика.
 
 Добавьте пространство имен для <xref:Microsoft.Extensions.Logging?displayProperty=fullName> и внедрите <xref:Microsoft.Extensions.Logging.ILoggerProvider> в компонент.
 

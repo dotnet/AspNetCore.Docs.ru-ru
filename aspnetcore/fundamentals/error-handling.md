@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: c8174c7e253a596d02dbc6cec183453b3723bc24
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ad9920ccd830b93d083f3c5ede03702164842b6e
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060473"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753118"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
@@ -46,7 +46,7 @@ ms.locfileid: "93060473"
 
 Шаблоны помещают метод <xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage%2A> в начале конвейера ПО промежуточного слоя, чтобы он мог перехватывать исключения, вызываемые в последующем ПО промежуточного слоя.
 
-Приведенный выше код включает страницу исключений для разработчика * **только** _ при выполнении приложения в среде разработки. Подробные сведения об исключениях не должны быть общедоступными при выполнении приложения в рабочей среде. Дополнительные сведения о настройке среды см. в статье <xref:fundamentals/environments>.
+Приведенный выше код включает страницу исключений для разработчика ***только** _ при выполнении приложения в среде разработки. Подробные сведения об исключениях не должны быть общедоступными при выполнении приложения в рабочей среде. Дополнительные сведения о настройке среды см. в статье <xref:fundamentals/environments>.
 
 Страница исключений для разработчика содержит следующие сведения об исключении и запросе:
 
@@ -66,7 +66,7 @@ _ Трассировка стека
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-Шаблон приложения Razor Pages предоставляет страницу ошибки ( *CSHTML* ) и класс <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) в папке *Pages*. Для приложения MVC шаблон проекта содержит метод действия `Error` и представление ошибок для контроллера Home.
+Шаблон приложения Razor Pages предоставляет страницу ошибки (*CSHTML*) и класс <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) в папке *Pages*. Для приложения MVC шаблон проекта содержит метод действия `Error` и представление ошибок для контроллера Home.
 
 Не следует помечать метод действия обработки ошибок атрибутами метода HTTP, например `HttpGet`. Из-за использования явных команд некоторые запросы могут не передаваться в метод действия. Разрешите анонимный доступ к методу, если не прошедшие проверку подлинности пользователи должны видеть представление ошибок.
 
@@ -108,15 +108,9 @@ In the preceding code, `await context.Response.WriteAsync(new string(' ', 512));
 
 ## <a name="usestatuscodepages"></a>UseStatusCodePages
 
-По умолчанию приложение ASP.NET Core не предоставляет страницу для кодов состояния ошибок HTTP, таких как код *404 Not Found* (не найдено). Когда в приложении возникает ошибка HTTP 400–499 без текста, возвращается код состояния и пустой текст ответа. Чтобы указать коды состояния, используйте ПО промежуточного слоя страниц с кодами состояния. Чтобы включить обработчики по умолчанию, возвращающие только текст для распространенных кодов состояния ошибки, вызовите <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A> в методе `Startup.Configure`.
+По умолчанию приложение ASP.NET Core не предоставляет страницу для кодов состояния ошибок HTTP, таких как код *404 Not Found* (не найдено). Когда в приложении возникает ошибка с кодом состояния HTTP 400–599 без текста, возвращается код состояния и пустой текст ответа. Чтобы указать коды состояния, используйте ПО промежуточного слоя страниц с кодами состояния. Чтобы включить обработчики по умолчанию, возвращающие только текст для распространенных кодов состояния ошибки, вызовите <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A> в методе `Startup.Configure`.
 
 [!code-csharp[](error-handling/samples/5.x/ErrorHandlingSample/StartupUseStatusCodePages.cs?name=snippet&highlight=13)]
-
-<!-- Review: 
-When you comment out // UseExceptionHandler("/Error");`
-you get a browser dependant error, not the codepage as I expected.
-call /index/2 -> return StatusCode(500); -> you get the codepage 
--->
 
 Вызовите `UseStatusCodePages` до ПО промежуточного слоя для обработки запросов. Например, вызовите `UseStatusCodePages` до ПО промежуточного слоя для статических файлов и конечных точек.
 
@@ -133,6 +127,9 @@ Status Code: 404; Not Found
 * Настройте среду как рабочую.
 * Удалите комментарии из `webBuilder.UseStartup<StartupUseStatusCodePages>();` в *Program.cs*.
 * Выберите ссылки на домашней странице.
+
+> [!NOTE]
+> ПО промежуточного слоя страниц кода состояния **не** перехватывает исключения. Чтобы предоставить настраиваемую страницу обработки ошибок, используйте[страницу обработчика исключений](#exception-handler-page).
 
 ### <a name="usestatuscodepages-with-format-string"></a>UseStatusCodePages со строкой формата
 
@@ -314,7 +311,7 @@ When using a placeholder in the path, confirm that the endpoint can process the 
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-Шаблон приложения Razor Pages предоставляет страницу ошибки ( *CSHTML* ) и класс <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) в папке *Pages*. Для приложения MVC шаблон проекта содержит метод действия при возникновении ошибки и представление ошибок для контроллера Home.
+Шаблон приложения Razor Pages предоставляет страницу ошибки (*CSHTML*) и класс <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) в папке *Pages*. Для приложения MVC шаблон проекта содержит метод действия при возникновении ошибки и представление ошибок для контроллера Home.
 
 Не следует помечать метод действия обработки ошибок атрибутами метода HTTP, например `HttpGet`. Из-за использования явных команд некоторые запросы могут не передаваться в метод. Разрешите анонимный доступ к методу, если не прошедшие проверку подлинности пользователи должны видеть представление ошибок.
 

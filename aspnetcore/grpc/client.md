@@ -4,7 +4,7 @@ author: jamesnk
 description: Узнайте, как вызывать службы gRPC с помощью клиента gRPC .NET.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 07/27/2020
+ms.date: 12/18/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 9322020083ce25b00b2979633ae8a692cfd4da4a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 39f9b3fde19e31ca970668552e5829308705f513
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060967"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97699138"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Вызов служб gRPC с помощью клиента .NET
 
@@ -43,7 +43,7 @@ var channel = GrpcChannel.ForAddress("https://localhost:5001");
 var client = new Greet.GreeterClient(channel);
 ```
 
-Канал представляет собой долгосрочное подключение к службе gRPC. При создании канала он настраивается с параметрами, связанными с вызовом службы. Например, `HttpClient`, используемый для выполнения вызовов, максимальный размер сообщения для отправки и получения, а также ведение журнала можно указать в `GrpcChannelOptions` и использовать с `GrpcChannel.ForAddress`. Полный список параметров см. в разделе, [посвященном параметрам конфигурации клиента](xref:grpc/configuration#configure-client-options).
+Канал представляет собой долгосрочное подключение к службе gRPC. Создаваемый канал настраивается с параметрами с учетом вызова службы. Например, `HttpClient`, используемый для выполнения вызовов, максимальный размер сообщения для отправки и получения, а также ведение журнала можно указать в `GrpcChannelOptions` и использовать с `GrpcChannel.ForAddress`. Полный список параметров см. в разделе, [посвященном параметрам конфигурации клиента](xref:grpc/configuration#configure-client-options).
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
@@ -201,11 +201,33 @@ await readTask;
 
 Во время вызова двунаправленной потоковой передачи клиент и служба могут обмениваться сообщениями в любое время. Наиболее подходящая логика клиента для взаимодействия с вызовом двунаправленной потоковой передачи зависит от логики службы.
 
+## <a name="access-grpc-headers"></a>Доступ к заголовкам gRPC
+
+Вызовы gRPC возвращают заголовки ответа. Заголовки ответа HTTP передают метаданные (имя и значение) вызова без связи с возвращаемым сообщением.
+
+Заголовки gRPC доступны при использовании `ResponseHeadersAsync` (возвращает коллекцию метаданных). Заголовки обычно возвращаются с ответным сообщением. Поэтому их необходимо ожидать.
+
+```csharp
+var client = new Greet.GreeterClient(channel);
+using var call = client.SayHelloAsync(new HelloRequest { Name = "World" });
+
+var headers = await call.ResponseHeadersAsync;
+var myValue = headers.GetValue("my-trailer-name");
+
+var response = await call.ResponseAsync;
+```
+
+При использовании `ResponseHeadersAsync`:
+
+* Нужно дождаться результата `ResponseHeadersAsync`, чтобы получить коллекцию заголовков.
+* Не нужно получать доступ перед `ResponseAsync` (или потока ответа при потоковой передаче). Если ответ был получен, `ResponseHeadersAsync` немедленно возвращает заголовки.
+* Выдается исключение, если возникла ошибка подключения или сервера и для вызова gRPC заголовки не получены.
+
 ## <a name="access-grpc-trailers"></a>Доступ к трейлерам gRPC
 
-Вызовы gRPC могут возвращать трейлеры gRPC. Трейлеры gRPC содержат метаданные имени и значения для вызова. Трейлеры содержат аналогичные функции для заголовков HTTP, но они принимаются в конце вызова.
+Вызовы gRPC могут возвращать трейлеры ответа. Трейлеры содержат метаданные (имя и значение) вызова. Трейлеры содержат аналогичные функции для заголовков HTTP, но они принимаются в конце вызова.
 
-Трейлеры gRPC доступны с помощью `GetTrailers()`, которая возвращает коллекцию метаданных. Трейлеры возвращаются после завершения ответа, поэтому перед обращением к трейлеру необходимо дождаться конца ответа.
+Трейлеры доступны при использовании `GetTrailers()` (возвращает коллекцию метаданных). Трейлеры возвращаются после завершения ответа. Поэтому перед обращением к трейлеру необходимо дождаться всех ответных сообщений.
 
 Унарные и клиентские вызовы потоковой передачи должны дождаться `ResponseAsync` перед вызовом `GetTrailers()`:
 
@@ -237,7 +259,7 @@ var trailers = call.GetTrailers();
 var myValue = trailers.GetValue("my-trailer-name");
 ```
 
-Трейлеры gRPC также доступны из `RpcException`. Служба может вернуть трейлеры вместе со статусом gRPC, отличным от "ОК". В этой ситуации трейлеры получаются из исключения, вызываемого клиентом gRPC:
+Трейлеры также доступны из `RpcException`. Служба может вернуть трейлеры вместе со статусом gRPC, отличным от "ОК". В этой ситуации трейлеры извлекаются из исключения, вызываемого клиентом gRPC:
 
 ```csharp
 var client = new Greet.GreeterClient(channel);

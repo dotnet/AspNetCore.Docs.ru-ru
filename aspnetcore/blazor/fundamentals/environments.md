@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: 9ba23753df1726ee4c8a9802e1a1260ef7cf6fa5
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 3d9b0cab42a826c7a5868324d891e597cd9ed986
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506959"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97678295"
 ---
 # <a name="aspnet-core-no-locblazor-environments"></a>Среды ASP.NET Core Blazor
 
@@ -33,7 +33,7 @@ ms.locfileid: "97506959"
 
 При локальном запуске приложения среда по умолчанию имеет значение Development. При публикации приложения среда по умолчанию имеет значение Production.
 
-Клиентское приложение Blazor ( *`Client`* ) размещенного решения Blazor WebAssembly выбирает среду в приложении *`Server`* решения через ПО промежуточного слоя, которое передает данные о среде в браузер. Приложение *`Server`* добавляет заголовок с именем `blazor-environment` и средой в качестве значения. Приложение *`Client`* считывает заголовок. Приложение *`Server`* решения — это приложение ASP.NET Core, поэтому дополнительные сведения о настройке среды можно найти в разделе <xref:fundamentals/environments>.
+Клиентское приложение Blazor ( *`Client`* ) размещенного решения Blazor WebAssembly выбирает среду в приложении *`Server`* решения через ПО промежуточного слоя, которое передает данные о среде в браузер. Приложение *`Server`* добавляет заголовок с именем `blazor-environment` и средой в качестве значения. Приложение *`Client`* считывает заголовок. Приложение *`Server`* решения — это приложение ASP.NET Core, поэтому дополнительные сведения о настройке среды см. здесь: <xref:fundamentals/environments>.
 
 Для автономного приложения Blazor WebAssembly, выполняемого локально, сервер разработки добавляет заголовок `blazor-environment`, чтобы указать среду разработки. Чтобы указать среду для других сред размещения, добавьте заголовок `blazor-environment`.
 

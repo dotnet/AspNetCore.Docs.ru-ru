@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: 259b5bf9bf2a6de987494b5771897355e3ea67db
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d264aaee7889ec1c8ee0fe6b1f52ccc4cf355745
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057318"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854630"
 ---
 # <a name="transform-webconfig"></a>Преобразование web.config
 
@@ -37,7 +37,7 @@ ms.locfileid: "93057318"
 * [Среда](#environment)
 * [Пользовательский](#custom)
 
-Такие преобразования выполняются в любом из следующих сценариев создания *web.config* :
+Такие преобразования выполняются в любом из следующих сценариев создания *web.config*:
 
 * Автоматическое создание в пакете SDK `Microsoft.NET.Sdk.Web`.
 * Размещение разработчиком в [корневом каталоге содержимого](xref:fundamentals/index#content-root) приложения.
@@ -110,7 +110,7 @@ dotnet publish --configuration Release /p:PublishProfile=FolderProfile
 
 Свойство MSBuild для имени профиля имеет значение `$(PublishProfile)`.
 
-Если профиль не передан, используется имя профиля по умолчанию **FileSystem** , а следовательно применяется файл *web.FileSystem.config* , если он присутствует в корневом каталоге содержимого приложения.
+Если профиль не передан, используется имя профиля по умолчанию **FileSystem**, а следовательно применяется файл *web.FileSystem.config*, если он присутствует в корневом каталоге содержимого приложения.
 
 ## <a name="environment"></a>Среда
 
@@ -118,7 +118,7 @@ dotnet publish --configuration Release /p:PublishProfile=FolderProfile
 
 Добавьте файл *web.{СРЕДА}.config* для каждой [среды](xref:fundamentals/environments), которой требуется преобразование *web.config*.
 
-В следующем примере в файле *web.Production.config* устанавливается переменная среды для конкретной рабочей среды.
+В следующем примере в файле *web.Production.config* устанавливается переменная среды для определенной рабочей среды:
 
 ```xml
 <?xml version="1.0"?>
@@ -148,7 +148,7 @@ dotnet publish --configuration Release /p:EnvironmentName=Production
 
 Если вы используете профиль публикации для публикации из Visual Studio, ознакомьтесь со статьей <xref:host-and-deploy/visual-studio-publish-profiles#set-the-environment>.
 
-Переменная среды `ASPNETCORE_ENVIRONMENT` автоматически добавляется в файл *web.config* , если указано имя среды.
+Переменная среды `ASPNETCORE_ENVIRONMENT` автоматически добавляется в файл *web.config*, если указано имя среды.
 
 ## <a name="custom"></a>Другой
 
@@ -186,7 +186,7 @@ dotnet publish --configuration Release /p:CustomTransformFileName=custom.transfo
 
 ## <a name="prevent-webconfig-transformation"></a>Предотвращение преобразования web.config
 
-Чтобы избежать преобразования файла *web.config* , настройте свойство MSBuild `$(IsWebConfigTransformDisabled)` следующим образом.
+Чтобы избежать преобразования файла *web.config*, настройте свойство MSBuild `$(IsWebConfigTransformDisabled)` следующим образом.
 
 ```dotnetcli
 dotnet publish /p:IsWebConfigTransformDisabled=true

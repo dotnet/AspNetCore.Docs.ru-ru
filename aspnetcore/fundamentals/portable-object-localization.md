@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 2e28ebaf1962ebd834c43f1cfbc28929b1937c40
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f9c0ecd32f0e5c05782c2db76eff92bb64845db7
+ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053726"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97878403"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Настройка локализации переносных объектов в ASP.NET Core
 
@@ -38,8 +38,8 @@ ms.locfileid: "93053726"
 
 ## <a name="what-is-a-po-file"></a>Что такое файл переносимых объектов?
 
-Файлы переносимых объектов (PO) распространяются как текстовые файлы со строками, переведенными на заданный язык. Файлы PO дают определенные преимущества по сравнению с файлами *RESX* , например:
-- Файлы PO поддерживают преобразование во множественную форму, файлы *RESX*  — нет.
+Файлы переносимых объектов (PO) распространяются как текстовые файлы со строками, переведенными на заданный язык. Файлы PO обеспечивают определенные преимущества по сравнению с файлами *RESX*, например:
+- Файлы PO поддерживают преобразование во множественную форму, файлы *RESX* — нет.
 - Файлы PO не компилируются подобно файлам *RESX*. Поэтому потребность в специальных инструментах и действиях сборки отпадает.
 - Файлы PO хорошо работают со средствами редактирования, предназначенными для совместной работы по сети.
 
@@ -89,11 +89,11 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="registering-the-service"></a>Регистрация службы
 
-Добавьте необходимые службы в метод `ConfigureServices` файла *Startup.cs* :
+Добавьте необходимые службы в метод `ConfigureServices` файла *Startup.cs*:
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-Добавьте необходимое ПО промежуточного слоя в метод `Configure` файла *Startup.cs* :
+Добавьте необходимое ПО промежуточного слоя в метод `Configure` файла *Startup.cs*:
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -105,7 +105,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="creating-a-po-file"></a>Создание файла PO
 
-Создайте файл с именем *\<culture code>.po* в корневой папке приложения. В этом примере файл имеет имя *fr.po* , так как используется французский язык:
+Создайте файл с именем *\<culture code>.po* в корневой папке приложения. В этом примере файл имеет имя *fr.po*, так как используется французский язык:
 
 [!code-text[](localization/sample/3.x/POLocalization/fr.po)]
 
@@ -159,7 +159,7 @@ var supportedCultures = new List<CultureInfo>
 };
 ```
 
-Измените файл *Views/Home/About.cshtml* , чтобы отобразить локализованные строки во множественном числе для разных кратностей:
+Измените файл *Views/Home/About.cshtml*, чтобы отобразить локализованные строки во множественном числе для разных кратностей:
 
 ```cshtml
 <p>@Localizer.Plural(1, "There is one item.", "There are {0} items.")</p>
@@ -205,7 +205,7 @@ Existuje 5 položek.
 
 Службы локализации PO используют имя полного класса или представление, используемые при переводе строки. Это достигается путем установки значения для записи `msgctxt`.
 
-Рассмотрим небольшое дополнение к предыдущему примеру *fr.po*. Представление Razor, расположенное в файле *Views/Home/About.cshtml* , можно определить в качестве контекста файла, задав зарезервированное значение записи `msgctxt`.
+Рассмотрим небольшое дополнение к предыдущему примеру *fr.po*. Представление Razor, расположенное в файле *Views/Home/About.cshtml*, можно определить в качестве контекста файла, задав зарезервированное значение записи `msgctxt`.
 
 ```text
 msgctxt "Views.Home.About"
@@ -253,8 +253,8 @@ services.AddPortableObjectLocalization(options => options.ResourcesPath = "Local
 
 ## <a name="what-is-a-po-file"></a>Что такое файл переносимых объектов?
 
-Файлы переносимых объектов (PO) распространяются как текстовые файлы со строками, переведенными на заданный язык. Файлы PO дают определенные преимущества по сравнению с файлами *RESX* , например:
-- Файлы PO поддерживают преобразование во множественную форму, файлы *RESX*  — нет.
+Файлы переносимых объектов (PO) распространяются как текстовые файлы со строками, переведенными на заданный язык. Файлы PO дают определенные преимущества по сравнению с файлами *RESX*, например:
+- Файлы PO поддерживают преобразование во множественную форму, файлы *RESX* — нет.
 - Файлы PO не компилируются подобно файлам *RESX*. Поэтому потребность в специальных инструментах и действиях сборки отпадает.
 - Файлы PO хорошо работают со средствами редактирования, предназначенными для совместной работы по сети.
 
@@ -304,11 +304,11 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="registering-the-service"></a>Регистрация службы
 
-Добавьте необходимые службы в метод `ConfigureServices` файла *Startup.cs* :
+Добавьте необходимые службы в метод `ConfigureServices` файла *Startup.cs*:
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-Добавьте необходимое ПО промежуточного слоя в метод `Configure` файла *Startup.cs* :
+Добавьте необходимое ПО промежуточного слоя в метод `Configure` файла *Startup.cs*:
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -320,7 +320,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="creating-a-po-file"></a>Создание файла PO
 
-Создайте файл с именем *\<culture code>.po* в корневой папке приложения. В этом примере файл имеет имя *fr.po* , так как используется французский язык:
+Создайте файл с именем *\<culture code>.po* в корневой папке приложения. В этом примере файл имеет имя *fr.po*, так как используется французский язык:
 
 [!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 
@@ -374,7 +374,7 @@ var supportedCultures = new List<CultureInfo>
 };
 ```
 
-Измените файл *Views/Home/About.cshtml* , чтобы отобразить локализованные строки во множественном числе для разных кратностей:
+Измените файл *Views/Home/About.cshtml*, чтобы отобразить локализованные строки во множественном числе для разных кратностей:
 
 ```cshtml
 <p>@Localizer.Plural(1, "There is one item.", "There are {0} items.")</p>
@@ -420,7 +420,7 @@ Existuje 5 položek.
 
 Службы локализации PO используют имя полного класса или представление, используемые при переводе строки. Это достигается путем установки значения для записи `msgctxt`.
 
-Рассмотрим небольшое дополнение к предыдущему примеру *fr.po*. Представление Razor, расположенное в файле *Views/Home/About.cshtml* , можно определить в качестве контекста файла, задав зарезервированное значение записи `msgctxt`.
+Рассмотрим небольшое дополнение к предыдущему примеру *fr.po*. Представление Razor, расположенное в файле *Views/Home/About.cshtml*, можно определить в качестве контекста файла, задав зарезервированное значение записи `msgctxt`.
 
 ```text
 msgctxt "Views.Home.About"
