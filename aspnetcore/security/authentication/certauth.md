@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 83525a4c1e87a60b57130c1bba14360c7d03f552
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 71f05163c075a2ef88d5c606814925cdcef879d2
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061383"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253050"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Настройка проверки подлинности сертификата в ASP.NET Core
 
@@ -40,7 +40,7 @@ ms.locfileid: "93061383"
 
 Альтернативой для проверки подлинности на сертификат в средах, где используются прокси-серверы и подсистемы балансировки нагрузки, являются Active Directory Федеративные службы (ADFS) с OpenID Connect Connect (OIDC).
 
-## <a name="get-started"></a>Приступая к работе
+## <a name="get-started"></a>Начало работы
 
 Получите HTTPS сертификат, примените его и [Настройте сервер](#configure-your-server-to-require-certificates) для использования сертификатов.
 
@@ -152,37 +152,37 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   * Определение, известен ли сертификат службам.
   * Создание собственного участника. Рассмотрим следующий пример в `Startup.ConfigureServices`:
 
-```csharp
-services.AddAuthentication(
-    CertificateAuthenticationDefaults.AuthenticationScheme)
-    .AddCertificate(options =>
-    {
-        options.Events = new CertificateAuthenticationEvents
+    ```csharp
+    services.AddAuthentication(
+        CertificateAuthenticationDefaults.AuthenticationScheme)
+        .AddCertificate(options =>
         {
-            OnCertificateValidated = context =>
+            options.Events = new CertificateAuthenticationEvents
             {
-                var claims = new[]
+                OnCertificateValidated = context =>
                 {
-                    new Claim(
-                        ClaimTypes.NameIdentifier, 
-                        context.ClientCertificate.Subject,
-                        ClaimValueTypes.String, 
-                        context.Options.ClaimsIssuer),
-                    new Claim(ClaimTypes.Name,
-                        context.ClientCertificate.Subject,
-                        ClaimValueTypes.String, 
-                        context.Options.ClaimsIssuer)
-                };
-
-                context.Principal = new ClaimsPrincipal(
-                    new ClaimsIdentity(claims, context.Scheme.Name));
-                context.Success();
-
-                return Task.CompletedTask;
-            }
-        };
-    });
-```
+                    var claims = new[]
+                    {
+                        new Claim(
+                            ClaimTypes.NameIdentifier, 
+                            context.ClientCertificate.Subject,
+                            ClaimValueTypes.String, 
+                            context.Options.ClaimsIssuer),
+                        new Claim(ClaimTypes.Name,
+                            context.ClientCertificate.Subject,
+                            ClaimValueTypes.String, 
+                            context.Options.ClaimsIssuer)
+                    };
+    
+                    context.Principal = new ClaimsPrincipal(
+                        new ClaimsIdentity(claims, context.Scheme.Name));
+                    context.Success();
+    
+                    return Task.CompletedTask;
+                }
+            };
+        });
+    ```
 
 Если входящий сертификат не соответствует дополнительной проверке, позвоните `context.Fail("failure reason")` по причине сбоя.
 
@@ -301,7 +301,7 @@ public void ConfigureServices(IServiceCollection services)
         options.HeaderConverter = (headerValue) =>
         {
             X509Certificate2 clientCertificate = null;
-        
+
             if(!string.IsNullOrWhiteSpace(headerValue))
             {
                 byte[] bytes = StringToByteArray(headerValue);
@@ -638,6 +638,24 @@ ASP.NET Core 5 Preview 7 и более поздней версии добавл�
 
 Следующий подход поддерживает необязательные сертификаты клиента:
 
+::: moniker range=">= aspnetcore-5.0"
+
+* Настройка привязки для домена и поддомена:
+  * Например, настройте привязки для `contoso.com` и `myClient.contoso.com` . `contoso.com`Узлу не требуется сертификат клиента, но он `myClient.contoso.com` выполняется.
+  * Дополнительные сведения см. в разделе:
+    * [Kestrel](/fundamentals/servers/kestrel):
+      * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel/endpoints#listenoptionsusehttps)
+      * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
+      * Примечание. Kestrel в настоящее время не поддерживает несколько конфигураций TLS для одной привязки, вам потребуются две привязки с уникальными IP-адресами или портами. См. раздел https://github.com/dotnet/runtime/issues/31097.
+    * IIS
+      * [Размещение IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
+      * [Настройка безопасности служб IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
+    * Http.Sys: [Настройка Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 * Настройка привязки для домена и поддомена:
   * Например, настройте привязки для `contoso.com` и `myClient.contoso.com` . `contoso.com`Узлу не требуется сертификат клиента, но он `myClient.contoso.com` выполняется.
   * Дополнительные сведения см. в разделе:
@@ -649,6 +667,9 @@ ASP.NET Core 5 Preview 7 и более поздней версии добавл�
       * [Размещение IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Настройка безопасности служб IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
     * Http.Sys: [Настройка Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+
+::: moniker-end
+
 * Для запросов к веб-приложению, которому требуется сертификат клиента, и у которых нет такого сертификата:
   * Перенаправление на ту же страницу с помощью защищенного поддомена сертификата клиента.
   * Например, перенаправление в `myClient.contoso.com/requestedPage` . Так как запрос на `myClient.contoso.com/requestedPage` имя узла отличается от `contoso.com/requestedPage` , клиент устанавливает другое соединение и предоставляется сертификат клиента.

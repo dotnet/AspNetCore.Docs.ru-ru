@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cookie-sharing
-ms.openlocfilehash: 8f54f2e4894328f8471d5f80c8184839ce47add6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0d43bbbc44015aff040b12dfacb260fe50492e54
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059693"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252998"
 ---
 # <a name="share-authentication-no-loccookies-among-aspnet-apps"></a>Совместное использование проверки подлинности cookie между приложениями ASP.NET
 
@@ -65,6 +65,8 @@ services.ConfigureApplicationCookie(options => {
     options.Cookie.Name = ".AspNet.SharedCookie";
 });
 ```
+
+**Примечание.** Предыдущие инструкции не работают с `ITicketStore` ( `CookieAuthenticationOptions.SessionStore` ).  Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/21163).
 
 ## <a name="share-authentication-no-loccookies-without-no-locaspnet-core-identity"></a>Совместное использование проверки подлинности cookie без ASP.NET Core Identity
 
@@ -135,7 +137,7 @@ services.AddDataProtection()
 
 Если не задано значение `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` и `http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider` , задайте <xref:System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier> утверждение, которое различает уникальных пользователей.
 
-*App_Start/стартуп.АУС.КС* :
+*App_Start/стартуп.АУС.КС*:
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -168,9 +170,9 @@ System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier =
     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name";
 ```
 
-При создании удостоверения пользователя тип проверки подлинности ( `Identity.Application` ) должен соответствовать типу, определенному в `AuthenticationType` наборе, `UseCookieAuthentication` в *App_Start/стартуп.АУС.КС* .
+При создании удостоверения пользователя тип проверки подлинности ( `Identity.Application` ) должен соответствовать типу, определенному в `AuthenticationType` наборе, `UseCookieAuthentication` в *App_Start/стартуп.АУС.КС*.
 
-*Модели/ Identity Models.cs* :
+*Модели/ Identity Models.cs*:
 
 ```csharp
 public class ApplicationUser : IdentityUser

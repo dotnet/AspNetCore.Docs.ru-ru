@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 14561bace565c104d0a9c926cad3105c4865e72a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c32d20d4616650db004c78fb4d8ea9a4d5a3beab
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061175"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252803"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Передача файлов в ASP.NET Core
 
@@ -125,7 +125,7 @@ ms.locfileid: "93061175"
 
 Для передачи небольших файлов можно применить составную форму или сформировать запрос POST на языке JavaScript.
 
-В следующем примере показано использование Razor формы страниц для передачи одного файла ( *pages/буффередсинглефилеуплоадфисикал. cshtml* в примере приложения):
+В следующем примере показано использование Razor формы страниц для передачи одного файла (*pages/буффередсинглефилеуплоадфисикал. cshtml* в примере приложения):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -195,7 +195,7 @@ ms.locfileid: "93061175"
 Для выполнения отправки формы в JavaScript для клиентов, которые [не поддерживают Fetch API](https://caniuse.com/#feat=fetch), используйте один из следующих подходов:
 
 * Используйте функцию Fetch Polyfill (например, [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
-* Используйте команду `XMLHttpRequest`. Пример:
+* Используйте ключевое слово `XMLHttpRequest`. Пример:
 
   ```javascript
   <script>
@@ -254,7 +254,7 @@ ms.locfileid: "93061175"
 > [!NOTE]
 > Привязка сопоставляет файлы форм по имени. Например, значение HTML `name` в `<input type="file" name="formFile">` должно соответствовать привязанному к C# параметру или свойству (`FormFile`). Дополнительные сведения см. в разделе [Сопоставление значения атрибута имени и имени параметра метода POST](#match-name-attribute-value-to-parameter-name-of-post-method).
 
-В следующем примере происходит следующее:
+Следующий пример:
 
 * Циклично отправляет один или несколько передаваемых файлов.
 * Использует метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы вернуть полный путь к файлу, включая его имя. 
@@ -401,8 +401,8 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 Предыдущий пример похож на сценарий, продемонстрированный в примере приложения:
 
-* *Pages/BufferedSingleFileUploadDb.cshtml* ;
-* *Pages/BufferedSingleFileUploadDb.cshtml.cs* .
+* *Pages/BufferedSingleFileUploadDb.cshtml*;
+* *Pages/BufferedSingleFileUploadDb.cshtml.cs*.
 
 > [!WARNING]
 > При сохранении двоичных данных в реляционных базах данных следует соблюдать осторожность, так как это может отрицательно сказаться на производительности.
@@ -436,7 +436,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper.cs* ):
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -448,7 +448,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ## <a name="validation"></a>Проверка
 
-В классе `FileHelpers` примера приложения демонстрируется несколько проверок буферизованного файла <xref:Microsoft.AspNetCore.Http.IFormFile> и потоковой передачи файлов. Сведения об обработке буферизованных файлов <xref:Microsoft.AspNetCore.Http.IFormFile> в примере приложения см. в описании метода `ProcessFormFile` в файле *Utilities/FileHelpers.cs* . Сведения об обработке потоковых файлов см. в описании метода `ProcessStreamedFile` в том же файле.
+В классе `FileHelpers` примера приложения демонстрируется несколько проверок буферизованного файла <xref:Microsoft.AspNetCore.Http.IFormFile> и потоковой передачи файлов. Сведения об обработке буферизованных файлов <xref:Microsoft.AspNetCore.Http.IFormFile> в примере приложения см. в описании метода `ProcessFormFile` в файле *Utilities/FileHelpers.cs*. Сведения об обработке потоковых файлов см. в описании метода `ProcessStreamedFile` в том же файле.
 
 > [!WARNING]
 > Методы обработки проверки, показанные в примере приложения, не проверяют содержимое отправленных файлов. В большинстве рабочих сценариев в файле применяется API сканирования на наличие вирусов и вредоносных программ, прежде чем сделать файл доступным для пользователей или других систем.
@@ -651,7 +651,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 
 ### <a name="kestrel-maximum-request-body-size"></a>Максимальный размер текста запроса Kestrel
 
-Для приложений, размещенных в Kestrel, по умолчанию максимальный размер текста запроса составляет 30 000 000 байт, что примерно соответствует 28,6 МБ. Настройте ограничение с помощью параметра сервера Kestrel [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size):
+Для приложений, размещенных в Kestrel, по умолчанию максимальный размер текста запроса составляет 30 000 000 байт, что примерно соответствует 28,6 МБ. Настройте ограничение с помощью параметра сервера Kestrel [MaxRequestBodySize](xref:fundamentals/servers/kestrel/options#maximum-request-body-size):
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -667,7 +667,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> используется для настройки [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) для одной страницы или действия.
+<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> используется для настройки [MaxRequestBodySize](xref:fundamentals/servers/kestrel/options#maximum-request-body-size) для одной страницы или действия.
 
 В Razor приложении "страницы" примените фильтр с [соглашением](xref:razor-pages/razor-pages-conventions) в `Startup.ConfigureServices` :
 
@@ -706,8 +706,8 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 
 Другие ограничения Kestrel могут применяться для приложений, размещенных в Kestrel:
 
-* [максимальное число клиентских подключений;](xref:fundamentals/servers/kestrel#maximum-client-connections)
-* [Скорость передачи данных запросов и ответов](xref:fundamentals/servers/kestrel#minimum-request-body-data-rate)
+* [максимальное число клиентских подключений;](xref:fundamentals/servers/kestrel/options#maximum-client-connections)
+* [Скорость передачи данных запросов и ответов](xref:fundamentals/servers/kestrel/options#minimum-request-body-data-rate)
 
 ### <a name="iis"></a>IIS
 
@@ -849,7 +849,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 Для передачи небольших файлов можно применить составную форму или сформировать запрос POST на языке JavaScript.
 
-В следующем примере показано использование Razor формы страниц для передачи одного файла ( *pages/буффередсинглефилеуплоадфисикал. cshtml* в примере приложения):
+В следующем примере показано использование Razor формы страниц для передачи одного файла (*pages/буффередсинглефилеуплоадфисикал. cshtml* в примере приложения):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -919,7 +919,7 @@ The request filtering module is configured to deny a request that exceeds the re
 Для выполнения отправки формы в JavaScript для клиентов, которые [не поддерживают Fetch API](https://caniuse.com/#feat=fetch), используйте один из следующих подходов:
 
 * Используйте функцию Fetch Polyfill (например, [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
-* Используйте команду `XMLHttpRequest`. Пример:
+* Используйте ключевое слово `XMLHttpRequest`. Пример:
 
   ```javascript
   <script>
@@ -978,7 +978,7 @@ The request filtering module is configured to deny a request that exceeds the re
 > [!NOTE]
 > Привязка сопоставляет файлы форм по имени. Например, значение HTML `name` в `<input type="file" name="formFile">` должно соответствовать привязанному к C# параметру или свойству (`FormFile`). Дополнительные сведения см. в разделе [Сопоставление значения атрибута имени и имени параметра метода POST](#match-name-attribute-value-to-parameter-name-of-post-method).
 
-В следующем примере происходит следующее:
+Следующий пример:
 
 * Циклично отправляет один или несколько передаваемых файлов.
 * Использует метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы вернуть полный путь к файлу, включая его имя. 
@@ -1125,8 +1125,8 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 Предыдущий пример похож на сценарий, продемонстрированный в примере приложения:
 
-* *Pages/BufferedSingleFileUploadDb.cshtml* ;
-* *Pages/BufferedSingleFileUploadDb.cshtml.cs* .
+* *Pages/BufferedSingleFileUploadDb.cshtml*;
+* *Pages/BufferedSingleFileUploadDb.cshtml.cs*.
 
 > [!WARNING]
 > При сохранении двоичных данных в реляционных базах данных следует соблюдать осторожность, так как это может отрицательно сказаться на производительности.
@@ -1160,7 +1160,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper.cs* ):
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1172,7 +1172,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ## <a name="validation"></a>Проверка
 
-В классе `FileHelpers` примера приложения демонстрируется несколько проверок буферизованного файла <xref:Microsoft.AspNetCore.Http.IFormFile> и потоковой передачи файлов. Сведения об обработке буферизованных файлов <xref:Microsoft.AspNetCore.Http.IFormFile> в примере приложения см. в описании метода `ProcessFormFile` в файле *Utilities/FileHelpers.cs* . Сведения об обработке потоковых файлов см. в описании метода `ProcessStreamedFile` в том же файле.
+В классе `FileHelpers` примера приложения демонстрируется несколько проверок буферизованного файла <xref:Microsoft.AspNetCore.Http.IFormFile> и потоковой передачи файлов. Сведения об обработке буферизованных файлов <xref:Microsoft.AspNetCore.Http.IFormFile> в примере приложения см. в описании метода `ProcessFormFile` в файле *Utilities/FileHelpers.cs*. Сведения об обработке потоковых файлов см. в описании метода `ProcessStreamedFile` в том же файле.
 
 > [!WARNING]
 > Методы обработки проверки, показанные в примере приложения, не проверяют содержимое отправленных файлов. В большинстве рабочих сценариев в файле применяется API сканирования на наличие вирусов и вредоносных программ, прежде чем сделать файл доступным для пользователей или других систем.
@@ -1584,7 +1584,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 Для передачи небольших файлов можно применить составную форму или сформировать запрос POST на языке JavaScript.
 
-В следующем примере показано использование Razor формы страниц для передачи одного файла ( *pages/буффередсинглефилеуплоадфисикал. cshtml* в примере приложения):
+В следующем примере показано использование Razor формы страниц для передачи одного файла (*pages/буффередсинглефилеуплоадфисикал. cshtml* в примере приложения):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1654,7 +1654,7 @@ The request filtering module is configured to deny a request that exceeds the re
 Для выполнения отправки формы в JavaScript для клиентов, которые [не поддерживают Fetch API](https://caniuse.com/#feat=fetch), используйте один из следующих подходов:
 
 * Используйте функцию Fetch Polyfill (например, [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
-* Используйте команду `XMLHttpRequest`. Пример:
+* Используйте ключевое слово `XMLHttpRequest`. Пример:
 
   ```javascript
   <script>
@@ -1713,7 +1713,7 @@ The request filtering module is configured to deny a request that exceeds the re
 > [!NOTE]
 > Привязка сопоставляет файлы форм по имени. Например, значение HTML `name` в `<input type="file" name="formFile">` должно соответствовать привязанному к C# параметру или свойству (`FormFile`). Дополнительные сведения см. в разделе [Сопоставление значения атрибута имени и имени параметра метода POST](#match-name-attribute-value-to-parameter-name-of-post-method).
 
-В следующем примере происходит следующее:
+Следующий пример:
 
 * Циклично отправляет один или несколько передаваемых файлов.
 * Использует метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы вернуть полный путь к файлу, включая его имя. 
@@ -1860,8 +1860,8 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 Предыдущий пример похож на сценарий, продемонстрированный в примере приложения:
 
-* *Pages/BufferedSingleFileUploadDb.cshtml* ;
-* *Pages/BufferedSingleFileUploadDb.cshtml.cs* .
+* *Pages/BufferedSingleFileUploadDb.cshtml*;
+* *Pages/BufferedSingleFileUploadDb.cshtml.cs*.
 
 > [!WARNING]
 > При сохранении двоичных данных в реляционных базах данных следует соблюдать осторожность, так как это может отрицательно сказаться на производительности.
@@ -1895,7 +1895,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper.cs* ):
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1907,7 +1907,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ## <a name="validation"></a>Проверка
 
-В классе `FileHelpers` примера приложения демонстрируется несколько проверок буферизованного файла <xref:Microsoft.AspNetCore.Http.IFormFile> и потоковой передачи файлов. Сведения об обработке буферизованных файлов <xref:Microsoft.AspNetCore.Http.IFormFile> в примере приложения см. в описании метода `ProcessFormFile` в файле *Utilities/FileHelpers.cs* . Сведения об обработке потоковых файлов см. в описании метода `ProcessStreamedFile` в том же файле.
+В классе `FileHelpers` примера приложения демонстрируется несколько проверок буферизованного файла <xref:Microsoft.AspNetCore.Http.IFormFile> и потоковой передачи файлов. Сведения об обработке буферизованных файлов <xref:Microsoft.AspNetCore.Http.IFormFile> в примере приложения см. в описании метода `ProcessFormFile` в файле *Utilities/FileHelpers.cs*. Сведения об обработке потоковых файлов см. в описании метода `ProcessStreamedFile` в том же файле.
 
 > [!WARNING]
 > Методы обработки проверки, показанные в примере приложения, не проверяют содержимое отправленных файлов. В большинстве рабочих сценариев в файле применяется API сканирования на наличие вирусов и вредоносных программ, прежде чем сделать файл доступным для пользователей или других систем.
@@ -2222,7 +2222,13 @@ The request filtering module is configured to deny a request that exceeds the re
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
+::: moniker range="< aspnetcore-5.0"
 * [Сток запросов HTTP-подключения](xref:fundamentals/servers/kestrel#http11-request-draining)
+::: moniker-end
+::: moniker range=">= aspnetcore-5.0"
+* [Сток запросов HTTP-подключения](xref:fundamentals/servers/kestrel/request-draining)
+::: moniker-end
+
 * [Неограниченная отправка файлов](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)
 * [Безопасность Azure: кадр безопасности: Проверка входных данных | Способы их устранения](/azure/security/azure-security-threat-modeling-tool-input-validation)
 * [Шаблоны разработки в облаке Azure: шаблон камердинера Key](/azure/architecture/patterns/valet-key)

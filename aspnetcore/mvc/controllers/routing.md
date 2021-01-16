@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: a163c87fdb9a02c1b074ab32c19c11932c66cfd4
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: 44c507fb5e0ff4477a84bfc1e4d0c62180c8dd37
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854539"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252842"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Маршрутизация к действиям контроллера в ASP.NET Core
 
@@ -43,7 +43,7 @@ ms.locfileid: "97854539"
 * Объясняет взаимодействие между MVC и маршрутизацией.
   * Как обычные приложения MVC используют функции маршрутизации.
   * Рассматриваются оба:
-    * [Соглашение о маршрутизации](#cr) обычно используется с контроллерами и представлениями.
+    * [Обычная маршрутизация](#cr) обычно используется с контроллерами и представлениями.
     * *Маршрутизация атрибутов* , используемая с API-интерфейсами RESTful. Если вы в основном заинтересованы в маршрутизации для API-интерфейсов RESTFUL, перейдите к разделу [Маршрутизация атрибутов для интерфейсов API для остальных](#ar) компонентов.
   * Дополнительные сведения о маршрутизации см. в разделе [Маршрутизация](xref:fundamentals/routing) .
 * Относится к системе маршрутизации по умолчанию, добавленной в ASP.NET Core 3,0, называемую маршрутизацией конечных точек. В целях совместимости можно использовать контроллеры с предыдущей версией маршрутизации. Инструкции см. в [руководству по миграции 2.2-3.0](xref:migration/22-to-30) . Справочные материалы по устаревшей системе маршрутизации см. в [версии 2,2 этого документа](xref:mvc/controllers/routing?view=aspnetcore-2.2) .
@@ -430,11 +430,11 @@ ASP.NET Core имеет следующие шаблоны маршрутов:
 
 В следующей таблице описаны `[Route]` атрибуты в приведенном выше коде.
 
-| attribute               | Объединяет с `[Route("Home")]` | Определение шаблона маршрута |
+| Атрибут               | Объединяет с `[Route("Home")]` | Определение шаблона маршрута |
 | ----------------- | ------------ | --------- |
 | `[Route("")]` | Да | `"Home"` |
 | `[Route("Index")]` | Да | `"Home/Index"` |
-| `[Route("/")]` | **No** | `""` |
+| `[Route("/")]` | **Нет** | `""` |
 | `[Route("About")]` | Да | `"Home/About"` |
 
 <a name="routing-ordering-ref-label"></a>
@@ -570,7 +570,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet8&highlight=3)]
 
-В приведенном выше коде `[HttpPost("product/{id:int}")]` применяет ограничение маршрута. `ProductsController.ShowProduct`Действие сопоставляется только с URL-путями, такими как `/product/3` . Часть шаблона маршрута `{id:int}` ограничивает этот сегмент только целыми числами.
+В приведенном выше коде `[HttpPost("product14/{id:int}")]` применяет ограничение маршрута. `Products14Controller.ShowProduct`Действие сопоставляется только с URL-путями, такими как `/product14/3` . Часть шаблона маршрута `{id:int}` ограничивает этот сегмент только целыми числами.
 
 Подробное описание синтаксиса шаблона маршрута см. в разделе [Справочник по шаблону маршрута](xref:fundamentals/routing#route-template-reference).
 
