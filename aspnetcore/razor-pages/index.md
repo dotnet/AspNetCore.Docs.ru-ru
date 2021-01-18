@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/index
-ms.openlocfilehash: bc5f3c85d7ace120dec8369f4550a097b4f258ce
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: f8cdbbffae9b291923a6d425fef5526b0ec88f61
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417647"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253193"
 ---
 # <a name="introduction-to-no-locrazor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -632,7 +632,7 @@ public string Message { get; set; }
 * [Атрибут authorize и Razor Pages](xref:security/authorization/simple#aarp)
 * [Загрузить или просмотреть пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/3.0sample).
 * <xref:index>
-* <xref:mvc/views/razor>
+* [Справочник по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor)
 * <xref:mvc/controllers/areas>
 * <xref:tutorials/razor-pages/razor-pages-start>
 * <xref:security/authorization/razor-pages-authorization>
@@ -1143,7 +1143,7 @@ services.AddMvc()
 
 * [Атрибут authorize и Razor Pages](xref:security/authorization/simple#aarp)
 * <xref:index>
-* <xref:mvc/views/razor>
+* [Справочник по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor)
 * <xref:mvc/controllers/areas>
 * <xref:tutorials/razor-pages/razor-pages-start>
 * <xref:security/authorization/razor-pages-authorization>

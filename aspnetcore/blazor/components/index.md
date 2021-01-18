@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: a2738ab40e2a463a0166ce8916ed6f1b05ea1d08
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 12a1f528bdff0230bbf17075284d27de654a423e
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855382"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252426"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Создание и использование компонентов Razor ASP.NET Core
 
@@ -40,7 +40,7 @@ ms.locfileid: "96855382"
 
 ### <a name="no-locrazor-syntax"></a>Синтаксис Razor
 
-В компонентах Razor приложений Blazor часто используется синтаксис Razor. Если вы не знакомы с языком разметки Razor, сначала прочтите статью <xref:mvc/views/razor>.
+В компонентах Razor приложений Blazor часто используется синтаксис Razor. Если вы не знакомы с языком разметки Razor, рекомендуем сначала ознакомиться со [справочником по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor).
 
 При доступе к содержимому с синтаксисом Razor обратите особое внимание на следующее:
 
@@ -81,7 +81,7 @@ ms.locfileid: "96855382"
 }
 ```
 
-После первоначальной отрисовки компонента он повторно создает дерево отрисовки в ответ на события. Затем Blazor сравнивает новое и прежнее дерево отрисовки и применяет все изменения в модели DOM браузера.
+После первоначальной отрисовки компонента он повторно создает дерево отрисовки в ответ на события. Затем Blazor сравнивает новое и прежнее дерево отрисовки и применяет все изменения в модели DOM браузера. Дополнительные сведения приведены в статье <xref:blazor/components/rendering>.
 
 Компоненты являются обычными классами C# и могут размещаться в любом месте внутри проекта. Компоненты, создающие веб-страницы, обычно находятся в папке `Pages`. Компоненты, не являющиеся страницами, часто находятся в папке `Shared` или пользовательской папке, добавленной в проект.
 
@@ -293,7 +293,7 @@ public string Title { get; set; } = "Panel Title from Child";
 * Результат метода `Title="@{METHOD}"`, где заполнитель `{METHOD}` является методом C# родительского компонента.
 * [Неявное или явное выражение](xref:mvc/views/razor#implicit-razor-expressions) `Title="@({EXPRESSION})"`, где заполнитель `{EXPRESSION}` является выражением C#.
   
-Для получения дополнительной информации см. <xref:mvc/views/razor>.
+Дополнительные сведения см. в [справочнике по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor).
 
 > [!WARNING]
 > Не создавайте компоненты, записывающие их в собственные *параметры компонентов*, — используйте вместо этого закрытое поле. Дополнительные сведения см. в разделе [Перезаписанные параметры](#overwritten-parameters).
@@ -579,7 +579,7 @@ public class NotifierService
 }
 ```
 
-В предыдущем примере `NotifierService` вызывает метод `OnNotify` компонента вне контекста синхронизации Blazor. `InvokeAsync` используется для переключения на подходящий контекст и постановки отрисовки в очередь.
+В предыдущем примере `NotifierService` вызывает метод `OnNotify` компонента вне контекста синхронизации Blazor. `InvokeAsync` используется для переключения на подходящий контекст и постановки отрисовки в очередь. Для получения дополнительной информации см. <xref:blazor/components/rendering>.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Использование \@key для управления сохранением элементов и компонентов
 
@@ -801,7 +801,7 @@ public class NotifierService
 <input type="checkbox" />
 ```
 
-Для получения дополнительной информации см. <xref:mvc/views/razor>.
+Дополнительные сведения см. в [справочнике по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor).
 
 > [!WARNING]
 > Некоторые атрибуты HTML, такие как [`aria-pressed`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), работают неправильно, если типом .NET является `bool`. В этих случаях используйте тип `string` вместо `bool`.
@@ -957,13 +957,13 @@ Blazor соответствует соглашению для приложени
 * <xref:blazor/security/server/threat-mitigation>. Содержит рекомендации по созданию приложений Blazor Server, которые должны соперничать в условиях нехватки ресурсов.
 
 <!--Reference links in article-->
-[1]: <xref:mvc/views/razor#code>
-[2]: <xref:mvc/views/razor#using>
-[3]: <xref:mvc/views/razor#attributes>
-[4]: <xref:mvc/views/razor#ref>
-[5]: <xref:mvc/views/razor#key>
-[6]: <xref:mvc/views/razor#inherits>
-[7]: <xref:mvc/views/razor#attribute>
-[8]: <xref:mvc/views/razor#namespace>
-[9]: <xref:mvc/views/razor#page>
-[10]: <xref:mvc/views/razor#bind>
+[1]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#code)
+[2]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#using)
+[3]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#attributes)
+[4]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#ref)
+[5]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#key)
+[6]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#inherits)
+[7]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#attribute)
+[8]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#namespace)
+[9]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#page)
+[10]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#bind)

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 79c225a0714562a01afe67bf8e59f3b3f98a6265
-ms.sourcegitcommit: e9b8835a02f75b6378b766edb8bab23b14a4192b
+ms.openlocfilehash: 840cc87103447db2b4686994701a0e4543d11fde
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97666863"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252465"
 ---
 # <a name="introduction-to-aspnet-core-no-locblazor"></a>Введение в ASP.NET Core Blazor
 
@@ -175,6 +175,6 @@ API, которые не используются в веб-браузере (н
 * <xref:blazor/call-javascript-from-dotnet>
 * <xref:blazor/call-dotnet-from-javascript>
 * [Руководство по языку C#](/dotnet/csharp/)
-* <xref:mvc/views/razor>
+* [Справочник по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor)
 * [HTML](https://www.w3.org/html/)
 * Ссылки на сообщество [Awesome Blazor](https://github.com/AdrienTorris/awesome-blazor)
