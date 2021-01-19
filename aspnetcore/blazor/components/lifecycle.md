@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: b01b1c70be010ba0ad9bbd2c1114e5d8341b3261
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e5f9a07db742ce2e26f03c0b6e1caa1904e4e0d9
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506868"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058237"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>Жизненный цикл ASP.NET Core Blazor
 
@@ -53,7 +53,9 @@ ms.locfileid: "97506868"
 
 Жизненный цикл `Render`
 
-1. Если это не первая отрисовка компонента или [`ShouldRender`](#suppress-ui-refreshing) принимает значение `false`, дальнейшие операции с компонентом выполнять не следует.
+1. Прекращает последующие операции отрисовки для компонента.
+   * После первой отрисовки.
+   * Если [`ShouldRender`](#suppress-ui-refreshing) имеет значение `false`.
 1. Выполните сборку отличий дерева отрисовки и отрисуйте компонент.
 1. Подождите, пока модель DOM обновится.
 1. Вызовите [`OnAfterRender{Async}`](#after-component-render).

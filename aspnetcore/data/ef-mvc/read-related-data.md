@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 610a9e9b0007fb468ea9cdae6fadd2e756de4290
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: b1adca435b48db22a176d33a216c07d6647a6695
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93054064"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058315"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Чтение связанных данных
 
@@ -183,7 +183,17 @@ ms.locfileid: "93054064"
 
 В файле *Views/Instructors/Index.cshtml* замените код шаблона следующим кодом. Изменения выделены.
 
-[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
+::: moniker range=">= aspnetcore-2.2"
+
+[!code-cshtml[](intro/samples/5cu-snap/Views/Instructors/Index.cshtml?range=1-62&highlight=1,3-7,15-19,24,26-31,41-52,54)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.1"
+
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-62&highlight=1,3-7,15-19,24,26-31,41-52,54)]
+
+::: moniker-end
 
 Мы внесли следующие изменения в существующий код:
 
@@ -193,7 +203,7 @@ ms.locfileid: "93054064"
 
 * Добавили столбец **Office**, отображающий `item.OfficeAssignment.Location` только тогда, когда `item.OfficeAssignment` не равно null. (Так как здесь отношение один к нулю или к одному, то связанной сущности OfficeAssignment может не существовать.)
 
-  ```html
+  ```cshtml
   @if (item.OfficeAssignment != null)
   {
       @item.OfficeAssignment.Location
@@ -202,20 +212,11 @@ ms.locfileid: "93054064"
 
 * Добавили столбец **Courses**, отображающий курсы, которые ведет конкретный преподаватель. Дополнительные сведения см. в разделе [Явный перенос строки](xref:mvc/views/razor#explicit-line-transition) статьи по синтаксису Razor.
 
-* Добавили код, который динамически добавляет `class="success"` к элементу `tr` выбранного преподавателя. Этот параметр задает цвет фона для выделенных строк c помощью класса Bootstrap.
-
-  ```html
-  string selectedRow = "";
-  if (item.ID == (int?)ViewData["InstructorID"])
-  {
-      selectedRow = "success";
-  }
-  <tr class="@selectedRow">
-  ```
+* Добавлен код, который по условию добавляет класс CSS Bootstrap к элементу `tr` выбранного преподавателя. Этот класс задает цвет фона для выделенной строки.
 
 * В каждой строке непосредственно перед другими ссылками добавили новую гиперссылку с меткой **Select**, которая отправляет идентификатор выбранного преподавателя в метод `Index`.
 
-  ```html
+  ```cshtml
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 

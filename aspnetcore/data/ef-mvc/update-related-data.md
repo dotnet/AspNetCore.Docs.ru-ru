@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: f41d0b1d7ba46ef4867e0d160dc61f21042ce403
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 9ad0de9984b42c2b14dfaf48c74660915de93be1
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053947"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058328"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Обновление связанных данных
 
@@ -91,7 +91,7 @@ ms.locfileid: "93053947"
 
 Во *Views/Courses/Create.cshtml* добавьте параметр "Select Department" (Выбрать кафедру) в раскрывающийся список **Department** (Кафедра), измените заголовок с **DepartmentID** на **Department** и добавьте сообщение о проверке.
 
-[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-35)]
 
 Во *Views/Courses/Edit.cshtml* внесите для поля "Department" (Кафедра) изменение, аналогичное внесенному в *Create.cshtml*.
 
