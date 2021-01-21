@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 263c7713166005dfdec8ede6bfa9b03b730dede7
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: b99b0f0ab6e67ac84bf1232ff6681c5edd54ffb9
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96035818"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253180"
 ---
 # <a name="net-generic-host-in-aspnet-core"></a>Универсальный узел .NET в ASP.NET Core
 
@@ -129,8 +129,8 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 Метод <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*>:
 
 * Загружает конфигурацию узла из переменных среды с префиксом `ASPNETCORE_`.
-* Задает сервер [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и настраивает его с помощью поставщиков конфигурации размещения приложения. Параметры сервера Kestrel по умолчанию см. в разделе <xref:fundamentals/servers/kestrel#kestrel-options>.
-* Добавляет [ПО промежуточного слоя фильтрации узлов](xref:fundamentals/servers/kestrel#host-filtering).
+* Задает сервер [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и настраивает его с помощью поставщиков конфигурации размещения приложения. Параметры сервера Kestrel по умолчанию см. в разделе <xref:fundamentals/servers/kestrel/options>.
+* Добавляет [ПО промежуточного слоя фильтрации узлов](xref:fundamentals/servers/kestrel/host-filtering).
 * Добавляет [Параметры ПО промежуточного слоя перенаправления заголовков](xref:host-and-deploy/proxy-load-balancer#forwarded-headers), если `ASPNETCORE_FORWARDEDHEADERS_ENABLED` равно `true`.
 * Обеспечивает интеграцию служб IIS. Параметры IIS по умолчанию см. в разделе <xref:host-and-deploy/iis/index#iis-options>.
 
@@ -437,7 +437,7 @@ webBuilder.UseStartup<Startup>();
 webBuilder.UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002");
 ```
 
-Kestrel имеет собственный интерфейс API настройки конечных точек. Для получения дополнительной информации см. <xref:fundamentals/servers/kestrel#endpoint-configuration>.
+Kestrel имеет собственный интерфейс API настройки конечных точек. Для получения дополнительной информации см. <xref:fundamentals/servers/kestrel/endpoints>.
 
 ### <a name="webroot"></a>WebRoot
 

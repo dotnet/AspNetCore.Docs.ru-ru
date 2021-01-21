@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: afd2da19641b41871f06426934c39348daa54b1f
-ms.sourcegitcommit: 2fea9bfe6127bbbdbb438406c82529b2bc331944
+ms.openlocfilehash: c2b16f4bc8e69265b1d59082c3f029541f277d8b
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065536"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252293"
 ---
 # <a name="aspnet-core-no-locblazor-component-virtualization"></a>Виртуализация компонентов ASP.NET Core Blazor
 
@@ -77,7 +77,7 @@ ms.locfileid: "98065536"
 > Дополнительные сведения см. в следующих статьях:
 >
 > * <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>
-> * <xref:mvc/views/razor#key>
+> * [Справочник по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor#key)
 
 Компонент `Virtualize`:
 
@@ -169,4 +169,4 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 
 ## <a name="state-changes"></a>Изменения состояния
 
-При внесении изменений в элементы, отрисовываемые компонентом `Virtualize`, вызовите метод <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> для принудительной оценки и отрисовки компонента.
+При внесении изменений в элементы, отрисовываемые компонентом `Virtualize`, вызовите метод <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> для принудительной оценки и отрисовки компонента. Для получения дополнительной информации см. <xref:blazor/components/rendering>.

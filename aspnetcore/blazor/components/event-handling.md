@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: 56306d305a61d549380e847ab2754fa41130e14e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: fe50b95dda14afeae35c4922d0ae3470280bfd02
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94507815"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252530"
 ---
 # <a name="aspnet-core-no-locblazor-event-handling"></a>Обработка событий Blazor в ASP.NET Core
 
@@ -208,7 +208,7 @@ private void ShowMessage(MouseEventArgs e)
 При выборе кнопки в `ChildComponent`:
 
 * Вызывается метод `ShowMessage` `ParentComponent`. `messageText` обновляется и отображается в `ParentComponent`.
-* Вызов [`StateHasChanged`](xref:blazor/components/lifecycle#state-changes) не требуется в методе обратного вызова (`ShowMessage`). <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> вызывается автоматически для повторной отрисовки `ParentComponent`, так же как и дочерние события запускают повторную отрисовку компонента в обработчиках событий, которые выполняются в дочернем элементе.
+* Вызов [`StateHasChanged`](xref:blazor/components/lifecycle#state-changes) не требуется в методе обратного вызова (`ShowMessage`). <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> вызывается автоматически для повторной отрисовки `ParentComponent`, так же как и дочерние события запускают повторную отрисовку компонента в обработчиках событий, которые выполняются в дочернем элементе. Для получения дополнительной информации см. <xref:blazor/components/rendering>.
 
 <xref:Microsoft.AspNetCore.Components.EventCallback> и <xref:Microsoft.AspNetCore.Components.EventCallback%601> разрешают выполнять асинхронные делегаты. Структура <xref:Microsoft.AspNetCore.Components.EventCallback> слабо типизирована и позволяет передавать любой аргумент типа в `InvokeAsync(Object)`. Структура <xref:Microsoft.AspNetCore.Components.EventCallback%601> сильно типизирована и требует передачи аргумента `T` в `InvokeAsync(T)`, который можно назначить `TValue`.
 

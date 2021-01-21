@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 4813668f5278473fbaae36d572e69700b3fe771a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5901a1cb693dfe8e34e62ce2a28456bcf584221c
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97764241"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252270"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>Инструменты для Blazor ASP.NET Core
 
@@ -129,7 +129,7 @@ ms.locfileid: "97764241"
 
 ## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>Использование Visual Studio для кроссплатформенной разработки на Blazor
 
-[Visual Studio Code](https://code.visualstudio.com/) — это кроссплатформенная интегрированная среда разработки (IDE) с открытым кодом, которую можно использовать для разработки приложений Blazor. Используйте .NET CLI для создания приложения Blazor, которое будет разрабатываться в Visual Studio Code. Дополнительные сведения см. в [варианте этой статьи для Linux](/aspnet/core/blazor/tooling?pivots=linux).
+[Visual Studio Code](https://code.visualstudio.com/) — это кроссплатформенная интегрированная среда разработки (IDE) с открытым кодом, которую можно использовать для разработки приложений Blazor. Используйте .NET CLI для создания приложения Blazor, которое будет разрабатываться в Visual Studio Code. Дополнительные сведения см. в [варианте этой статьи для Linux](?pivots=linux).
 
 ## <a name="no-locblazor-template-options"></a>Параметры шаблона Blazor
 

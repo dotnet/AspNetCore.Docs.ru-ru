@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 31a738e7aa8779171dfa09a5678d7240b8f62343
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 63267bf938c6d16b8a1b13940a4b3f8a02d1a1e4
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057236"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252751"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -236,7 +236,22 @@ Remove-Service -Name {SERVICE NAME}
 
 Дополнительные сведения о подходах к настройке URL-адресов и портов см. в соответствующей статье сервера:
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+* <xref:fundamentals/servers/kestrel/endpoints>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
+
 * <xref:fundamentals/servers/kestrel#endpoint-configuration>
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
 * <xref:fundamentals/servers/httpsys#configure-windows-server>
 
 В предыдущем руководстве рассматривается поддержка конечных точек HTTPS. Например, настройте приложение для HTTPS, если проверка подлинности используется со службой Windows.
@@ -246,25 +261,25 @@ Remove-Service -Name {SERVICE NAME}
 
 ## <a name="current-directory-and-content-root"></a>Текущий каталог и корневой каталог содержимого
 
-Для службы Windows <xref:System.IO.Directory.GetCurrentDirectory*> возвращает текущий рабочий каталог *C:\\WINDOWS\\system32*. Папка *system32* не подходит для хранения файлов службы (например, файлов параметров). Используйте один из следующих методов для сохранения ресурсов и файлов параметров службы и доступа к ним.
+Для службы Windows <xref:System.IO.Directory.GetCurrentDirectory%2A> возвращает текущий рабочий каталог *C:\\WINDOWS\\system32*. Папка *system32* не подходит для хранения файлов службы (например, файлов параметров). Используйте один из следующих методов для сохранения ресурсов и файлов параметров службы и доступа к ним.
 
 ### <a name="use-contentrootpath-or-contentrootfileprovider"></a>Использование ContentRootPath или ContentRootFileProvider
 
 Используйте [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) или <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> для поиска ресурсов приложения.
 
-Когда приложение запускается как служба, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> задает для свойства <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> значение [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory).
+Когда приложение запускается как служба, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService%2A> задает для свойства <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> значение [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory).
 
 Файлы стандартных параметров приложения *appsettings.json* и *appsettings.{Environment}.json* загружаются из корневого каталога содержимого приложения путем вызова [CreateDefaultBuilder во время создания узла](xref:fundamentals/host/generic-host#set-up-a-host).
 
-Для других файлов параметров, загруженных с помощью кода разработчика в <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, не нужно вызывать <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. В следующем примере файл *custom_settings. JSON* существует в корневом каталоге содержимого приложения и загружается без явного указания базового пути:
+Для других файлов параметров, загруженных с помощью кода разработчика в <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration%2A>, не нужно вызывать <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath%2A>. В следующем примере файл *custom_settings. JSON* существует в корневом каталоге содержимого приложения и загружается без явного указания базового пути:
 
 [!code-csharp[](windows-service/samples_snapshot/CustomSettingsExample.cs?highlight=13)]
 
-Не пытайтесь использовать <xref:System.IO.Directory.GetCurrentDirectory*>, чтобы получить путь к ресурсу, так как приложение службы Windows возвращает папку *C:\\WINDOWS\\system32* в качестве текущего каталога.
+Не пытайтесь использовать <xref:System.IO.Directory.GetCurrentDirectory%2A>, чтобы получить путь к ресурсу, так как приложение службы Windows возвращает папку *C:\\WINDOWS\\system32* в качестве текущего каталога.
 
 ### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a>Хранение файлов службы в подходящем расположении на диске
 
-Укажите абсолютный путь к папке, содержащей файлы, с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> при использовании <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>.
+Укажите абсолютный путь к папке, содержащей файлы, с помощью <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath%2A> при использовании <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>.
 
 ## <a name="troubleshoot"></a>Устранение неполадок
 
@@ -345,7 +360,16 @@ Remove-Service -Name {SERVICE NAME}
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+* [Конфигурация конечных точек Kestrel](xref:fundamentals/servers/kestrel/endpoints) (включает конфигурацию HTTPS и поддержку SNI)
+::: moniker-end
+::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
 * [Конфигурация конечных точек Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) (включает конфигурацию HTTPS и поддержку SNI)
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 * <xref:fundamentals/host/generic-host>
 * <xref:test/troubleshoot>
 

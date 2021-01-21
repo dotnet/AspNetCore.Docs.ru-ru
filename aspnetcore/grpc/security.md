@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/security
-ms.openlocfilehash: a7a595a71f988377bf25c500f04da2add3d85aef
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 45ac0916a368cf68f4d40e14298a7628446989ee
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058835"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252816"
 ---
 # <a name="security-considerations-in-grpc-for-aspnet-core"></a>Вопросы безопасности применительно к gRPC для ASP.NET Core
 
@@ -39,7 +39,13 @@ ms.locfileid: "93058835"
 * Для защиты сообщений в рабочих приложениях gRPC следует использовать [протокол TLS](https://tools.ietf.org/html/rfc5246).
 * Службы gRPC должны ожидать передачи данных и отвечать только через защищенные порты.
 
+::: moniker range=">= aspnetcore-5.0"
+В Kestrel следует настроить протокол TLS. Дополнительные сведения о настройке конечных точек Kestrel см. в статье [Конфигурация конечной точки Kestrel](xref:fundamentals/servers/kestrel/endpoints).
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 В Kestrel следует настроить протокол TLS. Дополнительные сведения о настройке конечных точек Kestrel см. в статье [Конфигурация конечной точки Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration).
+::: moniker-end
 
 ## <a name="exceptions"></a>Исключения
 

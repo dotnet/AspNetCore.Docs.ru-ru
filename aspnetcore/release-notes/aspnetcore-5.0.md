@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: d7ffcb67637593ab2909885a9e1f6de74a78361b
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5caa412773bf9c8e3bed5ebc529d48b886de6956
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96855499"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253076"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Новые возможности в ASP.NET Core 5.0
 
@@ -333,7 +333,7 @@ See [Update SignalR code](xref:migration/31-to-50#signalr) for migration instruc
 ### <a name="http2"></a>HTTP/2
 
 * Значительное сокращение распределений в пути к коду HTTP/2.
-* Поддержка [динамического сжатия HPack](https://tools.ietf.org/html/rfc7541) заголовков ответов HTTP/2 в [Kestrel](xref:fundamentals/servers/kestrel). Дополнительные сведения см. в разделе [Размер таблицы заголовка](xref:fundamentals/servers/kestrel#header-table-size) и записи блога [HPACK: возможность Silent Killer в HTTP/2](https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/).
+* Поддержка [динамического сжатия HPack](https://tools.ietf.org/html/rfc7541) заголовков ответов HTTP/2 в [Kestrel](xref:fundamentals/servers/kestrel). Дополнительные сведения см. в разделе [Размер таблицы заголовка](xref:fundamentals/servers/kestrel/options#header-table-size) и записи блога [HPACK: возможность Silent Killer в HTTP/2](https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/).
 * Отправка кадров проверки связи HTTP/2. HTTP/2 имеет механизм отправки кадров проверки связи, чтобы неактивное соединение по-прежнему работало. Обеспечение работоспособного соединения особенно полезно при работе с долгосрочными потоками, которые часто находятся в неактивном состоянии, но только периодически видят действия, например потоки gRPC. Приложения могут отправить периодические кадры проверки связи в [Kestrel](xref:fundamentals/servers/kestrel), установив ограничения на <xref:Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions>:
 
    ```csharp

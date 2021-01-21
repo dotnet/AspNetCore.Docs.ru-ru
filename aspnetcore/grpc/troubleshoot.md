@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/troubleshoot
-ms.openlocfilehash: cbce85caf7ba792253ba62c6be084c8905acd00f
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 61d4d2204886f26b4ff55bc876825012809f1dfa
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058718"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253102"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Устранение неполадок gRPC в .NET Core
 
@@ -126,7 +126,13 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+Если конечная точка HTTP/2 настроена без TLS, для конечной точки [ListenOptions.Protocols](xref:fundamentals/servers/kestrel/endpoints#listenoptionsprotocols) должно быть установлено значение `HttpProtocols.Http2`. `HttpProtocols.Http1AndHttp2` использовать нельзя, так как протокол TLS необходим для согласования подключения по HTTP/2. Без TLS все подключения к конечной точке по умолчанию осуществляются по протоколу HTTP/1.1, а вызовы gRPC завершаются ошибкой.
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 Если конечная точка HTTP/2 настроена без TLS, для конечной точки [ListenOptions.Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols) должно быть установлено значение `HttpProtocols.Http2`. `HttpProtocols.Http1AndHttp2` использовать нельзя, так как протокол TLS необходим для согласования подключения по HTTP/2. Без TLS все подключения к конечной точке по умолчанию осуществляются по протоколу HTTP/1.1, а вызовы gRPC завершаются ошибкой.
+::: moniker-end
 
 Клиент gRPC также должен быть настроен так, чтобы протокол TLS не использовался. Дополнительные сведения см. в разделе [Вызов незащищенных служб gRPC с помощью клиента .NET Core](#call-insecure-grpc-services-with-net-core-client).
 
