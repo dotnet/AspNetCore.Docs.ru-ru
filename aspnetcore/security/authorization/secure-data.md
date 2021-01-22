@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: dc70cfe7cb0c0f044f5f1e7ee68a293b3ea7507f
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: ebd3c0dc9baa63b30f142773d7a3d621ce4082d9
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854656"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689309"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Создание ASP.NET Core веб-приложения с данными пользователя, защищенными с помощью авторизации
 
@@ -75,7 +75,7 @@ ms.locfileid: "97854656"
 * `ContactManagerAuthorizationHandler`: Позволяет руководителям утверждать или отклонять контакты.
 * `ContactAdministratorsAuthorizationHandler`: Позволяет администраторам утверждать или отклонять контакты, а также изменять и удалять контакты.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Предварительные условия
 
 Этот учебник расширен. Вы должны быть знакомы с:
 
@@ -129,6 +129,8 @@ dotnet ef database update
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
 Выделенный выше код задает [политику резервной проверки подлинности](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). Для применения политики резервной проверки подлинности требуется **_ALL_* _ Users, за исключением Razor страниц, контроллеров или методов действий с атрибутом проверки подлинности. Например, Razor страницы, контроллеры или методы действий с `[AllowAnonymous]` или `[Authorize(PolicyName="MyPolicy")]` используют примененный атрибут проверки подлинности, а не политику резервной проверки подлинности.
+
+<xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> Добавляет <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> к текущему экземпляру, который обеспечивает проверку подлинности текущего пользователя.
 
 Резервная политика проверки подлинности:
 
@@ -332,7 +334,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * Руководители могут утверждать и отклонять контактные данные. В `Details` представлении отображаются кнопки **утвердить** и **отклонить** .
 * Администраторы могут утверждать, отклонять и изменять и удалять все данные.
 
-| User (Пользователь)                | Заполнено приложением | Варианты                                  |
+| User                | Заполнено приложением | Параметры                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | Нет                | Изменение или удаление собственных данных.                |
 | manager@contoso.com | Да               | Утвердите, отклоните и измените или удалите собственные данные. |
@@ -429,7 +431,7 @@ dotnet ef database update
 * `ContactManagerAuthorizationHandler`: Позволяет руководителям утверждать или отклонять контакты.
 * `ContactAdministratorsAuthorizationHandler`: Позволяет администраторам утверждать или отклонять контакты, а также изменять и удалять контакты.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Предварительные условия
 
 Этот учебник расширен. Вы должны быть знакомы с:
 
@@ -659,7 +661,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * Руководители могут утверждать и отклонять контактные данные. В `Details` представлении отображаются кнопки **утвердить** и **отклонить** .
 * Администраторы могут утверждать, отклонять и изменять и удалять все данные.
 
-| User (Пользователь)                | Заполнено приложением | Варианты                                  |
+| User                | Заполнено приложением | Параметры                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | Нет                | Изменение или удаление собственных данных.                |
 | manager@contoso.com | Да               | Утвердите, отклоните и измените или удалите собственные данные. |

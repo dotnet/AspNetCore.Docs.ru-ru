@@ -5,7 +5,7 @@ description: Сведения о поддерживаемых платформа
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc, devx-track-js
-ms.date: 01/16/2020
+ms.date: 01/21/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/supported-platforms
-ms.openlocfilehash: ee6e263fb5bef7bfb84587c3b0f04175eb8073cd
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0a858de44f4a87b182a43a776154b782c7e96288
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051022"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689231"
 ---
 # <a name="aspnet-core-no-locsignalr-supported-platforms"></a>Поддерживаемые платформы ASP.NET Core SignalR
 
@@ -36,7 +36,7 @@ SignalR для ASP.NET Core поддерживает любую серверну
 
 [Клиент JavaScript](xref:signalr/javascript-client) работает на NodeJS 8 и более поздних версиях и в следующих браузерах:
 
-| Браузер                          | Версия         |
+| Браузер                          | Version         |
 | -------------------------------- | --------------- |
 | Apple Safari, включая iOS      | Текущий&dagger; |
 | Google Chrome, включая Android | Текущий&dagger; |
@@ -44,6 +44,8 @@ SignalR для ASP.NET Core поддерживает любую серверну
 | Mozilla Firefox;                  | Текущий&dagger; |
 
 &dagger;*Текущий* означает последнюю версию браузера.
+
+Клиент JavaScript не поддерживает Internet Explorer и другие обозреватели предыдущих версий. Клиент может столкнуться с непредвиденным поведением и ошибками в неподдерживаемых браузерах.
 
 ## <a name="net-client"></a>Клиент .NET
 
