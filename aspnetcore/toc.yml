@@ -57,8 +57,6 @@
         - name: MVC
           displayName: tutorial
           items:
-            - name: Обзор
-              uid: tutorials/first-mvc-app/index
             - name: Начало работы
               uid: tutorials/first-mvc-app/start-mvc
             - name: Добавление контроллера
@@ -262,8 +260,6 @@
           uid: mvc/overview
         - name: Учебник
           items:
-            - name: Обзор
-              uid: tutorials/first-mvc-app/index
             - name: Начало работы
               uid: tutorials/first-mvc-app/start-mvc
             - name: Добавление контроллера
