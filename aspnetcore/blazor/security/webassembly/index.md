@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: c4d1095d3c3b457ca4d94cb1a573c3dc49548ff3
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 2df938f3ace47472536020f9848e954fc4446f15
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024643"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658590"
 ---
 # <a name="secure-aspnet-core-no-locblazor-webassembly"></a>Защита ASP.NET Core Blazor WebAssembly
 
@@ -106,6 +106,10 @@ Blazor WebAssembly поддерживает проверку подлиннос�
 
 * [Дополнительные сценарии. Настройка пользователя](xref:blazor/security/webassembly/additional-scenarios#customize-the-user)
 * <xref:blazor/security/webassembly/aad-groups-roles>
+
+## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Служба приложений Azure в Linux с сервером Identity
+
+При развертывании в Службе приложений Azure в Linux с сервером Identity нужно указать издателя явно. Для получения дополнительной информации см. <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 
 ## <a name="implementation-guidance"></a>Рекомендации по реализации
 

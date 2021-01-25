@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: aa24def1a003a2c2608691e6168066c740f47205
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 5031273c3395be4365b3a6d239ebce7aaf9b66ac
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024630"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658642"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Защита приложений ASP.NET Core Blazor Server
 
@@ -126,6 +126,10 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 * [Без существующей авторизации](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-without-existing-authorization).
 * [С авторизацией](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-with-authorization).
+
+## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Служба приложений Azure в Linux с сервером Identity
+
+При развертывании в Службе приложений Azure в Linux с сервером Identity нужно указать издателя явно. Для получения дополнительной информации см. <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
