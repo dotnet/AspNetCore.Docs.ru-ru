@@ -19,18 +19,66 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 5c9e1717ad603687343f015826a113e6945e4a41
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d53cafb605939fd85bdbb71b2fbf13e7bd7a9b7b
+ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854617"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570997"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера Kestrel в ASP.NET Core
 
 Авторы: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra), [Крис Росс](https://github.com/Tratcher) (Chris Ross) и [Стивен Хальтер](https://twitter.com/halter73) (Stephen Halter)
 
-::: moniker range=">= aspnetcore-3.0"
+::: moniker range=">= aspnetcore-5.0"
+
+Kestrel — это кроссплатформенный [веб-сервер для ASP.NET Core](xref:fundamentals/servers/index). Веб-сервер Kestrel по умолчанию включается в шаблоны проектов ASP.NET Core и активируется в них.
+
+Kestrel поддерживается в следующих сценариях.
+
+* HTTPS
+* [HTTP/2](xref:fundamentals/servers/kestrel/http2) (за исключением macOS&dagger;)
+* Непрозрачное обновление для поддержки [WebSocket](xref:fundamentals/websockets)
+* Сокеты UNIX для повышения производительности при работе за Nginx
+
+&dagger; HTTP/2 будет поддерживаться для macOS в будущих выпусках.
+
+Kestrel поддерживается на всех платформах и во всех версиях, поддерживаемых .NET Core.
+
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/5.x) ([как скачивать](xref:index#how-to-download-a-sample))
+
+## <a name="get-started"></a>Начало работы
+
+Шаблоны проектов ASP.NET Core используют Kestrel по умолчанию. В *Program.cs* метод <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> вызывает <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>:
+
+[!code-csharp[](kestrel/samples/5.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
+
+Дополнительные сведения о создании узла см. в разделах *Настройка узла* и *Параметры построителя по умолчанию* статьи <xref:fundamentals/host/generic-host#set-up-a-host>.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+<a name="endpoint-configuration"></a>
+* <xref:fundamentals/servers/kestrel/endpoints>
+<a name="kestrel-options"></a>
+* <xref:fundamentals/servers/kestrel/options>
+<a name="http2-support"></a>
+* <xref:fundamentals/servers/kestrel/http2>
+<a name="when-to-use-kestrel-with-a-reverse-proxy"></a>
+* <xref:fundamentals/servers/kestrel/when-to-use-a-reverse-proxy>
+<a name="host-filtering"></a>
+* <xref:fundamentals/servers/kestrel/host-filtering>
+* <xref:test/troubleshoot>
+* <xref:security/enforcing-ssl>
+* <xref:host-and-deploy/proxy-load-balancer>
+* [RFC 7230: синтаксис и маршрутизация сообщений (раздел 5.4: узел)](https://tools.ietf.org/html/rfc7230#section-5.4)
+* При использовании сокетов UNIX в Linux сокет не удаляется автоматически по завершении работы приложения. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/aspnetcore/issues/14134).
+
+> [!NOTE]
+> Начиная с ASP.NET Core 5.0 транспорт Kestrel libuv считается устаревшим. Транспорт libuv не получает обновления для включения поддержки новых платформ ОС, таких как Windows ARM64, и будет удален в будущем выпуске. Удалите все вызовы устаревшего метода <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A> и используйте вместо него транспорт Socket Kestrel по умолчанию.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
 
 Kestrel — это кроссплатформенный [веб-сервер для ASP.NET Core](xref:fundamentals/servers/index). Веб-сервер Kestrel по умолчанию включается в шаблоны проектов ASP.NET Core.
 
@@ -45,7 +93,7 @@ Kestrel поддерживается в следующих сценариях.
 
 Kestrel поддерживается на всех платформах и во всех версиях, поддерживаемых .NET Core.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/3.x) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Поддержка HTTP/2
 
@@ -63,7 +111,7 @@ Kestrel поддерживается на всех платформах и во 
 
 Если установлено подключение HTTP/2, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) возвращает `HTTP/2`.
 
-По умолчанию протокол HTTP/2 отключен. Дополнительные сведения о конфигурации см. в разделах [о параметрах Kestrel](#kestrel-options) и [ListenOptions.Protocols](#listenoptionsprotocols).
+Начиная с версии .NET Core 3.0 протокол HTTP/2 по умолчанию включен. Дополнительные сведения о конфигурации см. в разделах [о параметрах Kestrel](#kestrel-options) и [ListenOptions.Protocols](#listenoptionsprotocols).
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Условия использования Kestrel с обратным прокси-сервером
 
@@ -355,34 +403,6 @@ webBuilder.ConfigureKestrel(serverOptions =>
 ```
 
 Значение по умолчанию — 96 КБ (98 304).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-5.0"
-
-### <a name="http2-keep-alive-ping-configuration"></a>Конфигурация проверки связи для проверки активности HTTP/2
-
-Kestrel можно настроить для отправки пакетов проверки связи HTTP/2 подключенным клиентам. Проверка связи HTTP/2 служит нескольким целям.
-
-* Сохранение активности бездействующего подключения. Некоторые клиенты и прокси-серверы закрывают неактивные соединения. Проверки связи HTTP/2 рассматриваются как активность подключения и препятствуют закрытию соединения как бездействующего.
-* Закрытие неработоспособных подключений. Подключения, в которых клиент не отвечает на проверку связи для проверки активности в течение заданного времени, закрываются сервером.
-
-Для настройки проверки связи для проверки активности HTTP/2 есть два параметра.
-
-* `Http2.KeepAlivePingInterval` — это `TimeSpan`, который настраивает интервал проверки связи. Если сервер не получает никаких кадров данных в течение этого периода времени, он отправляет клиенту пакеты проверки связи для проверки активности. Если для этого параметра задано значение `TimeSpan.MaxValue`, то проверка связи для проверки активности отключена. Значение по умолчанию — `TimeSpan.MaxValue`.
-* `Http2.KeepAlivePingTimeout` — это `TimeSpan`, который настраивает время ожидания проверки связи. Если сервер не получает никаких кадров данных, например ответ на запрос проверки связи, подключение закрывается. Если для этого параметра задано значение `TimeSpan.MaxValue`, то время ожидания проверки активности отключено. Значение по умолчанию — 20 секунд.
-
-```csharp
-webBuilder.ConfigureKestrel(serverOptions =>
-{
-    serverOptions.Limits.Http2.KeepAlivePingInterval = TimeSpan.FromSeconds(30);
-    serverOptions.Limits.Http2.KeepAlivePingTimeout = TimeSpan.FromSeconds(60);
-});
-```
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
 
 ### <a name="trailers"></a>Трейлеры
 
@@ -986,18 +1006,6 @@ webBuilder.ConfigureKestrel(serverOptions =>
 >
 > Дополнительные сведения о ПО промежуточного слоя перенаправления заголовков см. в статье <xref:host-and-deploy/proxy-load-balancer>.
 
-::: moniker-end
-
-::: moniker range=">= aspnetcore-5.0"
-
-## <a name="libuv-transport-configuration"></a>Конфигурация транспорта Libuv
-
-Начиная с ASP.NET Core 5.0, транспорт Kestrel Libuv считается устаревшим. Транспорт Libuv не получает обновления для включения поддержки новых платформ ОС, таких как Windows ARM64, и будет удален в будущем выпуске. Удалите все вызовы устаревшего метода <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A> и используйте вместо него транспорт Socket Kestrel по умолчанию.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
-
 ## <a name="libuv-transport-configuration"></a>Конфигурация транспорта Libuv
 
 Для проектов, где требуется использовать Libuv (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A>):
@@ -1029,6 +1037,44 @@ webBuilder.ConfigureKestrel(serverOptions =>
   }
   ```
 
+## <a name="http11-request-draining"></a>Очистка запросов HTTP/1.1
+
+Открытие HTTP-соединений занимает много времени. Для протокола HTTPS это также требует больших ресурсов. Поэтому Kestrel пытается повторно использовать подключения по протоколу HTTP/1.1. Чтобы разрешить повторное использование соединения, текст запроса должен быть полностью использован. Приложение не всегда использует текст запроса, например запросы `POST`, в которых сервер возвращает ответ перенаправления или 404. В случае перенаправления `POST`:
+
+* Возможно, клиент уже отправил часть данных `POST`.
+* Сервер записывает ответ 301.
+* Соединение нельзя использовать для нового запроса, пока не будут полностью прочитаны данные `POST` из предыдущего текста запроса.
+* Kestrel пытается очистить текст запроса. Очистка текста запроса означает чтение и отмену данных без их обработки.
+
+Процесс очистки позволяет найти баланс между возможностью повторного использования соединения и временем, которое требуется для очистки оставшихся данных.
+
+* Время ожидания очистки составляет 5 секунд. Этот параметр нельзя изменить.
+* Если все данные, указанные в заголовке `Content-Length` или `Transfer-Encoding`, не были считаны до истечения времени ожидания, соединение закрывается.
+
+Иногда может потребоваться немедленно завершить запрос до или после записи ответа. Например, клиенты могут иметь ограничения на данные, поэтому ограничение передаваемых данных может иметь приоритет. В таких случаях для завершения запроса вызовите [HttpContext.Abort](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A) из контроллера, страницы Razor или ПО промежуточного слоя.
+
+Вызов `Abort` имеет определенные недостатки.
+
+* Создание новых подключений может выполняться очень медленно и требовать много ресурсов.
+* Нет никакой гарантии, что клиент прочитал ответ перед закрытием соединения.
+* Вызов `Abort` следует использовать редко и только для серьезных, а не распространенных ошибок.
+  * Вызывайте `Abort`, только когда нужно решить конкретную проблему. Например, вызовите `Abort`, если вредоносные клиенты пытаются выполнить операцию `POST` с данными или если в клиентском коде есть ошибка, вызывающая большие или многочисленные запросы.
+  * Не вызывайте `Abort` для распространенных ошибок, таких как HTTP 404 (не найдено).
+
+Вызов [HttpResponse.CompleteAsync](xref:Microsoft.AspNetCore.Http.HttpResponse.CompleteAsync%2A) перед вызовом `Abort` гарантирует, что сервер завершит запись ответа. Однако поведение клиента не предсказуемо. Он может не считать ответ, прежде чем подключение будет прервано.
+
+Этот процесс отличается для HTTP/2, так как протокол поддерживает прерывание отдельных потоков запросов без закрытия соединения. 5-секундное время ожидания очистки не применяется. Если после завершения ответа сервер содержит непрочтенные данные текста запроса, он отправляет кадр HTTP/2 RST. Дополнительные кадры данных текста запроса игнорируются.
+
+По возможности клиентам лучше использовать заголовок запроса [Expect: 100-continue](https://developer.mozilla.org/docs/Web/HTTP/Status/100) и дожидаться ответа сервера перед началом отправки текста запроса. Это дает клиенту возможность проверить ответ и прервать операцию перед отправкой ненужных данных.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* При использовании сокетов UNIX в Linux сокет не удаляется автоматически по завершении работы приложения. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/aspnetcore/issues/14134).
+* <xref:test/troubleshoot>
+* <xref:security/enforcing-ssl>
+* <xref:host-and-deploy/proxy-load-balancer>
+* [RFC 7230: синтаксис и маршрутизация сообщений (раздел 5.4: узел)](https://tools.ietf.org/html/rfc7230#section-5.4)
+
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.2"
@@ -1046,7 +1092,7 @@ Kestrel поддерживается в следующих сценариях.
 
 Kestrel поддерживается на всех платформах и во всех версиях, поддерживаемых .NET Core.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Поддержка HTTP/2
 
@@ -1980,6 +2026,44 @@ private class TlsFilterAdapter : IConnectionAdapter
 >
 > Дополнительные сведения о ПО промежуточного слоя перенаправления заголовков см. в статье <xref:host-and-deploy/proxy-load-balancer>.
 
+## <a name="http11-request-draining"></a>Очистка запросов HTTP/1.1
+
+Открытие HTTP-соединений занимает много времени. Для протокола HTTPS это также требует больших ресурсов. Поэтому Kestrel пытается повторно использовать подключения по протоколу HTTP/1.1. Чтобы разрешить повторное использование соединения, текст запроса должен быть полностью использован. Приложение не всегда использует текст запроса, например запросы `POST`, в которых сервер возвращает ответ перенаправления или 404. В случае перенаправления `POST`:
+
+* Возможно, клиент уже отправил часть данных `POST`.
+* Сервер записывает ответ 301.
+* Соединение нельзя использовать для нового запроса, пока не будут полностью прочитаны данные `POST` из предыдущего текста запроса.
+* Kestrel пытается очистить текст запроса. Очистка текста запроса означает чтение и отмену данных без их обработки.
+
+Процесс очистки позволяет найти баланс между возможностью повторного использования соединения и временем, которое требуется для очистки оставшихся данных.
+
+* Время ожидания очистки составляет 5 секунд. Этот параметр нельзя изменить.
+* Если все данные, указанные в заголовке `Content-Length` или `Transfer-Encoding`, не были считаны до истечения времени ожидания, соединение закрывается.
+
+Иногда может потребоваться немедленно завершить запрос до или после записи ответа. Например, клиенты могут иметь ограничения на данные, поэтому ограничение передаваемых данных может иметь приоритет. В таких случаях для завершения запроса вызовите [HttpContext.Abort](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A) из контроллера, страницы Razor или ПО промежуточного слоя.
+
+Вызов `Abort` имеет определенные недостатки.
+
+* Создание новых подключений может выполняться очень медленно и требовать много ресурсов.
+* Нет никакой гарантии, что клиент прочитал ответ перед закрытием соединения.
+* Вызов `Abort` следует использовать редко и только для серьезных, а не распространенных ошибок.
+  * Вызывайте `Abort`, только когда нужно решить конкретную проблему. Например, вызовите `Abort`, если вредоносные клиенты пытаются выполнить операцию `POST` с данными или если в клиентском коде есть ошибка, вызывающая большие или многочисленные запросы.
+  * Не вызывайте `Abort` для распространенных ошибок, таких как HTTP 404 (не найдено).
+
+Вызов [HttpResponse.CompleteAsync](xref:Microsoft.AspNetCore.Http.HttpResponse.CompleteAsync%2A) перед вызовом `Abort` гарантирует, что сервер завершит запись ответа. Однако поведение клиента не предсказуемо. Он может не считать ответ, прежде чем подключение будет прервано.
+
+Этот процесс отличается для HTTP/2, так как протокол поддерживает прерывание отдельных потоков запросов без закрытия соединения. 5-секундное время ожидания очистки не применяется. Если после завершения ответа сервер содержит непрочтенные данные текста запроса, он отправляет кадр HTTP/2 RST. Дополнительные кадры данных текста запроса игнорируются.
+
+По возможности клиентам лучше использовать заголовок запроса [Expect: 100-continue](https://developer.mozilla.org/docs/Web/HTTP/Status/100) и дожидаться ответа сервера перед началом отправки текста запроса. Это дает клиенту возможность проверить ответ и прервать операцию перед отправкой ненужных данных.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* При использовании сокетов UNIX в Linux сокет не удаляется автоматически по завершении работы приложения. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/aspnetcore/issues/14134).
+* <xref:test/troubleshoot>
+* <xref:security/enforcing-ssl>
+* <xref:host-and-deploy/proxy-load-balancer>
+* [RFC 7230: синтаксис и маршрутизация сообщений (раздел 5.4: узел)](https://tools.ietf.org/html/rfc7230#section-5.4)
+
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
@@ -1994,7 +2078,7 @@ Kestrel поддерживается в следующих сценариях.
 
 Kestrel поддерживается на всех платформах и во всех версиях, поддерживаемых .NET Core.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Условия использования Kestrel с обратным прокси-сервером
 
@@ -2770,8 +2854,6 @@ Listening on the following addresses: http://127.0.0.1:48508
 >
 > Дополнительные сведения о ПО промежуточного слоя перенаправления заголовков см. в статье <xref:host-and-deploy/proxy-load-balancer>.
 
-::: moniker-end
-
 ## <a name="http11-request-draining"></a>Очистка запросов HTTP/1.1
 
 Открытие HTTP-соединений занимает много времени. Для протокола HTTPS это также требует больших ресурсов. Поэтому Kestrel пытается повторно использовать подключения по протоколу HTTP/1.1. Чтобы разрешить повторное использование соединения, текст запроса должен быть полностью использован. Приложение не всегда использует текст запроса, например запросы `POST`, в которых сервер возвращает ответ перенаправления или 404. В случае перенаправления `POST`:
@@ -2809,3 +2891,5 @@ Listening on the following addresses: http://127.0.0.1:48508
 * <xref:security/enforcing-ssl>
 * <xref:host-and-deploy/proxy-load-balancer>
 * [RFC 7230: синтаксис и маршрутизация сообщений (раздел 5.4: узел)](https://tools.ietf.org/html/rfc7230#section-5.4)
+
+::: moniker-end

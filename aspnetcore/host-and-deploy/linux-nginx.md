@@ -1,7 +1,7 @@
 ---
 title: Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 author: rick-anderson
-description: В статье описывается процедура настройки Nginx как обратного прокси-сервера на Ubuntu 16.04 для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
+description: В статье описывается процедура настройки Nginx как обратного прокси-сервера на Ubuntu 16.04 для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: c4e0d70b41221f272bb4b1fe82cfa531ec6fcf15
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 6a8fd8e3498dda9b7c10834791e64df6276e2823
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94431071"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253024"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -97,7 +97,7 @@ Kestrel является отличным решением для обслужи
 
 [!INCLUDE[](~/includes/ForwardedHeaders.md)]
 
-Вызовите <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> метод наверху `Startup.Configure`, прежде чем вызывать другое ПО промежуточного слоя. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
+Вызовите <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders%2A> метод наверху `Startup.Configure`, прежде чем вызывать другое ПО промежуточного слоя. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
 using Microsoft.AspNetCore.HttpOverrides;
@@ -114,7 +114,7 @@ app.UseAuthentication();
 
 Если параметр <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.
 
-Прокси-серверы под управлением адресов замыкания на себя (`127.0.0.0/8`, `[::1]`), включая стандартные адреса localhost (`127.0.0.1`), считаются доверенными по умолчанию. Если запросы между Интернетом и веб-сервером обрабатывают другие прокси-серверы или сети организации, добавьте их в список <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> или <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> с помощью <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. Следующий пример добавляет доверенный прокси-сервер с IP-адресом 10.0.0.100 в ПО промежуточного слоя для перенаправления заголовков `KnownProxies` в `Startup.ConfigureServices`:
+Прокси-серверы под управлением адресов замыкания на себя (`127.0.0.0/8`, `[::1]`), включая стандартные адреса localhost (`127.0.0.1`), считаются доверенными по умолчанию. Если запросы между Интернетом и веб-сервером обрабатывают другие прокси-серверы или сети организации, добавьте их в список <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies%2A> или <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks%2A> с помощью <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. Следующий пример добавляет доверенный прокси-сервер с IP-адресом 10.0.0.100 в ПО промежуточного слоя для перенаправления заголовков `KnownProxies` в `Startup.ConfigureServices`:
 
 ```csharp
 using System.Net;
@@ -146,7 +146,7 @@ sudo service nginx start
 
 ### <a name="configure-nginx"></a>Настройка Nginx
 
-Чтобы настроить Nginx как обратный прокси-сервер для перенаправления HTTP-запросов в ваше приложение ASP.NET Core, измените файл `/etc/nginx/sites-available/default`. Откройте этот файл в текстовом редакторе и замените его содержимое на следующий код.
+Чтобы настроить Nginx как обратный прокси-сервер для перенаправления HTTP-запросов в ваше приложение ASP.NET Core, измените файл `/etc/nginx/sites-available/default`. Откройте этот файл в текстовом редакторе и замените его содержимое на следующий фрагмент кода:
 
 ```nginx
 server {
@@ -167,7 +167,7 @@ server {
 
 Если вы работаете с приложением SignalR или Blazor Server, дополнительные сведения см. в разделах о <xref:signalr/scale#linux-with-nginx> и <xref:blazor/host-and-deploy/server#linux-with-nginx> соответственно.
 
-Если отсутствуют совпадения для `server_name`, Nginx использует сервер по умолчанию. Если сервер по умолчанию не определен, первый сервер в файле конфигурации является сервером по умолчанию. Рекомендуется добавить в качестве сервера по умолчанию определенный сервер, который возвращает код состояния 444 в файле конфигурации. Ниже приведен пример конфигурации сервера по умолчанию:
+Если отсутствуют совпадения для `server_name`, Nginx использует сервер по умолчанию. Если сервер по умолчанию не определен, первый сервер в файле конфигурации является сервером по умолчанию. Рекомендуется добавить в качестве сервера по умолчанию определенный сервер, который возвращает код состояния 444 в файле конфигурации. Ниже приведен пример конфигурации сервера по умолчанию:
 
 ```nginx
 server {
@@ -177,7 +177,17 @@ server {
 }
 ```
 
-С представленным выше файлом конфигурации и сервером по умолчанию Nginx принимает трафик от любого источника через порт 80 с заголовком узла `example.com` или `*.example.com`. Запросы, не соответствующие этим узлам, не будут перенаправляться в Kestrel. Запросы, которые им соответствуют, Nginx перенаправляет в Kestrel по адресу `http://localhost:5000`. Для получения дополнительной информации см. статью [Как nginx обрабатывает запросы](https://nginx.org/docs/http/request_processing.html). Сведения о том, как изменить IP-адрес/порт Kestrel, см. в разделе [Kestrel: конфигурация конечной точки](xref:fundamentals/servers/kestrel#endpoint-configuration).
+::: moniker range=">= aspnetcore-5.0"
+
+С представленным выше файлом конфигурации и сервером по умолчанию Nginx принимает трафик от любого источника через порт 80 с заголовком узла `example.com` или `*.example.com`. Запросы, не соответствующие этим узлам, не будут перенаправляться в Kestrel. Запросы, которые им соответствуют, Nginx перенаправляет в Kestrel по адресу `http://localhost:5000`. Дополнительные сведения см. в статье [Как nginx обрабатывает запросы](https://nginx.org/docs/http/request_processing.html). Сведения о том, как изменить IP-адрес/порт Kestrel, см. в разделе [Kestrel: конфигурация конечной точки](xref:fundamentals/servers/kestrel/endpoints).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+С представленным выше файлом конфигурации и сервером по умолчанию Nginx принимает трафик от любого источника через порт 80 с заголовком узла `example.com` или `*.example.com`. Запросы, не соответствующие этим узлам, не будут перенаправляться в Kestrel. Запросы, которые им соответствуют, Nginx перенаправляет в Kestrel по адресу `http://localhost:5000`. Дополнительные сведения см. в статье [Как nginx обрабатывает запросы](https://nginx.org/docs/http/request_processing.html). Сведения о том, как изменить IP-адрес/порт Kestrel, см. в разделе [Kestrel: конфигурация конечной точки](xref:fundamentals/servers/kestrel#endpoint-configuration).
+
+::: moniker-end
 
 > [!WARNING]
 > Если не будет указана правильная [директива server_name](https://nginx.org/docs/http/server_names.html), приложение будет подвержено значительным уязвимостям. Привязки с подстановочными знаками на уровне дочерних доменов (например, `*.example.com`) не создают таких угроз безопасности, если вы полностью контролируете родительский домен (в отличие от варианта `*.com`, создающего уязвимость). Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -189,9 +199,9 @@ server {
 1. Перейдите в каталог приложения.
 1. Запустите приложение: `dotnet <app_assembly.dll>`, где `app_assembly.dll` — имя файла сборки приложения.
 
-Если приложение выполняется на сервере, но не отвечает по Интернету, проверьте брандмауэр сервера и убедитесь, что порт 80 открыт. При использовании виртуальной машины Ubuntu Azure добавьте правило группы безопасности сети (NSG), которое разрешает входящий трафик через порт 80. Не нужно включать правило исходящего трафика на порте 80, так как исходящий трафик предоставляется автоматически при включении правила для входящего трафика.
+Если приложение выполняется на сервере, но не отвечает по Интернету, проверьте брандмауэр сервера и убедитесь, что порт 80 открыт. При использовании виртуальной машины Ubuntu Azure добавьте правило группы безопасности сети (NSG), которое разрешает входящий трафик через порт 80. Не нужно включать правило исходящего трафика на порте 80, так как исходящий трафик предоставляется автоматически при включении правила для входящего трафика.
 
-Когда закончите тестировать приложение, завершите его работу с помощью `Ctrl+C` в командной строке.
+Когда закончите тестировать приложение, завершите его работу с помощью клавиш <kbd>CTRL</kbd> + <kbd>C</kbd> в командной строке.
 
 ## <a name="monitor-the-app"></a>Мониторинг приложения
 
@@ -205,7 +215,7 @@ server {
 sudo nano /etc/systemd/system/kestrel-helloapp.service
 ```
 
-Далее представлен пример файла службы для нашего приложения.
+Далее представлен пример файла службы для нашего приложения:
 
 ```ini
 [Unit]
@@ -375,18 +385,29 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 **Настройка приложения для безопасных (HTTPS) локальных подключений**
 
-Команда [dotnet run](/dotnet/core/tools/dotnet-run) использует файл приложения `Properties/launchSettings.json`, который настраивает приложение для прослушивания URL-адресов, заданных свойством `applicationUrl` (например, `https://localhost:5001;http://localhost:5000`).
+Команда [dotnet run](/dotnet/core/tools/dotnet-run) использует файл приложения *Properties/launchSettings.json*, который настраивает приложение для прослушивания URL-адресов, заданных свойством `applicationUrl`. Например, `https://localhost:5001;http://localhost:5000`.
 
 Настройте приложение, чтобы оно использовало при разработке сертификат для команды `dotnet run` или среды разработки (<kbd>F5</kbd> или <kbd>CTRL</kbd>+<kbd>F5</kbd> в Visual Studio Code), используя один из следующих подходов:
+
+::: moniker range=">= aspnetcore-5.0"
+
+* [Замена сертификата по умолчанию из конфигурации](xref:fundamentals/servers/kestrel/endpoints#configuration) (*рекомендуется*)
+* [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel/endpoints#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 * [Замена сертификата по умолчанию из конфигурации](xref:fundamentals/servers/kestrel#configuration) (*рекомендуется*)
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
+::: moniker-end
+
 **Настройка обратного прокси-сервера для безопасного подключения клиентов (HTTPS)**
 
-* Настройте сервер для прослушивания трафика HTTPS через порт `443`, указав действительный сертификат, выпущенный доверенным центром сертификации (ЦС).
+* Настройте сервер для прослушивания трафика HTTPS через порт 443, указав действительный сертификат, выпущенный доверенным центром сертификации (ЦС).
 
-* Обеспечьте дополнительную защиту, применив некоторые методы, показанные в представленном ниже файле `/etc/nginx/nginx.conf`. Это может быть выбор более строгого шифра и перенаправление всего HTTP-трафика в HTTPS.
+* Обеспечьте дополнительную защиту, применив некоторые методы, показанные в представленном ниже файле */etc/nginx/nginx.conf*. Это может быть выбор более строгого шифра и перенаправление всего HTTP-трафика в HTTPS.
 
   > [!NOTE]
   > Для среды разработки рекомендуется использовать временные (302), а не постоянные перенаправления (301). Кэширование ссылок может привести к нестабильной работе в средах разработки.
@@ -400,11 +421,11 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
   * Не добавляйте заголовок HSTS.
   * Выберите короткое значение `max-age`.
 
-Добавьте файл конфигурации `/etc/nginx/proxy.conf`:
+Добавьте файл конфигурации */etc/nginx/proxy.conf*:
 
 [!code-nginx[](linux-nginx/proxy.conf)]
 
-**Замените** содержимое файла конфигурации `/etc/nginx/nginx.conf` следующим файлом. В этом примере показаны разделы `http` и `server` одного и того же файла конфигурации.
+**Замените** содержимое файла конфигурации */etc/nginx/nginx.conf* следующим файлом. В этом примере показаны разделы `http` и `server` одного и того же файла конфигурации.
 
 [!code-nginx[](linux-nginx/nginx.conf?highlight=2)]
 
@@ -417,7 +438,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 Чтобы уменьшить риск атак кликджекинга, выполните указанные ниже действия.
 
-1. Измените файл `nginx.conf`:
+1. Измените файл *nginx.conf*.
 
    ```bash
    sudo nano /etc/nginx/nginx.conf
@@ -432,7 +453,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 Этот заголовок предотвращает MIME-сканирование ответов с указанным типом содержимого в большинстве браузеров, запрещая браузеру переопределять тип содержимого ответа. Параметр `nosniff` означает, что если сервер определяет содержимое как `text/html`, то браузер будет обрабатывать его как `text/html`.
 
-1. Измените файл `nginx.conf`:
+1. Измените файл *nginx.conf*.
 
    ```bash
    sudo nano /etc/nginx/nginx.conf

@@ -37,7 +37,7 @@
 
 При вызове <xref:Microsoft.JSInterop.JSRuntime.InvokeAsync%2A?displayProperty=nameWithType> `ElementRef` используется только в методе <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A>, а не в предыдущем методе жизненного цикла, так как элемент JavaScript появляется только после отрисовки компонента.
 
-Метод [StateHasChanged](xref:blazor/components/lifecycle#state-changes) вызывается для повторной отрисовки компонента с новым состоянием, полученным из вызова взаимодействия с JavaScript. Код не создает бесконечный цикл, так как метод `StateHasChanged` вызывается, только если `infoFromJs` имеет значение `null`.
+Метод [StateHasChanged](xref:blazor/components/lifecycle#state-changes) вызывается для повторной отрисовки компонента с новым состоянием, полученным из вызова взаимодействия с JavaScript (дополнительные сведения см. в разделе <xref:blazor/components/rendering>). Код не создает бесконечный цикл, так как метод `StateHasChanged` вызывается, только если `infoFromJs` имеет значение `null`.
 
 ```cshtml
 @page "/prerendered-interop"

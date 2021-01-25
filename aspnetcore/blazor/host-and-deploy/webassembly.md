@@ -5,7 +5,7 @@ description: Узнайте, как размещать и развертыват
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/09/2020
+ms.date: 01/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 55289dd7048c08ac61432c7cc062e74d2e69ee24
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 2b464c2b6ca434ce4c3b559480da69945266ff69
+ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97753131"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570977"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Размещение и развертывание ASP.NET Core Blazor WebAssembly
 
@@ -52,15 +52,12 @@ ms.locfileid: "97753131"
 * Сведения о конфигурации сжатия `web.config` IIS см. в статье [IIS: алгоритмы сжатия Brotli и Gzip](#brotli-and-gzip-compression). 
 * При размещении в статических решениях размещения, которые не поддерживают согласование содержимого статически сжатых файлов, например на страницах GitHub, рассмотрите возможность настройки приложения для извлечения и декодирования сжатых файлов Brotli:
 
-  * Получите декодер JavaScript Brotli из [репозитория GitHub google/brotli](https://github.com/google/brotli). По состоянию на сентябрь 2020 г. файл декодера называется `decode.js` и находится в [папке `js`](https://github.com/google/brotli/tree/master/js) репозитория.
-  
-    > [!NOTE]
-    > Регрессия содержится в сокращенной версии скрипта `decode.js` (`decode.min.js`) в [репозитории GitHub google/brotli](https://github.com/google/brotli). Либо сократите скрипт самостоятельно, либо используйте [пакет npm](https://www.npmjs.com/package/brotli), пока проблема [Параметр Window.BrotliDecode не задан в decode.min.js (google/brotli № 844)](https://github.com/google/brotli/issues/844) не будет устранена. В примере кода в этом разделе используется **не сокращенная** версия скрипта.
+  * Получите декодер JavaScript Brotli из [репозитория GitHub google/brotli](https://github.com/google/brotli). Файл декодера называется `decode.min.js` и находится в [папке `js`](https://github.com/google/brotli/tree/master/js) репозитория.
 
   * обновите приложение для использования декодера. Измените разметку в закрывающем теге `<body>` в `wwwroot/index.html` следующим образом.
   
     ```html
-    <script src="decode.js"></script>
+    <script src="decode.min.js"></script>
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
       Blazor.start({
@@ -620,18 +617,6 @@ http {
 
 Дополнительные сведения о конфигурации веб-сервера Nginx в рабочей среде см. в разделе [Создание файлов конфигурации NGINX Plus и NGINX](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/).
 
-### <a name="nginx-in-docker"></a>Nginx в Docker
-
-Чтобы разместить Blazor в Docker с помощью Nginx, настройте в Dockerfile образ с Nginx на основе Alpine. Измените Dockerfile, скопировав файл `nginx.config` в контейнер.
-
-Добавьте одну строку в Dockerfile, как показано в следующем примере:
-
-```dockerfile
-FROM nginx:alpine
-COPY ./bin/Release/netstandard2.0/publish /usr/share/nginx/html/
-COPY nginx.conf /etc/nginx/nginx.conf
-```
-
 ### <a name="apache"></a>Apache
 
 Чтобы развернуть приложение Blazor WebAssembly в CentOS 7 или более поздней версии, выполните следующие действия:
@@ -769,7 +754,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-trimmer"></a>Настройка средства обрезки
 
-Blazor выполняет фильтрацию для промежуточного языка (IL) в каждой сборке выпуска, чтобы удалить ненужный промежуточный язык из выходных сборок. Дополнительные сведения см. в разделе <xref:blazor/host-and-deploy/configure-trimmer>.
+Blazor выполняет фильтрацию для промежуточного языка (IL) в каждой сборке выпуска, чтобы удалить ненужный промежуточный язык из выходных сборок. Для получения дополнительной информации см. <xref:blazor/host-and-deploy/configure-trimmer>.
 
 ::: moniker-end
 
@@ -777,7 +762,7 @@ Blazor выполняет фильтрацию для промежуточног
 
 ## <a name="configure-the-linker"></a>Настройка компоновщика
 
-Blazor выполняет компоновку для промежуточного языка (IL) в каждой сборке выпуска, чтобы удалить ненужный промежуточный язык из выходных сборок. Дополнительные сведения см. в разделе <xref:blazor/host-and-deploy/configure-linker>.
+Blazor выполняет компоновку для промежуточного языка (IL) в каждой сборке выпуска, чтобы удалить ненужный промежуточный язык из выходных сборок. Для получения дополнительной информации см. <xref:blazor/host-and-deploy/configure-linker>.
 
 ::: moniker-end
 
@@ -874,7 +859,7 @@ dir .\_framework\_bin | rename-item -NewName { $_.name -replace ".dll\b",".bin" 
 В Linux или macOS.
 
 ```console
-for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll\b/.bin/g'`"; done
+for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll/.bin/g'`"; done
 sed -i 's/\.dll"/.bin"/g' _framework/blazor.boot.json
 ```
 

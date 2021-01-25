@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 11312a34dc62dd3bace791819f62379bffbb1c49
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 2502f43f4eaf245996827f704462ec340bbb8e07
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97592844"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252543"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Вызов функций JavaScript из методов .NET в ASP.NET Core Blazor
 
@@ -527,7 +527,7 @@ var module = await js.InvokeAsync<IJSObjectReference>(
     "import", "./_content/MyComponents/exampleJsInterop.js");
 ```
 
-Идентификатором `import` в предыдущем примере является специальный идентификатор, используемый специально для импорта модуля JavaScript. Укажите модуль, используя путь к статическому стабильному веб-ресурсу: `_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}`. Заполнитель `{LIBRARY NAME}` — это имя библиотеки. Заполнитель `{PATH UNDER WWWROOT}` — это путь к скрипту в разделе `wwwroot`.
+Идентификатором `import` в предыдущем примере является специальный идентификатор, используемый специально для импорта модуля JavaScript. Укажите модуль, используя путь к статическому стабильному веб-ресурсу: `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}`. Сегмент пути для текущего каталога (`./`) необходим для создания корректного пути к статическому ресурсу в файле JavaScript. Заполнитель `{LIBRARY NAME}` — это имя библиотеки. Заполнитель `{PATH UNDER WWWROOT}` — это путь к скрипту в разделе `wwwroot`.
 
 <xref:Microsoft.JSInterop.IJSRuntime> импортирует модуль как `IJSObjectReference`, который представляет ссылку на объект JavaScript из кода .NET. Используйте `IJSObjectReference` для вызова экспортированных функций JavaScript из модуля:
 
@@ -655,29 +655,9 @@ export function setMapCenter(map, latitude, longitude) {
 
 ## <a name="size-limits-on-js-interop-calls"></a>Ограничения размера для вызовов взаимодействия с JS
 
-При использовании Blazor WebAssembly платформа не накладывает ограничений на размер входных и выходных данных в вызовах взаимодействия с JS.
+При использовании Blazor WebAssembly платформа не накладывает ограничений на размер входных и выходных данных в вызовах взаимодействия с JS.
 
-При использовании Blazor Server результат вызова взаимодействия с JS ограничен максимальным размером полезных данных, который настраивается в SignalR (<xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize>) или имеет значение по умолчанию 32 КБ. Если приложение попытается ответить на вызов взаимодействия с JS, в котором размер полезных данных превышает значение <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize>, возникает ошибка. Можно увеличить предельный размер, изменив значение <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize>. В следующем примере для размера получаемого сообщения устанавливается максимальный размер 64 КБ (64×1024×1024):
-
-```csharp
-services.AddServerSideBlazor()
-   .AddHubOptions(options => options.MaximumReceiveMessageSize = 64 * 1024 * 1024);
-```
-
-Увеличение предельного размера SignalR потребует больше серверных ресурсов для обработки, а также повысит уязвимость сервера к злонамеренным действиям пользователей. Кроме того, считывание большого объема содержимого в память в виде строк или массивов байтов может привести к неудачным выделениям памяти, которые плохо обрабатываются сборщиком мусора, что дополнительно снизит производительность. Чтобы считывать полезные данные большого размера, можно отправлять такое содержимое меньшими фрагментами и обрабатывать их как <xref:System.IO.Stream>. Это удобно для чтения полезных данных большого объема в формате JSON или необработанных байтов из JavaScript. Вы можете изучить отправку больших двоичных данных в Blazor Server с помощью методов, эквивалентных работе компонента `InputFile`, в [примере приложения с отправкой двоичных данных](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor/BinarySubmit).
-
-При разработке кода, который передает данные большого объема между JavaScript и Blazor, учитывайте следующие рекомендации:
-
-* Разделите данные на небольшие части и отправляйте сегменты данных последовательно, пока все данные не будут получены сервером.
-* Не выделяйте большие объекты в коде C# и JavaScript.
-* Не блокируйте основной поток пользовательского интерфейса на длительные периоды при отправке или получении данных.
-* Освободите занятую память при завершении или отмене процесса.
-* Применяйте следующие дополнительные требования в целях безопасности:
-  * Объявите максимальный размер файла или данных, который может быть передан.
-  * Объявите минимальную скорость передачи от клиента к серверу.
-* После получения данных сервером данные могут быть:
-  * Временно сохранены в буфере памяти до тех пор, пока не будут собраны все сегменты.
-  * Использованы немедленно. Например, данные могут храниться сразу в базе данных или записываться на диск по мере получения каждого сегмента.
+В Blazor Server размер данных в вызовах взаимодействия с JS ограничен максимальным размером входящего сообщения SignalR, разрешенным для методов концентратора, который задается с помощью <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize?displayProperty=nameWithType> (по умолчанию: 32 КБ). Если размер сообщений SignalR JS для .NET превышает <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize>, возникает ошибка. Платформа не накладывает ограничение на размер сообщений SignalR от концентратора клиенту. Для получения дополнительной информации см. <xref:blazor/call-dotnet-from-javascript#size-limits-on-js-interop-calls>.
   
 ## <a name="js-modules"></a>Модули JS
 

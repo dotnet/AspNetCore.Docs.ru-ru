@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: a4f3234aa4b4b02244d17615a9033db3094d3580
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 3da9ea045de996602ead052f6f13ffc999273a50
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024786"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252491"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>Защита изолированного приложения ASP.NET Core Blazor WebAssembly с помощью библиотеки проверки подлинности
 
@@ -33,6 +33,9 @@ ms.locfileid: "98024786"
 *При использовании Azure Active Directory (AAD) и Azure Active Directory B2C (AAD B2C) не следуйте указаниям в этой статье. См. статьи, посвященные AAD и AAD B2C, в этом разделе оглавления.*
 
 Чтобы создать [изолированное приложение Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly), которое использует библиотеку [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication), выполните рекомендации с учетом используемых средств.
+
+> [!NOTE]
+> Поставщик Identity (IP) должен использовать [OpenID Connect (OIDC)](https://openid.net/connect/). Например, поставщик IP Facebook несовместим с OIDC, поэтому к нему не применяются рекомендации, приведенные в этом разделе. Для получения дополнительной информации см. <xref:blazor/security/webassembly/index#authentication-library>.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -99,12 +102,28 @@ builder.Services.AddOidcAuthentication(options =>
 
 ```json
 {
-    "Local": {
-        "Authority": "{AUTHORITY}",
-        "ClientId": "{CLIENT ID}"
-    }
+  "Local": {
+    "Authority": "{AUTHORITY}",
+    "ClientId": "{CLIENT ID}"
+  }
 }
 ```
+
+Пример OIDC Google OAuth 2.0:
+
+```json
+{
+  "Local": {
+    "Authority": "https://accounts.google.com/",
+    "ClientId": "2.......7-e.....................q.apps.googleusercontent.com",
+    "PostLogoutRedirectUri": "https://localhost:5001/authentication/logout-callback",
+    "RedirectUri": "https://localhost:5001/authentication/login-callback",
+    "ResponseType": "id_token"
+  }
+}
+```
+
+URI перенаправления (`https://localhost:5001/authentication/login-callback`) регистрируется в [консоли API Google](https://console.developers.google.com/apis/dashboard) в разделе **Учетные данные** >  **`{NAME}`**  > **Разрешенные URI перенаправления**, где `{NAME}` — это имя клиента приложения в списке **идентификаторов клиентов OAuth 2.0** приложения в консоли Google API.
 
 Поддержка проверки подлинности для изолированных приложений обеспечивается посредством OpenID Connect (OIDC). Метод <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> принимает обратный вызов для настройки параметров, необходимых для проверки подлинности приложения с помощью OIDC. Значения, необходимые для настройки приложения, можно получить от поставщика удостоверений, совместимого с OIDC. Получите эти значения при регистрации приложения, которая обычно производится на веб-портале.
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 0bae3f888a1b7a3c2860b85754779189c636d86f
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e81ad43e1c3b86900848671d9da377a5c04a2a82
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057704"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253011"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -78,7 +78,7 @@ dotnet publish --configuration Release
 
 [!INCLUDE[](~/includes/ForwardedHeaders.md)]
 
-Вызовите <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> метод наверху `Startup.Configure`, прежде чем вызывать другое ПО промежуточного слоя. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
+Вызовите <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders%2A> метод наверху `Startup.Configure`, прежде чем вызывать другое ПО промежуточного слоя. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
 // using Microsoft.AspNetCore.HttpOverrides;
@@ -93,7 +93,7 @@ app.UseAuthentication();
 
 Если параметр <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.
 
-Прокси-серверы под управлением адресов замыкания на себя (127.0.0.0/8, [:: 1]), включая стандартные адреса localhost (127.0.0.1), считаются доверенными по умолчанию. Если запросы между Интернетом и веб-сервером обрабатывают другие прокси-серверы или сети организации, добавьте их в список <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> или <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> с помощью <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. Следующий пример добавляет доверенный прокси-сервер с IP-адресом 10.0.0.100 в ПО промежуточного слоя для перенаправления заголовков `KnownProxies` в `Startup.ConfigureServices`:
+Прокси-серверы под управлением петлевых адресов (`127.0.0.0/8, [::1]`), включая стандартные адреса localhost (127.0.0.1), считаются доверенными по умолчанию. Если запросы между Интернетом и веб-сервером обрабатывают другие прокси-серверы или сети организации, добавьте их в список <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies%2A> или <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks%2A> с помощью <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. Следующий пример добавляет доверенный прокси-сервер с IP-адресом 10.0.0.100 в ПО промежуточного слоя для перенаправления заголовков `KnownProxies` в `Startup.ConfigureServices`:
 
 ```csharp
 // using System.Net;
@@ -163,7 +163,17 @@ Complete!
 </VirtualHost>
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+
+Блок `VirtualHost` может встречаться несколько раз в одном или нескольких файлах на сервере. С представленным выше файлом конфигурации Apache принимает трафик от любого источника через порт 80. Он обслуживает домен `www.example.com`, а псевдоним `*.example.com` указывает на тот же веб-сайт. Дополнительные сведения см. в статье [о поддержке виртуальных узлов на основе имен](https://httpd.apache.org/docs/current/vhosts/name-based.html). Запросы к корневому каталогу перенаправляются на порт 5000 того же сервера по адресу 127.0.0.1. Для двусторонней связи требуются `ProxyPass` и `ProxyPassReverse`. Сведения о том, как изменить IP-адрес/порт Kestrel, см. в разделе [Kestrel: конфигурация конечной точки](xref:fundamentals/servers/kestrel/endpoints).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 Блок `VirtualHost` может встречаться несколько раз в одном или нескольких файлах на сервере. С представленным выше файлом конфигурации Apache принимает трафик от любого источника через порт 80. Он обслуживает домен `www.example.com`, а псевдоним `*.example.com` указывает на тот же веб-сайт. Дополнительные сведения см. в статье [о поддержке виртуальных узлов на основе имен](https://httpd.apache.org/docs/current/vhosts/name-based.html). Запросы к корневому каталогу перенаправляются на порт 5000 того же сервера по адресу 127.0.0.1. Для двусторонней связи требуются `ProxyPass` и `ProxyPassReverse`. Сведения о том, как изменить IP-адрес/порт Kestrel, см. в разделе [Kestrel: конфигурация конечной точки](xref:fundamentals/servers/kestrel#endpoint-configuration).
+
+::: moniker-end
 
 > [!WARNING]
 > Если не удастся указать правильную [директиву ServerName](https://httpd.apache.org/docs/current/mod/core.html#servername) в блоке **VirtualHost**, приложение будет иметь значительные уязвимости. Привязки с подстановочными знаками на уровне дочерних доменов (например, `*.example.com`) не создают таких угроз безопасности, если вы полностью контролируете родительский домен (в отличие от варианта `*.com`, создающего уязвимость). Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -236,6 +246,7 @@ systemd-escape "<value-to-escape>"
 Разделители-двоеточия (`:`) не поддерживаются в именах переменных среды. Следует использовать двойной знак подчеркивания (`__`) вместо двоеточия. [Поставщик конфигурации переменных среды](xref:fundamentals/configuration/index#environment-variables-configuration-provider) преобразует двойные символы подчеркивания в двоеточия, когда переменные среды считываются в конфигурации. В следующем примере ключ строки подключения `ConnectionStrings:DefaultConnection` задается в файле определения службы как `ConnectionStrings__DefaultConnection`.
 
 ::: moniker-end
+
 ::: moniker range="< aspnetcore-3.0"
 
 Разделители-двоеточия (`:`) не поддерживаются в именах переменных среды. Следует использовать двойной знак подчеркивания (`__`) вместо двоеточия. [Поставщик конфигурации переменных среды](xref:fundamentals/configuration/index#environment-variables) преобразует двойные символы подчеркивания в двоеточия, когда переменные среды считываются в конфигурации. В следующем примере ключ строки подключения `ConnectionStrings:DefaultConnection` задается в файле определения службы как `ConnectionStrings__DefaultConnection`.
@@ -316,7 +327,7 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 sudo yum install firewalld -y
 ```
 
-С помощью `firewalld` вы можете открыть только те порты, которые необходимые для работы приложения. В этом случае используются порты 80 и 443. Следующие команды назначают порты 80 и 443 постоянно открытыми.
+С помощью `firewalld` вы можете открыть только те порты, которые необходимые для работы приложения. В этом случае используются порты 80 и 443. Следующие команды назначают порты 80 и 443 постоянно открытыми.
 
 ```bash
 sudo firewall-cmd --add-port=80/tcp --permanent
@@ -350,8 +361,19 @@ rich rules:
 
 Настройте приложение для использования при разработке сертификата для команды `dotnet run` или среды разработки (F5 или CTRL + F5 в Visual Studio Code), используя один из следующих подходов.
 
+::: moniker range=">= aspnetcore-5.0"
+
+* [Замена сертификата по умолчанию из конфигурации](xref:fundamentals/servers/kestrel/endpoints#configuration) (*рекомендуется*)
+* [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel/endpoints#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 * [Замена сертификата по умолчанию из конфигурации](xref:fundamentals/servers/kestrel#configuration) (*рекомендуется*)
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
+
+::: moniker-end
 
 **Настройка обратного прокси-сервера для безопасного подключения клиентов (HTTPS)**
 

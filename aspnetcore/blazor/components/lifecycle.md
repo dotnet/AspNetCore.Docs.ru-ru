@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: e5f9a07db742ce2e26f03c0b6e1caa1904e4e0d9
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: acaa276efda9fb4d09a5c1b1ca59c6abde1b64ec
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058237"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252398"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>Жизненный цикл ASP.NET Core Blazor
 
@@ -53,7 +53,7 @@ ms.locfileid: "98058237"
 
 Жизненный цикл `Render`
 
-1. Прекращает последующие операции отрисовки для компонента.
+1. Прекращает последующие операции отрисовки для компонента:
    * После первой отрисовки.
    * Если [`ShouldRender`](#suppress-ui-refreshing) имеет значение `false`.
 1. Выполните сборку отличий дерева отрисовки и отрисуйте компонент.
@@ -62,7 +62,7 @@ ms.locfileid: "98058237"
 
 ![Жизненный цикл процесса отрисовки](lifecycle/_static/lifecycle3.png)
 
-Вызовы [`StateHasChanged`](#state-changes) разработчиком приводят к отрисовке.
+Вызовы [`StateHasChanged`](#state-changes) разработчиком приводят к отрисовке. Для получения дополнительной информации см. <xref:blazor/components/rendering>.
 
 ## <a name="lifecycle-methods"></a>Методы жизненного цикла
 
@@ -215,6 +215,8 @@ protected override bool ShouldRender()
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> уведомляет компонент о том, что его состояние изменилось. В соответствующих случаях вызов <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> приводит к повторной отрисовке компонента.
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> вызывается автоматически для методов <xref:Microsoft.AspNetCore.Components.EventCallback>. Для получения дополнительной информации см. <xref:blazor/components/event-handling#eventcallback>.
+
+Для получения дополнительной информации см. <xref:blazor/components/rendering>.
 
 ## <a name="handle-incomplete-async-actions-at-render"></a>Обработка незавершенных асинхронных действий при отрисовке
 

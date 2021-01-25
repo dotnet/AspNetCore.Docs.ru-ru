@@ -3,7 +3,7 @@ title: Многоразовый интерфейс Razor в библиотека
 author: Rick-Anderson
 description: Описание способов создания многоразового пользовательского интерфейса Razor с помощью частичных представлений в библиотеке классов на платформе ASP.NET Core.
 ms.author: riande
-ms.date: 01/25/2020
+ms.date: 01/19/2021
 ms.custom: mvc, seodec18
 no-loc:
 - appsettings.json
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: 0bfdb1932d829ec00c9de1bd38b7920cb1f40c51
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a878a3485ecee0782b21ac69c5ec6ff832b9f06c
+ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94570176"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571018"
 ---
 # <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>Создание многоразового пользовательского интерфейса с помощью проекта библиотеки классов Razor в ASP.NET Core
 
@@ -94,6 +94,14 @@ dotnet new razorclasslib -o RazorUIClassLib
   @RenderBody()
   <partial name="_Footer">
 </body>
+```
+
+Добавьте файл *_ViewStart.cshtml* в папку *Pages* проекта библиотеки RCL, чтобы использовать файл *_Layout.cshtml* из веб-приложения узла:
+
+```cshtml
+@{
+    Layout = "_Layout";
+}
 ```
 
 ## <a name="create-an-rcl-with-static-assets"></a>Создание библиотеки RCL со статическими ресурсами

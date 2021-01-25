@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1355fdaeae58b6f4e0cf8d41a74b1c28aee0e8fe
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94422565"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253089"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 

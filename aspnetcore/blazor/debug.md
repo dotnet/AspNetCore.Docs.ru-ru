@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 990882c03ddc14c664aa8da0518fb36087199aca
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5bdfcc5660b4c897d3552d4cf25e43dade71541c
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94550521"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252517"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Отладка в ASP.NET Core Blazor WebAssembly
 
@@ -50,6 +50,7 @@ ms.locfileid: "94550521"
 * Останов при необработанных исключениях.
 * Попадание в точки останова во время запуска приложения перед запуском прокси-сервера отладки. Сюда входят точки останова в `Program.Main` (`Program.cs`) и точки останова в [методах `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods) компонентов, загружаемых первой страницей, запрошенной из приложения.
 * Отладка в нелокальных сценариях (например, [в подсистеме Windows для Linux (WSL)](/windows/wsl/) или [Visual Studio Codespaces](/visualstudio/codespaces/overview/what-is-vsonline)).
+* Автоматическое перестроение серверного приложения `*Server*` для размещенного решения Blazor во время отладки, например посредством запуска приложения с [`dotnet watch run`](xref:tutorials/dotnet-watch).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
