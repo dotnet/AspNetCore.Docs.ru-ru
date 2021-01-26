@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 12a1f528bdff0230bbf17075284d27de654a423e
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: fe30c3b3be92c30dea6d0cb97e642eec1da6328b
+ms.sourcegitcommit: 72c8ada9b9644ee4751ed6869e892a8558dd8e66
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252426"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723516"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Создание и использование компонентов Razor ASP.NET Core
 
@@ -957,13 +957,13 @@ Blazor соответствует соглашению для приложени
 * <xref:blazor/security/server/threat-mitigation>. Содержит рекомендации по созданию приложений Blazor Server, которые должны соперничать в условиях нехватки ресурсов.
 
 <!--Reference links in article-->
-[1]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#code)
-[2]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#using)
-[3]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#attributes)
-[4]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#ref)
-[5]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#key)
-[6]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#inherits)
-[7]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#attribute)
-[8]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#namespace)
-[9]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#page)
-[10]: [Razor syntax reference for ASP.NET Core](xref:mvc/views/razor#bind)
+[1]: <xref:mvc/views/razor#code> "Справочник по синтаксису Razor для ASP.NET Core"
+[2]: <xref:mvc/views/razor#using> "Справочник по синтаксису Razor для ASP.NET Core"
+[3]: <xref:mvc/views/razor#attributes> "Справочник по синтаксису Razor для ASP.NET Core"
+[4]: <xref:mvc/views/razor#ref> "Справочник по синтаксису Razor для ASP.NET Core"
+[5]: <xref:mvc/views/razor#key> "Справочник по синтаксису Razor для ASP.NET Core"
+[6]: <xref:mvc/views/razor#inherits> "Справочник по синтаксису Razor для ASP.NET Core"
+[7]: <xref:mvc/views/razor#attribute> "Справочник по синтаксису Razor для ASP.NET Core"
+[8]: <xref:mvc/views/razor#namespace> "Справочник по синтаксису Razor для ASP.NET Core"
+[9]: <xref:mvc/views/razor#page> "Справочник по синтаксису Razor для ASP.NET Core"
+[10]: <xref:mvc/views/razor#bind> "Справочник по синтаксису Razor для ASP.NET Core"
