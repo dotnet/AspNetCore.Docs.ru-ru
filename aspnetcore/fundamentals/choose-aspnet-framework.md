@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 95ac4784634d38add5e28644d42b0182e15c6de9
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 192784b4f2cb3b80511814de4f777c4a49fc594b
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060031"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710741"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Выбор между ASP.NET 4.x и ASP.NET Core
 
@@ -56,7 +56,7 @@ ASP.NET 4.x — это развитая платформа, предостав�
 
 ## <a name="aspnet-core-scenarios"></a>Сценарии ASP.NET Core
 
-* [Веб-сайты](xref:tutorials/first-mvc-app/index)
+* [Веб-сайты](xref:tutorials/first-mvc-app/start-mvc)
 * [API-интерфейсы](xref:tutorials/first-web-api)
 * [Режим реального времени](xref:signalr/introduction)
 * [Развертывание приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)

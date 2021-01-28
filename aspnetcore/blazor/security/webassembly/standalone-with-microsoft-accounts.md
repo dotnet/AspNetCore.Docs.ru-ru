@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: 49f15e3e0d68ec475bb4c9a047d6c5e37d314a42
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 268debd51b6828aad0bcfe917bdf95b691ac7365
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854461"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710526"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-microsoft-accounts"></a>Защита изолированного приложения ASP.NET Core Blazor WebAssembly с помощью учетных записей Майкрософт
 
@@ -225,6 +225,7 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:blazor/security/webassembly/additional-scenarios>
+* [Создание пользовательской версии библиотеки Authentication.MSAL для JavaScript](xref:blazor/security/webassembly/additional-scenarios#build-a-custom-version-of-the-authenticationmsal-javascript-library)
 * [Запросы веб-API, не прошедшие проверку подлинности или неавторизованные, в приложении с защищенным клиентом по умолчанию](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:blazor/security/webassembly/aad-groups-roles>
 * [Краткое руководство. Регистрация приложения с помощью платформы удостоверений Майкрософт](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)

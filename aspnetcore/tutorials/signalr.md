@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 1dad2264250bf43ec6c1df679b8754a82a5addfd
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1c77648f809562389667da452bdbf3f25f67c558
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "95417673"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689322"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>Учебник. Начало работы с SignalR ASP.NET Core
 
@@ -62,23 +62,18 @@ ms.locfileid: "95417673"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* В меню выберите **Файл > Создать проект**.
-
-* В диалоговом окне **Создать проект** выберите **Веб-приложение ASP.NET Core** и нажмите **Далее**.
-
-* В диалоговом окне **Настроить новый проект** укажите имя проекта *SignalRChat*, а затем выберите **Создать**.
-
-* В диалоговом окне **Создание веб-приложения ASP.NET Core** выберите платформы **.NET Core** и **ASP.NET Core 3.1**. 
-
-* Выберите **Веб-приложение**, чтобы создать проект, который использует Razor Pages, и нажмите **Создать**.
+  * В меню выберите **Файл > Создать проект**.
+  * В диалоговом окне **Создать проект** выберите **Веб-приложение ASP.NET Core** и нажмите **Далее**.
+  * В диалоговом окне **Настроить новый проект** укажите имя проекта *SignalRChat*, а затем выберите **Создать**.
+  * В диалоговом окне **Создание веб-приложения ASP.NET Core** выберите платформы **.NET Core** и **ASP.NET Core 3.1**.
+  * Выберите **Веб-приложение**, чтобы создать проект, который использует Razor Pages, и нажмите **Создать**.
 
   ![Диалоговое окно создания проекта в Visual Studio](signalr/_static/3.x/signalr-new-project-dialog.png)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-* Откройте [интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal) и перейдите в папку, в которой будет создаваться папка нового проекта.
-
-* Выполните следующие команды:
+  * Откройте [интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal) и перейдите в папку, в которой будет создаваться папка нового проекта.
+  * Выполните следующие команды:
 
    ```dotnetcli
    dotnet new webapp -o SignalRChat
@@ -88,13 +83,10 @@ ms.locfileid: "95417673"
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* В меню выберите **Файл > Создать решение**.
-
-* Выберите **.NET Core > Приложение > Веб-приложение** (не выбирайте **Веб-приложение (модель — представление — контроллер)** ), а затем выберите **Далее**.
-
-* Убедитесь, что для параметра **Требуемая версия .NET Framework** указано **.NET Core 3.1**, а затем нажмите кнопку **Далее**.
-
-* Присвойте проекту имя *SignalRChat* и нажмите кнопку **Создать**.
+  * В меню выберите **Файл > Создать решение**.
+  * Выберите **.NET Core > Приложение > Веб-приложение** (не выбирайте **Веб-приложение (модель — представление — контроллер)** ), а затем выберите **Далее**.
+  * Убедитесь, что для параметра **Требуемая версия .NET Framework** указано **.NET Core 3.1**, а затем нажмите кнопку **Далее**.
+  * Присвойте проекту имя *SignalRChat* и нажмите кнопку **Создать**.
 
 ---
 
@@ -104,15 +96,11 @@ ms.locfileid: "95417673"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* В **обозревателе решений** щелкните проект правой кнопкой мыши и выберите **Добавить** > **Клиентская библиотека**.
-
-* В диалоговом окне **Add Client-Side Library** (Добавить клиентскую библиотеку) для параметра **Поставщик** выберите **unpkg**.
-
-* Для параметра **Библиотека** введите `@microsoft/signalr@latest`.
-
-* Щелкните **Choose specific files** (Выбрать определенные файлы), разверните папку *dist/browser* и выберите *signalr.js* и *signalr.min.js*.
-
-* В поле **Целевое расположение** укажите *wwwroot/js/signalr/* и нажмите кнопку **Установить**.
+  * В **обозревателе решений** щелкните проект правой кнопкой мыши и выберите **Добавить** > **Клиентская библиотека**.
+  * В диалоговом окне **Add Client-Side Library** (Добавить клиентскую библиотеку) для параметра **Поставщик** выберите **unpkg**.
+  * Для параметра **Библиотека** введите `@microsoft/signalr@latest`.
+  * Щелкните **Choose specific files** (Выбрать определенные файлы), разверните папку *dist/browser* и выберите *signalr.js* и *signalr.min.js*.
+  * В поле **Целевое расположение** укажите *wwwroot/js/signalr/* и нажмите кнопку **Установить**.
 
   ![Диалоговое окно добавления клиентской библиотеки — выбор библиотеки](signalr/_static/3.x/find-signalr-client-libs-select-files.png)
 
@@ -120,13 +108,13 @@ ms.locfileid: "95417673"
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-* В интегрированном терминале выполните следующую команду, чтобы установить LibMan.
+  * В интегрированном терминале выполните следующую команду, чтобы установить LibMan.
 
   ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
-* Выполните команду ниже, чтобы получить клиентскую библиотеку SignalR, используя LibMan. Возможно, придется подождать несколько секунд, прежде чем появятся выходные данные.
+  * Выполните команду ниже, чтобы получить клиентскую библиотеку SignalR, используя LibMan. Возможно, придется подождать несколько секунд, прежде чем появятся выходные данные.
 
   ```console
   libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
@@ -147,15 +135,15 @@ ms.locfileid: "95417673"
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* В **терминале** выполните следующую команду, чтобы установить LibMan.
+  * В **терминале** выполните следующую команду, чтобы установить LibMan.
 
   ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
-* Перейдите в папку проекта (где расположен файл *SignalRChat.csproj*).
+  * Перейдите в папку проекта (где расположен файл *SignalRChat.csproj*).
 
-* Выполните команду ниже, чтобы получить клиентскую библиотеку SignalR, используя LibMan.
+  * Выполните команду ниже, чтобы получить клиентскую библиотеку SignalR, используя LibMan.
 
   ```console
   libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
@@ -180,9 +168,8 @@ ms.locfileid: "95417673"
 
 *hub* — это класс, который служит в качестве конвейера высокого уровня для обработки взаимодействия между клиентом и сервером.
 
-* В папке проекта SignalRChat создайте папку *Hubs*.
-
-* В папке *Hubs* создайте файл *ChatHub.cs* со следующим кодом:
+  * В папке проекта SignalRChat создайте папку *Hubs*.
+  * В папке *Hubs* создайте файл *ChatHub.cs* со следующим кодом:
 
   [!code-csharp[ChatHub](signalr/sample-snapshot/3.x/ChatHub.cs)]
 
@@ -238,14 +225,12 @@ ms.locfileid: "95417673"
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* В меню выберите **Запуск > Запуск без отладки**.
+  * В меню выберите **Запуск > Запуск без отладки**.
 
 ---
 
-* Скопируйте URL-адрес из адресной строки, откройте другой экземпляр или вкладку браузера и вставьте URL-адрес в адресную строку.
-
-* Выберите любой браузер, введите имя и сообщение и нажмите кнопку **Отправить сообщение**.
-
+  * Скопируйте URL-адрес из адресной строки, откройте другой экземпляр или вкладку браузера и вставьте URL-адрес в адресную строку.
+  * Выберите любой браузер, введите имя и сообщение и нажмите кнопку **Отправить сообщение**.
   Имя и сообщение отображаются на обеих страницах мгновенно.
 
   ![SignalR Пример приложения](signalr/_static/3.x/signalr-get-started-finished.png)

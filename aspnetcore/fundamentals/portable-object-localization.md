@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: f9c0ecd32f0e5c05782c2db76eff92bb64845db7
-ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
+ms.openlocfilehash: 175614c426c564ce91068e18035ce05311432698
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97878403"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689244"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Настройка локализации переносных объектов в ASP.NET Core
 
@@ -81,7 +81,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="referencing-the-package"></a>Указание ссылок на пакет
 
-Добавьте ссылку на пакет NuGet `OrchardCore.Localization.Core`. Его можно найти на [MyGet](https://www.myget.org/) в следующем источнике пакетов: https://www.myget.org/F/orchardcore-preview/api/v3/index.json
+Добавьте ссылку на пакет NuGet `OrchardCore.Localization.Core`.
 
 Файл *CSPROJ* теперь содержит строку следующего вида (номер версии может отличаться):
 
@@ -296,7 +296,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="referencing-the-package"></a>Указание ссылок на пакет
 
-Добавьте ссылку на пакет NuGet `OrchardCore.Localization.Core`. Его можно найти на [MyGet](https://www.myget.org/) в следующем источнике пакетов: https://www.myget.org/F/orchardcore-preview/api/v3/index.json
+Добавьте ссылку на пакет NuGet `OrchardCore.Localization.Core`.
 
 Файл *CSPROJ* теперь содержит строку следующего вида (номер версии может отличаться):
 
