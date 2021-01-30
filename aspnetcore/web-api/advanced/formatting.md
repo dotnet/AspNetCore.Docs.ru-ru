@@ -1,10 +1,10 @@
 ---
 title: Форматирование данных отклика в веб-API ASP.NET Core
-author: ardalis
+author: rick-anderson
 description: Сведения о форматировании данных отклика в веб-API ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 04/17/2020
+ms.date: 1/28/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 89e3e51373db5f7cff974b7a8c69d06bedf856ca
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5d228af00ee34e7f8ca60a5085872fdb93842367
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052517"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057503"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Форматирование данных отклика в веб-API ASP.NET Core
 
@@ -88,7 +88,7 @@ ms.locfileid: "93052517"
 
 Если форматировщик, который может удовлетворить запрос клиента, не найден, ASP.NET Core:
 
-* возвращает значение `406 Not Acceptable`, если <xref:Microsoft.AspNetCore.Mvc.MvcOptions> задано, или:
+* Возвращает `406 Not Acceptable` <xref:Microsoft.AspNetCore.Mvc.MvcOptions.ReturnHttpNotAcceptable?displayProperty=nameWithType> , если имеет значение `true` , или-
 * пытается найти первый форматировщик, который может создать ответ.
 
 Если форматировщик, обеспечивающий требуемый формат, не настроен, используется первый форматировщик, способный отформатировать данный объект. Если в запросе не отображается заголовок `Accept`:
@@ -132,9 +132,22 @@ ms.locfileid: "93052517"
 
 При использовании приведенного выше кода методы контроллера возвращают соответствующий формат на основе заголовка `Accept` запроса.
 
-### <a name="configure-systemtextjson-based-formatters"></a>Настройка форматировщиков на основе System.Text.Json
+### <a name="configure-systemtextjson-based-formatters"></a>Настройка модулей форматирования System.Text.Jsна основе
 
-Функции для форматировщиков на основе `System.Text.Json` можно настроить с помощью `Microsoft.AspNetCore.Mvc.JsonOptions.SerializerOptions`.
+Функции для `System.Text.Json` модулей форматирования на основе можно настроить с помощью <xref:Microsoft.AspNetCore.Mvc.JsonOptions.JsonSerializerOptions?displayProperty=fullName> . Форматирование по умолчанию — camelCase. Следующий выделенный код задает форматирование PascalCase:
+
+[!code-csharp[](./formatting/5.0samples/WebAPI5PascalCase/Startup.cs?name=snippet&highlight=4-5)]
+
+Следующий метод действия вызывает [ControllerBase. проблема](xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A) , чтобы создать <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> Ответ:
+
+[!code-csharp[](formatting/5.0samples/WebAPI5PascalCase/Controllers/WeatherForecastController.cs?name=snippet&highlight=4)]
+
+С приведенным выше кодом:
+
+  * `https://localhost:5001/WeatherForecast/temperature` Возвращает PascalCase.
+  * `https://localhost:5001/WeatherForecast/error` Возвращает camelCase. Ответ об ошибке всегда camelCase, даже если приложение устанавливает формат PascalCase. `ProblemDetails` соответствует стандарту [RFC 7807](https://tools.ietf.org/html/rfc7807#appendix-A), который указывает нижний регистр
+
+Следующий код задает PascalCase и добавляет пользовательский преобразователь:
 
 ```csharp
 services.AddControllers().AddJsonOptions(options =>
@@ -147,7 +160,7 @@ services.AddControllers().AddJsonOptions(options =>
 });
 ```
 
-Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Пример:
+Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Например:
 
 ```csharp
 public IActionResult Get()
@@ -194,7 +207,7 @@ services.AddControllers().AddNewtonsoftJson(options =>
 });
 ```
 
-Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Пример:
+Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Например:
 
 ```csharp
 public IActionResult Get()
@@ -239,7 +252,7 @@ public IActionResult Get()
 
 ### <a name="special-case-formatters"></a>Специальные форматировщики
 
-Встроенные модули форматирования реализуют некоторые специальные возможности. По умолчанию типы возвращаемых значений `string` форматируются как *text/plain* ( *text/html* , если того требует заголовок `Accept`). Это поведение можно отключить, удалив <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter>. Форматировщики удаляются в методе `ConfigureServices`. Действия, у которых типом возвращаемого объекта является модель, возвращают ответ `204 No Content` при возврате значения `null`. Это поведение можно отключить, удалив <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter>. Приведенный ниже код удаляет `StringOutputFormatter` и `HttpNoContentOutputFormatter`.
+Встроенные модули форматирования реализуют некоторые специальные возможности. По умолчанию типы возвращаемых значений `string` форматируются как *text/plain* (*text/html*, если того требует заголовок `Accept`). Это поведение можно отключить, удалив <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter>. Форматировщики удаляются в методе `ConfigureServices`. Действия, у которых типом возвращаемого объекта является модель, возвращают ответ `204 No Content` при возврате значения `null`. Это поведение можно отключить, удалив <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter>. Приведенный ниже код удаляет `StringOutputFormatter` и `HttpNoContentOutputFormatter`.
 
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](./formatting/3.0sample/StartupStringOutputFormatter.cs?name=snippet)]
@@ -250,7 +263,7 @@ public IActionResult Get()
 
 Без `StringOutputFormatter`, встроенный модуль форматирования JSON форматирует типы возвращаемого значения `string`. Если встроенный модуль форматирования JSON удален и доступен модуль форматирования XML, то типы возвращаемого значения `string` форматирует модуль форматирования XML. В противном случае, `string` типы возвращаемого значения возвращают `406 Not Acceptable`.
 
-Без `HttpNoContentOutputFormatter` объекты со значением null форматируются с помощью настроенного модуля форматирования. Пример:
+Без `HttpNoContentOutputFormatter` объекты со значением null форматируются с помощью настроенного модуля форматирования. Например:
 
 * Форматировщик JSON возвращает ответ с текстом `null`.
 * Форматировщик XML возвращает пустой XML-элемент с атрибутом `xsi:nil="true"`.
@@ -262,7 +275,7 @@ public IActionResult Get()
 * В строке запроса или в части пути.
 * С использованием расширения файла конкретного формата, такого как XML или JSON.
 
-Сопоставление из пути запроса должно быть указано в маршруте, используемом API. Пример:
+Сопоставление из пути запроса должно быть указано в маршруте, используемом API. Например:
 
 [!code-csharp[](./formatting/sample/Controllers/ProductsController.cs?name=snippet)]
 

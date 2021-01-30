@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 197954965ee57b2a44ad0217d79ba142114e7df6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 3bb3c059eafa8e948fe2e719207927c009902e59
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060850"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057451"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвращение атак с подделкой межсайтовых запросов (XSRF/CSRF) в ASP.NET Core
 
@@ -91,7 +91,7 @@ CookieАутентификация на основе — это популярн
 
 ### <a name="token-based-authentication"></a>Проверка подлинности на основе токенов
 
-Когда пользователь проходит проверку подлинности, ему выдается маркер (а не маркер подделки). Маркер содержит сведения о пользователе в виде [утверждений](/dotnet/framework/security/claims-based-identity-model) или маркер ссылки, который указывает приложению на обслуживание пользовательского состояния в приложении. Когда пользователь пытается получить доступ к ресурсу, который требует проверки подлинности, маркер отправляется в приложение с дополнительным заголовком авторизации в виде токена носителя. Это делает приложение без отслеживания состояния. В каждом последующем запросе маркер передается в запросе на проверку на стороне сервера. Этот токен не *зашифрован* ; Он *кодируется* . На сервере маркер декодирован для доступа к его данным. Чтобы отправить маркер при последующих запросах, сохраните маркер в локальном хранилище браузера. Не стоит беспокоиться об уязвимости CSRF, если маркер хранится в локальном хранилище браузера. CSRF является проблемой, когда маркер хранится в cookie . Дополнительные сведения см. в примере кода "проблемное [соглашение GitHub" cookie добавляет два](https://github.com/dotnet/AspNetCore.Docs/issues/13369).
+Когда пользователь проходит проверку подлинности, ему выдается маркер (а не маркер подделки). Маркер содержит сведения о пользователе в виде [утверждений](/dotnet/framework/security/claims-based-identity-model) или маркер ссылки, который указывает приложению на обслуживание пользовательского состояния в приложении. Когда пользователь пытается получить доступ к ресурсу, который требует проверки подлинности, маркер отправляется в приложение с дополнительным заголовком авторизации в виде токена носителя. Это делает приложение без отслеживания состояния. В каждом последующем запросе маркер передается в запросе на проверку на стороне сервера. Этот токен не *зашифрован*; Он *кодируется*. На сервере маркер декодирован для доступа к его данным. Чтобы отправить маркер при последующих запросах, сохраните маркер в локальном хранилище браузера. Не стоит беспокоиться об уязвимости CSRF, если маркер хранится в локальном хранилище браузера. CSRF является проблемой, когда маркер хранится в cookie . Дополнительные сведения см. в примере кода "проблемное [соглашение GitHub" cookie добавляет два](https://github.com/dotnet/AspNetCore.Docs/issues/13369).
 
 ### <a name="multiple-apps-hosted-at-one-domain"></a>Несколько приложений, размещенных в одном домене
 
@@ -250,7 +250,7 @@ services.AddAntiforgery(options =>
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания защиты от подделки cookie . |
 | [CookieДомен](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Домен cookie . По умолчанию — `null`. Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать Cookie . Поддомен. |
-| [CookieИмя](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Имя cookie. Если значение не задано, система создает уникальное имя, начинающееся [с Cookie префикса по умолчанию](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. подделка. "). Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать Cookie . Безымян. |
+| [Cookiename](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Имя cookie. Если значение не задано, система создает уникальное имя, начинающееся [с Cookie префикса по умолчанию](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. подделка. "). Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать Cookie . Безымян. |
 | [CookieПуть](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Путь, заданный для cookie . Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать Cookie . Путь. |
 | [формфиелднаме](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Имя скрытого поля формы, используемое системой защиты от подделки для отображения маркеров подделки в представлениях. |
 | [хеадернаме](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Имя заголовка, используемого системой защиты от подделки. Если `null` значение равно, система рассматривает только данные формы. |
@@ -488,6 +488,10 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 [Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([как скачивать](xref:index#how-to-download-a-sample))
+
+## <a name="windows-authentication-and-antiforgery-no-loccookies"></a>Проверка подлинности Windows и подделка cookie s
+
+При использовании проверки подлинности Windows конечные точки приложения должны быть защищены от атак CSRF так же, как и для cookie s.  Браузер неявно отправляет контекст проверки подлинности на сервер, поэтому конечные точки должны быть защищены от атак CSRF.
 
 ## <a name="extend-antiforgery"></a>Расширение защиты от подделки
 

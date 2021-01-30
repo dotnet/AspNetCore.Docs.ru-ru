@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 44c507fb5e0ff4477a84bfc1e4d0c62180c8dd37
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 04ece9628265135efd0dd92d29c8b14fc897329e
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252842"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057360"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Маршрутизация к действиям контроллера в ASP.NET Core
 
@@ -120,7 +120,7 @@ endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"
 
 [!code-csharp[](routing/samples/3.x/main/StartupDefaultMVC.cs?name=snippet2)]
 
-является примером *маршрутизации на основе соглашений*. Он называется *обычной маршрутизацией* , так как он устанавливает *соглашение* для URL-путей:
+Предыдущий маршрут является примером *обычного маршрута*. Он называется *обычной маршрутизацией* , так как он устанавливает *соглашение* для URL-путей:
 
 * Первый сегмент пути, `{controller=Home}` сопоставляется с именем контроллера.
 * Второй сегмент, `{action=Index}` сопоставляется с именем [действия](#action) .
@@ -220,7 +220,7 @@ endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"
 * Выберите лучший кандидат.
 * Создание исключения.
 
-Пример:
+Например:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet9)]
 
@@ -351,7 +351,7 @@ ASP.NET Core имеет следующие шаблоны маршрутов:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/Test2Controller.cs?name=snippet)]
 
-В предыдущем коде:
+В приведенном выше коде:
 
 * Каждое действие содержит `[HttpGet]` атрибут, который ограничивает сопоставление только запросами HTTP GET.
 * `GetProduct`Действие включает `"{id}"` шаблон, поэтому `id` добавляется к `"api/[controller]"` шаблону на контроллере. Шаблон методов — `"api/[controller]/"{id}""` . Поэтому это действие соответствует только запросам Get для формы `/api/test2/xyz` , `/api/test2/123` , `/api/test2/{any string}` и т. д.
@@ -417,7 +417,7 @@ ASP.NET Core имеет следующие шаблоны маршрутов:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsApiController.cs?name=snippet)]
 
-В предшествующем примере:
+В предыдущем примере:
 
 * Путь URL-адреса `/products` может совпадать `ProductsApi.ListProducts`
 * Путь URL-адреса `/products/5` может совпадать `ProductsApi.GetProduct(int)` .
@@ -430,7 +430,7 @@ ASP.NET Core имеет следующие шаблоны маршрутов:
 
 В следующей таблице описаны `[Route]` атрибуты в приведенном выше коде.
 
-| Атрибут               | Объединяет с `[Route("Home")]` | Определение шаблона маршрута |
+| attribute               | Объединяет с `[Route("Home")]` | Определение шаблона маршрута |
 | ----------------- | ------------ | --------- |
 | `[Route("")]` | Да | `"Home"` |
 | `[Route("Index")]` | Да | `"Home/Index"` |
@@ -489,7 +489,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet)]
 
-В предыдущем коде:
+В приведенном выше коде:
 
   [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet10)]
 
@@ -628,7 +628,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 
 [!code-csharp[](routing/samples/3.x/nsrc/Controllers/UsersController.cs)]
 
-В предыдущем коде:
+В приведенном выше коде:
 
 * Основанием `namespace` является `My.Application` .
 * Полное имя предыдущего контроллера — `My.Application.Admin.Controllers.UsersController` .
@@ -1008,7 +1008,7 @@ app.UseMvc(routes =>
 
 ### <a name="disambiguating-actions"></a>Разрешение неоднозначности действий
 
-Если при маршрутизации найдены два соответствующих действия, платформа MVC должна устранить неоднозначность, выбрав наиболее подходящее из них, или создать исключение. Пример:
+Если при маршрутизации найдены два соответствующих действия, платформа MVC должна устранить неоднозначность, выбрав наиболее подходящее из них, или создать исключение. Например:
 
 ```csharp
 public class ProductsController : Controller
