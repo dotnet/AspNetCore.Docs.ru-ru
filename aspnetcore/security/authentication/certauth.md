@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 71f05163c075a2ef88d5c606814925cdcef879d2
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: c862bc8bff6c4cc80696d92067e814889d6e7782
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253050"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217535"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Настройка проверки подлинности сертификата в ASP.NET Core
 
@@ -40,7 +40,7 @@ ms.locfileid: "98253050"
 
 Альтернативой для проверки подлинности на сертификат в средах, где используются прокси-серверы и подсистемы балансировки нагрузки, являются Active Directory Федеративные службы (ADFS) с OpenID Connect Connect (OIDC).
 
-## <a name="get-started"></a>Начало работы
+## <a name="get-started"></a>Приступая к работе
 
 Получите HTTPS сертификат, примените его и [Настройте сервер](#configure-your-server-to-require-certificates) для использования сертификатов.
 
@@ -48,7 +48,7 @@ ms.locfileid: "98253050"
 
 Если проверка подлинности завершается неудачно, этот обработчик возвращает `403 (Forbidden)` ответ, а не `401 (Unauthorized)` , как вы можете ожидать. Причина заключается в том, что проверка подлинности должна выполняться во время первоначального TLS-подключения. К моменту, когда он достигает обработчика, он слишком поздно. Невозможно обновить подключение между анонимным подключением и сертификатом.
 
-Кроме того `app.UseAuthentication();` , добавьте в `Startup.Configure` метод. В противном случае `HttpContext.User` не будет задано значение, `ClaimsPrincipal` созданное на основе сертификата. Пример:
+Кроме того `app.UseAuthentication();` , добавьте в `Startup.Configure` метод. В противном случае `HttpContext.User` не будет задано значение, `ClaimsPrincipal` созданное на основе сертификата. Например:
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -650,7 +650,7 @@ ASP.NET Core 5 Preview 7 и более поздней версии добавл�
     * IIS
       * [Размещение IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Настройка безопасности служб IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys: [Настройка Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys: [Настройка Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 
@@ -666,7 +666,7 @@ ASP.NET Core 5 Preview 7 и более поздней версии добавл�
     * IIS
       * [Размещение IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Настройка безопасности служб IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys: [Настройка Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys: [Настройка Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 

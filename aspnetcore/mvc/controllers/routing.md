@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 04ece9628265135efd0dd92d29c8b14fc897329e
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 0863b5758f33b720636f3b927fcb9014cd106c21
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057360"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217548"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Маршрутизация к действиям контроллера в ASP.NET Core
 
@@ -826,7 +826,7 @@ result: /UrlGeneration/Destination
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Controllers/UsersController.cs)]
 
-Пространство имен каждого контроллера показано здесь для полноты. Если предыдущие контроллеры используют одно и то же пространство имен, создается ошибка компилятора. Имена пространств классов не влияют на маршрутизацию в MVC.
+Пространство имен каждого контроллера показано здесь для полноты. Если предыдущие контроллеры использовали одно и то же пространство имен, создается ошибка компилятора. Имена пространств классов не влияют на маршрутизацию в MVC.
 
 Первые два контроллера входят в области и будут соответствовать запросу, только если соответствующее имя области предоставлено значением маршрута `area`. Третий контроллер не входит ни в одну область и может соответствовать запросу, только если значение `area` не предоставлено системой маршрутизации.
 
