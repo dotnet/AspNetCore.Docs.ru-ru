@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 72ee8f5dfdf8ffd6cfcb74b13fa0738893d8e214
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.openlocfilehash: ee30ef89c5d7aeae83f23a81eb02235397c89ac2
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97486139"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238315"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -192,12 +192,12 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 | Последовательность | Область фильтра | Метод фильтра |
 |:--------:|:------------:|:-------------:|
-| 1 | Глобальный | `OnActionExecuting` |
+| 1 | Global | `OnActionExecuting` |
 | 2 | Контроллер или Razor страница| `OnActionExecuting` |
 | 3 | Метод | `OnActionExecuting` |
 | 4 | Метод | `OnActionExecuted` |
 | 5 | Контроллер или Razor страница | `OnActionExecuted` |
-| 6 | Глобальный | `OnActionExecuted` |
+| 6 | Global | `OnActionExecuted` |
 
 ### <a name="controller-level-filters"></a>Фильтры на уровне контроллера
 
@@ -506,7 +506,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 Фильтры результатов:
 
 * Реализация интерфейса:
-  * <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter>
+  * <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> либо <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter>
   * <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter>
 * Их выполнение охватывает выполнение результатов действий.
 
@@ -565,7 +565,8 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 _, Что будет создан один экземпляр фильтра.
 * что фильтр не будет повторно запрошен из контейнера внедрения зависимостей на более позднем этапе.
 
-[!WARNING] Настраивается `IFilterFactory.IsReusable` для возврата только в том `true` случае, если источник фильтров является однозначным, фильтры не имеют состояния и являются надежными для использования в нескольких HTTP-запросах. Например, не следует возвращать фильтры из DI, которые зарегистрированы как область или временные, если `IFilterFactory.IsReusable` возвращает `true`
+> [!WARNING] 
+> Настраивается <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.IsReusable?displayProperty=nameWithType> для возврата только в том `true` случае, если источник фильтров является однозначным, фильтры не имеют состояния, а фильтры могут использоваться в нескольких HTTP-запросах. Например, не следует возвращать фильтры из DI, которые зарегистрированы как область или временное значение, если `IFilterFactory.IsReusable` возвращает `true` .
 
 Еще один подход к созданию фильтров заключается в реализации `IFilterFactory` с помощью настраиваемых атрибутов:
 
@@ -750,12 +751,12 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 | Последовательность | Область фильтра | Метод фильтра |
 |:--------:|:------------:|:-------------:|
-| 1 | Глобальный | `OnActionExecuting` |
+| 1 | Global | `OnActionExecuting` |
 | 2 | Контроллер | `OnActionExecuting` |
 | 3 | Метод | `OnActionExecuting` |
 | 4 | Метод | `OnActionExecuted` |
 | 5 | Контроллер | `OnActionExecuted` |
-| 6 | Глобальный | `OnActionExecuted` |
+| 6 | Global | `OnActionExecuted` |
 
 Эта последовательность показывает:
 
@@ -812,8 +813,8 @@ ASP.NET Core включает встроенные фильтры на осно�
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Метод | 0 | `OnActionExecuting` |
 | 2 | Контроллер | 1  | `OnActionExecuting` |
-| 3 | Глобальный | 2  | `OnActionExecuting` |
-| 4 | Глобальный | 2  | `OnActionExecuted` |
+| 3 | Global | 2  | `OnActionExecuting` |
+| 4 | Global | 2  | `OnActionExecuted` |
 | 5 | Контроллер | 1  | `OnActionExecuted` |
 | 6 | Метод | 0  | `OnActionExecuted` |
 
@@ -1045,7 +1046,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 Фильтры результатов:
 
 * Реализация интерфейса:
-  * <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter>
+  * <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> либо <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter>
   * <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> или <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter>
 * Их выполнение охватывает выполнение результатов действий.
 
