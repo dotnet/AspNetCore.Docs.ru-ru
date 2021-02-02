@@ -5,18 +5,20 @@ metadata:
   title: Документация по ASP.NET Core — новые возможности
   description: Узнайте о новом и измененном содержимом в документации по ASP.NET Core.
   ms.topic: landing-page
-  ms.date: 01/04/2020
-  ms.openlocfilehash: a052e6dcd1439d85df5c31409a427c7df4a16216
-  ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+  ms.date: 02/01/2021
+  ms.openlocfilehash: 0b7f3ab27f31417b3e6b17bf9d4c31ec96129f1e
+  ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
   ms.translationtype: HT
   ms.contentlocale: ru-RU
-  ms.lasthandoff: 01/04/2021
-  ms.locfileid: "97865594"
+  ms.lasthandoff: 02/01/2021
+  ms.locfileid: "99238294"
 landingContent:
 - title: Поиск обновлений в документации по ASP.NET Core
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Январь 2021 г.
+      url: 2021-01.md
     - text: Декабрь 2020 г.
       url: 2020-12.md
     - text: Ноябрь 2020 г.
@@ -27,8 +29,6 @@ landingContent:
       url: 2020-09.md
     - text: Август 2020 г.
       url: 2020-08.md
-    - text: Июль 2020 г.
-      url: 2020-07.md
 - title: Принимайте участие в разработке документации по ASP.NET Core
   linkLists:
   - linkListType: overview
