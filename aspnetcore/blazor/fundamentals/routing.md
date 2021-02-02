@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: ec183f4aadc6bafd8e77f9d97291ba3d47bd92f5
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 74886eae7431045e56de535b5221040bd56cdc2d
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506933"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751572"
 ---
-# <a name="aspnet-core-no-locblazor-routing"></a>Маршрутизация ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-routing"></a>Маршрутизация ASP.NET Core Blazor
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
@@ -326,11 +326,11 @@ endpoints.MapFallbackToPage("/example/{param?}", "/_Host");
 Строка запроса получается из свойства <xref:Microsoft.AspNetCore.Components.NavigationManager.Uri?displayProperty=nameWithType>.
 
 ```razor
-@inject NavigationManager Navigation
+@inject NavigationManager NavigationManager
 
 ...
 
-var query = new Uri(Navigation.Uri).Query;
+var query = new Uri(NavigationManager.Uri).Query;
 ```
 
 Чтобы проанализировать параметры строки запроса:
@@ -354,7 +354,7 @@ var query = new Uri(Navigation.Uri).Query;
 
 ::: moniker-end
 
-## <a name="navlink-component"></a>`NavLink`
+## <a name="navlink-and-navmenu-components"></a>Новые компоненты `NavLink` и `NavMenu`
 
 Используйте при создании ссылок навигации компонент <xref:Microsoft.AspNetCore.Components.Routing.NavLink> вместо HTML-элементов гиперссылок (`<a>`). Компонент <xref:Microsoft.AspNetCore.Components.Routing.NavLink> ведет себя как элемент `<a>`, за исключением того, что он переключает класс CSS `active` в зависимости от того, соответствует ли его `href` текущему URL-адресу. Класс `active` помогает пользователю понять, какая страница является активной страницей среди отображаемых ссылок навигации. При необходимости назначьте имя класса CSS свойству <xref:Microsoft.AspNetCore.Components.Routing.NavLink.ActiveClass?displayProperty=nameWithType>, чтобы применить пользовательский класс CSS к отображаемой ссылке, если текущий маршрут совпадает с `href`.
 

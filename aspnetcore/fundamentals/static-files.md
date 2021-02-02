@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: 2e25af03a8a6aaff5b343885711c6ebb68340fac
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d97caeffc6e8beebddb01a5bd126d61ba988de65
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057860"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689296"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 
@@ -54,7 +54,7 @@ ms.locfileid: "93057860"
 
 ### <a name="serve-files-in-web-root"></a>Обслуживание файлов в корневом каталоге веб-сайта
 
-Шаблоны веб-приложений по умолчанию вызывают метод <xref:Owin.StaticFileExtensions.UseStaticFiles%2A> в `Startup.Configure`, который позволяет обслуживать статические файлы:
+Шаблоны веб-приложений по умолчанию вызывают метод <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> в `Startup.Configure`, который позволяет обслуживать статические файлы:
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -104,23 +104,31 @@ ms.locfileid: "93057860"
 
 ## <a name="static-file-authorization"></a>Авторизация статических файлов
 
-ПО промежуточного слоя для статических файлов не предоставляет возможности авторизации. Все обслуживаемые им файлы, включая расположенные в `wwwroot`, находятся в открытом доступе. Для обслуживания файлов с авторизацией:
+Шаблоны ASP.NET Core вызывают <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> перед вызовом <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A>. Большинство приложений используют этот шаблон. При вызове ПО промежуточного слоя статического файла перед ПО промежуточного слоя авторизации:
 
-* Сохраните файлы за пределами каталога `wwwroot` в любом каталоге, к которому ПО промежуточного слоя для статических файлов имеет доступ по умолчанию.
-* Вызовите `UseStaticFiles` после `UseAuthorization` и укажите путь.
-
-  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet2)]
+  * для статических файлов не выполняются проверки авторизации;
+  * статические файлы, обслуживаемые ПО промежуточного слоя статического файла, например те, которые находятся в `wwwroot`, являются общедоступными.
   
-  Предыдущий подход требует, чтобы пользователи прошли проверку подлинности.
+Для обслуживания статических файлов на основе авторизации:
 
-  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-99)]
+  * сохраните их за пределами `wwwroot`;
+  * вызовите `UseStaticFiles`, указав путь, после вызова `UseAuthorization`;
+  * задайте [резервную политику авторизации](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy).
 
-   [!INCLUDE[](~/includes/requireAuth.md)]
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet2&highlight=24-29)]
+  
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-25)]
 
-Альтернативный подход к обработке файлов на основе авторизации
+  В приведенном выше коде резервная политика авторизации требует проверки подлинности ***всех** _ пользователей. Конечные точки, такие как контроллеры, страницы Razor и т. д., которые определяют собственные требования к авторизации, не используют резервную политику авторизации. Например, Razor Pages, контроллеры или методы действий с `[AllowAnonymous]` или `[Authorize(PolicyName="MyPolicy")]` используют примененный атрибут авторизации вместо резервной политики авторизации.
 
-* Сохраните файлы за пределами каталога `wwwroot` в любом каталоге, к которому имеет доступ ПО промежуточного слоя для статических файлов.
-* Обслуживайте их через метод действия, к которому применима авторизация, и получите объект <xref:Microsoft.AspNetCore.Mvc.FileResult>:
+  <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> добавляет <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> к текущему экземпляру, что обеспечивает проверку подлинности текущего пользователя.
+
+  Статические ресурсы в `wwwroot` являются общедоступными, так как ПО промежуточного слоя для статического файла по умолчанию (`app.UseStaticFiles();`) вызывается перед `UseAuthentication`. Для статических ресурсов в папке _MyStaticFiles* требуется проверка подлинности. Это показано в следующем [примере кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples).
+
+Альтернативный подход к обработке файлов на основе авторизации:
+
+  * Сохраните файлы за пределами каталога `wwwroot` в любом каталоге, к которому имеет доступ ПО промежуточного слоя для статических файлов.
+  * Обслуживайте их через метод действия, к которому применима авторизация, и получите объект <xref:Microsoft.AspNetCore.Mvc.FileResult>:
 
   [!code-csharp[](static-files/samples/3.x/StaticFilesSample/Controllers/HomeController.cs?name=snippet_BannerImage)]
 

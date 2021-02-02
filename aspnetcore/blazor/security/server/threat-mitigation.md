@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: d0ed36731d78d3e98aa294aca50492f0a3ac8174
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 4256e90ca5f185992a73d1e43460ca5d27159d6f
+ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506699"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758282"
 ---
-# <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>Руководство по предотвращению угроз для ASP.NET Core Blazor Server
+# <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>Руководство по предотвращению угроз для ASP.NET Core Blazor Server
 
 Автор: [Javier Calvarro Nelson](https://github.com/javiercn) (Хавьер Кальварро Нельсон)
 
@@ -41,7 +41,7 @@ ms.locfileid: "97506699"
 * не применяются в ограниченной среде;
 * либо не стоят своих затрат на реализацию, поскольку в ограниченной среде угроза безопасности минимальна.
 
-## <a name="no-locblazor-and-shared-state"></a>Blazor и общее состояние
+## <a name="blazor-and-shared-state"></a>Blazor и общее состояние
 
 [!INCLUDE[](~/blazor/includes/security/blazor-shared-state.md)]
 
@@ -306,12 +306,7 @@ ms.locfileid: "97506699"
 
 При возникновении ошибки на сервере платформа уведомляет клиента и разрывает сеанс. По умолчанию клиент получает общее сообщение об ошибке, которое можно увидеть в средствах разработчика браузера.
 
-Ошибка на стороне клиента не включает стек вызовов и не предоставляет сведения о причине ошибки, однако журналы сервера содержат такие сведения. В целях разработки конфиденциальные сведения об ошибках можно сделать доступными для клиента, включив подробные ошибки.
-
-Включите подробные сведения об ошибках в JavaScript с помощью следующего:
-
-* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DetailedErrors?displayProperty=nameWithType>.
-* Задайте для ключа конфигурации `DetailedErrors` значение `true` в файле настроек приложения (`appsettings.json`). Ключ также можно задать с помощью переменной среды `ASPNETCORE_DETAILEDERRORS` со значением `true`.
+Ошибка на стороне клиента не включает стек вызовов и не предоставляет сведения о причине ошибки, однако журналы сервера содержат такие сведения. В целях разработки конфиденциальные сведения об ошибках можно сделать доступными для клиента, [включив подробное описание ошибок](xref:blazor/fundamentals/handle-errors#blazor-server-detailed-circuit-errors).
 
 > [!WARNING]
 > Предоставление сведений об ошибках клиентам в Интернете является угрозой безопасности, которую всегда следует избегать.

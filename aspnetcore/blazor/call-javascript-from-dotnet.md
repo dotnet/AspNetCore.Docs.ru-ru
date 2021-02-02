@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 2502f43f4eaf245996827f704462ec340bbb8e07
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 53b702cddca778e06e617df3798bffb21677d36b
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252543"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751644"
 ---
-# <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Вызов функций JavaScript из методов .NET в ASP.NET Core Blazor
+# <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>Вызов функций JavaScript из методов .NET в ASP.NET Core Blazor
 
 Авторы: [Хавьер Кальварро Нельсон](https://github.com/javiercn) (Javier Calvarro Nelson), [Дэниел Рот](https://github.com/danroth27) (Daniel Roth), [Пранав Кришнамурти](https://github.com/pranavkm) (Pranav Krishnamoorthy) и [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
@@ -35,6 +35,9 @@ ms.locfileid: "98252543"
 В этой статье рассматривается вызов функций JavaScript из .NET. Сведения о том, как вызывать методы .NET из JavaScript, см. в статье <xref:blazor/call-dotnet-from-javascript>.
 
 [Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+
+> [!NOTE]
+> Добавьте JS-файлы (теги `<script>`) перед закрывающим тегом `</body>` в `wwwroot/index.html` файле (Blazor WebAssembly) или файле `Pages/_Host.cshtml` (Blazor Server). Убедитесь, что JS-файлы с методами взаимодействия JS включены перед JS-файлами платформы Blazor.
 
 Для вызова JavaScript из .NET используйте абстракцию <xref:Microsoft.JSInterop.IJSRuntime>. Чтобы выполнять вызовы взаимодействия с JS, внедрите абстракцию <xref:Microsoft.JSInterop.IJSRuntime> в компонент. <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> принимает идентификатор функции JavaScript, которую нужно вызвать, вместе с любым числом аргументов, сериализуемых в JSON. Идентификатор функции задается относительно глобальной области (`window`). Если нужно вызвать функцию `window.someScope.someFunction`, идентификатором будет `someScope.someFunction`. Регистрировать функцию перед ее вызовом не требуется. Тип возвращаемого значения `T` также должен сериализоваться в JSON. Тип `T` должен соответствовать типу .NET, который лучше всего соответствует возвращаемому типу JSON.
 
@@ -170,7 +173,7 @@ ms.locfileid: "98252543"
 * для функций JavaScript, возвращающих значение [void(0)/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) или [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined);
 * если .NET не нужно считывать результат вызова JavaScript.
 
-## <a name="detect-when-a-no-locblazor-server-app-is-prerendering"></a>Обнаружение предварительной отрисовки в приложении Blazor Server
+## <a name="detect-when-a-blazor-server-app-is-prerendering"></a>Обнаружение предварительной отрисовки в приложении Blazor Server
  
 [!INCLUDE[](~/blazor/includes/prerendering.md)]
 
@@ -505,7 +508,7 @@ namespace {APP ASSEMBLY}.Shared
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="no-locblazor-javascript-isolation-and-object-references"></a>Изоляция Blazor JavaScript и ссылки на объекты
+## <a name="blazor-javascript-isolation-and-object-references"></a>Изоляция Blazor JavaScript и ссылки на объекты
 
 Blazor реализует изоляцию JavaScript в стандартных [модулях JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules). Изоляция JavaScript обеспечивает следующие преимущества:
 

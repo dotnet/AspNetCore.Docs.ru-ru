@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 196e19528341e98ac06cefb08ba92f9e47d265ea
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 1706d3502dc68f1c25e0c35ba8f5dd44b55ce690
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252478"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658655"
 ---
-# <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Создание прогрессивных веб-приложений с помощью ASP.NET Core Blazor WebAssembly
+# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Создание прогрессивных веб-приложений с помощью ASP.NET Core Blazor WebAssembly
 
 Автор: [Стив Сандерсон](https://github.com/SteveSandersonMS) (Steve Sanderson)
 
@@ -71,7 +71,7 @@ dotnet new blazorwasm -o MyBlazorPwa --pwa
 
 При необходимости PWA можно настроить для приложения, созданного на основе размещенного шаблона ASP.NET Core. Сценарий прогрессивного веб-приложения не зависит от модели размещения.
 
-## <a name="convert-an-existing-no-locblazor-webassembly-app-into-a-pwa"></a>Преобразование существующего приложения Blazor WebAssembly в PWA
+## <a name="convert-an-existing-blazor-webassembly-app-into-a-pwa"></a>Преобразование существующего приложения Blazor WebAssembly в PWA
 
 В этом разделе приводятся указания по преобразованию существующего приложения Blazor WebAssembly в PWA.
 
@@ -272,10 +272,20 @@ const shouldServeIndexHtml = event.request.mode === 'navigate';
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate'
-    && !event.request.url.includes('/Identity/');
+  && !event.request.url.includes('/Identity/');
 ```
 
 Если этого не сделать, то, независимо от наличия сетевого подключения, рабочая роль службы будет перехватывать запросы к таким URL-адресам и разрешать их с помощью `/index.html`.
+
+Добавьте в проверку конечные точки для внешних поставщиков проверки подлинности. В следующем примере в проверку добавляется `/signin-google` для проверки подлинности Google:
+
+```javascript
+const shouldServeIndexHtml = event.request.mode === 'navigate'
+  && !event.request.url.includes('/Identity/')
+  && !event.request.url.includes('/signin-google');
+```
+
+Не требуется выполнять никаких действий для среды разработки, где содержимое всегда извлекается из сети.
 
 ### <a name="control-asset-caching"></a>Управление кэшированием ресурсов
 

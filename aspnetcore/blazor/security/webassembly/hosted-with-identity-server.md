@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: fdd7eb3c4a3b07022760a43cbde80838bfaf7c84
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: d35dd0acf626a6305f00e295e7918c82c7d6a912
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024799"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658707"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Защита размещенного приложения ASP.NET Core Blazor WebAssembly с помощью Identity Server
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Защита размещенного приложения ASP.NET Core Blazor WebAssembly с помощью Identity Server
 
 Авторы: [Хавьер Кальварро Нельсон](https://github.com/javiercn) (Javier Calvarro Nelson) и [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
@@ -130,11 +130,15 @@ dotnet new blazorwasm -au Individual -ho -o {APP NAME}
     app.UseAuthorization();
     ```
 
+### <a name="azure-app-service-on-linux"></a>Служба приложений Azure в Linux
+
+При развертывании в Службе приложений Azure в Linux издателя нужно указать явно. Для получения дополнительной информации см. <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
+
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
 Вспомогательный метод <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> настраивает [IdentityServer](https://identityserver.io/) для сценариев ASP.NET Core. IdentityServer — это функциональная и расширяемая платформа для повышения уровня безопасности приложений. IdentityServer указывает на ненужную сложность в некоторых распространенных сценариях. Следовательно, предусмотрен набор соглашений и параметров конфигурации, которые можно рассматривать в качестве хорошей отправной точки. Если нужно изменить требования к аутентификации, можно воспользоваться широкими возможностями IdentityServer для настройки аутентификации в соответствии с требованиями приложения.
 
-### <a name="addno-locidentityserverjwt"></a>AddIdentityServerJwt
+### <a name="addidentityserverjwt"></a>AddIdentityServerJwt
 
 Вспомогательный метод <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> настраивает схему политики для приложения в качестве обработчика проверки подлинности по умолчанию. Политика настроена так, чтобы разрешить Identity обработку всех запросов, направляемых по любому вложенному пути в пространстве URL-адресов Identity `/Identity`. <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> обрабатывает все остальные запросы. Кроме того, этот метод:
 
@@ -370,7 +374,7 @@ services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
-### <a name="configure-no-locidentity-server"></a>Настройка Identity Server
+### <a name="configure-identity-server"></a>Настройка Identity Server
 
 Воспользуйтесь **одним** из перечисленных ниже подходов.
 
@@ -468,9 +472,12 @@ services.AddTransient<IProfileService, ProfileService>();
 
 [!INCLUDE[](~/blazor/includes/security/usermanager-signinmanager.md)]
 
-## <a name="host-in-azure-app-service-with-a-custom-domain"></a>Размещение в Службе приложений Azure с использованием личного домена
+## <a name="host-in-azure-app-service-with-a-custom-domain-and-certificate"></a>Размещение в Службе приложений Azure с использованием личного домена и сертификата
 
-Ниже объясняется, как развернуть размещенное приложение Blazor WebAssembly с Identity Server в [Службе приложений Azure](https://azure.microsoft.com/services/app-service/) с использованием личного домена.
+В следующем руководстве описывается:
+
+* как развернуть размещенное приложение Blazor WebAssembly с Identity Server в [Службе приложений Azure](https://azure.microsoft.com/services/app-service/) с использованием личного домена;
+* как создать и использовать TLS-сертификат для обмена данными по протоколу HTTPS с браузерами. Хотя руководство посвящено использованию сертификата с личным доменом, рекомендации также можно применять при работе с доменом приложений Azure по умолчанию, например `contoso.azurewebsites.net`.
 
 В этом сценарии размещения **не** используйте один и тот же сертификат для [ключа подписывания токена Identity Server](https://docs.identityserver.io/en/latest/topics/crypto.html#token-signing-and-validation) и защищенного обмена данными по протоколу HTTPS между сайтом и браузерами.
 

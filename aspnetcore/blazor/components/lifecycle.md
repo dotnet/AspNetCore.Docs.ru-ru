@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: acaa276efda9fb4d09a5c1b1ca59c6abde1b64ec
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 3591ba18351b89e2d5dfaef796777273c97ce98b
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252398"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751620"
 ---
-# <a name="aspnet-core-no-locblazor-lifecycle"></a>Жизненный цикл ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-lifecycle"></a>Жизненный цикл ASP.NET Core Blazor
 
 Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
 
@@ -68,14 +68,38 @@ ms.locfileid: "98252398"
 
 ### <a name="before-parameters-are-set"></a>До указания параметров
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> задает параметры, предоставляемые родительским элементом компонента в дереве отрисовки:
+<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> задает параметры, предоставляемые родительским элементом компонента в дереве отрисовки или из параметров маршрута. Переопределяя метод, код разработчика может напрямую взаимодействовать с параметрами <xref:Microsoft.AspNetCore.Components.ParameterView>.
 
-```csharp
-public override async Task SetParametersAsync(ParameterView parameters)
-{
-    await ...
+В следующем примере <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType> присваивает `value` значение параметра`Param`, если анализ параметра маршрута для `Param` выполнен успешно. Если `value` не равно `null`, значение отображается компонентом `SetParametersAsyncExample`.
 
-    await base.SetParametersAsync(parameters);
+`Pages/SetParametersAsyncExample.razor`:
+
+```razor
+@page "/setparametersasync-example/{Param?}"
+
+<h1>SetParametersAsync Example</h1>
+
+<p>@message</p>
+
+@code {
+    private string message;
+
+    [Parameter]
+    public string Param { get; set; }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        if (parameters.TryGetValue<string>(nameof(Param), out var value))
+        {
+            message = $"The value of 'Param' is {value}.";
+        }
+        else 
+        {
+            message = "The value of 'Param' is null.";
+        }
+
+        await base.SetParametersAsync(parameters);
+    }
 }
 ```
 
@@ -296,9 +320,9 @@ public class WeatherForecastService
 
 [!INCLUDE[](~/blazor/includes/prerendering.md)]
 
-## <a name="component-disposal-with-idisposable"></a>Освобождение компонентов с помощью IDisposable
+## <a name="component-disposal-with-idisposable"></a>Удаление компонента с использованием `IDisposable`
 
-Если компонент реализует <xref:System.IDisposable>, [метод `Dispose`](/dotnet/standard/garbage-collection/implementing-dispose) вызывается при удалении компонента из пользовательского интерфейса. Удаление можно выполнить в любое время, в том числе при [инициализации компонента](#component-initialization-methods). Следующий компонент использует `@implements IDisposable` и метод `Dispose`:
+Если компонент реализует <xref:System.IDisposable>, платформа вызывает [метод удаления](/dotnet/standard/garbage-collection/implementing-dispose) при удалении компонента из пользовательского интерфейса, и вы можете освободить неуправляемые ресурсы. Удаление можно выполнить в любое время, в том числе при [инициализации компонента](#component-initialization-methods). Следующий компонент реализует <xref:System.IDisposable> с использованием директивы Razor [`@implements`](xref:mvc/views/razor#implements):
 
 ```razor
 @using System
@@ -314,6 +338,15 @@ public class WeatherForecastService
 }
 ```
 
+Для задач асинхронной реализации используйте `DisposeAsync` вместо `Dispose` в предыдущем примере:
+
+```csharp
+public async ValueTask DisposeAsync()
+{
+    ...
+}
+```
+
 > [!NOTE]
 > Вызов <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> в `Dispose` не поддерживается. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> может вызываться в процессе уничтожения отрисовщика, поэтому запрос обновлений пользовательского интерфейса на этом этапе не поддерживается.
 
@@ -326,6 +359,8 @@ public class WeatherForecastService
 * Подход с использованием частного метода
 
   [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
+  
+Дополнительные сведения см. в статье [Очистка неуправляемых ресурсов](/dotnet/standard/garbage-collection/unmanaged) и следующих разделах, в которых описана реализация методов `Dispose` и `DisposeAsync`.
 
 ## <a name="cancelable-background-work"></a>Отменяемая фоновая операция
 
@@ -397,6 +432,6 @@ public class WeatherForecastService
 }
 ```
 
-## <a name="no-locblazor-server-reconnection-events"></a>События повторного подключения Blazor Server
+## <a name="blazor-server-reconnection-events"></a>События повторного подключения Blazor Server
 
 События жизненного цикла компонента, описываемые в этой статье, работают отдельно от [обработчиков событий повторного подключения Blazor Server](xref:blazor/fundamentals/additional-scenarios#reflect-the-connection-state-in-the-ui). Когда приложение Blazor Server теряет подключение SignalR к клиенту, прерываются только операции обновления пользовательского интерфейса. Они возобновляются при восстановлении подключения. Дополнительные сведения о конфигурации и событиях обработчика канала см. в статье <xref:blazor/fundamentals/additional-scenarios>.

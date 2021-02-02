@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 1f22468c2c9bfb5c3c184e8686f1a8d1b486536d
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e873fdd201cf0cdc809030fde30c6a8da2899861
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486074"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751559"
 ---
-# <a name="aspnet-core-no-locblazor-data-binding"></a>Привязка к данным в ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-data-binding"></a>Привязка к данным в ASP.NET Core Blazor
 
 Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham), [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth) и [Стив Сандерсон](https://github.com/SteveSandersonMS) (Steve Sanderson)
 
