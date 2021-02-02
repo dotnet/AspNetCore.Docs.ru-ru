@@ -1,2 +1,2 @@
 > [!WARNING]
-> [gRPC для ASP.NET Core ](xref:grpc/index) сейчас не поддерживается в Службе приложений Azure и служах IIS. Реализация HTTP.sys по протоколу HTTP/2 не поддерживает заголовки в конце HTTP-ответа, которые необходимы gRPC. Дополнительные сведения см. в [этой статье об ошибке на GitHub](https://github.com/dotnet/AspNetCore/issues/9020).
+> [ASP.NET Core gRPC](xref:grpc/index) предусматривает дополнительные требования в отношении использования со Службой приложений Azure или службами IIS. Дополнительные сведения о том, где можно использовать gRPC, см. в разделе <xref:grpc/supported-platforms>.

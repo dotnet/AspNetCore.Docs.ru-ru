@@ -4,7 +4,7 @@ author: mjrousos
 description: Узнайте, как работает проверка подлинности в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/03/2020
+ms.date: 1/24/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/index
-ms.openlocfilehash: e9e4ca11d20557666c75b84e56af825d002df0f1
-ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
+ms.openlocfilehash: 72036e9c4c92ee5dd82ac4a67e766fb0e5c8f924
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94464007"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057295"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Общие сведения о проверке подлинности в ASP.NET Core
 
@@ -62,7 +62,19 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 ## <a name="authentication-concepts"></a>Концепции проверки подлинности
 
+Проверка подлинности обеспечивает авторизацию <xref:System.Security.Claims.ClaimsPrincipal> для предоставления необходимых разрешений. Существует несколько подходов к схеме проверки подлинности для выбора обработчика проверки подлинности, отвечающего за создание правильного набора утверждений.
+
+  * [Схема проверки подлинности](xref:security/authorization/limitingidentitybyscheme), обсуждаемая в следующем разделе.
+  * Схема проверки подлинности по умолчанию, описанная в следующем разделе.
+  * Непосредственное задание параметра [HttpContext.User](xref:Microsoft.AspNetCore.Http.HttpContext.User).
+
+Автоматическая проверка схем не предусмотрена. Если схема по умолчанию не указана, ее следует указать в атрибуте авторизации. В противном случае возникает следующая ошибка:
+
+  InvalidOperationException: Не указана authenticationScheme и не удалось найти DefaultAuthenticateScheme. Схемы по умолчанию можно задать с помощью AddAuthentication(string defaultScheme) или AddAuthentication(Action&lt;AuthenticationOptions&gt; configureOptions).
+
 ### <a name="authentication-scheme"></a>Схема проверки подлинности
+
+[Схема проверки подлинности](xref:security/authorization/limitingidentitybyscheme) служит для выбора обработчика проверки подлинности, отвечающего за создание правильного набора утверждений. Дополнительные сведения см. в статье [Авторизация с использованием определенной схемы](xref:security/authorization/limitingidentitybyscheme).
 
 Схема проверки подлинности — это имя, соответствующее следующим элементам:
 
