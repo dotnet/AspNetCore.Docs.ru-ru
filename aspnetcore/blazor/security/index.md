@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 35620299b1138ca45a6ebf1d789a9f4aa9b29518
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 0a271b2e306e2969530248fe820ed8aab2fa45e0
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751607"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238185"
 ---
-# <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>Проверка подлинности и авторизация в ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-authentication-and-authorization"></a>Проверка подлинности и авторизация в ASP.NET Core Blazor
 
 Авторы: [Стив Сандерсон (Steve Sanderson)](https://github.com/SteveSandersonMS) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
@@ -48,7 +48,7 @@ ASP.NET Core поддерживает настройку и администри
 
 Blazor использует существующие механизмы проверки подлинности ASP.NET Core для установления личности пользователя. Конкретный механизм зависит от того, как размещается приложение Blazor (Blazor WebAssembly или Blazor Server).
 
-### <a name="no-locblazor-webassembly-authentication"></a>Blazor WebAssembly аутентификация
+### <a name="blazor-webassembly-authentication"></a>Blazor WebAssembly аутентификация
 
 В приложениях Blazor WebAssembly проверку подлинности можно обойти, так как пользователь может изменять весь код на стороне клиента. Это же справедливо для всех технологий на стороне клиента, включая платформы одностраничного приложения JavaScript или собственных приложений для любой операционной системы.
 
@@ -61,7 +61,7 @@ Blazor использует существующие механизмы пров
 
 Дополнительные сведения о создании и настройке приложений см. в статье <xref:blazor/security/webassembly/index>.
 
-### <a name="no-locblazor-server-authentication"></a>Blazor Server аутентификация
+### <a name="blazor-server-authentication"></a>Blazor Server аутентификация
 
 Приложения Blazor Server работают через подключение в реальном времени, созданное с помощью SignalR. [Проверка подлинности в приложениях на основе SignalR](xref:signalr/authn-and-authz) выполняется при установлении подключения. Аутентификация может выполняться на основе cookie или других маркеров носителя.
 
@@ -391,9 +391,9 @@ You can only see this if you're signed in.
 
 Компонент <xref:Microsoft.AspNetCore.Components.Routing.Router> вместе с компонентом <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> позволяет приложению указать пользовательское содержимое для следующих ситуаций:
 
-* содержимое не найдено;
-* пользователь не удовлетворяет условию [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute), которое применено к компоненту (атрибут [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) описан в разделе [Атрибут `[Authorize]`](#authorize-attribute));
-* выполняется асинхронная аутентификация.
+* Пользователь не удовлетворяет условию [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute), которое применено к компоненту. Отображается разметка для элемента [`<NotAuthorized>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized?displayProperty=nameWithType). Атрибут [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) описан в разделе [Атрибут `[Authorize]`](#authorize-attribute)).
+* Выполняется асинхронная авторизация. Как правило, это означает, что выполняется проверка подлинности пользователя. Отображается разметка для элемента [`<Authorizing>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing?displayProperty=nameWithType).
+* Содержимое не найдено. Отображается разметка для элемента [`<NotFound>`](xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound?displayProperty=nameWithType).
 
 В стандартном шаблоне проекта приложения Blazor Server есть компонент `App` (`App.razor`) для настройки пользовательского содержимого.
 
@@ -409,8 +409,8 @@ You can only see this if you're signed in.
                     <p>You may need to log in as a different user.</p>
                 </NotAuthorized>
                 <Authorizing>
-                    <h1>Authentication in progress</h1>
-                    <p>Only visible while authentication is in progress.</p>
+                    <h1>Authorization in progress</h1>
+                    <p>Only visible while authorization is in progress.</p>
                 </Authorizing>
             </AuthorizeRouteView>
         </Found>

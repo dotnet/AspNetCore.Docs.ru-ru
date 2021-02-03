@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/index
-ms.openlocfilehash: 2acddd212639ac0a82b3c46f2225ff66d0999dd0
-ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
+ms.openlocfilehash: a49388c73f2ec0ea03b35dbba1575ce70a4e1512
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217561"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238324"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
@@ -38,7 +38,7 @@ ms.locfileid: "99217561"
 
 В состав ASP.NET Core входит следующее:
 
-* Сервер [Kestrel](xref:fundamentals/servers/kestrel) — это реализация кроссплатформенного HTTP-сервера по умолчанию. Kestrel обеспечивает максимальную производительность и использование памяти, однако в ней нет некоторых дополнительных функций в HTTP.sys. Дополнительные сведения см. в разделе [Сравнение Kestrel и HTTP.sys](#korh) в этом документе.
+* Сервер [Kestrel](xref:fundamentals/servers/kestrel) — это реализация кроссплатформенного HTTP-сервера по умолчанию. Kestrel обеспечивает максимальную производительность и использование памяти, однако в ней нет некоторых дополнительных функций в HTTP.sys. Дополнительные сведения см. в следующем разделе [Сравнение Kestrel и HTTP.sys](#korh).
 * HTTP-сервер IIS — это [внутрипроцессный сервер для службы IIS](#hosting-models).
 * [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) — это HTTP-сервер, предназначенный только для Windows и основанный на [драйвере ядра HTTP.sys и API HTTP-сервера](/windows/desktop/Http/http-api-start-page).
 
