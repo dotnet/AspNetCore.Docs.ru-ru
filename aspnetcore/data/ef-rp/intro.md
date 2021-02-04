@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 86b57a9cad27673b72ad174a18741f5528f9f78a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e797228d498ec9b269e718c099a0532bbb4504d3
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97011862"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530246"
 ---
-# <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Использование Razor Pages с Entity Framework Core в ASP.NET Core: руководство 1 из 8
+# <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Использование Razor Pages с Entity Framework Core в ASP.NET Core: руководство 1 из 8
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -127,7 +127,7 @@ To run the app after downloading the completed project:
     1. В раскрывающихся списках выберите **.NET Core** и **ASP.NET Core 5.0**.
     1. **Веб-приложение ASP.NET Core**.
     1. Нажмите кнопку **Создать**.
-      ![Диалоговое окно создания проекта ASP.NET Core](~/data/ef-mvc/intro/_static/new-aspnet5.png)
+      ![Диалоговое окно создания проекта ASP.NET Core](~/data/ef-rp/intro/_static/new-aspnet5.png)
     
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -384,7 +384,7 @@ ASP.NET Core поддерживает [внедрение зависимосте
 Чтобы добавить пакет NuGet, в PMC введите следующую команду:
 
 ```powershell
-Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.2.20475.17
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
 ```
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -999,7 +999,7 @@ public async Task OnGetAsync()
 
 Стиль пользовательского интерфейса для этого сайта близок к обеспечиваемому встроенными шаблонами. Это руководство посвящено использованию EF Core с Razor Pages, а не работе с пользовательским интерфейсом.
 
-## <a name="create-the-contosouniversity-no-locrazor-pages-web-app"></a>Создание веб-приложения Razor Pages ContosoUniversity
+## <a name="create-the-contosouniversity-razor-pages-web-app"></a>Создание веб-приложения Razor Pages ContosoUniversity
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

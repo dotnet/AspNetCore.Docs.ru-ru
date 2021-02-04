@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: b1adca435b48db22a176d33a216c07d6647a6695
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 5f0e8efdf57e0a8ba5483680224d33ea5d60f06a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058315"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530155"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Чтение связанных данных
 
@@ -226,7 +226,7 @@ ms.locfileid: "98058315"
 
 В файле *Views/Instructors/Index.cshtml* после закрывающего таблицу элемента (в конце файла) добавьте следующий код. Этот код отображает список связанных с преподавателем курсов, когда преподаватель выбран.
 
-[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=66-101)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=63-98)]
 
 Этот код считывает свойство `Courses` модели представления для отображения списка курсов. Он также предоставляет гиперссылку **Select**, которая отправляет идентификатор выбранного курса в метод действия `Index`.
 

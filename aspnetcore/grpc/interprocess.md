@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/interprocess
-ms.openlocfilehash: d806a340d8540fce8af6ccc6ff68325e4b733922
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 8c0f8fb1468e61d5aa2e7f42cb5da33c01819124
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059888"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217470"
 ---
 # <a name="inter-process-communication-with-grpc"></a>Межпроцессное взаимодействие с помощью gRPC
 
@@ -64,9 +64,6 @@ Kestrel имеет встроенную поддержку конечных то
 ## <a name="client-configuration"></a>Настройка клиента
 
 `GrpcChannel` поддерживает выполнение вызовов gRPC через настраиваемый транспорт. При создании канала его можно настроить с помощью `SocketsHttpHandler`, у которого имеется настраиваемый `ConnectCallback`. Обратный вызов позволяет клиенту устанавливать соединения через настраиваемые транспорты, а затем передавать HTTP-запросы через этот транспорт.
-
-> [!IMPORTANT]
-> `SocketsHttpHandler.ConnectCallback` — это новый API в релизе-кандидате 2 платформы .NET 5.
 
 Пример фабрики подключений для сокетов доменов UNIX:
 

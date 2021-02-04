@@ -5,7 +5,7 @@ description: Сведения о создании на основе Blazor пр�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/11/2020
+ms.date: 01/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 1706d3502dc68f1c25e0c35ba8f5dd44b55ce690
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: fcf06295deb41f304b92caa82535a1197c909898
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658655"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238239"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Создание прогрессивных веб-приложений с помощью ASP.NET Core Blazor WebAssembly
 

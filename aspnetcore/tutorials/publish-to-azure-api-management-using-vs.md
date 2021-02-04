@@ -6,12 +6,12 @@ ms.author: masoucou
 ms.custom: devx-track-csharp, mvc
 ms.date: 11/22/2020
 uid: tutorials/publish-to-azure-api-management-using-vs
-ms.openlocfilehash: 395b5981a3018486235c38f032893f985ab71383
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ddff54bbd146c98cf83a865910401df26e7ac4ec
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96332239"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217587"
 ---
 # <a name="publish-an-aspnet-core-web-api-to-azure-api-management-with-visual-studio"></a>Публикация веб-API ASP.NET Core в службе управления API Azure с помощью Visual Studio
 
@@ -175,9 +175,9 @@ ms.locfileid: "96332239"
     ```csharp
     services.AddSwaggerGen(config =>
     {
-        config.SwaggerDoc("WeatherForecasts", new Microsoft.OpenApi.Models.OpenApiInfo
+        config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
         {
-            Title = "Weather Forecasts",
+            Title = "WeatherForecasts",
             Version = "v1"
         });
     });
