@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 0bbf740cb49b77b476e7e015afee311110bbe5ea
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4e86241771e884ba9079bcdf9a09eebc6acd62c8
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060993"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530220"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>Создание внутренних служб для собственных мобильных приложений в ASP.NET Core
 
@@ -52,7 +52,7 @@ ms.locfileid: "93060993"
 
 ![Диалоговое окно изменения элемента](native-mobile-backend/_static/todo-android-edit-item.png)
 
-По умолчанию этот пример настроен для использования внутренних служб, размещенных на сайте developer.xamarin.com и допускающих операции только для чтения. Чтобы самостоятельно протестировать его для сравнения с приложением ASP.NET Core, создаваемым в следующем разделе, на своем компьютере, нужно обновить константу `RestUrl` приложения. Перейдите к проекту `ToDoREST` и откройте файл *Constants.cs* . Замените `RestUrl` на URL-адрес, включающий IP-адрес вашего компьютера (не "localhost" или 127.0.0.1, так как этот адрес используется из эмулятора устройства, а не с вашего компьютера). Включите также номер порта (5000). Чтобы поверить работу служб с устройством, убедитесь, что в брандмауэре не активна блокировка доступа к этому порту.
+По умолчанию этот пример настроен для использования внутренних служб, размещенных на сайте developer.xamarin.com и допускающих операции только для чтения. Чтобы самостоятельно протестировать его для сравнения с приложением ASP.NET Core, создаваемым в следующем разделе, на своем компьютере, нужно обновить константу `RestUrl` приложения. Перейдите к проекту `ToDoREST` и откройте файл *Constants.cs*. Замените `RestUrl` на URL-адрес, включающий IP-адрес вашего компьютера (не "localhost" или 127.0.0.1, так как этот адрес используется из эмулятора устройства, а не с вашего компьютера). Включите также номер порта (5000). Чтобы поверить работу служб с устройством, убедитесь, что в брандмауэре не активна блокировка доступа к этому порту.
 
 ```csharp
 // URL of REST service (Xamarin ReadOnly Service)
@@ -64,11 +64,11 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 ## <a name="creating-the-aspnet-core-project"></a>Создание проекта ASP.NET Core
 
-Создайте веб-приложение ASP.NET Core в Visual Studio. Выберите шаблон "Веб-API" и параметр "Без проверки". Назовите проект *ToDoApi* .
+Создайте веб-приложение ASP.NET Core в Visual Studio. Выберите шаблон "Веб-API" и параметр "Без проверки". Назовите проект *ToDoApi*.
 
 ![Диалоговое окно создания веб-приложения ASP.NET с выбранным шаблоном проекта веб-API](native-mobile-backend/_static/web-api-template.png)
 
-Приложение должно отвечать на все запросы, направляемые на порт 5000. Для этого измените *Program.cs* , чтобы включить в него `.UseUrls("http://*:5000")`:
+Приложение должно отвечать на все запросы, направляемые на порт 5000. Для этого измените *Program.cs*, чтобы включить в него `.UseUrls("http://*:5000")`:
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Program.cs?range=10-16&highlight=3)]
 
@@ -87,18 +87,18 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Services/ToDoRepository.cs)]
 
-Настройте реализацию в файле *Startup.cs* :
+Настройте реализацию в файле *Startup.cs*:
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Startup.cs?highlight=6&range=29-35)]
 
-На этом этапе вы готовы создать *ToDoItemsController* .
+На этом этапе вы готовы создать *ToDoItemsController*.
 
 > [!TIP]
 > Дополнительные сведения о создании веб-API см. в статье [Создание первого веб-API с помощью MVC ASP.NET Core и Visual Studio](../tutorials/first-web-api.md).
 
 ## <a name="creating-the-controller"></a>Создание контроллера
 
-Добавьте в проект новый контроллер *ToDoItemsController* . Он должен наследовать от Microsoft.AspNetCore.Mvc.Controller. Добавьте атрибут `Route`, чтобы указать, что контроллер будет обрабатывать запросы, выполняемые по путям, начинающимся с `api/todoitems`. Токен `[controller]` в маршруте заменяется на имя контроллера (суффикс `Controller` опускается) и особенно удобен для глобальных маршрутов. Дополнительные сведения о [маршрутизации](../fundamentals/routing.md).
+Добавьте в проект новый контроллер *ToDoItemsController*. Он должен наследовать от Microsoft.AspNetCore.Mvc.Controller. Добавьте атрибут `Route`, чтобы указать, что контроллер будет обрабатывать запросы, выполняемые по путям, начинающимся с `api/todoitems`. Токен `[controller]` в маршруте заменяется на имя контроллера (суффикс `Controller` опускается) и особенно удобен для глобальных маршрутов. Дополнительные сведения о [маршрутизации](../fundamentals/routing.md).
 
 Для работы контроллеру нужен `IToDoRepository`; запросите экземпляр этого типа через конструктор контроллера. Во время выполнения этот экземпляр будет предоставляться с помощью поддержки [внедрения зависимостей](../fundamentals/dependency-injection.md) на платформе.
 
@@ -166,4 +166,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Аутентификация и авторизация](/xamarin/xamarin-forms/enterprise-application-patterns/authentication-and-authorization)
+- [Xamarin. Forms: проверка подлинности веб-службы](/xamarin/xamarin-forms/data-cloud/authentication/)
+- [Xamarin. Forms: использование веб-службы RESTFUL](/xamarin/xamarin-forms/data-cloud/web-services/rest)
+- [Microsoft Learn: использование веб-служб RESTFUL в приложениях Xamarin](/learn/modules/consume-rest-services/)
+- [Microsoft Learn: создание веб-API с помощью ASP.NET Core](/learn/modules/build-web-api-aspnet-core/)

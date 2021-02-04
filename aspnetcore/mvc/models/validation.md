@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: 77d49710b9d69f6fbbe92970f1c455de32489444
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d6fa7e4524a8afdc23d4ad46354d9d8b395656a3
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056963"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530194"
 ---
-# <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor страницах
+# <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor страницах
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -92,9 +92,27 @@ ms.locfileid: "93056963"
 
 Чтобы узнать, какие параметры передаются в `String.Format` для сообщения об ошибке определенного атрибута, см. раздел [Исходный код DataAnnotations](https://github.com/dotnet/runtime/tree/master/src/libraries/System.ComponentModel.Annotations/src/System/ComponentModel/DataAnnotations).
 
-## <a name="required-attribute"></a>Атрибут [Required]
+## <a name="non-nullable-reference-types-and-required-attribute"></a>Ссылочные типы, не допускающие значения NULL, и атрибут [Required]
 
-Система проверки в .NET Core 3.0 и более поздних версий рассматривает не допускающие значение NULL параметры или свойства привязки так, как если бы они имели атрибут `[Required]`. [Типы значений](/dotnet/csharp/language-reference/keywords/value-types), например `decimal` и `int`, не поддерживают значение NULL. Это поведение можно отключить с помощью параметра <xref:Microsoft.AspNetCore.Mvc.MvcOptions.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes> в `Startup.ConfigureServices`:
+Система проверки рассматривает параметры, не допускающие значения NULL, или привязанные свойства так, как если бы они имели `[Required]` атрибут. При [включении `Nullable` контекстов](/dotnet/csharp/nullable-references#nullable-contexts)MVC неявно запускает проверку свойств или параметров, не допускающих значения NULL, как если бы они были помечены `[Required]` атрибутом. Рассмотрим следующий код:
+
+```csharp
+public class Person
+{
+    public string Name { get; set; }
+}
+```
+
+Если приложение было создано с помощью `<Nullable>enable</Nullable>` , отсутствующее значение для `Name` в JSON или в форме POST приведет к ошибке проверки. Используйте ссылочный тип, допускающий значение null, чтобы указать NULL или отсутствующие значения для `Name` Свойства:
+
+```csharp
+public class Person
+{
+    public string? Name { get; set; }
+}
+```
+
+. Это поведение можно отключить с помощью параметра <xref:Microsoft.AspNetCore.Mvc.MvcOptions.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes> в `Startup.ConfigureServices`:
 
 ```csharp
 services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
@@ -176,7 +194,7 @@ public string MiddleName { get; set; }
 
 Для сценариев, где не годятся встроенные атрибуты проверки, можно создать настраиваемые атрибуты. Создайте класс, наследуемый от <xref:System.ComponentModel.DataAnnotations.ValidationAttribute>, и переопределите метод <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-Метод `IsValid` принимает объект с именем *value* , который является входными данными для проверки. Перегрузка также принимает объект `ValidationContext`, который предоставляет дополнительные сведения, такие как экземпляр модели, созданный с помощью привязки модели.
+Метод `IsValid` принимает объект с именем *value*, который является входными данными для проверки. Перегрузка также принимает объект `ValidationContext`, который предоставляет дополнительные сведения, такие как экземпляр модели, созданный с помощью привязки модели.
 
 В следующем примере проверяется, что дата выпуска фильмов в *классическом* жанре задана не позднее указанного года. Атрибут `[ClassicMovie]`:
 
@@ -210,7 +228,7 @@ public string MiddleName { get; set; }
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAgeSignature)]
 
-На странице "Check Age" (Проверка возраста) ( *CheckAge.cshtml* ) находятся две формы. Первая форма отправляет значение `Age`, равное `99`, в виде параметра строки запроса: `https://localhost:5001/Users/CheckAge?Age=99`.
+На странице "Check Age" (Проверка возраста) (*CheckAge.cshtml*) находятся две формы. Первая форма отправляет значение `Age`, равное `99`, в виде параметра строки запроса: `https://localhost:5001/Users/CheckAge?Age=99`.
 
 Если из строки запроса отправлен параметр `age` в правильном формате, форма проходит проверку.
 
@@ -357,7 +375,7 @@ $.get({
 
 Этот метод отрисовки атрибутов `data-` в формате HTML используется атрибутом `ClassicMovie` в примере приложения. Чтобы добавить клиентскую проверку с помощью этого метода, сделайте следующее.
 
-1. Создайте класс адаптера атрибута для настраиваемого атрибута проверки. Создайте класс, производный [от \<T> аттрибутеадаптербасе](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2). Создайте метод `AddValidation`, который добавляет атрибуты `data-` для выводимых данных, как показано в следующем примере.
+1. Создайте класс адаптера атрибута для настраиваемого атрибута проверки. Создайте класс, производный от <xref:Microsoft.AspNetCore.Mvc.DataAnnotations.AttributeAdapterBase%601>. Создайте метод `AddValidation`, который добавляет атрибуты `data-` для выводимых данных, как показано в следующем примере.
 
    [!code-csharp[](validation/samples/3.x/ValidationSample/Validation/ClassicMovieAttributeAdapter.cs?name=snippet_Class)]
 
@@ -385,8 +403,8 @@ $.get({
 
 Другие параметры отключения проверки на стороне клиента:
 
-* Закомментируйте ссылку на `_ValidationScriptsPartial` во всех файлах с расширением *CSHTML* .
-* Удалите содержимое файла *Pages\Shared\_ValidationScriptsPartial.cshtml* .
+* Закомментируйте ссылку на `_ValidationScriptsPartial` во всех файлах с расширением *CSHTML*.
+* Удалите содержимое файла *Pages\Shared\_ValidationScriptsPartial.cshtml*.
 
 Предыдущий подход не помешает проверке на стороне клиента ASP.NET Core Identity Razor библиотеки классов. Для получения дополнительной информации см. <xref:security/authentication/scaffold-identity>.
 
@@ -542,9 +560,9 @@ public string MiddleName { get; set; }
 
 Для сценариев, где не годятся встроенные атрибуты проверки, можно создать настраиваемые атрибуты. Создайте класс, наследуемый от <xref:System.ComponentModel.DataAnnotations.ValidationAttribute>, и переопределите метод <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-Метод `IsValid` принимает объект с именем *value* , который является входными данными для проверки. Перегрузка также принимает объект `ValidationContext`, который предоставляет дополнительные сведения, такие как экземпляр модели, созданный с помощью привязки модели.
+Метод `IsValid` принимает объект с именем *value*, который является входными данными для проверки. Перегрузка также принимает объект `ValidationContext`, который предоставляет дополнительные сведения, такие как экземпляр модели, созданный с помощью привязки модели.
 
-В следующем примере проверяется, что дата выпуска фильмов в *классическом* жанре задана не позднее указанного года. Атрибут `[ClassicMovie2]` сначала проверяет жанр и продолжает проверку, только если он *классический* . У фильмов, попавших в классику, система проверяет даты выпуска, чтобы убедиться в том, что она не является более поздней, чем ограничение, переданное в конструктор атрибута.
+В следующем примере проверяется, что дата выпуска фильмов в *классическом* жанре задана не позднее указанного года. Атрибут `[ClassicMovie2]` сначала проверяет жанр и продолжает проверку, только если он *классический*. У фильмов, попавших в классику, система проверяет даты выпуска, чтобы убедиться в том, что она не является более поздней, чем ограничение, переданное в конструктор атрибута.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
 
@@ -573,7 +591,7 @@ public string MiddleName { get; set; }
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAge)]
 
-На странице "Check Age" (Проверка возраста) ( *CheckAge.cshtml* ) находятся две формы. Первая форма отправляет значение `Age`, равное `99`, в виде строки запроса: `https://localhost:5001/Users/CheckAge?Age=99`.
+На странице "Check Age" (Проверка возраста) (*CheckAge.cshtml*) находятся две формы. Первая форма отправляет значение `Age`, равное `99`, в виде строки запроса: `https://localhost:5001/Users/CheckAge?Age=99`.
 
 Если из строки запроса отправлен параметр `age` в правильном формате, форма проходит проверку.
 
@@ -728,7 +746,7 @@ $.get({
 
 Этот метод отрисовки атрибутов `data-` в формате HTML используется атрибутом `ClassicMovie` в примере приложения. Чтобы добавить клиентскую проверку с помощью этого метода, сделайте следующее.
 
-1. Создайте класс адаптера атрибута для настраиваемого атрибута проверки. Создайте класс, производный [от \<T> аттрибутеадаптербасе](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2). Создайте метод `AddValidation`, который добавляет атрибуты `data-` для выводимых данных, как показано в следующем примере.
+1. Создайте класс адаптера атрибута для настраиваемого атрибута проверки. Создайте класс, производный от <xref:Microsoft.AspNetCore.Mvc.DataAnnotations.AttributeAdapterBase%601>. Создайте метод `AddValidation`, который добавляет атрибуты `data-` для выводимых данных, как показано в следующем примере.
 
    [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttributeAdapter.cs?name=snippet_ClassicMovieAttributeAdapter)]
 
@@ -758,7 +776,7 @@ $.get({
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 
-Еще один вариант отключения клиентской проверки клиента — закомментировать ссылку на `_ValidationScriptsPartial` в вашем файле *.cshtml* .
+Еще один вариант отключения клиентской проверки клиента — закомментировать ссылку на `_ValidationScriptsPartial` в вашем файле *.cshtml*.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

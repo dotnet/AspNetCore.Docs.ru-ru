@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 810eff7ccb08ecc22ea255bf0a9fe3d22637179f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4b877c64a881fec15ac9e9bd74ffdde0b5fa60f9
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060109"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530181"
 ---
-# <a name="host-aspnet-core-no-locsignalr-in-background-services"></a>ASP.NET Core узла SignalR в фоновых службах
+# <a name="host-aspnet-core-signalr-in-background-services"></a>ASP.NET Core узла SignalR в фоновых службах
 
 По [Брейди Гастер](https://twitter.com/bradygaster)
 
@@ -46,7 +46,7 @@ ms.locfileid: "93060109"
 
 ::: moniker-end
 
-## <a name="enable-no-locsignalr-in-startup"></a>Включить SignalR при запуске
+## <a name="enable-signalr-in-startup"></a>Включить SignalR при запуске
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -94,7 +94,7 @@ ms.locfileid: "93060109"
 
 ::: moniker-end
 
-## <a name="call-a-no-locsignalr-hub-from-a-background-service"></a>Вызов SignalR концентратора из фоновой службы
+## <a name="call-a-signalr-hub-from-a-background-service"></a>Вызов SignalR концентратора из фоновой службы
 
 Во время запуска `Worker` класс ( `BackgroundService` ) включается с помощью `AddHostedService` .
 
@@ -117,9 +117,9 @@ services.AddHostedService<Worker>();
 
 Так как `ExecuteAsync` метод вызывается итеративно в фоновой службе, текущая дата и время сервера отправляются подключенным клиентам с помощью `ClockHub` .
 
-## <a name="react-to-no-locsignalr-events-with-background-services"></a>Реагирование на SignalR события с помощью фоновых служб
+## <a name="react-to-signalr-events-with-background-services"></a>Реагирование на SignalR события с помощью фоновых служб
 
-Как и приложение с одним страницам, использующее клиент JavaScript для или классическое SignalR приложение .NET, может использовать с помощью <xref:signalr/dotnet-client> , а `BackgroundService` `IHostedService` также для подключения к SignalR концентраторам и реагирования на события.
+Как и в одностраничном приложении, использующем клиент JavaScript для SignalR , или классическое приложение .NET, использующее <xref:signalr/dotnet-client> , для `BackgroundService` `IHostedService` подключения к SignalR концентраторам и реагирования на события можно также использовать реализацию.
 
 `ClockHubClient`Класс реализует `IClock` интерфейс и интерфейс `IHostedService` . Таким образом, его можно включить во время `Startup` непрерывного выполнения и реагирования на события концентратора с сервера.
 
