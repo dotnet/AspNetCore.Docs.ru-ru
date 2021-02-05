@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: fe30c3b3be92c30dea6d0cb97e642eec1da6328b
-ms.sourcegitcommit: 72c8ada9b9644ee4751ed6869e892a8558dd8e66
+ms.openlocfilehash: efc73022d0bd8c29595f9bed1c06fe07002eb54a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723516"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530103"
 ---
-# <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Создание и использование компонентов Razor ASP.NET Core
+# <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов Razor ASP.NET Core
 
 Авторы: [Люк Латэм (Luke Latham)](https://github.com/guardrex), [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27), [Скотт Эдди (Scott Addie)](https://github.com/scottaddie) и [Тобиас Бартщ (Tobias Bartsch)](https://www.aveo-solutions.com/)
 
@@ -38,7 +38,7 @@ ms.locfileid: "98723516"
 
 Компоненты реализуются в файлах компонентов [Razor](xref:mvc/views/razor) (`.razor`) с помощью комбинации разметки HTML и C#. Компонент в Blazor формально называется *компонентом Razor* .
 
-### <a name="no-locrazor-syntax"></a>Синтаксис Razor
+### <a name="razor-syntax"></a>Синтаксис Razor
 
 В компонентах Razor приложений Blazor часто используется синтаксис Razor. Если вы не знакомы с языком разметки Razor, рекомендуем сначала ознакомиться со [справочником по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor).
 
@@ -339,6 +339,11 @@ public string Title { get; set; } = "Panel Title from Child";
 >     </ChildComponent>
 > }
 > ```
+
+Сведения о том, как использовать <xref:Microsoft.AspNetCore.Components.RenderFragment> в качестве шаблона для пользовательского интерфейса компонента Razor, см. в следующих статьях:
+
+* <xref:blazor/components/templated-components>
+* <xref:blazor/webassembly-performance-best-practices#define-reusable-renderfragments-in-code>
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>Сплаттинг атрибутов и произвольные параметры
 
@@ -824,7 +829,7 @@ public class NotifierService
 }
 ```
 
-## <a name="no-locrazor-templates"></a>Шаблоны Razor
+## <a name="razor-templates"></a>Шаблоны Razor
 
 Фрагменты отрисовки можно определить с помощью синтаксиса шаблонов Razor. Шаблоны Razor позволяют определить фрагмент кода пользовательского интерфейса и подразумевают следующий формат.
 
