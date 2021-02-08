@@ -17,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: ad4184fce494ba06acf7e583a42a54d04d37ea20
-ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
+ms.openlocfilehash: 266781d0abc564952e124bc6eca3805c07592251
+ms.sourcegitcommit: 50d3e939a90c5480df480f651dda032901468dd5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96556649"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819059"
 ---
-# <a name="introduction-to-no-locidentity-on-aspnet-core"></a>Введение в Identity ASP.NET Core
+# <a name="introduction-to-identity-on-aspnet-core"></a>Введение в Identity ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -39,7 +39,7 @@ ASP.NET Core Identity:
 
 [!INCLUDE[](~/includes/requireAuth.md)]
 
-[ Identity Исходный код](https://github.com/dotnet/AspNetCore/tree/master/src/Identity) доступен на сайте GitHub. [Формирование Identity шаблонов](xref:security/authentication/scaffold-identity) и просмотрите созданные файлы, чтобы проверить взаимодействие с шаблоном Identity .
+[ Identity Исходный код](https://github.com/dotnet/AspNetCore/tree/main/src/Identity) доступен на сайте GitHub. [Формирование Identity шаблонов](xref:security/authentication/scaffold-identity) и просмотрите созданные файлы, чтобы проверить взаимодействие с шаблоном Identity .
 
 Identity обычно настраивается с помощью SQL Server базы данных для хранения имен пользователей, паролей и данных профилей. Кроме того, можно использовать еще одно постоянное хранилище, например хранилище таблиц Azure.
 
@@ -63,7 +63,7 @@ Identity обычно настраивается с помощью SQL Server б
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выберите **файл** > **создать** > **проект**.
-* Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Щелкните **ОК**.
+* Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **OK**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
 
@@ -119,7 +119,7 @@ dotnet ef database update
 
 <a name="pw"></a>
 
-### <a name="configure-no-locidentity-services"></a>Настройка Identity служб
+### <a name="configure-identity-services"></a>Настройка Identity служб
 
 Службы добавляются в `ConfigureServices` . По стандартному шаблону сначала вызываются все методы `Add{Service}`, а затем все методы `services.Configure{Service}`.
 
@@ -214,7 +214,7 @@ https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Ident
 
 [!code-cshtml[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
-## <a name="test-no-locidentity"></a>Проверьте Identity
+## <a name="test-identity"></a>Проверьте Identity
 
 Шаблоны веб-проектов по умолчанию разрешают анонимный доступ к домашним страницам. Чтобы протестировать Identity , добавьте [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) :
 
@@ -222,20 +222,20 @@ https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Ident
 
 Если вы вошли в систему, выйдите из нее. Запустите приложение и щелкните ссылку **Конфиденциальность** . Вы перейдете на страницу входа.
 
-### <a name="explore-no-locidentity"></a>Просматриваем Identity
+### <a name="explore-identity"></a>Просматриваем Identity
 
 IdentityБолее подробное изучение:
 
 * [Создание полного источника идентификатора пользовательского интерфейса](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
 * Изучите источник каждой страницы и пошаговое выполнение отладчика.
 
-## <a name="no-locidentity-components"></a>Identity Компонента
+## <a name="identity-components"></a>Identity Компонента
 
 Все Identity зависимые пакеты NuGet включены в [ASP.NET Core общую платформу](xref:aspnetcore-3.0#use-the-aspnet-core-shared-framework).
 
 Основным пакетом для Identity является [Microsoft. AspNetCore. Identity ](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/) Этот пакет содержит основной набор интерфейсов для ASP.NET Core Identity и включен в `Microsoft.AspNetCore.Identity.EntityFrameworkCore` .
 
-## <a name="migrating-to-no-locaspnet-core-identity"></a>Миграция в ASP.NET Core Identity
+## <a name="migrating-to-aspnet-core-identity"></a>Миграция в ASP.NET Core Identity
 
 Дополнительные сведения и рекомендации по переносу существующего Identity хранилища см. в статье [Миграция Identity проверки подлинности и ](xref:migration/identity).
 
@@ -243,7 +243,7 @@ IdentityБолее подробное изучение:
 
 См. раздел [Конфигурация](#pw) для примера, который устанавливает минимальные требования к паролю.
 
-## <a name="adddefaultno-locidentity-and-addno-locidentity"></a>Адддефаулт Identity и добавитьIdentity
+## <a name="adddefaultidentity-and-addidentity"></a>Адддефаулт Identity и добавитьIdentity
 
 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> было введено в ASP.NET Core 2,1. Вызов `AddDefaultIdentity` аналогичен вызову следующего:
 
@@ -253,7 +253,7 @@ IdentityБолее подробное изучение:
 
 Дополнительные сведения см. в разделе [адддефаулт Identity Source](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) .
 
-## <a name="prevent-publish-of-static-no-locidentity-assets"></a>Запретить публикацию статических Identity ресурсов
+## <a name="prevent-publish-of-static-identity-assets"></a>Запретить публикацию статических Identity ресурсов
 
 Чтобы предотвратить публикацию статических Identity ресурсов (таблиц стилей и файлов JavaScript для Identity пользовательского интерфейса) в корневом каталоге веб-сайта, добавьте следующее `ResolveStaticWebAssetsInputsDependsOn` свойство и `RemoveIdentityAssets` целевой объект в файл проекта приложения:
 
@@ -271,7 +271,7 @@ IdentityБолее подробное изучение:
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Следующие шаги
 
 * [Исходный код ASP.NET Core Identity](https://github.com/dotnet/aspnetcore/tree/master/src/Identity)
 * Сведения о настройке с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) Identity .
@@ -300,7 +300,7 @@ Identity можно настроить с помощью SQL Server базы д�
 
 <a name="adi"></a>
 
-## <a name="adddefaultno-locidentity-and-addno-locidentity"></a>Адддефаулт Identity и добавитьIdentity
+## <a name="adddefaultidentity-and-addidentity"></a>Адддефаулт Identity и добавитьIdentity
 
 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> было введено в ASP.NET Core 2,1. Вызов `AddDefaultIdentity` аналогичен вызову следующего:
 
@@ -317,7 +317,7 @@ Identity можно настроить с помощью SQL Server базы д�
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Выберите **файл** > **создать** > **проект**.
-* Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Щелкните **ОК**.
+* Выберите **Новое веб-приложение ASP.NET Core**. Присвойте проекту имя **APP1** , которое будет иметь то же пространство имен, что и загружаемый проект. Нажмите кнопку **OK**.
 * Выберите ASP.NET Core **веб-приложение**, а затем щелкните **изменить проверку подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
 
@@ -363,7 +363,7 @@ dotnet ef database update
 
 <a name="pw"></a>
 
-### <a name="configure-no-locidentity-services"></a>Настройка Identity служб
+### <a name="configure-identity-services"></a>Настройка Identity служб
 
 Службы добавляются в `ConfigureServices` . По стандартному шаблону сначала вызываются все методы `Add{Service}`, а затем все методы `services.Configure{Service}`.
 
@@ -431,7 +431,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 [!code-cshtml[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 
-## <a name="test-no-locidentity"></a>Проверьте Identity
+## <a name="test-identity"></a>Проверьте Identity
 
 Шаблоны веб-проектов по умолчанию разрешают анонимный доступ к домашним страницам. Чтобы протестировать Identity , добавьте [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) на страницу конфиденциальность.
 
@@ -439,20 +439,20 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 Если вы вошли в систему, выйдите из нее. Запустите приложение и щелкните ссылку **Конфиденциальность** . Вы перейдете на страницу входа.
 
-### <a name="explore-no-locidentity"></a>Просматриваем Identity
+### <a name="explore-identity"></a>Просматриваем Identity
 
 IdentityБолее подробное изучение:
 
 * [Создание полного источника идентификатора пользовательского интерфейса](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
 * Изучите источник каждой страницы и пошаговое выполнение отладчика.
 
-## <a name="no-locidentity-components"></a>Identity Компонента
+## <a name="identity-components"></a>Identity Компонента
 
 Все Identity зависимые пакеты NuGet включены в пакет [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app).
 
 Основным пакетом для Identity является [Microsoft. AspNetCore. Identity ](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/) Этот пакет содержит основной набор интерфейсов для ASP.NET Core Identity и включен в `Microsoft.AspNetCore.Identity.EntityFrameworkCore` .
 
-## <a name="migrating-to-no-locaspnet-core-identity"></a>Миграция в ASP.NET Core Identity
+## <a name="migrating-to-aspnet-core-identity"></a>Миграция в ASP.NET Core Identity
 
 Дополнительные сведения и рекомендации по переносу существующего Identity хранилища см. в статье [Миграция Identity проверки подлинности и ](xref:migration/identity).
 
@@ -460,7 +460,7 @@ IdentityБолее подробное изучение:
 
 См. раздел [Конфигурация](#pw) для примера, который устанавливает минимальные требования к паролю.
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Следующие шаги
 
 * Сведения о настройке с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) Identity .
 * [Настройка Identity](xref:security/authentication/identity-configuration)
