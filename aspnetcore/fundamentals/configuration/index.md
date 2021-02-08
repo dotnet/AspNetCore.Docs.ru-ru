@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 97ee00dd37ed4eef1c013e0f45b598a79f3f260c
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: 62c9d1a58e0f771d91e2bc57f39ec5ebb25baaed
+ms.sourcegitcommit: 37186f76e4a50d7fb7389026dd0e5e234b51ebb2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035870"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541372"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -98,7 +98,7 @@ ms.locfileid: "96035870"
 
 [!INCLUDE[](~/includes/bind.md)]
 
-С помощью конфигурации [по умолчанию](#default) файлы *appsettings.json* и *appsettings.* `Environment` *.json* включаются с помощью [reloadOnChange: true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75). Изменения, внесенные в файлы *appsettings.json* и *appsettings.* `Environment` *.json* ***после** запуска приложения, считываются [поставщиком конфигурации JSON](#jcp).
+С помощью конфигурации [по умолчанию](#default) файлы *appsettings.json* и *appsettings.* `Environment` *.json* включаются с помощью [reloadOnChange: true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75). Изменения, внесенные в файлы *appsettings.json* и *appsettings.* `Environment` *.json* ***после*** запуска приложения, считываются [поставщиком конфигурации JSON](#jcp).
 
 Сведения о добавлении дополнительных файлов конфигурации JSON см. в разделе [Поставщик конфигурации JSON](#jcp) в этом документе.
 
@@ -112,7 +112,7 @@ ms.locfileid: "96035870"
 
 Рекомендации по данным конфигурации:
 
-_Никогда не храните пароли или другие конфиденциальные данные в коде поставщика конфигурации или в файлах конфигурации обычного текста. Хранить секреты во время разработки можно с помощью [диспетчера секретов](xref:security/app-secrets).
+* Никогда не храните пароли или другие конфиденциальные данные в коде поставщика конфигурации или в файлах конфигурации обычного текста. Хранить секреты во время разработки можно с помощью [диспетчера секретов](xref:security/app-secrets).
 * Не используйте секреты рабочей среды в средах разработки и тестирования.
 * Указывайте секреты вне проекта, чтобы их нельзя было случайно зафиксировать в репозитории с исходным кодом.
 
@@ -449,13 +449,13 @@ API конфигурации имеет особые правила обрабо
   * `reloadOnChange: true`: При сохранении изменений файл перезагружается.
 * Считывает [поставщиков конфигурации по умолчанию](#default) до файла *MyConfig.json*. Параметры в файле *MyConfig.json* переопределяют параметр в поставщиках конфигурации по умолчанию, включая [поставщик конфигурация переменных среды](#evcp) и [поставщик конфигурации командной строки](#clcp).
 
-Обычно ***не** _ требуется, чтобы пользовательские файлы JSON переопределяли значения, заданные в [поставщике конфигурации переменных среды](#evcp) и [поставщике конфигурации командной строки](#clcp).
+Обычно ***не*** требуется, чтобы пользовательские файлы JSON переопределяли значения, заданные в [поставщике конфигурации переменных среды](#evcp) и [поставщике конфигурации командной строки](#clcp).
 
 Следующий код очищает все поставщики конфигурации и добавляет несколько поставщиков конфигурации:
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramJSON2.cs?name=snippet)]
 
-В приведенном выше коде параметры в файлах _MyConfig.json* и  *MyConfig*.`Environment`.*json*:
+В приведенном выше коде параметры в файлах *MyConfig.json* и *MyConfig*.`Environment`.*json*:
 
 * Переопределяют параметры в файлах *appsettings.json* и *appsettings*.`Environment`.*json*.
 * Переопределяются параметрами в [поставщике конфигурации переменных среды](#evcp) и [поставщике конфигурации командной строки](#clcp).
@@ -727,7 +727,7 @@ Index: 5  Value: value5
 
 Дополнительные сведения см. в руководстве по [доступу к конфигурации с использованием удобных методов](xref:fundamentals/startup#convenience-methods).
 
-## <a name="access-configuration-in-no-locrazor-pages"></a>Конфигурация доступа в RazorPages
+## <a name="access-configuration-in-razor-pages"></a>Конфигурация доступа в RazorPages
 
 В следующем коде отображаются данные конфигурации в RazorPage:
 
@@ -805,7 +805,7 @@ Index: 5  Value: value5
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Исходный код конфигурации](https://github.com/dotnet/extensions/tree/master/src/Configuration)
+* [Исходный код конфигурации](https://github.com/dotnet/runtime/tree/master/src/libraries/Microsoft.Extensions.Configuration)
 * <xref:fundamentals/configuration/options>
 * <xref:blazor/fundamentals/configuration>
 
@@ -1839,7 +1839,7 @@ public class Startup
 
 Дополнительные сведения см. в руководстве по [доступу к конфигурации с использованием удобных методов](xref:fundamentals/startup#convenience-methods).
 
-## <a name="access-configuration-in-a-no-locrazor-pages-page-or-mvc-view"></a>Настройте доступ на странице Razor Pages или в представлении MVC
+## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>Настройте доступ на странице Razor Pages или в представлении MVC
 
 Для доступа к параметрам конфигурации на странице Razor Pages или в представлении MVC добавьте [использование директивы](xref:mvc/views/razor#using) ([Справочник по C#: использование директивы](/dotnet/csharp/language-reference/keywords/using-directive)) для [пространства имен Microsoft.Extensions.Configuration](xref:Microsoft.Extensions.Configuration) и вставьте <xref:Microsoft.Extensions.Configuration.IConfiguration> на страницу или в представление.
 
