@@ -105,9 +105,9 @@
         - name: Использование SignalR с TypeScript
           displayName: tutorial
           uid: tutorials/signalr-typescript-webpack
-        - name: SignalR с Blazor WebAssembly
+        - name: SignalR с Blazor
           displayName: tutorial
-          uid: tutorials/signalr-blazor-webassembly
+          uid: tutorials/signalr-blazor
     - name: Приложения удаленного вызова процедур
       items:
         - name: "Начало работы со службой\_gRPC"
@@ -308,8 +308,8 @@
           items:
             - name: Создание приложения Blazor со списком дел
               uid: tutorials/build-a-blazor-app
-            - name: SignalR с Blazor WebAssembly
-              uid: tutorials/signalr-blazor-webassembly
+            - name: SignalR с Blazor
+              uid: tutorials/signalr-blazor
         - name: Структура проекта
           uid: blazor/project-structure
         - name: Основы
@@ -625,8 +625,8 @@
           uid: tutorials/signalr
         - name: Использование SignalR с TypeScript
           uid: tutorials/signalr-typescript-webpack
-        - name: SignalR с Blazor WebAssembly
-          uid: tutorials/signalr-blazor-webassembly
+        - name: SignalR с Blazor
+          uid: tutorials/signalr-blazor
     - name: Примеры
       href: 'https://github.com/aspnet/SignalR-samples'
       displayName: signalr
@@ -1046,7 +1046,7 @@
   items:
     - name: Обзор
       uid: security/index
-    - name: Проверка подлинности
+    - name: Аутентификация
       items:
         - name: Обзор
           uid: security/authentication/index
