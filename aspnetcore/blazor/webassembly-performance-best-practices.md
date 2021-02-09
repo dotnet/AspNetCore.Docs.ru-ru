@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 0753ef0f1cde7bbb45ecc09b97fecb5ce364811c
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 58a87bc5413523fdf052a9e1c41196bb8b0ab457
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024656"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529973"
 ---
-# <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Рекомендации по повышению производительности ASP.NET Core Blazor WebAssembly
+# <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>Рекомендации по повышению производительности ASP.NET Core Blazor WebAssembly
 
 Авторы: [Пранав Кришнамурти](https://github.com/pranavkm) (Pranav Krishnamoorthy) и [Стив Сандерсон](https://github.com/SteveSandersonMS) (Steve Sanderson)
 
@@ -191,7 +191,7 @@ ms.locfileid: "98024656"
 @RenderWelcomeInfo
 
 @code {
-    RenderFragment RenderWelcomeInfo = __builder =>
+    private RenderFragment RenderWelcomeInfo = __builder =>
     {
         <div>
             <p>Welcome to your new app!</p>
@@ -221,12 +221,12 @@ public static RenderFragment SayHello = __builder =>
 <div class="chat">
     @foreach (var message in messages)
     {
-        @DisplayChatMessage(message)
+        @ChatMessageDisplay(message)
     }
 </div>
 
 @code {
-    RenderFragment<ChatMessage> DisplayChatMessage = message => __builder =>
+    private RenderFragment<ChatMessage> ChatMessageDisplay = message => __builder =>
     {
         <div class="chat-message">
             <span class="author">@message.Author</span>
@@ -237,6 +237,17 @@ public static RenderFragment SayHello = __builder =>
 ```
 
 Такой подход позволяет повторно использовать логику отрисовки без дополнительных затрат на компоненты. Но зато здесь невозможно независимо обновлять поддерево пользовательского интерфейса или пропускать визуализацию этого поддерева при отрисовке родительского элемента, так как мы убрали границу между компонентами.
+
+Для нестатического поля, метода или свойства, на которые не может ссылаться инициализатор поля, например `TitleTemplate` в следующем примере, используйте свойство вместо поля для <xref:Microsoft.AspNetCore.Components.RenderFragment>:
+
+```csharp
+protected RenderFragment DisplayTitle => __builder =>
+{
+    <div>
+        @TitleTemplate
+    </div>   
+};
+```
 
 #### <a name="dont-receive-too-many-parameters"></a>Не принимайте слишком много параметров
 

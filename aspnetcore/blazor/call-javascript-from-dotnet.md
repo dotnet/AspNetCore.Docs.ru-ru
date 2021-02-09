@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 53b702cddca778e06e617df3798bffb21677d36b
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: ca42b611a61fc394655e396f914e8e050c578e6a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751644"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530090"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>Вызов функций JavaScript из методов .NET в ASP.NET Core Blazor
 
@@ -523,14 +523,14 @@ export function showPrompt(message) {
 }
 ```
 
-Добавьте предыдущий модуль JavaScript в библиотеку .NET в виде статического веб-ресурса (`wwwroot/exampleJsInterop.js`), а затем импортируйте модуль в код .NET с помощью службы <xref:Microsoft.JSInterop.IJSRuntime>. Служба внедряется как `js` (не показано) в следующем примере:
+Добавьте предыдущий модуль JavaScript в библиотеку .NET в виде статического веб-ресурса (`wwwroot/exampleJsInterop.js`), а затем импортируйте модуль в код .NET, вызвав <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> для службы <xref:Microsoft.JSInterop.IJSRuntime>. Служба внедряется как `js` (не показано) в следующем примере:
 
 ```csharp
 var module = await js.InvokeAsync<IJSObjectReference>(
     "import", "./_content/MyComponents/exampleJsInterop.js");
 ```
 
-Идентификатором `import` в предыдущем примере является специальный идентификатор, используемый специально для импорта модуля JavaScript. Укажите модуль, используя путь к статическому стабильному веб-ресурсу: `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}`. Сегмент пути для текущего каталога (`./`) необходим для создания корректного пути к статическому ресурсу в файле JavaScript. Заполнитель `{LIBRARY NAME}` — это имя библиотеки. Заполнитель `{PATH UNDER WWWROOT}` — это путь к скрипту в разделе `wwwroot`.
+Идентификатором `import` в предыдущем примере является специальный идентификатор, используемый специально для импорта модуля JavaScript. Укажите модуль, используя путь к статическому стабильному веб-ресурсу: `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}`. Сегмент пути для текущего каталога (`./`) необходим для создания корректного пути к статическому ресурсу в файле JavaScript. Для динамического импорта модуля требуется сетевой запрос, поэтому его можно выполнить только асинхронно, вызвав <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A>. Заполнитель `{LIBRARY NAME}` — это имя библиотеки. Заполнитель `{PATH UNDER WWWROOT}` — это путь к скрипту в папке `wwwroot`.
 
 <xref:Microsoft.JSInterop.IJSRuntime> импортирует модуль как `IJSObjectReference`, который представляет ссылку на объект JavaScript из кода .NET. Используйте `IJSObjectReference` для вызова экспортированных функций JavaScript из модуля:
 

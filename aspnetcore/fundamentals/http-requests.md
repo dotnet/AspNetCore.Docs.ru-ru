@@ -5,7 +5,7 @@ description: Сведения об использовании интерфейс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/09/2020
+ms.date: 1/21/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: 34c35daac3da845bac9156fe96078df7902a4cd0
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1cf3029452f87a396847f969f0f3136a75874752
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059498"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057334"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Выполнения HTTP-запросов с помощью IHttpClientFactory в ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Авторы: [Гленн Кондрон (Glenn Condron)](https://github.com/glennc), [Райан Новак (Ryan Nowak)](https://github.com/rynowak), [Стив Гордон (Steve Gordon)](https://github.com/stevejgordon), [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT) и [Кирк Ларкин (Kirk Larkin)](https://github.com/serpent5)
+Авторы [Кирк Ларкин](https://github.com/serpent5) (Kirk Larkin), [Стив Гордон](https://github.com/stevejgordon) (Steve Gordon), [Гленн Кондрон](https://github.com/glennc) (Glenn Condron) и [Райан Новак](https://github.com/rynowak) (Ryan Nowak).
 
 <xref:System.Net.Http.IHttpClientFactory> можно зарегистрировать и использовать для настройки и создания экземпляров <xref:System.Net.Http.HttpClient> в приложении. `IHttpClientFactory` предоставляет следующие преимущества:
 
@@ -58,7 +58,7 @@ ms.locfileid: "93059498"
 
 `IHttpClientFactory` можно зарегистрировать, вызвав `AddHttpClient`:
 
-[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
+[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1&highlight=13)]
 
 `IHttpClientFactory` можно запросить с помощью [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection). Следующий код использует `IHttpClientFactory` для создания экземпляра `HttpClient`:
 
@@ -238,16 +238,15 @@ public class ValuesController : ControllerBase
 
 В `HttpClient` существует концепция делегирования обработчиков, которые можно связать друг с другом для исходящих HTTP-запросов. `IHttpClientFactory`.
 
-* Упрощает определение обработчиков для применения к каждому именованному клиенту.
-* Поддерживает регистрацию и объединение в цепочки нескольких обработчиков для создания конвейера ПО промежуточного слоя для исходящих запросов. Каждый из этих обработчиков может выполнять работу до и после исходящего запроса. Этот шаблон:
-
-  * похож на входящий конвейер ПО промежуточного слоя в ASP.NET Core;
-  * предоставляет механизм управления сквозной функциональностью HTTP-запросов, включая:
-
-    * кэширование
-    * обработку ошибок
-    * сериализацию
-    * Ведение журнала
+  * Упрощает определение обработчиков для применения к каждому именованному клиенту.
+  * Поддерживает регистрацию и объединение в цепочки нескольких обработчиков для создания конвейера ПО промежуточного слоя для исходящих запросов. Каждый из этих обработчиков может выполнять работу до и после исходящего запроса. Этот шаблон:
+  
+    * похож на входящий конвейер ПО промежуточного слоя в ASP.NET Core;
+    * предоставляет механизм управления сквозной функциональностью HTTP-запросов, включая:
+      * кэширование
+      * обработку ошибок
+      * сериализацию
+      * Ведение журнала
 
 Чтобы создать делегированный обработчик, сделайте следующее:
 
@@ -262,13 +261,31 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup2.cs?name=snippet1)]
 
-В приведенном выше коде `ValidateHeaderHandler` регистрируется с помощью внедрения зависимостей. `IHttpClientFactory` создает отдельную область внедрения зависимостей для каждого обработчика. Обработчики могут зависеть от служб из любой области. Службы, которые зависят от обработчиков, удаляются при удалении обработчика.
-
-После регистрации можно вызвать <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*>, передав тип обработчика.
+В приведенном выше коде `ValidateHeaderHandler` регистрируется с помощью внедрения зависимостей. После регистрации можно вызвать <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*>, передав тип обработчика.
 
 Можно зарегистрировать несколько обработчиков в порядке, в котором они должны выполняться. Каждый обработчик содержит следующий обработчик, пока последний `HttpClientHandler` не выполнит запрос:
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet6)]
+
+### <a name="use-di-in-outgoing-request-middleware"></a>Использование внедрения зависимостей в ПО промежуточного слоя для исходящих запросов
+
+Когда `IHttpClientFactory` создает новый делегированный обработчик, он использует внедрение зависимостей для выполнения параметров конструктора обработчика. `IHttpClientFactory` создает **отдельную** область внедрения зависимостей для каждого обработчика, что может стать причиной аномального поведения, когда обработчик использует службу с *назначенной областью*.
+
+Например, рассмотрим следующий интерфейс и его реализацию, которая представляет задачу в виде операции с идентификатором `OperationId`:
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Models/OperationScoped.cs?name=snippet_Types)]
+
+Как можно понять из названия, `IOperationScoped` регистрируется с помощью внедрения зависимостей с использованием времени существования с *назначенной областью*:
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Startup.cs?name=snippet_IOperationScoped&highlight=18,26)]
+
+Следующий делегирующий обработчик принимает и использует `IOperationScoped` для задания заголовка `X-OPERATION-ID` для исходящего запроса:
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Handlers/OperationHandler.cs?name=snippet_Class&highlight=13)]
+
+В [скачиваемом ресурсе `HttpRequestsSample`](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples/3.x/HttpRequestsSample)] перейдите к `/Operation` и обновите страницу. Значение области запроса изменяется с каждым запросом, но значение области обработчика изменяется только каждые 5 секунд.
+
+Обработчики могут зависеть от служб из любой области. Службы, которые зависят от обработчиков, удаляются при удалении обработчика.
 
 Используйте один из следующих методов для предоставления общего доступа к состоянию отдельных запросов с помощью обработчиков сообщений:
 
@@ -363,7 +380,7 @@ public class ValuesController : ControllerBase
 - `SocketsHttpHandler` обеспечивает совместное использование подключений экземплярами `HttpClient`. Этот позволяет предотвратить нехватку сокетов.
 - `SocketsHttpHandler` уничтожает подключения в соответствии со значением `PooledConnectionLifetime`, чтобы предотвратить проблемы устаревания записей DNS.
 
-### <a name="no-loccookies"></a>Cookies
+### <a name="cookies"></a>Cookies
 
 Объединение экземпляров `HttpMessageHandler` в пул приводит к совместному использованию объектов `CookieContainer`. Непредвиденное совместное использование объектов `CookieContainer` часто приводит к ошибкам в коде. Для приложений, которым требуются файлы cookie, рекомендуется один из следующих подходов:
 
@@ -681,7 +698,7 @@ public class ValuesController : ControllerBase
 - `SocketsHttpHandler` обеспечивает совместное использование подключений экземплярами `HttpClient`. Этот позволяет предотвратить нехватку сокетов.
 - `SocketsHttpHandler` уничтожает подключения в соответствии со значением `PooledConnectionLifetime`, чтобы предотвратить проблемы устаревания записей DNS.
 
-### <a name="no-loccookies"></a>Cookies
+### <a name="cookies"></a>Cookies
 
 Объединение экземпляров `HttpMessageHandler` в пул приводит к совместному использованию объектов `CookieContainer`. Непредвиденное совместное использование объектов `CookieContainer` часто приводит к ошибкам в коде. Для приложений, которым требуются файлы cookie, рекомендуется один из следующих подходов:
 
@@ -989,7 +1006,7 @@ public class ValuesController : ControllerBase
 - `SocketsHttpHandler` обеспечивает совместное использование подключений экземплярами `HttpClient`. Этот позволяет предотвратить нехватку сокетов.
 - `SocketsHttpHandler` уничтожает подключения в соответствии со значением `PooledConnectionLifetime`, чтобы предотвратить проблемы устаревания записей DNS.
 
-### <a name="no-loccookies"></a>Cookies
+### <a name="cookies"></a>Cookies
 
 Объединение экземпляров `HttpMessageHandler` в пул приводит к совместному использованию объектов `CookieContainer`. Непредвиденное совместное использование объектов `CookieContainer` часто приводит к ошибкам в коде. Для приложений, которым требуются файлы cookie, рекомендуется один из следующих подходов:
 

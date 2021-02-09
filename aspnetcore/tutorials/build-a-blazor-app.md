@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 6659b075f54292d9546466919f6842b920e6ece1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 106e1119db777074b5eae24f5d7e216e6127ca13
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97808742"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238304"
 ---
-# <a name="build-a-no-locblazor-todo-list-app"></a>Создание приложения Blazor со списком дел
+# <a name="build-a-blazor-todo-list-app"></a>Создание приложения Blazor со списком дел
 
 Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
 
@@ -54,7 +54,7 @@ ms.locfileid: "97808742"
 
 ::: moniker-end
 
-## <a name="create-a-todo-list-no-locblazor-app"></a>Создание приложения Blazor со списком задач
+## <a name="create-a-todo-list-blazor-app"></a>Создание приложения Blazor со списком задач
 
 1. Создайте в командной строке новое приложение Blazor с именем `TodoList`:
 
@@ -108,6 +108,12 @@ ms.locfileid: "97808742"
    `TodoItem.cs`:
 
    [!code-csharp[](build-a-blazor-app/samples_snapshot/TodoItem.cs)]
+   
+   > [!NOTE]
+   > При использовании Visual Studio для создания файла `ToDoItem.cs` и класса `ToDoItem` используйте один из следующих подходов:
+   >
+   > * Удалите пространство имен, создаваемое Visual Studio для класса.
+   > * Воспользуйтесь кнопкой **Копировать** в предыдущем блоке кода и замените все содержимое файла, создаваемого Visual Studio.
 
 1. Вернитесь к компоненту `Todo` и выполните указанные ниже задачи.
 

@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: c2b16f4bc8e69265b1d59082c3f029541f277d8b
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 72b33bc3c2861380551915b1e8caab49122e8fab
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252293"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529921"
 ---
-# <a name="aspnet-core-no-locblazor-component-virtualization"></a>Виртуализация компонентов ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-component-virtualization"></a>Виртуализация компонентов ASP.NET Core Blazor
 
 Автор: [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
 
@@ -149,7 +149,7 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 
 ## <a name="item-size"></a>Размер элемента
 
-Размер каждого элемента в пикселях можно задать с помощью <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (по умолчанию: 50):
+Высоту каждого элемента в пикселях можно задать с помощью <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (по умолчанию: 50):
 
 ```razor
 <Virtualize Context="employee" Items="@employees" ItemSize="25">

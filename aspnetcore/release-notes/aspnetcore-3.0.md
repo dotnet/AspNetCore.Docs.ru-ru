@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 235daac5c08248ca2052de6b44e66a8162ce23ad
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 161d6aeefe1882b86ce97cdcfa7e5b23048693f0
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93051243"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217509"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Новые возможности в ASP.NET Core 3.0
 
@@ -53,11 +53,11 @@ Blazor — это новая платформа в ASP.NET Core, предназ
 
 Blazor отделяет логику отображения компонентов от того, как применяются обновления пользовательского интерфейса. Blazor Server предоставляет поддержку размещения компонентов Razor на сервере в приложении ASP.NET Core. Обновления пользовательского интерфейса передаются через подключение SignalR. Blazor Server поддерживается только в ASP.NET Core 3.0.
 
-### <a name="no-locblazor-webassembly-preview"></a>Blazor WebAssembly (предварительная версия)
+### <a name="blazor-webassembly-preview"></a>Blazor WebAssembly (предварительная версия)
 
 Приложения Blazor можно также запускать напрямую в браузере с использованием среды выполнения .NET на основе WebAssembly. Платформа Blazor WebAssembly доступна в режиме предварительной версии и *не* поддерживается в ASP.NET Core 3.0. Blazor WebAssembly будет поддерживаться в будущем выпуске ASP.NET Core.
 
-### <a name="no-locrazor-components"></a>составные части компонента Razor.
+### <a name="razor-components"></a>составные части компонента Razor.
 
 Приложения Blazor создаются на основе компонентов. Компоненты — это автономные блоки пользовательского интерфейса, такие как страница, диалоговое окно или форма. Это обычные классы .NET, определяющие логику отрисовки пользовательского интерфейса и обработчики событий на стороне клиента. Многофункциональные интерактивные веб-приложения можно создавать без JavaScript.
 
@@ -324,14 +324,14 @@ ASP.NET Core 3.0 теперь по умолчанию использует <xre
 
 Сведения о добавлении Json.NET в ASP.NET Core 3.0 см. в разделе [Добавление поддержки формата JSON на основе Newtonsoft.Json](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support).
 
-## <a name="new-no-locrazor-directives"></a>Новые директивы Razor
+## <a name="new-razor-directives"></a>Новые директивы Razor
 
 Следующий список содержит новые директивы Razor.
 
 * [`@attribute`](xref:mvc/views/razor#attribute): Директива `@attribute` применяет этот атрибут к классу созданной страницы или представления. Например, `@attribute [Authorize]`.
 * [`@implements`](xref:mvc/views/razor#implements): Директива `@implements` реализует интерфейс для созданного класса. Например, `@implements IDisposable`.
 
-## <a name="no-locidentityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 поддерживает проверку подлинности и авторизацию для веб-API и одностраничных приложений
+## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 поддерживает проверку подлинности и авторизацию для веб-API и одностраничных приложений
 
 ASP.NET Core 3.0 обеспечивает проверку подлинности в одностраничных приложениях с помощью поддержки авторизации веб-API. ASP.NET Core Identity для проверки подлинности и хранения данных пользователей объединяется с [IdentityServer4](https://identityserver.io/) для реализации OpenID Connect.
 
@@ -376,7 +376,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Субъект-пользователь по умолчанию создается на основе свойств сертификата. Субъект-пользователь содержит событие, которое позволяет дополнить или заменить субъект. Для получения дополнительной информации см. <xref:security/authentication/certauth>.
 
-[Проверка подлинности Windows](/windows-server/security/windows-authentication/windows-authentication-overview) теперь предусмотрена для Linux и macOS. В предыдущих версиях проверка подлинности Windows была доступна только для [IIS](xref:host-and-deploy/iis/index) и [HttpSys](xref:fundamentals/servers/httpsys). В ASP.NET Core 3.0 [Kestrel](xref:fundamentals/servers/kestrel) имеет возможность использовать Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview) и [NTLM в Windows](/windows-server/security/kerberos/ntlm-overview), Linux и macOS для узлов, присоединенных к домену Windows. Поддержка Kestrel этих схем проверки подлинности предоставляется в пакете [Microsoft.AspNetCore.Authentication.Negotiate NuGet](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate). Как и в других службах проверки подлинности, настройте приложение проверки подлинности во всей организации, а затем настройте службу:
+[Проверка подлинности Windows](/windows-server/security/windows-authentication/windows-authentication-overview) теперь предусмотрена для Linux и macOS. В предыдущих версиях аутентификация Windows была доступна только для [IIS](xref:host-and-deploy/iis/index) и [HTTP.sys](xref:fundamentals/servers/httpsys). В ASP.NET Core 3.0 [Kestrel](xref:fundamentals/servers/kestrel) имеет возможность использовать Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview) и [NTLM в Windows](/windows-server/security/kerberos/ntlm-overview), Linux и macOS для узлов, присоединенных к домену Windows. Поддержка Kestrel этих схем проверки подлинности предоставляется в пакете [Microsoft.AspNetCore.Authentication.Negotiate NuGet](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate). Как и в других службах проверки подлинности, настройте приложение проверки подлинности во всей организации, а затем настройте службу:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

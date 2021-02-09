@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: e7bd5f4d61661dd23eb0907f896d0d32b7799aac
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 55993f951bfe910fb179fdb25b8d04f81d4ee2c9
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93061305"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057464"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ПО промежуточного слоя для переопределения URL-адресов в ASP.NET Core
 
@@ -290,7 +290,7 @@ public void Configure(IApplicationBuilder app)
 
 #### <a name="unsupported-features"></a>Неподдерживаемые функции
 
-ПО промежуточного слоя, выпущенное вместе с ASP.NET Core 2.x, не поддерживает следующие функции в модуле переопределения URL-адресов для IIS:
+ПО промежуточного слоя не поддерживает следующие функции в модуле переопределения URL-адресов для служб IIS:
 
 * Правила для исходящих подключений
 * Пользовательские переменные сервера

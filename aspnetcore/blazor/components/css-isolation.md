@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/css-isolation
-ms.openlocfilehash: 92545eab4004f6b67080f79d64b94bb424d5a102
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 0748f606314963788e6733ca2ae2ca2123d839b3
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96320087"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529986"
 ---
-# <a name="aspnet-core-no-locblazor-css-isolation"></a>Изоляция CSS в ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-css-isolation"></a>Изоляция CSS в ASP.NET Core Blazor
 
 Автор: [Дейв Брок](https://twitter.com/daveabrock) (Dave Brock)
 
@@ -34,11 +34,19 @@ ms.locfileid: "96320087"
 
 ## <a name="enable-css-isolation"></a>Включение изоляции CSS 
 
-Чтобы определить стили, относящиеся к компоненту, создайте файл `.razor.css`, соответствующий имени файла `.razor` для компонента. Этот файл `.razor.css` будет *файлом CSS с областью действия*. 
+Чтобы определить стили, относящиеся к компоненту, создайте файл `.razor.css`, соответствующий имени файла `.razor` для компонента в той же папке. Этот файл `.razor.css` будет *файлом CSS с назначенной областью*. 
 
-Для компонента `MyComponent`, имеющего файл `MyComponent.razor`, создайте файл с именем `MyComponent.razor.css` рядом с компонентом. Часть `MyComponent` в имени файла `.razor.css` **не** учитывает регистр.
+Для компонента `Example` в файле `Example.razor` создайте файл рядом с компонентом с именем `Example.razor.css`. Файл `Example.razor.css` должен находиться в той же папке, что и компонент `Example` (`Example.razor`). В базовом имени `Example` файла регистр **не** учитывается.
 
-Например, чтобы добавить изоляцию CSS в компонент `Counter` в шаблоне по умолчанию проекта Blazor, добавьте новый файл с именем `Counter.razor.css` в место расположения файла `Counter.razor`, а затем добавьте следующий код CSS:
+`Pages/Example.razor`:
+
+```razor
+@page "/example"
+
+<h1>Scoped CSS Example</h1>
+```
+
+`Pages/Example.razor.css`:
 
 ```css
 h1 { 
@@ -47,10 +55,10 @@ h1 {
 }
 ```
 
-Стили, определенные в файле `Counter.razor.css`, применяются только к отображаемым выходным данным компонента `Counter`. Все объявления CSS `h1`, определенные в других местах приложения, не будут конфликтовать со стилями `Counter`.
+**Стили, определенные в файле `Example.razor.css`, применяются только к отображаемым выходным данным компонента `Example`.** Изоляция CSS применяется к элементам HTML в соответствующем файле Razor. Все объявления CSS `h1`, определенные в других областях приложения, не будут конфликтовать со стилями компонента `Example`.
 
 > [!NOTE]
-> Чтобы обеспечить изоляцию стиля при возникновении объединений, блоки Razor `@import` не поддерживаются в файлах CSS с заданной областью.
+> Чтобы обеспечить изоляцию стиля при выполнении объединения, импорт CSS в блоки кода Razor не поддерживается.
 
 ## <a name="css-isolation-bundling"></a>Объединение изоляций CSS
 
@@ -59,7 +67,7 @@ h1 {
 По умолчанию эти статические файлы ищутся от корневого пути приложения. В приложении ссылайтесь на объединенный файл, проверив ссылку внутри тега `<head>` созданного HTML:
 
 ```html
-<link href="MyProjectName.styles.css" rel="stylesheet">
+<link href="ProjectName.styles.css" rel="stylesheet">
 ```
 
 В объединенном файле каждый компонент связан с идентификатором области. Для каждого компонента, имеющего стиль, атрибут HTML добавляется в формате `b-<10-character-string>`. Идентификатор уникален и отличается для каждого приложения. В отображаемом компоненте `Counter` Blazor добавляет идентификатор области к элементу `h1`:
@@ -68,7 +76,7 @@ h1 {
 <h1 b-3xxtam6d07>
 ```
 
-Файл `MyProjectName.styles.css` использует идентификатор области для группирования объявления стиля с его компонентом. В следующем примере представлен стиль для предыдущего элемента `<h1>`:
+Файл `ProjectName.styles.css` использует идентификатор области для группирования объявления стиля с его компонентом. В следующем примере представлен стиль для предыдущего элемента `<h1>`:
 
 ```css
 /* /Pages/Counter.razor.rz.scp.css */
@@ -77,7 +85,7 @@ h1[b-3xxtam6d07] {
 }
 ```
 
-Во время сборки создается пакет проектов с использованием соглашения `{STATIC WEB ASSETS BASE PATH}/MyProject.lib.scp.css`, где заполнитель `{STATIC WEB ASSETS BASE PATH}` является базовым путем к статическим веб-ресурсам.
+Во время сборки создается пакет проектов с использованием соглашения `{STATIC WEB ASSETS BASE PATH}/Project.lib.scp.css`, где заполнитель `{STATIC WEB ASSETS BASE PATH}` является базовым путем к статическим веб-ресурсам.
 
 Если используются другие проекты, такие как пакеты NuGet или [библиотеки классов Razor](xref:blazor/components/class-libraries), то объединенный файл:
 
@@ -90,7 +98,7 @@ h1[b-3xxtam6d07] {
 
 В следующем примере показан родительский компонент с именем `Parent` и дочерний компонент с именем `Child`.
 
-`Parent.razor`:
+`Pages/Parent.razor`:
 
 ```razor
 @page "/parent"
@@ -102,13 +110,15 @@ h1[b-3xxtam6d07] {
 </div>
 ```
 
-`Child.razor`:
+`Shared/Child.razor`:
 
 ```razor
 <h1>Child Component</h1>
 ```
 
-Измените объявление `h1` в `Parent.razor.css`, добавив объединение `::deep` для указания того, что объявление стиля `h1` должно применяться к родительскому компоненту и его дочерним элементам:
+Измените объявление `h1` в `Parent.razor.css`, добавив объединение `::deep` для указания того, что объявление стиля `h1` должно применяться к родительскому компоненту и его дочерним элементам.
+
+`Pages/Parent.razor.css`:
 
 ```css
 ::deep h1 { 
@@ -118,26 +128,27 @@ h1[b-3xxtam6d07] {
 
 Стиль `h1` теперь применяется к компонентам `Parent` и `Child` без необходимости создания отдельного CSS-файла с областью действия для дочернего компонента.
 
-> [!NOTE]
-> Объединение `::deep` работает только с элементами-потомками. Следующая структура HTML применяет стили `h1` к компонентам, как и ожидалось:
-> 
-> ```razor
-> <div>
->     <h1>Parent</h1>
->
->     <Child />
-> </div>
-> ```
->
-> В этом сценарии ASP.NET Core применяет идентификатор области родительского компонента к элементу `div`, поэтому браузеру известно, что он наследует стили от родительского компонента.
->
-> Однако исключение элемента `div` удаляет отношение потомков, и стиль **не** применяется к дочернему компоненту:
->
-> ```razor
-> <h1>Parent</h1>
->
-> <Child />
-> ```
+Объединение `::deep` работает только с элементами-потомками. Следующая разметка должным образом применяет стили `h1` к компонентам. Идентификатор области родительского компонента применяется к элементу `div`, поэтому браузеру известно, что нужно наследовать стили от родительского компонента.
+
+`Pages/Parent.razor`:
+
+```razor
+<div>
+    <h1>Parent</h1>
+
+    <Child />
+</div>
+```
+
+При этом исключение элемента `div` удаляет отношение потомков. В следующем примере стиль **не** применяется к дочернему компоненту.
+
+`Pages/Parent.razor`:
+
+```razor
+<h1>Parent</h1>
+
+<Child />
+```
 
 ## <a name="css-preprocessor-support"></a>Поддержка препроцессоров CSS
 
@@ -155,11 +166,28 @@ h1[b-3xxtam6d07] {
 
 ```xml
 <ItemGroup>
-    <None Update="MyComponent.razor.css" CssScope="my-custom-scope-identifier" />
+  <None Update="Pages/Example.razor.css" CssScope="my-custom-scope-identifier" />
 </ItemGroup>
 ```
 
-В предыдущем примере CSS, сформированный для `MyComponent.Razor.css`, изменяет свой идентификатор области с `b-<10-character-string>` на `my-custom-scope-identifier`.
+В предыдущем примере CSS, сформированный для `Example.Razor.css`, изменяет свой идентификатор области с `b-<10-character-string>` на `my-custom-scope-identifier`.
+
+Используйте идентификаторы областей, чтобы обеспечить наследование файлов CSS с назначенной областью. В следующем примере файла проекта файл `BaseComponent.razor.css` содержит общие стили для компонентов. Файл `DerivedComponent.razor.css` наследует эти стили.
+
+```xml
+<ItemGroup>
+  <None Update="Pages/BaseComponent.razor.css" CssScope="my-custom-scope-identifier" />
+  <None Update="Pages/DerivedComponent.razor.css" CssScope="my-custom-scope-identifier" />
+</ItemGroup>
+```
+
+Используйте оператор подстановочного знака (`*`), чтобы предоставить идентификаторы областей для нескольких файлов:
+
+```xml
+<ItemGroup>
+  <None Update="Pages/*.razor.css" CssScope="my-custom-scope-identifier" />
+</ItemGroup>
+```
 
 ### <a name="change-base-path-for-static-web-assets"></a>Изменение базового пути для статических веб-ресурсов
 
@@ -181,7 +209,7 @@ h1[b-3xxtam6d07] {
 </PropertyGroup>
 ```
 
-## <a name="no-locrazor-class-library-rcl-support"></a>Поддержка библиотеки классов Razor (RCL)
+## <a name="razor-class-library-rcl-support"></a>Поддержка библиотеки классов Razor (RCL)
 
 Когда [библиотека классов Razor (RCL)](xref:razor-pages/ui-class) предоставляет изолированные стили, атрибут `href` тега `<link>` указывает на `{STATIC WEB ASSET BASE PATH}/{ASSEMBLY NAME}.bundle.scp.css` со следующими заполнителями:
 
@@ -192,6 +220,8 @@ h1[b-3xxtam6d07] {
 
 * Базовый путь к статическому веб-ресурсу — `_content/ClassLib`.
 * Имя сборки библиотеки классов — `ClassLib`.
+
+`wwwroot/index.html` (Blazor WebAssembly) или `Pages_Host.cshtml` (Blazor Server):
 
 ```html
 <link href="_content/ClassLib/ClassLib.bundle.scp.css" rel="stylesheet">

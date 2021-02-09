@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: e873fdd201cf0cdc809030fde30c6a8da2899861
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 67a63f1b4f705a4857dea2e6d1a942d4f21469f5
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751559"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057100"
 ---
 # <a name="aspnet-core-blazor-data-binding"></a>Привязка к данным в ASP.NET Core Blazor
 
@@ -146,7 +146,7 @@ ms.locfileid: "98751559"
 
 Распространенным сценарием является привязка свойства дочернего компонента к свойству родительского компонента. Такой сценарий называется *цепочкой привязки*, так как одновременно имеется несколько уровней привязки.
 
-[Параметры компонента](xref:blazor/components/index#component-parameters) позволяют привязать свойства и поля родительского компонента с помощью синтаксиса `@bind-{PROPERTY OR FIELD}`.
+[Параметры компонента](xref:blazor/components/index#component-parameters) позволяют привязать свойства родительского компонента с помощью синтаксиса `@bind-{PROPERTY}`.
 
 Цепочку привязки нельзя реализовать с помощью синтаксиса [`@bind`](xref:mvc/views/razor#bind) в дочернем компоненте. Обработчик событий и значение должны быть указаны отдельно для поддержки изменения свойства родительского компонента из дочернего.
 
