@@ -326,8 +326,10 @@
               uid: blazor/fundamentals/logging
             - name: Обработка ошибок
               uid: blazor/fundamentals/handle-errors
-            - name: Дополнительные сценарии
-              uid: blazor/fundamentals/additional-scenarios
+            - name: SignalR
+              uid: blazor/fundamentals/signalr
+            - name: Статические файлы
+              uid: blazor/fundamentals/static-files
         - name: Компоненты
           items:
             - name: Обзор
@@ -440,6 +442,8 @@
               href: blazor/security/webassembly/index.md#authentication-component
             - name: AuthorizeView
               href: blazor/security/index.md#authorizeview-component
+            - name: CascadingValue
+              href: blazor/components/cascading-values-and-parameters.md#cascadingvalue-component
             - name: InputCheckbox
               href: blazor/forms-validation.md#built-in-forms-components
             - name: InputDate
