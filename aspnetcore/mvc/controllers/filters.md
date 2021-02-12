@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: ee30ef89c5d7aeae83f23a81eb02235397c89ac2
-ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
+ms.openlocfilehash: 79457d55e0dcda342bc0017bb386c23525666657
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99238315"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107198"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -192,12 +192,12 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 | Последовательность | Область фильтра | Метод фильтра |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
+| 1 | Глобальный | `OnActionExecuting` |
 | 2 | Контроллер или Razor страница| `OnActionExecuting` |
 | 3 | Метод | `OnActionExecuting` |
 | 4 | Метод | `OnActionExecuted` |
 | 5 | Контроллер или Razor страница | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 6 | Глобальный | `OnActionExecuted` |
 
 ### <a name="controller-level-filters"></a>Фильтры на уровне контроллера
 
@@ -403,7 +403,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 Примеры фильтров ресурсов:
 
 * [Сокращенное выполнение фильтра ресурсов](#short-circuiting-resource-filter) показано ранее.
-* [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/rel/2.0.0-preview2/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs):
+* [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs):
 
   * Предотвращает доступ привязки модели к данным формы.
   * Используется для загрузки больших файлов, если необходимо предотвратить считывание данных формы в память.
@@ -558,11 +558,11 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 `IFilterFactory.IsReusable`:
 
 * Является указанием фабрики, которую экземпляр фильтра, созданный фабрикой, может быть повторно использован вне области запроса, в которой он был создан.
-* Следует использовать параметр ***Not** _ с фильтром, зависящим от служб со временем существования, отличным от Singleton.
+* ***Не*** следует использовать с фильтром, зависящим от служб со временем существования, отличным от Singleton.
 
 Среда выполнения ASP.NET Core не гарантирует:
 
-_, Что будет создан один экземпляр фильтра.
+* что будет создан хотя бы один экземпляр фильтра;
 * что фильтр не будет повторно запрошен из контейнера внедрения зависимостей на более позднем этапе.
 
 > [!WARNING] 
@@ -751,19 +751,19 @@ ASP.NET Core включает встроенные фильтры на осно�
 
 | Последовательность | Область фильтра | Метод фильтра |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
+| 1 | Глобальный | `OnActionExecuting` |
 | 2 | Контроллер | `OnActionExecuting` |
 | 3 | Метод | `OnActionExecuting` |
 | 4 | Метод | `OnActionExecuted` |
 | 5 | Контроллер | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 6 | Глобальный | `OnActionExecuted` |
 
 Эта последовательность показывает:
 
 * Фильтр метода вкладывается в фильтр контроллера.
 * Фильтр контроллера вкладывается в глобальный фильтр.
 
-### <a name="controller-and-no-locrazor-page-level-filters"></a>RazorФильтры уровня контроллера и страницы
+### <a name="controller-and-razor-page-level-filters"></a>RazorФильтры уровня контроллера и страницы
 
 Каждый контроллер, наследуемый от базового класса <xref:Microsoft.AspNetCore.Mvc.Controller> включает методы [Controller.OnActionExecuting](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuting*), [Controller.OnActionExecutionAsync](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*) и [Controller.OnActionExecuted](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuted*)
 `OnActionExecuted`. Эти методы:
@@ -813,8 +813,8 @@ ASP.NET Core включает встроенные фильтры на осно�
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Метод | 0 | `OnActionExecuting` |
 | 2 | Контроллер | 1  | `OnActionExecuting` |
-| 3 | Global | 2  | `OnActionExecuting` |
-| 4 | Global | 2  | `OnActionExecuted` |
+| 3 | Глобальный | 2  | `OnActionExecuting` |
+| 4 | Глобальный | 2  | `OnActionExecuted` |
 | 5 | Контроллер | 1  | `OnActionExecuted` |
 | 6 | Метод | 0  | `OnActionExecuted` |
 

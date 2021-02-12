@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: efc73022d0bd8c29595f9bed1c06fe07002eb54a
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 111512916cb7f0a4fc1f17648e2f9c69e366dff3
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530103"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107055"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов Razor ASP.NET Core
 
@@ -396,7 +396,7 @@ public string Title { get; set; } = "Panel Title from Child";
        size="50">
 ```
 
-Чтобы принять произвольные атрибуты, определите параметр компонента с помощью атрибута [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) со свойством <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues>, имеющим значение `true`.
+Чтобы принять произвольные атрибуты, определите параметр компонента с помощью атрибута [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) со свойством <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues>, имеющим значение `true`:
 
 ```razor
 @code {
@@ -584,7 +584,10 @@ public class NotifierService
 }
 ```
 
-В предыдущем примере `NotifierService` вызывает метод `OnNotify` компонента вне контекста синхронизации Blazor. `InvokeAsync` используется для переключения на подходящий контекст и постановки отрисовки в очередь. Для получения дополнительной информации см. <xref:blazor/components/rendering>.
+В предшествующем примере:
+
+* `NotifierService` вызывает метод `OnNotify` компонента вне контекста синхронизации Blazor. `InvokeAsync` используется для переключения на подходящий контекст и постановки отрисовки в очередь. Для получения дополнительной информации см. <xref:blazor/components/rendering>.
+* Компонент реализует <xref:System.IDisposable>, а делегат `OnNotify` не подписан в методе `Dispose`, который вызывается платформой при удалении компонента. Для получения дополнительной информации см. <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Использование \@key для управления сохранением элементов и компонентов
 
