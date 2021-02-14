@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/index
-ms.openlocfilehash: a23bee120611ee603305a88dabac76566481fa4a
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.openlocfilehash: e7bc44b396b46e2ac3e0279520c7cc8ea6679f5a
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97485892"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279766"
 ---
-# <a name="host-and-deploy-aspnet-core-no-locblazor"></a>Размещение и развертывание ASP.NET Core Blazor
-
-Авторы: [Люк Лэтем](https://github.com/guardrex), [Рэйнер Стропек](https://www.timecockpit.com) и [Дэниэл Рот](https://github.com/danroth27)
+# <a name="host-and-deploy-aspnet-core-blazor"></a>Размещение и развертывание ASP.NET Core Blazor
 
 ## <a name="publish-the-app"></a>Публикация приложения
 

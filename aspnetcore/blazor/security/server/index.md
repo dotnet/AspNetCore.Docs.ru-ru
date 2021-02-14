@@ -19,20 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 5031273c3395be4365b3a6d239ebce7aaf9b66ac
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: 5a3d3c6e06653de7f0d01565444d37013f347a5b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658642"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280317"
 ---
-# <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Защита приложений ASP.NET Core Blazor Server
-
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+# <a name="secure-aspnet-core-blazor-server-apps"></a>Защита приложений ASP.NET Core Blazor Server
 
 Приложения Blazor Server настраиваются для обеспечения безопасности так же, как приложения ASP.NET Core. Дополнительные сведения см. в статьях в документе <xref:security/index>. Разделы в этом обзоре посвящены Blazor Server.
 
-## <a name="no-locblazor-server-project-template"></a>Шаблон проекта Blazor Server
+## <a name="blazor-server-project-template"></a>Шаблон проекта Blazor Server
 
 Шаблон проекта Blazor Server можно настроить для проверки подлинности при создании проекта.
 
@@ -120,14 +118,14 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 ---
 
-## <a name="scaffold-no-locidentity"></a>Формирование шаблонов Identity
+## <a name="scaffold-identity"></a>Формирование шаблонов Identity
 
 Сформируйте шаблоны Identity для проекта Blazor Server:
 
 * [Без существующей авторизации](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-without-existing-authorization).
 * [С авторизацией](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-with-authorization).
 
-## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Служба приложений Azure в Linux с сервером Identity
+## <a name="azure-app-service-on-linux-with-identity-server"></a>Служба приложений Azure в Linux с сервером Identity
 
 При развертывании в Службе приложений Azure в Linux с сервером Identity нужно указать издателя явно. Для получения дополнительной информации см. <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 

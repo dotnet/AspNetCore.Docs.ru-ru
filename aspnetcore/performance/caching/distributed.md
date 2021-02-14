@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 6d87c8de66bf5600189465b96dee903841106b6f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6f89046f2e1805111dd81b3282253a72a7c6ea09
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061149"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100281016"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Распределенное кэширование в ASP.NET Core
 
@@ -38,7 +38,7 @@ ms.locfileid: "93061149"
 
 При распределении кэшированных данных данные:
 
-* — *coherent* Согласованность между запросами к нескольким серверам.
+* —  Согласованность между запросами к нескольким серверам.
 * Выдерживает перезапуски сервера и развертывание приложений.
 * Не использует локальную память.
 
@@ -129,12 +129,12 @@ Table and index were created successfully.
 
 [NCache](https://github.com/Alachisoft/NCache) — это распределенный кэш в памяти с открытым исходным кодом, разработанный изначально в .NET и .NET Core. NCache работает как локально, так и настроенный как кластер распределенного кэша для ASP.NET Core приложения, работающего в Azure или на других платформах размещения.
 
-Чтобы установить и настроить NCache на локальном компьютере, ознакомьтесь с [руководством по NCache начало работы для Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Сведения об установке и настройке NCache на локальном компьютере см. в разделе [Начало работы Guide для Windows (.NET и .NET Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Чтобы настроить NCache, выполните следующие действия.
 
 1. Установите [NuGet с открытым исходным кодом NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Настройте кластер кэша в [Client. нкконф](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Настройте кластер кэша в [Client. нкконф](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Добавьте в `Startup.ConfigureServices` следующий код:
 
    ```csharp
@@ -156,7 +156,7 @@ Table and index were created successfully.
 
 Пример приложения внедряет <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> в объект `IndexModel` для использования на странице индекса.
 
-При каждой загрузке страницы индекса кэш проверяется на наличие кэшированного времени в `OnGetAsync` . Если время кэширования не истекло, отображается время. Если прошло 20 секунд с момента последнего обращения к кэшированному времени (время последней загрузки этой страницы), на странице отображается *время ожидания кэширования* .
+При каждой загрузке страницы индекса кэш проверяется на наличие кэшированного времени в `OnGetAsync` . Если время кэширования не истекло, отображается время. Если прошло 20 секунд с момента последнего обращения к кэшированному времени (время последней загрузки этой страницы), на странице отображается *время ожидания кэширования*.
 
 Немедленно обновите кэшированное время на текущее время, нажав кнопку **сбросить кэшированное** время. Кнопка запускает `OnPostResetCachedTime` метод обработчика.
 
@@ -205,7 +205,7 @@ Table and index were created successfully.
 
 При распределении кэшированных данных данные:
 
-* — *coherent* Согласованность между запросами к нескольким серверам.
+* —  Согласованность между запросами к нескольким серверам.
 * Выдерживает перезапуски сервера и развертывание приложений.
 * Не использует локальную память.
 
@@ -299,12 +299,12 @@ Table and index were created successfully.
 
 [NCache](https://github.com/Alachisoft/NCache) — это распределенный кэш в памяти с открытым исходным кодом, разработанный изначально в .NET и .NET Core. NCache работает как локально, так и настроенный как кластер распределенного кэша для ASP.NET Core приложения, работающего в Azure или на других платформах размещения.
 
-Чтобы установить и настроить NCache на локальном компьютере, ознакомьтесь с [руководством по NCache начало работы для Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Сведения об установке и настройке NCache на локальном компьютере см. в разделе [Начало работы Guide для Windows (.NET и .NET Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Чтобы настроить NCache, выполните следующие действия.
 
 1. Установите [NuGet с открытым исходным кодом NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Настройте кластер кэша в [Client. нкконф](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Настройте кластер кэша в [Client. нкконф](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Добавьте в `Startup.ConfigureServices` следующий код:
 
    ```csharp
@@ -326,7 +326,7 @@ Table and index were created successfully.
 
 Пример приложения внедряет <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> в объект `IndexModel` для использования на странице индекса.
 
-При каждой загрузке страницы индекса кэш проверяется на наличие кэшированного времени в `OnGetAsync` . Если время кэширования не истекло, отображается время. Если прошло 20 секунд с момента последнего обращения к кэшированному времени (время последней загрузки этой страницы), на странице отображается *время ожидания кэширования* .
+При каждой загрузке страницы индекса кэш проверяется на наличие кэшированного времени в `OnGetAsync` . Если время кэширования не истекло, отображается время. Если прошло 20 секунд с момента последнего обращения к кэшированному времени (время последней загрузки этой страницы), на странице отображается *время ожидания кэширования*.
 
 Немедленно обновите кэшированное время на текущее время, нажав кнопку **сбросить кэшированное** время. Кнопка запускает `OnPostResetCachedTime` метод обработчика.
 
@@ -375,7 +375,7 @@ Table and index were created successfully.
 
 При распределении кэшированных данных данные:
 
-* — *coherent* Согласованность между запросами к нескольким серверам.
+* —  Согласованность между запросами к нескольким серверам.
 * Выдерживает перезапуски сервера и развертывание приложений.
 * Не использует локальную память.
 
@@ -475,12 +475,12 @@ services.AddDistributedRedisCache(options =>
 
 [NCache](https://github.com/Alachisoft/NCache) — это распределенный кэш в памяти с открытым исходным кодом, разработанный изначально в .NET и .NET Core. NCache работает как локально, так и настроенный как кластер распределенного кэша для ASP.NET Core приложения, работающего в Azure или на других платформах размещения.
 
-Чтобы установить и настроить NCache на локальном компьютере, ознакомьтесь с [руководством по NCache начало работы для Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Сведения об установке и настройке NCache на локальном компьютере см. в разделе [Начало работы Guide для Windows (.NET и .NET Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Чтобы настроить NCache, выполните следующие действия.
 
 1. Установите [NuGet с открытым исходным кодом NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Настройте кластер кэша в [Client. нкконф](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Настройте кластер кэша в [Client. нкконф](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Добавьте в `Startup.ConfigureServices` следующий код:
 
    ```csharp
@@ -502,7 +502,7 @@ services.AddDistributedRedisCache(options =>
 
 Пример приложения внедряет <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> в объект `IndexModel` для использования на странице индекса.
 
-При каждой загрузке страницы индекса кэш проверяется на наличие кэшированного времени в `OnGetAsync` . Если время кэширования не истекло, отображается время. Если прошло 20 секунд с момента последнего обращения к кэшированному времени (время последней загрузки этой страницы), на странице отображается *время ожидания кэширования* .
+При каждой загрузке страницы индекса кэш проверяется на наличие кэшированного времени в `OnGetAsync` . Если время кэширования не истекло, отображается время. Если прошло 20 секунд с момента последнего обращения к кэшированному времени (время последней загрузки этой страницы), на странице отображается *время ожидания кэширования*.
 
 Немедленно обновите кэшированное время на текущее время, нажав кнопку **сбросить кэшированное** время. Кнопка запускает `OnPostResetCachedTime` метод обработчика.
 
