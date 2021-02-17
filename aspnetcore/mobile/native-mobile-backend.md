@@ -1,9 +1,9 @@
 ---
 title: Создание внутренних служб для собственных мобильных приложений в ASP.NET Core
-author: ardalis
+author: rick-anderson
 description: Сведения о том, как создать внутренние службы с помощью MVC ASP.NET Core, чтобы обеспечить поддержку собственных мобильных приложений.
 ms.author: riande
-ms.date: 12/05/2019
+ms.date: 2/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,30 +17,30 @@ no-loc:
 - Razor
 - SignalR
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 4e86241771e884ba9079bcdf9a09eebc6acd62c8
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: e496b7811cc534b6f0f6dfdb857f6e462b38049e
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530220"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564030"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>Создание внутренних служб для собственных мобильных приложений в ASP.NET Core
 
-Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
+По [Джеймс монтеманьо](https://twitter.com/JamesMontemagno)
 
 Мобильные приложения могут взаимодействовать с внутренними службами ASP.NET Core. Инструкции по подключению локальных веб-служб из симуляторов iOS и эмуляторов Android см. в статье о [подключении к локальным веб-службам из симуляторов iOS и эмуляторов Android](/xamarin/cross-platform/deploy-test/connect-to-local-web-services).
 
-[Просмотреть или скачать пример кода внутренней службы](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
+[Просмотреть или скачать пример кода внутренней службы](https://github.com/xamarin/xamarin-forms-samples/tree/master/WebServices/TodoREST)
 
 ## <a name="the-sample-native-mobile-app"></a>Пример собственного мобильного приложения
 
-Это руководство описывает, как создать внутренние службы с помощью ASP.NET Core MVC, чтобы обеспечить поддержку собственных мобильных приложений. В нем [приложение Xamarin Forms ToDoRest](/xamarin/xamarin-forms/data-cloud/consuming/rest) используется в качестве собственного клиента, который содержит отдельные собственные клиенты для устройств на базе Android, iOS, универсальной платформы Windows и Window Phone. Вы можете следовать приложенному руководству, чтобы создать собственное приложение (и установить необходимые бесплатные средства Xamarin), а также скачать пример решения Xamarin. Пример Xamarin включает в себя проект служб веб-API ASP.NET 2, заменяемый приведенным в этой статье приложением ASP.NET Core (со стороны клиента никаких изменений не требуется).
+В этом руководстве показано, как создавать серверные службы с помощью ASP.NET Core для поддержки собственных мобильных приложений. Он использует [приложение Xamarin. Forms тодорест](/xamarin/xamarin-forms/data-cloud/consuming/rest) в качестве собственного клиента, включая отдельные клиенты машинного кода для Android, iOS и Windows. Вы можете следовать приложенному руководству, чтобы создать собственное приложение (и установить необходимые бесплатные средства Xamarin), а также скачать пример решения Xamarin. Пример Xamarin включает в себя проект служб веб-API ASP.NET Core, который заменяет приложение ASP.NET Core (без изменений, требуемых клиентом).
 
 ![Приложение To Do Rest, запущенное на смартфоне Android](native-mobile-backend/_static/todo-android.png)
 
 ### <a name="features"></a>Компоненты
 
-Приложение ToDoRest поддерживает перечисление, добавление, удаление и обновление элементов задач. Каждый элемент имеет идентификатор, имя, заметки и свойство, указывающее, выполнен ли он.
+[Приложение тодорест](https://github.com/xamarin/xamarin-forms-samples/tree/master/WebServices/TodoREST) поддерживает перепись, добавление, удаление и обновление элементов To-Do. Каждый элемент имеет идентификатор, имя, заметки и свойство, указывающее, выполнен ли он.
 
 Основное представление элементов, как показано выше, выводит список с именем каждого элемента, указывая, выполнен ли он, с помощью флажка.
 
@@ -52,57 +52,52 @@ ms.locfileid: "99530220"
 
 ![Диалоговое окно изменения элемента](native-mobile-backend/_static/todo-android-edit-item.png)
 
-По умолчанию этот пример настроен для использования внутренних служб, размещенных на сайте developer.xamarin.com и допускающих операции только для чтения. Чтобы самостоятельно протестировать его для сравнения с приложением ASP.NET Core, создаваемым в следующем разделе, на своем компьютере, нужно обновить константу `RestUrl` приложения. Перейдите к проекту `ToDoREST` и откройте файл *Constants.cs*. Замените `RestUrl` на URL-адрес, включающий IP-адрес вашего компьютера (не "localhost" или 127.0.0.1, так как этот адрес используется из эмулятора устройства, а не с вашего компьютера). Включите также номер порта (5000). Чтобы поверить работу служб с устройством, убедитесь, что в брандмауэре не активна блокировка доступа к этому порту.
+Чтобы протестировать себя на ASP.NET Core приложении, созданном в следующем разделе, работающем на компьютере, обновите [`RestUrl`](https://github.com/xamarin/xamarin-forms-samples/blob/master/WebServices/TodoREST/TodoREST/Constants.cs#L13) константу приложения.
 
-```csharp
-// URL of REST service (Xamarin ReadOnly Service)
-//public static string RestUrl = "http://developer.xamarin.com:8081/api/todoitems{0}";
+Эмуляторы Android не работают на локальном компьютере и используют петлевой IP-адрес (10.0.2.2) для взаимодействия с локальным компьютером. Используйте [Xamarin. Essentials DeviceInfo](/xamarin/essentials/device-information/) , чтобы определить, какая операционная система работает, чтобы использовать правильный URL-адрес.
 
-// use your machine's IP address
-public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
-```
+Перейдите к [`TodoREST`](https://github.com/xamarin/xamarin-forms-samples/tree/master/WebServices/TodoREST/TodoREST) проекту и откройте [`Constants.cs`](https://github.com/xamarin/xamarin-forms-samples/blob/master/WebServices/TodoREST/TodoREST/Constants.cs) файл. Файл *Constants.CS* содержит следующую конфигурацию.
+
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoREST/Constants.cs" highlight="13":::
+
+При необходимости можно развернуть веб-службу в облачной службе, такой как Azure, и обновить `RestUrl` .
 
 ## <a name="creating-the-aspnet-core-project"></a>Создание проекта ASP.NET Core
 
-Создайте веб-приложение ASP.NET Core в Visual Studio. Выберите шаблон "Веб-API" и параметр "Без проверки". Назовите проект *ToDoApi*.
+Создайте веб-приложение ASP.NET Core в Visual Studio. Выберите шаблон веб-API. Назовите проект *TodoAPI*.
 
 ![Диалоговое окно создания веб-приложения ASP.NET с выбранным шаблоном проекта веб-API](native-mobile-backend/_static/web-api-template.png)
 
-Приложение должно отвечать на все запросы, направляемые на порт 5000. Для этого измените *Program.cs*, чтобы включить в него `.UseUrls("http://*:5000")`:
+Приложение должно отвечать на все запросы к порту 5000, включая HTTP-трафик с открытым текстом для мобильного клиента. Обновите *Startup.CS* таким образом, чтобы <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection%2A> оно не запускалось в разработке:
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Program.cs?range=10-16&highlight=3)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Startup.cs" id="snippet" highlight="7-11":::
 
 > [!NOTE]
-> Обязательно запустите приложение напрямую, а не через IIS Express, так как это решение по умолчанию игнорирует нелокальные запросы. Запустите [dotnet run](/dotnet/core/tools/dotnet-run) из командной строки или выберите профиль имени приложения в раскрывающемся списке "Целевой объект отладки" на панели инструментов Visual Studio.
+> Запустите приложение напрямую, а не за IIS Express. По умолчанию IIS Express игнорирует нелокальные запросы. Выполните команду [DotNet Run](/dotnet/core/tools/dotnet-run) из командной строки или выберите профиль имени приложения в раскрывающемся списке цель отладки на панели инструментов Visual Studio.
 
 Добавьте класс модели для представления элементов задач. Пометьте обязательные поля с помощью атрибута `[Required]`:
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Models/TodoItem.cs":::
 
-Методам API нужен определенный способ для работы с данными. Используйте тот же интерфейс `IToDoRepository`, который использует исходный пример Xamarin:
+Методам API нужен определенный способ для работы с данными. Используйте тот же интерфейс `ITodoRepository`, который использует исходный пример Xamarin:
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Interfaces/IToDoRepository.cs)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Interfaces/ITodoRepository.cs":::
 
 В этом примере реализация использует просто частную коллекцию элементов:
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Services/ToDoRepository.cs)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Services/TodoRepository.cs":::
 
 Настройте реализацию в файле *Startup.cs*:
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Startup.cs?highlight=6&range=29-35)]
-
-На этом этапе вы готовы создать *ToDoItemsController*.
-
-> [!TIP]
-> Дополнительные сведения о создании веб-API см. в статье [Создание первого веб-API с помощью MVC ASP.NET Core и Visual Studio](../tutorials/first-web-api.md).
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Startup.cs" id="snippet2" highlight="3":::
 
 ## <a name="creating-the-controller"></a>Создание контроллера
 
-Добавьте в проект новый контроллер *ToDoItemsController*. Он должен наследовать от Microsoft.AspNetCore.Mvc.Controller. Добавьте атрибут `Route`, чтобы указать, что контроллер будет обрабатывать запросы, выполняемые по путям, начинающимся с `api/todoitems`. Токен `[controller]` в маршруте заменяется на имя контроллера (суффикс `Controller` опускается) и особенно удобен для глобальных маршрутов. Дополнительные сведения о [маршрутизации](../fundamentals/routing.md).
+Добавьте новый контроллер в проект [TodoItemsController](https://github.com/xamarin/xamarin-forms-samples/tree/master/WebServices/TodoREST/TodoAPI/TodoAPI/Controllers/TodoItemsController.cs). Он должен наследовать от <xref:Microsoft.AspNetCore.Mvc.ControllerBase> . Добавьте атрибут `Route`, чтобы указать, что контроллер будет обрабатывать запросы, выполняемые по путям, начинающимся с `api/todoitems`. Токен `[controller]` в маршруте заменяется на имя контроллера (суффикс `Controller` опускается) и особенно удобен для глобальных маршрутов. Дополнительные сведения о [маршрутизации](../fundamentals/routing.md).
 
-Для работы контроллеру нужен `IToDoRepository`; запросите экземпляр этого типа через конструктор контроллера. Во время выполнения этот экземпляр будет предоставляться с помощью поддержки [внедрения зависимостей](../fundamentals/dependency-injection.md) на платформе.
+Для работы контроллеру нужен `ITodoRepository`; запросите экземпляр этого типа через конструктор контроллера. Во время выполнения этот экземпляр будет предоставляться с помощью поддержки [внедрения зависимостей](../fundamentals/dependency-injection.md) на платформе.
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=1-17&highlight=9,14)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Controllers/TodoItemsController.cs" id="snippetDI":::
 
 Этот API поддерживает четыре различных HTTP-команды для выполнения операций CRUD (создание, чтение, обновление, удаление) с источником данных. Самой простой из них является операция чтения, которая соответствует HTTP-запросу GET.
 
@@ -110,9 +105,9 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 Запрос списка элементов, выполняется с помощью отправки запроса GET в метод `List`. Атрибут`[HttpGet]` в методе `List` указывает, что это действие должно обрабатывать только запросы GET. Маршрут для этого действия соответствует маршруту, указанному на контроллере. Использовать имя действия в составе маршрута необязательно. Нужно лишь убедиться, что каждое действие имеет уникальный и однозначный маршрут. Атрибуты маршрутизации можно применять на уровне как контроллера, так и метода для создания определенных маршрутов.
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=19-23)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Controllers/TodoItemsController.cs" id="snippet":::
 
-Метод `List` возвращает код ответа "200 ОК" и все элементы задач, сериализованные в виде JSON.
+`List`Метод возвращает код ответа ок 200 и все элементы TODO, сериализованные как JSON.
 
 Вы можете проверить новый метод API с помощью различных средств, таких как [Postman](https://www.getpostman.com/docs/), как показано ниже:
 
@@ -120,15 +115,15 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 ### <a name="creating-items"></a>Создание элементов
 
-По соглашению создание элементов данных сопоставляется с HTTP-командой POST. Метод `Create` имеет примененный к нему атрибут `[HttpPost]` и принимает экземпляр `ToDoItem`. Так как аргумент `item` передается в текст POST, этот параметр указывает атрибут `[FromBody]`.
+По соглашению создание элементов данных сопоставляется с HTTP-командой POST. Метод `Create` имеет примененный к нему атрибут `[HttpPost]` и принимает экземпляр `TodoItem`. Так как аргумент `item` передается в текст POST, этот параметр указывает атрибут `[FromBody]`.
 
 Внутри метода элемент проверяется на допустимость и предшествующее существование в хранилище данных, а при отсутствии проблем он добавляется с помощью репозитория. Проверка `ModelState.IsValid` приводит к [проверке модели](../mvc/models/validation.md) и должна выполняться в каждом методе API, принимающем вводимые пользователем данные.
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=25-46)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Controllers/TodoItemsController.cs" id="snippetCreate":::
 
-Этот пример использует перечисление, содержащее коды ошибок, которые передаются мобильному клиенту:
+В примере используется `enum` код, содержащий коды ошибок, которые передаются мобильному клиенту:
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=91-99)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Controllers/TodoItemsController.cs" id="snippetErrorCode":::
 
 Проверьте добавление новых элементов с помощью Postman, выбрав команду POST, предоставляющую новый объект в формате JSON в тексте запроса. Вам также нужно добавить заголовок запроса, указав `Content-Type` типа `application/json`.
 
@@ -140,7 +135,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 Изменение записей осуществляется с помощью HTTP-запросов PUT. За исключением этого изменения, метод `Edit` практически идентичен `Create`. Обратите внимание, что если запись не найдена, то действие `Edit` возвратит отклик `NotFound` (404).
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=48-69)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Controllers/TodoItemsController.cs" id="snippetEdit":::
 
 Чтобы выполнить проверку с помощью Postman, измените команду на PUT. Укажите обновленные данные объекта в тексте запроса.
 
@@ -152,11 +147,24 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 Удаление записей сопровождается отправкой запросов DELETE в службу и передачей идентификатора удаляемого элемента. Как и в случае с обновлениями, запросы несуществующих элементов будут получать отклики `NotFound`. В противном случае успешный запрос получит отклик `NoContent` (204).
 
-[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=71-88)]
+:::code language="csharp" source="~/../xamarin-forms-samples/WebServices/TodoREST/TodoAPI/TodoAPI/Controllers/TodoItemsController.cs" id="snippetDelete":::
 
 Обратите внимание, что при тестировании функции удаления в тексте запроса не требуется никаких элементов.
 
 ![Консоль Postman с командой DELETE и откликом](native-mobile-backend/_static/postman-delete.png)
+
+## <a name="prevent-over-posting"></a>Предотвращение избыточной публикации
+
+В настоящее время пример приложения предоставляет весь объект `TodoItem`. Рабочие приложения обычно ограничивают вводимые данные и возвращают их с помощью подмножества модели. Это связано с несколькими причинами, и безопасность является основной. Подмножество модели обычно называется объектом передачи данных (DTO), моделью ввода или моделью представления. В этой статье используется **DTO**.
+
+DTO можно использовать для следующего:
+
+* Предотвращение избыточной публикации.
+* Скрытие свойств, которые не предназначены для просмотра клиентами.
+* Пропуск некоторых свойств, чтобы уменьшить размер полезной нагрузки.
+* Сведение графов объектов, содержащих вложенные объекты. Сведенные графы объектов могут быть удобнее для клиентов.
+
+Чтобы продемонстрировать подход DTO, см. раздел [предотвращение избыточной отправки](xref:tutorials/first-web-api#prevent-over-posting) .
 
 ## <a name="common-web-api-conventions"></a>Общие соглашения веб-API
 
@@ -169,4 +177,4 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 - [Xamarin. Forms: проверка подлинности веб-службы](/xamarin/xamarin-forms/data-cloud/authentication/)
 - [Xamarin. Forms: использование веб-службы RESTFUL](/xamarin/xamarin-forms/data-cloud/web-services/rest)
 - [Microsoft Learn: использование веб-служб RESTFUL в приложениях Xamarin](/learn/modules/consume-rest-services/)
-- [Microsoft Learn: создание веб-API с помощью ASP.NET Core](/learn/modules/build-web-api-aspnet-core/)
+- [Microsoft Learn. Создание веб-API с помощью ASP.NET Core](/learn/modules/build-web-api-aspnet-core/)
