@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 3402117334548f9d90880d4f536e8baa288e7bc9
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d120440c292d15b7741260ed31af92d60db2261c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506985"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280066"
 ---
-# <a name="prerender-and-integrate-aspnet-core-no-locrazor-components"></a>Компоненты Razor для предварительной визуализации и интеграции ASP.NET Core
-
-Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
+# <a name="prerender-and-integrate-aspnet-core-razor-components"></a>Компоненты Razor для предварительной визуализации и интеграции ASP.NET Core
 
 ::: zone pivot="webassembly"
 
@@ -284,7 +282,7 @@ builder.RootComponents.Add<Counter>("#my-counter");
 
 1. Интегрируйте компоненты в какую-либо страницу или какое-либо представление. Дополнительные сведения см. в разделе [Отрисовка компонентов со страницы или представления](#render-components-from-a-page-or-view).
 
-## <a name="use-routable-components-in-a-no-locrazor-pages-app"></a>Использование маршрутизируемых компонентов в приложении Razor Pages
+## <a name="use-routable-components-in-a-razor-pages-app"></a>Использование маршрутизируемых компонентов в приложении Razor Pages
 
 *Этот раздел описывает добавление компонентов, напрямую маршрутизируемых из запросов пользователей.*
 
@@ -464,7 +462,7 @@ builder.RootComponents.Add<Counter>("#my-counter");
 }
 ```
 
-Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
+Для получения дополнительной информации см. <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
 
 ### <a name="render-noninteractive-components"></a>Отрисовка неинтерактивных компонентов
 
@@ -487,7 +485,7 @@ builder.RootComponents.Add<Counter>("#my-counter");
 }
 ```
 
-Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
+Для получения дополнительной информации см. <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
 
 ## <a name="component-namespaces"></a>Пространства имен компонентов
 
@@ -502,6 +500,6 @@ builder.RootComponents.Add<Counter>("#my-counter");
 
 Файл `_ViewImports.cshtml` находится в папке `Pages` приложения Razor Pages или в папке `Views` приложения MVC.
 
-Дополнительные сведения см. в разделе <xref:blazor/components/index#namespaces>.
+Для получения дополнительной информации см. <xref:blazor/components/index#namespaces>.
 
 ::: zone-end

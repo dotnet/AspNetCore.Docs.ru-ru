@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: fcf06295deb41f304b92caa82535a1197c909898
-ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
+ms.openlocfilehash: 515da543fc6b6cca0b90968b154d91b611ea3345
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99238239"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280550"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Создание прогрессивных веб-приложений с помощью ASP.NET Core Blazor WebAssembly
-
-Автор: [Стив Сандерсон](https://github.com/SteveSandersonMS) (Steve Sanderson)
 
 Прогрессивное веб-приложение — это обычно одностраничное приложение (SPA), которое использует API и функциональные возможности современного браузера, реализуя свойственное классическим приложениям поведение. Blazor WebAssembly — это стандартизированная клиентская платформа веб-приложений с поддержкой API любых браузеров, в том числе API-интерфейсы прогрессивных веб-приложений (PWA), требуемых для реализации следующих возможностей:
 
@@ -406,4 +404,4 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Скрипт PowerShell для устранения проблем целостности](xref:blazor/host-and-deploy/webassembly#troubleshoot-integrity-powershell-script)
-* [Согласование независимо от источника для проверки подлинности для SignalR](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)
+* [Согласование независимо от источника для проверки подлинности для SignalR](xref:blazor/fundamentals/signalr#signalr-cross-origin-negotiation-for-authentication)

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 18afa7faa254f89ef664e0188be357a85c790523
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: b3c783623252512621a0cee7a3607c69cb6d09bb
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252439"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280283"
 ---
-# <a name="call-a-web-api-from-aspnet-core-no-locblazor"></a>Вызов веб-API из ASP.NET Core Blazor
-
-Авторы: [Люк Латэм (Luke Latham)](https://github.com/guardrex), [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Хуан Де ла Круз (Juan De la Cruz)](https://github.com/juandelacruz23)
+# <a name="call-a-web-api-from-aspnet-core-blazor"></a>Вызов веб-API из ASP.NET Core Blazor
 
 > [!NOTE]
 > Эта статья относится к Blazor WebAssembly. [Приложения Blazor Server](xref:blazor/hosting-models#blazor-server) вызывают веб-интерфейсы API с помощью экземпляров <xref:System.Net.Http.HttpClient>, обычно созданных с помощью <xref:System.Net.Http.IHttpClientFactory>. Инструкции, относящиеся к Blazor Server, см. в статье <xref:fundamentals/http-requests>.
@@ -221,7 +219,7 @@ builder.Services.AddHttpClient("ServerAPI", client =>
 
 Для возврата данных из одной или нескольких конечных точек веб-API типизированный класс <xref:System.Net.Http.HttpClient> использует один или несколько экземпляров класса <xref:System.Net.Http.HttpClient> приложения (заданных по умолчанию или именованных).
 
-`WeatherForecastClient.cs`.
+`WeatherForecastClient.cs`:
 
 ```csharp
 using System.Net.Http;

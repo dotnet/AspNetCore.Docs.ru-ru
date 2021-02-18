@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 744449240fabc3dae317d0d7bc9090311521c224
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: f44f348947e31864f5d0d44c9caf1a3aa9c3b1d4
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94570124"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280337"
 ---
-# <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>Применение политики безопасности содержимого для ASP.NET Core Blazor
-
-Авторы: [Хавьер Кальварро Нельсон](https://github.com/javiercn) (Javier Calvarro Nelson) и [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+# <a name="enforce-a-content-security-policy-for-aspnet-core-blazor"></a>Применение политики безопасности содержимого для ASP.NET Core Blazor
 
 [Выполнение межсайтовых сценариев (XSS)](xref:security/cross-site-scripting) является уязвимостью системы безопасности, когда злоумышленник помещает один или несколько вредоносных клиентских сценариев в преобразуемое для просмотра содержимое приложения. Политика безопасности содержимого (CSP) помогает защититься от атак XSS путем формирования обозревателя допустимых:
 

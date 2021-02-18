@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 58a87bc5413523fdf052a9e1c41196bb8b0ab457
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 1860a36ba4122fb39ca92797da9a44b282afa793
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529973"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280651"
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>Рекомендации по повышению производительности ASP.NET Core Blazor WebAssembly
-
-Авторы: [Пранав Кришнамурти](https://github.com/pranavkm) (Pranav Krishnamoorthy) и [Стив Сандерсон](https://github.com/SteveSandersonMS) (Steve Sanderson)
 
 Среда Blazor WebAssembly тщательно спроектирована и оптимизирована для обеспечения высокой производительности в наиболее часто применимых сценариях пользовательского интерфейса в приложениях. Но качество результатов зависит еще и от того, насколько правильно разработчики используют шаблоны и функции. Давайте рассмотрим следующие аспекты.
 
@@ -91,7 +89,7 @@ ms.locfileid: "99529973"
         prevInboundFlightId = InboundFlight.FlightId;
     }
 
-    protected override void ShouldRender() => shouldRender;
+    protected override bool ShouldRender() => shouldRender;
 
     // Note that 
 }
@@ -545,7 +543,7 @@ function jsInteropCall() {
 
 ### <a name="intermediate-language-il-trimming"></a>Обрезка промежуточного языка (IL)
 
-[Обрезка неиспользуемых сборок в приложении Blazor WebAssembly](xref:blazor/host-and-deploy/configure-trimmer) уменьшает размер приложения за счет удаления неиспользуемого кода в двоичных файлах приложения. По умолчанию средство обрезки выполняется при публикации приложения. Чтобы воспользоваться обрезкой, опубликуйте приложение для развертывания с помощью команды [`dotnet publish`](/dotnet/core/tools/dotnet-publish) с параметром [-c|--configuration](/dotnet/core/tools/dotnet-publish#options), имеющим значение `Release`:
+Обрезка неиспользуемых сборок в приложении Blazor WebAssembly уменьшает размер приложения за счет удаления неиспользуемого кода в двоичных файлах приложения. Для получения дополнительной информации см. <xref:blazor/host-and-deploy/configure-trimmer>.
 
 ::: moniker-end
 
@@ -555,11 +553,11 @@ function jsInteropCall() {
 
 [Компоновка приложения Blazor WebAssembly](xref:blazor/host-and-deploy/configure-linker) уменьшает размер приложения за счет удаления неиспользуемого кода в двоичных файлах приложения. По умолчанию компоновщик промежуточного языка (IL) включается только при сборке в конфигурации `Release`. Чтобы воспользоваться этой возможностью, опубликуйте приложение для развертывания с помощью команды [`dotnet publish`](/dotnet/core/tools/dotnet-publish) с параметром [-c|--configuration](/dotnet/core/tools/dotnet-publish#options), имеющим значение `Release`:
 
-::: moniker-end
-
 ```dotnetcli
 dotnet publish -c Release
 ```
+
+::: moniker-end
 
 ### <a name="use-systemtextjson"></a>Использование System.Text.Json
 

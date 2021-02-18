@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: 14370f9bbf45079fd3654d3e55af4178691cf4f5
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: fed5d26ecd73a4710ee794c413fd51e0b4cb4913
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252556"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280199"
 ---
-# <a name="aspnet-core-no-locrazor-components-class-libraries"></a>Библиотеки классов компонентов Razor в ASP.NET Core
-
-Автор: [Саймон Тиммс](https://github.com/stimms) (Simon Timms)
+# <a name="aspnet-core-razor-components-class-libraries"></a>Библиотеки классов компонентов Razor в ASP.NET Core
 
 Компоненты можно совместно использовать в проектах посредством [библиотеки классов Razor](xref:razor-pages/ui-class). *Библиотека классов компонентов Razor* может включаться из следующих источников:
 
@@ -45,14 +43,14 @@ ms.locfileid: "98252556"
 1. Создайте новый проект.
 1. Выберите **Библиотека классов Razor** . Выберите **Далее**.
 1. В диалоговом окне **Создать библиотеку классов Razor** щелкните **Создать**.
-1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. В примерах в этой статье используется имя проекта `ComponentLibrary`. Выберите **Создать**.
+1. В поле **Имя проекта** укажите имя проекта или оставьте имя по умолчанию. В примерах в этой статье используется имя проекта `ComponentLibrary`. Нажмите кнопку **создания**.
 1. Добавьте библиотеку RCL в решение.
    1. Щелкните решение правой кнопкой мыши. Выберите **Добавить** > **Существующий проект**.
    1. Перейдите к файлу проекта RCL.
    1. Выберите файл проекта RCL (`.csproj`).
 1. Добавьте ссылку на RCL из приложения:
    1. Щелкните проект приложения правой кнопкой мыши. Выберите **Добавить** > **Ссылка**.
-   1. Выберите проект RCL. Нажмите кнопку **ОК**.
+   1. Выберите проект RCL. Щелкните **ОК**.
 
 > [!NOTE]
 > Если при создании библиотеки RCL на основе шаблона был установлен флажок **Представления и страницы поддержки**, также добавьте в корневой каталог созданного проекта файл `_Imports.razor` со следующим содержимым, чтобы включить разработку компонента Razor:
@@ -127,7 +125,7 @@ Welcome to your new app.
 
 <!-- REACTIVATE WHEN HEAD COMPONENTS COME BACK AT 6.0
 
-To provide additional library component styles from stylesheets in the library's `wwwroot` folder, link the stylesheets using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) in `Component1.razor`:
+To provide additional library component styles from stylesheets in the library's `wwwroot` folder, link the stylesheets using the framework's [`Link` component](xref:blazor/fundamentals/signalr#influence-html-head-tag-elements) in `Component1.razor`:
 
 ```razor
 <div class="my-component">
@@ -176,17 +174,17 @@ When the `Link` component is used in a child component, the linked asset is also
 
 ::: moniker-end
 
-## <a name="create-a-no-locrazor-components-class-library-with-static-assets"></a>Создание библиотеки классов компонентов Razor со статическими ресурсами
+## <a name="create-a-razor-components-class-library-with-static-assets"></a>Создание библиотеки классов компонентов Razor со статическими ресурсами
 
 Библиотека RCL может включать в себя статические ресурсы. Такие ресурсы доступны любому приложению, использующему библиотеку. Для получения дополнительной информации см. <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
 
-## <a name="supply-components-and-static-assets-to-multiple-hosted-no-locblazor-apps"></a>Предоставление компонентов и статических ресурсов нескольким размещенным приложениям Blazor
+## <a name="supply-components-and-static-assets-to-multiple-hosted-blazor-apps"></a>Предоставление компонентов и статических ресурсов нескольким размещенным приложениям Blazor
 
 Для получения дополнительной информации см. <xref:blazor/host-and-deploy/webassembly#static-assets-and-class-libraries>.
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="browser-compatibility-analyzer-for-no-locblazor-webassembly"></a>Анализатор совместимости с браузерами для Blazor WebAssembly
+## <a name="browser-compatibility-analyzer-for-blazor-webassembly"></a>Анализатор совместимости с браузерами для Blazor WebAssembly
 
 Приложения Blazor WebAssembly предназначены для использования в полной контактной зоне API .NET, но из-за ограничений песочницы браузера поддерживаются не все API-интерфейсы .NET. При выполнении в WebAssembly неподдерживаемые API-интерфейсы вызывают <xref:System.PlatformNotSupportedException>. Анализатор совместимости платформ предупреждает разработчика, когда приложение использует API-интерфейсы, которые не поддерживаются целевыми платформами приложения. Это означает, что в приложениях Blazor WebAssembly проверяется поддержка API-интерфейсов в браузерах. Добавление заметок к API-интерфейсам .NET Framework для анализатора совместимости является непрерывным процессом, поэтому в настоящее время снабжены заметками не все API-интерфейсы .NET Framework.
 
@@ -210,7 +208,7 @@ private static string GetLoggingDirectory()
 
 Дополнительные сведения см. в статье [Аннотация API-интерфейсов как неподдерживаемых на конкретных платформах (репозиторий GitHub dotnet/designs](https://github.com/dotnet/designs/blob/main/accepted/2020/platform-exclusion/platform-exclusion.md#build-configuration-for-platforms).
 
-## <a name="no-locblazor-javascript-isolation-and-object-references"></a>Изоляция Blazor JavaScript и ссылки на объекты
+## <a name="blazor-javascript-isolation-and-object-references"></a>Изоляция Blazor JavaScript и ссылки на объекты
 
 Blazor реализует изоляцию JavaScript в стандартных [модулях JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules). Изоляция JavaScript обеспечивает следующие преимущества:
 

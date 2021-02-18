@@ -19,18 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 95714b3c0d21d3b348a9a8a984e2a42e7708499e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ba2bf91f3318225383ec9d164c34be9124aa311b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93056560"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280855"
 ---
-# <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>Сложные сценарии ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-advanced-scenarios"></a>Сложные сценарии ASP.NET Core Blazor
 
-Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
-
-## <a name="no-locblazor-server-circuit-handler"></a>Обработчик цепи Blazor Server
+## <a name="blazor-server-circuit-handler"></a>Обработчик цепи Blazor Server
 
 Blazor Server позволяет коду определить *обработчик канала*, чтобы выполнять код при изменении состояния канала пользователя. Обработчик канала реализуется путем наследования от `CircuitHandler` и регистрации класса в контейнере службы приложения. В следующем примере обработчик канала отслеживает открытые соединения SignalR:
 
@@ -167,14 +165,14 @@ builder.AddContent(1, "Second");
 
 Когда код выполняется в первый раз, если `someFlag` имеет значение `true`, построитель получит следующее:
 
-| Sequence | Type      | Данные   |
+| Последовательность | Тип      | Данные   |
 | :------: | --------- | :----: |
 | 0        | Текстовый узел | First  |
 | 1        | Текстовый узел | Second |
 
 Представьте, что `someFlag` становится `false`, и разметка снова преобразуется для просмотра. На этот раз построитель получает:
 
-| Sequence | Type       | Данные   |
+| Последовательность | Тип       | Данные   |
 | :------: | ---------- | :----: |
 | 1        | Текстовый узел  | Second |
 
@@ -199,14 +197,14 @@ builder.AddContent(seq++, "Second");
 
 И теперь первыми выходными данными будет:
 
-| Sequence | Type      | Данные   |
+| Последовательность | Тип      | Данные   |
 | :------: | --------- | :----: |
 | 0        | Текстовый узел | First  |
 | 1        | Текстовый узел | Second |
 
 Этот результат идентичен предыдущему случаю, поэтому проблемы не возникают. `someFlag` имеет значение `false` во второй отрисовке, а выходные данные следующие:
 
-| Sequence | Type      | Данные   |
+| Последовательность | Тип      | Данные   |
 | :------: | --------- | ------ |
 | 0        | Текстовый узел | Second |
 

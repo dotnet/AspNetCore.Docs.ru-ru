@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 67a63f1b4f705a4857dea2e6d1a942d4f21469f5
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 76cc0ddc46dd08a5b8b88cf6045b84beab57c295
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057100"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280139"
 ---
 # <a name="aspnet-core-blazor-data-binding"></a>Привязка к данным в ASP.NET Core Blazor
-
-Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham), [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth) и [Стив Сандерсон](https://github.com/SteveSandersonMS) (Steve Sanderson)
 
 Компоненты Razor реализуют функции привязки данных для поля, свойства или значения выражения Razor с помощью атрибута HTML-элемента [`@bind`](xref:mvc/views/razor#bind).
 

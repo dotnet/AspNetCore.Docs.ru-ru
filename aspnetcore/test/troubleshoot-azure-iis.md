@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: d51a4a43f585b0a0b7e3aab2c5de1b2d215de494
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a8bb659a72e8370c31cc9c213689399e74f11b5c
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059602"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564064"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Устранение неполадок ASP.NET Core в Службе приложений Azure и IIS
 
@@ -275,7 +275,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 *Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x86).*
 
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` — это версия среды выполнения).
-1. Запустите приложение: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
+1. Запустите приложение `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
@@ -288,7 +288,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
   1. Запустите приложение: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
 * Если приложение [развертывается автономно](/dotnet/core/deploying/#self-contained-deployments-scd), сделайте следующее:
   1. `cd D:\home\site\wwwroot`
-  1. Запустите приложение: `{ASSEMBLY NAME}.exe`.
+  1. Запустите приложение `{ASSEMBLY NAME}.exe`.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
@@ -297,7 +297,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 *Требует установки расширения сайта для среды выполнения ASP.NET Core {VERSION} (x64).*
 
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64` (`{X.Y}` — это версия среды выполнения).
-1. Запустите приложение: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
+1. Запустите приложение `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
 
 Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
@@ -321,6 +321,8 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 Завершив устранение неполадок, отключите ведение журнала stdout, задав `stdoutLogEnabled="false"`.
 
 Для получения дополнительной информации см. <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+
+<a name="enhanced-diagnostic-logs"></a>
 
 ### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Журнал отладки модуля ASP.NET Core (Служба приложений Azure)
 
@@ -760,7 +762,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` — это версия среды выполнения).
 1. Запустите приложение `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
 
-Выходные данные консоли из приложения, представляющие сведения об ошибках, будут переданы на консоль Kudu.
+Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
 #### <a name="test-a-64-bit-x64-app"></a>Тестирование 64-разрядного (x64) приложения
 
@@ -773,7 +775,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
   1. `cd D:\home\site\wwwroot`
   1. Запустите приложение `{ASSEMBLY NAME}.exe`.
 
-Выходные данные консоли из приложения, представляющие сведения об ошибках, будут переданы на консоль Kudu.
+Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
 **Зависимое от платформы развертывание, выполняющееся в предварительном выпуске**
 
@@ -1238,7 +1240,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` — это версия среды выполнения).
 1. Запустите приложение `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`.
 
-Выходные данные консоли из приложения, представляющие сведения об ошибках, будут переданы на консоль Kudu.
+Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
 #### <a name="test-a-64-bit-x64-app"></a>Тестирование 64-разрядного (x64) приложения
 
@@ -1251,7 +1253,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
   1. `cd D:\home\site\wwwroot`
   1. Запустите приложение `{ASSEMBLY NAME}.exe`.
 
-Выходные данные консоли из приложения, представляющие сведения об ошибках, будут переданы на консоль Kudu.
+Выходные данные из приложения, отображающие любые ошибки, будут выведены на консоль Kudu.
 
 **Зависимое от платформы развертывание, выполняющееся в предварительном выпуске**
 

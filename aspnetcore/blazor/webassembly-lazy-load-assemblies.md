@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 6e7fa6e231e97793fbf7e1ac1d208bf3013c6fce
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e8589a1e288c39b487673fafc04c59fa07916335
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506580"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280661"
 ---
-# <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Сборки с отложенной загрузкой в ASP.NET Core Blazor WebAssembly
-
-Автор: Сэфиа Абдалла ([Safia Abdalla](https://safia.rocks)) и Люк Лэтэм ([Luke Latham](https://github.com/guardrex))
+# <a name="lazy-load-assemblies-in-aspnet-core-blazor-webassembly"></a>Сборки с отложенной загрузкой в ASP.NET Core Blazor WebAssembly
 
 Производительность запуска приложения Blazor WebAssembly можно повысить, отложив загрузку некоторых сборок приложений, пока они не потребуются — это называется *отложенной загрузкой*. Например, сборки, которые используются только для отрисовки лишь одного компонента, могут быть настроены на загрузку только в том случае, если пользователь переходит к этому компоненту. После загрузки сборки кэшируются на стороне клиента и доступны для всех последующих переходов.
 

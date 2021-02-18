@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: 0c99056053356133e901d6cf468fec8034dfb845
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c720747983da4ef6997d95d77c3f5305cfd7d3c0
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93055832"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279920"
 ---
-# <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a>Настройка компоновщика для ASP.NET Core Blazor
-
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+# <a name="configure-the-linker-for-aspnet-core-blazor"></a>Настройка компоновщика для ASP.NET Core Blazor
 
 Blazor WebAssembly выполняет компоновку [промежуточного языка (IL)](/dotnet/standard/managed-code#intermediate-language--execution) во время сборки, чтобы затем удалить ненужный IL из выходных сборок приложения. Компоновщик отключен при сборке в конфигурации отладки. Для включения компоновщика приложения должны быть построены в конфигурации выпуска. Мы рекомендуем создавать выпуск при развертывании приложений Blazor WebAssembly. 
 
@@ -61,7 +59,7 @@ Blazor WebAssembly выполняет компоновку [промежуточ
 </ItemGroup>
 ```
 
-`LinkerConfig.xml`.
+`LinkerConfig.xml`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -126,7 +124,7 @@ Blazor WebAssembly выполняет компоновку [промежуточ
 | `all`            | Включены все сборки |
 | `cjk`            | `I18N.CJK.dll`          |
 | `mideast`        | `I18N.MidEast.dll`      |
-| `none` (по умолчанию) | Отсутствуют                    |
+| `none` (по умолчанию) | None                    |
 | `other`          | `I18N.Other.dll`        |
 | `rare`           | `I18N.Rare.dll`         |
 | `west`           | `I18N.West.dll`         |

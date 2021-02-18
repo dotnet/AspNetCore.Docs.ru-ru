@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 417f69e797296cdcd01fc4ce326388512a406368
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: d1f3e2028ca120b5901aca0b24802d872ae52597
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058276"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279736"
 ---
-# <a name="aspnet-core-no-locblazor-layouts"></a>Макеты Blazor в ASP.NET Core
-
-Авторы: [Райнер Стропек](https://www.timecockpit.com) (Rainer Stropek) и [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+# <a name="aspnet-core-blazor-layouts"></a>Макеты Blazor в ASP.NET Core
 
 Некоторые элементы приложения, такие как меню, сообщения об авторских правах и логотипы компании, обычно являются частью общего макета приложения и используются каждым компонентом в приложении. Копирование кода этих элементов во все компоненты приложения не является эффективным подходом. Каждый раз, когда одному из элементов требуется обновление, нужно обновлять каждый компонент. Такое дублирование сложно поддерживать, и это может привести к несогласованному содержимому с течением времени. Для решения этой проблемы используются *макеты*.
 
@@ -125,7 +123,7 @@ ms.locfileid: "98058276"
 
 [!code-razor[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
 
-## <a name="share-a-no-locrazor-pages-layout-with-integrated-components"></a>Совместное использование макета Razor Pages с интегрированными компонентами
+## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Совместное использование макета Razor Pages с интегрированными компонентами
 
 Если маршрутизируемые компоненты интегрированы в приложение Razor Pages, общий макет приложения можно использовать с компонентами. Для получения дополнительной информации см. <xref:blazor/components/prerendering-and-integration>.
 

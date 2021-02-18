@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: f8f261f25d854a9bf36ad3299f4af392d5c4fafd
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 8baee9bc0a8e569174f33dac6a406b2162d09552
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93055884"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279919"
 ---
-# <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>Глобализация и локализация в ASP.NET Core Blazor
-
-Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
+# <a name="aspnet-core-blazor-globalization-and-localization"></a>Глобализация и локализация в ASP.NET Core Blazor
 
 Компоненты Razor можно сделать доступными для пользователей с различными языковыми и региональными параметрами. Доступны следующие сценарии глобализации и локализации .NET:
 
@@ -127,7 +125,7 @@ ms.locfileid: "93055884"
 
 Дополнительные сведения и примеры см. в разделе <xref:fundamentals/localization>.
 
-#### <a name="no-loccookies"></a>Cookies
+#### <a name="cookies"></a>Cookies
 
 Файл cookie локализации может запоминать язык и региональные параметры пользователя. ПО промежуточного слоя локализации считывает файл cookie при последующих запросах, чтобы задать язык и региональные параметры пользователя. 
 
@@ -207,7 +205,7 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> Для предотвращения атак с открытым перенаправлением используйте результат действия <xref:Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirect%2A>. Дополнительные сведения см. в разделе <xref:security/preventing-open-redirects>.
+> Для предотвращения атак с открытым перенаправлением используйте результат действия <xref:Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirect%2A>. Для получения дополнительной информации см. <xref:security/preventing-open-redirects>.
 
 Если приложение не настроено для обработки действий контроллера:
 
