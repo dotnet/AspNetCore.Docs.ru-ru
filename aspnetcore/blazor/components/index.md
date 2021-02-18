@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 823c24620b369874fdbc3e314b5b08952df83c8b
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 7b4438b4003916488c17d389b9817b5e09d1086c
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280112"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536224"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Создание и использование компонентов Razor ASP.NET Core
 
@@ -285,16 +285,168 @@ public string Title { get; set; } = "Panel Title from Child";
 
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
-В соответствии с соглашением значение атрибута, состоящее из кода C#, назначается параметру с помощью [зарезервированного символа Razor `@`](xref:mvc/views/razor#razor-syntax):
+Назначьте полям, свойствам и методам C# параметры компонентов в качестве значений атрибутов HTML с помощью [зарезервированного символа `@` Razor](xref:mvc/views/razor#razor-syntax):
 
-* Родительское поле или свойство `Title="@{FIELD OR PROPERTY}`, где заполнитель `{FIELD OR PROPERTY}` является полем C# или свойством родительского компонента.
-* Результат метода `Title="@{METHOD}"`, где заполнитель `{METHOD}` является методом C# родительского компонента.
-* [Неявное или явное выражение](xref:mvc/views/razor#implicit-razor-expressions) `Title="@({EXPRESSION})"`, где заполнитель `{EXPRESSION}` является выражением C#.
+* Чтобы назначить поле, свойство или метод родительского компонента параметру дочернего компонента, добавьте перед именем поля, свойства или метода символ `@`. Чтобы назначить параметру результат [неявного выражения C#](xref:mvc/views/razor#implicit-razor-expressions), добавьте перед именем неявного выражения символ `@`.
+
+  Указанный ниже родительский компонент отображает четыре экземпляра предыдущего компонента `ChildComponent` и задает для их параметра `Title` следующие значения:
+
+  * значение поля `title`;
+  * результат метода C# `GetTitle`;
+  * текущая местная дата в полном формате с использованием <xref:System.DateTime.ToLongDateString%2A>;
+  * свойство `Name` объекта `person`.
+
+  `Pages/ParentComponent.razor`:
+  
+  ```razor
+  <ChildComponent Title="@title">
+      Title from field.
+  </ChildComponent>
+  
+  <ChildComponent Title="@GetTitle()">
+      Title from method.
+  </ChildComponent>
+  
+  <ChildComponent Title="@DateTime.Now.ToLongDateString()">
+      Title from implicit Razor expression.
+  </ChildComponent>
+  
+  <ChildComponent Title="@person.Name">
+      Title from implicit Razor expression.
+  </ChildComponent>
+  
+  @code {
+      private string title = "Panel Title from Parent";
+      private Person person = new Person();
+      
+      private string GetTitle()
+      {
+          return "Panel Title from Parent";
+      }
+      
+      private class Person
+      {
+          public string Name { get; set; } = "Dr. Who";
+      }
+  }
+  ```
+  
+  В отличие от Razor Pages (`.cshtml`), Blazor не может выполнять асинхронные операции в выражении Razor при рендеринге компонента. Это обусловлено тем, что Blazor предназначается для рендеринга интерактивных пользовательских интерфейсов. В интерактивном пользовательском интерфейсе на экране всегда должно что-то отображаться, поэтому нет смысла блокировать поток рендеринга. Вместо этого асинхронные операции выполняются во время одного из [событий асинхронного жизненного цикла](xref:blazor/components/lifecycle). После каждого события асинхронного жизненного цикла для компонента может выполняться повторный рендеринг. Следующий синтаксис Razor **не** поддерживается:
+  
+  ```razor
+  <ChildComponent Title="@await ...">
+      ...
+  </ChildComponent>
+  ```
+  
+  Если приложение создано, при выполнении кода из предыдущего примера происходит *ошибка компилятора*:
+  
+  > Оператор await можно использовать только в методах с модификатором async. Попробуйте пометить этот метод модификатором async и изменить тип его возвращаемого значения на Task.
+
+  Чтобы асинхронно получить значение для параметра `Title` в предыдущем примере, компонент может использовать [событие жизненного цикла `OnInitializedAsync`](xref:blazor/components/lifecycle#component-initialization-methods), как показано в следующем примере:
+  
+  ```razor
+  <ChildComponent Title="@title">
+      Title from implicit Razor expression.
+  </ChildComponent>
+  
+  @code {
+      private string title;
+      
+      protected override async Task OnInitializedAsync()
+      {
+          title = await ...;
+      }
+  }
+  ```
+  
+* Чтобы назначить результат [явного выражения C#](xref:mvc/views/razor#explicit-razor-expressions) в родительском компоненте параметру дочернего компонента, заключите выражение в круглые скобки, добавив перед ним символ `@`.
+
+  Следующий дочерний компонент имеет параметр `ShowItemsSinceDate` компонента <xref:System.DateTime>.
+  
+  `Shared/ChildComponent.razor`:
+  
+  ```razor
+  <div class="panel panel-default">
+      <div class="panel-heading">Explicit DateTime Expression Example</div>
+      <div class="panel-body">
+          <p>@ChildContent</p>
+          <p>One week ago date: @ShowItemsSinceDate</p>
+      </div>
+  </div>
+
+  @code {
+      [Parameter]
+      public DateTime ShowItemsSinceDate { get; set; }
+
+      [Parameter]
+      public RenderFragment ChildContent { get; set; }
+  }
+  ```
+  
+  Следующий родительский компонент вычисляет дату с помощью явного выражения C#. Это дата, наступившая за неделю до значения, назначенного параметру `ShowItemsSinceDate` дочернего элемента.
+  
+  `Pages/ParentComponent.razor`:
+
+  ```razor
+  <ChildComponent ShowItemsSinceDate="@(DateTime.Now - TimeSpan.FromDays(7))">
+      Title from explicit Razor expression.
+  </ChildComponent>
+  ```
+
+  Использование явного выражения для сцепления текста с результатом выражения для назначения полученного значения параметру **не** поддерживается. В следующем примере выполняется поиск для сцепления текста "SKU-" с инвентарным номером продукта (свойство `SKU` Stock Keeping Unit), предоставленным объектом `product` родительского компонента. Razor Pages поддерживает этот синтаксис (`.cshtml`), но он недопустим для назначения параметру дочернего элемента `Title`.
+  
+  ```razor
+  <ChildComponent Title="SKU-@(product.SKU)">
+      Title from composed Razor expression. This doesn't compile.
+  </ChildComponent>
+  ```
+  
+  Если приложение создано, при выполнении кода из предыдущего примера происходит *ошибка компилятора*:
+  
+  > Атрибуты компонента не поддерживают сложное содержимое (смешанный C# и разметка).
+  
+  Чтобы можно было назначить составное значение, используйте метод, поле или свойство. В следующем примере "SKU-" сцепляется с инвентарным номером продукта в методе C# `GetTitle`:
+  
+  ```razor
+  <ChildComponent Title="@GetTitle()">
+      Composed title from method.
+  </ChildComponent>
+  
+  @code {
+      private Product product = new Product();
+
+      private string GetTitle() => $"SKU-{product.SKU}";
+      
+      private class Product
+      {
+          public string SKU { get; set; } = "12345";
+      }
+  }
+  ```
   
 Дополнительные сведения см. в [справочнике по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor).
 
 > [!WARNING]
 > Не создавайте компоненты, записывающие их в собственные *параметры компонентов*, — используйте вместо этого закрытое поле. Дополнительные сведения см. в разделе [Перезаписанные параметры](#overwritten-parameters).
+
+#### <a name="component-parameters-should-be-auto-properties"></a>Параметры компонентов должны быть автосвойствами
+
+Параметры компонента должны объявляться как *автосвойства*. Это означает, что такие параметры не должны содержать настраиваемую логику в методах получения или методах задания. Например, следующее свойство `StartData` является автосвойством:
+
+```csharp
+[Parameter]
+public DateTime StartData { get; set; }
+```
+
+Не размещайте настраиваемую логику в методе доступа `get` или `set`, так как параметры компонента можно использовать исключительно как канал для перемещения информации из родительского компонента в дочерний. Если метод установки свойства дочернего компонента содержит логику, которая вызывает повторный рендеринг родительского компонента, в итоге создается бесконечный цикл рендеринга.
+
+Если необходимо преобразовать полученное значение параметра, сделайте следующее:
+
+* Для представления предоставляемых необработанных данных оставьте для свойства параметра чистое автосвойство.
+* Создайте какое-то другое свойство или метод, который предоставляет преобразованные данные на основе свойства параметра.
+
+Вы можете переопределить `OnParametersSetAsync`, если нужно преобразовывать полученный параметр при каждом получении новых данных.
 
 ## <a name="child-content"></a>Дочернее содержимое
 
