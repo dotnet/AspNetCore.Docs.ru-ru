@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: c012658a6f48247af60c8bfd56a7d987f6aa8a68
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "93061513"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Использование интерфейсов API ASP.NET Core в библиотеке классов
@@ -52,7 +52,7 @@ ASP.NET Core соответствует [политике поддержки .NE
 
 Такая ссылка на ASP.NET Core поддерживается только для проектов, предназначенных для .NET Core 3.x.
 
-## <a name="include-no-locblazor-extensibility"></a>Включение расширяемости Blazor
+## <a name="include-blazor-extensibility"></a>Включение расширяемости Blazor
 
 Blazor поддерживает [модели размещения](xref:blazor/hosting-models) Server и WebAssembly (WASM). Если не требуется иное, то библиотека [компонентов Razor](xref:blazor/components/index) должна поддерживать обе модели размещения. Библиотека компонентов Razor должна использовать пакет SDK для [Microsoft.NET.Sdk.Razor ](xref:razor-pages/sdk).
 
@@ -113,7 +113,7 @@ dotnet new razorclasslib
 
 В этом разделе не рассматривается настройка различных версий для поддержки нескольких версий MVC. Рекомендации по поддержке нескольких версий ASP.NET Core см. в разделе [Support multiple ASP.NET Core versions](#support-multiple-aspnet-core-versions) (Поддержка нескольких ASP.NET Core версий).
 
-### <a name="no-locrazor-views-or-no-locrazor-pages"></a>Представления Razor или Razor Pages
+### <a name="razor-views-or-razor-pages"></a>Представления Razor или Razor Pages
 
 Проект, включающий [представления Razor](xref:mvc/views/overview) или [Razor Pages](xref:razor-pages/index), должен использовать [пакет SDK Microsoft.NET.Sdk.Razor ](xref:razor-pages/sdk).
 
