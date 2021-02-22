@@ -18,16 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 7a6ceea09bde8999b9e64796c0ba5fc6f3f45a2d
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: df9c78770f3494b1ae9e0d3604926d77cb1e67bb
+ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530233"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99578325"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Начало работы с Swashbuckle и ASP.NET Core
-
-Авторы: [Шейн Бойер](https://twitter.com/spboyer) (Shayne Boyer) и [Скотт Эдди](https://twitter.com/Scott_Addie) (Scott Addie)
 
 [Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
@@ -505,3 +503,7 @@ app.UseSwaggerUI(c =>
      c.InjectStylesheet("/swagger-ui/custom.css");
 }
 ```
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Microsoft Learn: улучшение процесса разработки API с помощью документации по Swagger](/learn/modules/improve-api-developer-experience-with-swagger/)
