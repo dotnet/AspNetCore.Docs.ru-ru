@@ -19,26 +19,26 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 939841ca7214e212a2f197ea1e00b0f6152c471e
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: d984023a1c46c5383d47a1634c54e61747b83d60
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280516"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101214"
 ---
-# <a name="build-a-blazor-todo-list-app"></a><span data-ttu-id="2cce9-103">Создание приложения Blazor со списком дел</span><span class="sxs-lookup"><span data-stu-id="2cce9-103">Build a Blazor todo list app</span></span>
+# <a name="build-a-blazor-todo-list-app"></a><span data-ttu-id="8f4f1-103">Создание приложения Blazor со списком дел</span><span class="sxs-lookup"><span data-stu-id="8f4f1-103">Build a Blazor todo list app</span></span>
 
-<span data-ttu-id="2cce9-104">В этом учебнике показано, как создать и изменить приложение Blazor.</span><span class="sxs-lookup"><span data-stu-id="2cce9-104">This tutorial shows you how to build and modify a Blazor app.</span></span> <span data-ttu-id="2cce9-105">Вы научитесь:</span><span class="sxs-lookup"><span data-stu-id="2cce9-105">You learn how to:</span></span>
+<span data-ttu-id="8f4f1-104">В этом учебнике показано, как создать и изменить приложение Blazor.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-104">This tutorial shows you how to build and modify a Blazor app.</span></span> <span data-ttu-id="8f4f1-105">Вы научитесь:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-105">You learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="2cce9-106">создавать проект приложения Blazor со списком задач;</span><span class="sxs-lookup"><span data-stu-id="2cce9-106">Create a todo list Blazor app project</span></span>
-> * <span data-ttu-id="2cce9-107">изменять компоненты Razor;</span><span class="sxs-lookup"><span data-stu-id="2cce9-107">Modify Razor components</span></span>
-> * <span data-ttu-id="2cce9-108">использовать обработку событий и привязку данных в компонентах;</span><span class="sxs-lookup"><span data-stu-id="2cce9-108">Use event handling and data binding in components</span></span>
-> * <span data-ttu-id="2cce9-109">Использование маршрутизации в приложении Blazor</span><span class="sxs-lookup"><span data-stu-id="2cce9-109">Use routing in a Blazor app</span></span>
+> * <span data-ttu-id="8f4f1-106">создавать проект приложения Blazor со списком задач;</span><span class="sxs-lookup"><span data-stu-id="8f4f1-106">Create a todo list Blazor app project</span></span>
+> * <span data-ttu-id="8f4f1-107">изменять компоненты Razor;</span><span class="sxs-lookup"><span data-stu-id="8f4f1-107">Modify Razor components</span></span>
+> * <span data-ttu-id="8f4f1-108">использовать обработку событий и привязку данных в компонентах;</span><span class="sxs-lookup"><span data-stu-id="8f4f1-108">Use event handling and data binding in components</span></span>
+> * <span data-ttu-id="8f4f1-109">Использование маршрутизации в приложении Blazor</span><span class="sxs-lookup"><span data-stu-id="8f4f1-109">Use routing in a Blazor app</span></span>
 
-<span data-ttu-id="2cce9-110">Когда вы выполните задачи из этого руководства, у вас будет работающее приложение списка задач.</span><span class="sxs-lookup"><span data-stu-id="2cce9-110">At the end of this tutorial, you'll have a working todo list app.</span></span>
+<span data-ttu-id="8f4f1-110">Когда вы выполните задачи из этого руководства, у вас будет работающее приложение списка задач.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-110">At the end of this tutorial, you'll have a working todo list app.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="2cce9-111">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="2cce9-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="8f4f1-111">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="8f4f1-111">Prerequisites</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -52,34 +52,34 @@ ms.locfileid: "100280516"
 
 ::: moniker-end
 
-## <a name="create-a-todo-list-blazor-app"></a><span data-ttu-id="2cce9-112">Создание приложения Blazor со списком задач</span><span class="sxs-lookup"><span data-stu-id="2cce9-112">Create a todo list Blazor app</span></span>
+## <a name="create-a-todo-list-blazor-app"></a><span data-ttu-id="8f4f1-112">Создание приложения Blazor со списком задач</span><span class="sxs-lookup"><span data-stu-id="8f4f1-112">Create a todo list Blazor app</span></span>
 
-1. <span data-ttu-id="2cce9-113">Создайте в командной строке новое приложение Blazor с именем `TodoList`:</span><span class="sxs-lookup"><span data-stu-id="2cce9-113">Create a new Blazor app named `TodoList` in a command shell:</span></span>
+1. <span data-ttu-id="8f4f1-113">Создайте в командной строке новое приложение Blazor с именем `TodoList`:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-113">Create a new Blazor app named `TodoList` in a command shell:</span></span>
 
    ```dotnetcli
    dotnet new blazorserver -o TodoList
    ```
 
-   <span data-ttu-id="2cce9-114">Предыдущая команда создает папку с именем `TodoList` и параметром `-o|--output` для хранения приложения.</span><span class="sxs-lookup"><span data-stu-id="2cce9-114">The preceding command creates a folder named `TodoList` with the `-o|--output` option to hold the app.</span></span> <span data-ttu-id="2cce9-115">Папка `TodoList` находится в *корневой папке* проекта.</span><span class="sxs-lookup"><span data-stu-id="2cce9-115">The `TodoList` folder is the *root folder* of the project.</span></span> <span data-ttu-id="2cce9-116">Перейдите в папку `TodoList` с помощью следующей команды:</span><span class="sxs-lookup"><span data-stu-id="2cce9-116">Change directories to the `TodoList` folder with the following command:</span></span>
+   <span data-ttu-id="8f4f1-114">Предыдущая команда создает папку с именем `TodoList` и параметром `-o|--output` для хранения приложения.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-114">The preceding command creates a folder named `TodoList` with the `-o|--output` option to hold the app.</span></span> <span data-ttu-id="8f4f1-115">Папка `TodoList` находится в *корневой папке* проекта.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-115">The `TodoList` folder is the *root folder* of the project.</span></span> <span data-ttu-id="8f4f1-116">Перейдите в папку `TodoList` с помощью следующей команды:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-116">Change directories to the `TodoList` folder with the following command:</span></span>
 
    ```dotnetcli
    cd TodoList
    ```
 
-1. <span data-ttu-id="2cce9-117">Добавьте в приложение новый компонент Razor `Todo` с помощью следующей команды.</span><span class="sxs-lookup"><span data-stu-id="2cce9-117">Add a new `Todo` Razor component to the app using the following command:</span></span>
+1. <span data-ttu-id="8f4f1-117">Добавьте в приложение новый компонент Razor `Todo` с помощью следующей команды.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-117">Add a new `Todo` Razor component to the app using the following command:</span></span>
 
    ```dotnetcli
    dotnet new razorcomponent -n Todo -o Pages
    ```
 
-   <span data-ttu-id="2cce9-118">Параметр `-n|--name` в предыдущей команде задает имя нового компонента Razor.</span><span class="sxs-lookup"><span data-stu-id="2cce9-118">The `-n|--name` option in the preceding command specifies the name of the new Razor component.</span></span> <span data-ttu-id="2cce9-119">Новый компонент создается в папке `Pages` проекта с параметром `-o|--output`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-119">The new component is created in the project's `Pages` folder with the `-o|--output` option.</span></span>
+   <span data-ttu-id="8f4f1-118">Параметр `-n|--name` в предыдущей команде задает имя нового компонента Razor.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-118">The `-n|--name` option in the preceding command specifies the name of the new Razor component.</span></span> <span data-ttu-id="8f4f1-119">Новый компонент создается в папке `Pages` проекта с параметром `-o|--output`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-119">The new component is created in the project's `Pages` folder with the `-o|--output` option.</span></span>
 
    > [!IMPORTANT]
-   > <span data-ttu-id="2cce9-120">Имена файлов компонентов Razor должны начинаться с прописной буквы.</span><span class="sxs-lookup"><span data-stu-id="2cce9-120">Razor component file names require a capitalized first letter.</span></span> <span data-ttu-id="2cce9-121">Откройте папку `Pages` и убедитесь, что имя файла компонента `Todo` начинается с заглавной буквы `T`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-121">Open the `Pages` folder and confirm that the `Todo` component file name starts with a capital letter `T`.</span></span> <span data-ttu-id="2cce9-122">Имя файла должно быть `Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-122">The file name should be `Todo.razor`.</span></span>
+   > <span data-ttu-id="8f4f1-120">Имена файлов компонентов Razor должны начинаться с прописной буквы.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-120">Razor component file names require a capitalized first letter.</span></span> <span data-ttu-id="8f4f1-121">Откройте папку `Pages` и убедитесь, что имя файла компонента `Todo` начинается с заглавной буквы `T`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-121">Open the `Pages` folder and confirm that the `Todo` component file name starts with a capital letter `T`.</span></span> <span data-ttu-id="8f4f1-122">Имя файла должно быть `Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-122">The file name should be `Todo.razor`.</span></span>
 
-1. <span data-ttu-id="2cce9-123">Откройте компонент `Todo` в любом редакторе файлов и добавьте директиву `@page` Razor в начало файла с относительным URL-адресом `/todo`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-123">Open the `Todo` component in any file editor and add an `@page` Razor directive to the top of the file with a relative URL of `/todo`.</span></span>
+1. <span data-ttu-id="8f4f1-123">Откройте компонент `Todo` в любом редакторе файлов и добавьте директиву `@page` Razor в начало файла с относительным URL-адресом `/todo`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-123">Open the `Todo` component in any file editor and add an `@page` Razor directive to the top of the file with a relative URL of `/todo`.</span></span>
 
-   <span data-ttu-id="2cce9-124">`Pages/Todo.razor`:</span><span class="sxs-lookup"><span data-stu-id="2cce9-124">`Pages/Todo.razor`:</span></span>
+   <span data-ttu-id="8f4f1-124">`Pages/Todo.razor`:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-124">`Pages/Todo.razor`:</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -93,15 +93,15 @@ ms.locfileid: "100280516"
 
    ::: moniker-end
 
-   <span data-ttu-id="2cce9-125">Сохраните файл `Pages/Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-125">Save the `Pages/Todo.razor` file.</span></span>
+   <span data-ttu-id="8f4f1-125">Сохраните файл `Pages/Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-125">Save the `Pages/Todo.razor` file.</span></span>
 
-1. <span data-ttu-id="2cce9-126">Добавьте компонент `Todo` на панель навигации.</span><span class="sxs-lookup"><span data-stu-id="2cce9-126">Add the `Todo` component to the navigation bar.</span></span>
+1. <span data-ttu-id="8f4f1-126">Добавьте компонент `Todo` на панель навигации.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-126">Add the `Todo` component to the navigation bar.</span></span>
 
-   <span data-ttu-id="2cce9-127">Компонент `NavMenu` используется в макете этого приложения.</span><span class="sxs-lookup"><span data-stu-id="2cce9-127">The `NavMenu` component is used in the app's layout.</span></span> <span data-ttu-id="2cce9-128">Макетами называются компоненты, которые избавляют от дублирования содержимого в приложении.</span><span class="sxs-lookup"><span data-stu-id="2cce9-128">Layouts are components that allow you to avoid duplication of content in an app.</span></span> <span data-ttu-id="2cce9-129">Когда в приложении загружается URL-адрес компонента, компонент `NavLink` предоставляет соответствующее указание в пользовательском интерфейсе.</span><span class="sxs-lookup"><span data-stu-id="2cce9-129">The `NavLink` component provides a cue in the app's UI when the component URL is loaded by the app.</span></span>
+   <span data-ttu-id="8f4f1-127">Компонент `NavMenu` используется в макете этого приложения.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-127">The `NavMenu` component is used in the app's layout.</span></span> <span data-ttu-id="8f4f1-128">Макетами называются компоненты, которые избавляют от дублирования содержимого в приложении.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-128">Layouts are components that allow you to avoid duplication of content in an app.</span></span> <span data-ttu-id="8f4f1-129">Когда в приложении загружается URL-адрес компонента, компонент `NavLink` предоставляет соответствующее указание в пользовательском интерфейсе.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-129">The `NavLink` component provides a cue in the app's UI when the component URL is loaded by the app.</span></span>
 
-   <span data-ttu-id="2cce9-130">В неупорядоченном списке (`<ul>...</ul>`) компонента `NavMenu` добавьте указанный ниже элемент списка (`<li>...</li>`) и компонент `NavLink` для компонента `Todo`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-130">In the unordered list (`<ul>...</ul>`) of the `NavMenu` component, add the following list item (`<li>...</li>`) and `NavLink` component for the `Todo` component.</span></span>
+   <span data-ttu-id="8f4f1-130">В неупорядоченном списке (`<ul>...</ul>`) компонента `NavMenu` добавьте указанный ниже элемент списка (`<li>...</li>`) и компонент `NavLink` для компонента `Todo`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-130">In the unordered list (`<ul>...</ul>`) of the `NavMenu` component, add the following list item (`<li>...</li>`) and `NavLink` component for the `Todo` component.</span></span>
 
-   <span data-ttu-id="2cce9-131">В `Shared/NavMenu.razor`:</span><span class="sxs-lookup"><span data-stu-id="2cce9-131">In `Shared/NavMenu.razor`:</span></span>
+   <span data-ttu-id="8f4f1-131">В `Shared/NavMenu.razor`:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-131">In `Shared/NavMenu.razor`:</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -115,15 +115,15 @@ ms.locfileid: "100280516"
 
    ::: moniker-end
 
-   <span data-ttu-id="2cce9-132">Сохраните файл `Shared/NavMenu.razor`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-132">Save the `Shared/NavMenu.razor` file.</span></span>
+   <span data-ttu-id="8f4f1-132">Сохраните файл `Shared/NavMenu.razor`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-132">Save the `Shared/NavMenu.razor` file.</span></span>
 
-1. <span data-ttu-id="2cce9-133">Скомпилируйте и запустите приложение, выполнив команду [`dotnet watch run`](/aspnet/core/tutorials/dotnet-watch) в командной оболочке из папки `TodoList`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-133">Build and run the app by executing the [`dotnet watch run`](/aspnet/core/tutorials/dotnet-watch) command in the command shell from the `TodoList` folder.</span></span> <span data-ttu-id="2cce9-134">После запуска приложения перейдите на страницу списка дел, щелкнув ссылку **`Todo`** на панели навигации приложения. В результате будет загружена страница по адресу `/todo`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-134">After the app is running, visit the new Todo page by selecting the **`Todo`** link in the app's navigation bar, which loads the page at `/todo`.</span></span>
+1. <span data-ttu-id="8f4f1-133">Скомпилируйте и запустите приложение, выполнив команду [`dotnet watch run`](xref:tutorials/dotnet-watch) в командной оболочке из папки `TodoList`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-133">Build and run the app by executing the [`dotnet watch run`](xref:tutorials/dotnet-watch) command in the command shell from the `TodoList` folder.</span></span> <span data-ttu-id="8f4f1-134">После запуска приложения перейдите на страницу списка дел, щелкнув ссылку **`Todo`** на панели навигации приложения. В результате будет загружена страница по адресу `/todo`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-134">After the app is running, visit the new Todo page by selecting the **`Todo`** link in the app's navigation bar, which loads the page at `/todo`.</span></span>
 
-   <span data-ttu-id="2cce9-135">Оставьте приложение выполняться в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="2cce9-135">Leave the app running the command shell.</span></span> <span data-ttu-id="2cce9-136">При каждом сохранении файла приложение автоматически перестраивается.</span><span class="sxs-lookup"><span data-stu-id="2cce9-136">Each time a file is saved, the app is automatically rebuilt.</span></span> <span data-ttu-id="2cce9-137">Браузер временно утрачивает подключение к приложению на время компиляции и перезапуска.</span><span class="sxs-lookup"><span data-stu-id="2cce9-137">The browser temporarily loses its connection to the app while compiling and restarting.</span></span> <span data-ttu-id="2cce9-138">При восстановлении подключения страница в браузере автоматически перезагружается.</span><span class="sxs-lookup"><span data-stu-id="2cce9-138">The page in the browser is automatically reloaded when the connection is re-established.</span></span>
+   <span data-ttu-id="8f4f1-135">Оставьте приложение выполняться в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-135">Leave the app running the command shell.</span></span> <span data-ttu-id="8f4f1-136">При каждом сохранении файла приложение автоматически перестраивается.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-136">Each time a file is saved, the app is automatically rebuilt.</span></span> <span data-ttu-id="8f4f1-137">Браузер временно утрачивает подключение к приложению на время компиляции и перезапуска.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-137">The browser temporarily loses its connection to the app while compiling and restarting.</span></span> <span data-ttu-id="8f4f1-138">При восстановлении подключения страница в браузере автоматически перезагружается.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-138">The page in the browser is automatically reloaded when the connection is re-established.</span></span>
 
-1. <span data-ttu-id="2cce9-139">Добавьте в корень проекта (папка `TodoList`) файл `TodoItem.cs`, который будет содержать класс для элемента списка дел.</span><span class="sxs-lookup"><span data-stu-id="2cce9-139">Add a `TodoItem.cs` file to the root of the project (the `TodoList` folder) to hold a class that represents a todo item.</span></span> <span data-ttu-id="2cce9-140">Используйте следующий код C# для класса `TodoItem`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-140">Use the following C# code for the `TodoItem` class.</span></span>
+1. <span data-ttu-id="8f4f1-139">Добавьте в корень проекта (папка `TodoList`) файл `TodoItem.cs`, который будет содержать класс для элемента списка дел.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-139">Add a `TodoItem.cs` file to the root of the project (the `TodoList` folder) to hold a class that represents a todo item.</span></span> <span data-ttu-id="8f4f1-140">Используйте следующий код C# для класса `TodoItem`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-140">Use the following C# code for the `TodoItem` class.</span></span>
 
-   <span data-ttu-id="2cce9-141">`TodoItem.cs`:</span><span class="sxs-lookup"><span data-stu-id="2cce9-141">`TodoItem.cs`:</span></span>
+   <span data-ttu-id="8f4f1-141">`TodoItem.cs`:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-141">`TodoItem.cs`:</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -138,17 +138,17 @@ ms.locfileid: "100280516"
    ::: moniker-end
 
    > [!NOTE]
-   > <span data-ttu-id="2cce9-142">При использовании Visual Studio для создания файла `ToDoItem.cs` и класса `ToDoItem` используйте один из следующих подходов:</span><span class="sxs-lookup"><span data-stu-id="2cce9-142">If using Visual Studio to create the `ToDoItem.cs` file and `ToDoItem` class, use either of the following approaches:</span></span>
+   > <span data-ttu-id="8f4f1-142">При использовании Visual Studio для создания файла `ToDoItem.cs` и класса `ToDoItem` используйте один из следующих подходов:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-142">If using Visual Studio to create the `ToDoItem.cs` file and `ToDoItem` class, use either of the following approaches:</span></span>
    >
-   > * <span data-ttu-id="2cce9-143">Удалите пространство имен, создаваемое Visual Studio для класса.</span><span class="sxs-lookup"><span data-stu-id="2cce9-143">Remove the namespace that Visual Studio generates for the class.</span></span>
-   > * <span data-ttu-id="2cce9-144">Воспользуйтесь кнопкой **Копировать** в предыдущем блоке кода и замените все содержимое файла, создаваемого Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="2cce9-144">Use the **Copy** button in the preceding code block and replace the entire contents of the file that Visual Studio generates.</span></span>
+   > * <span data-ttu-id="8f4f1-143">Удалите пространство имен, создаваемое Visual Studio для класса.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-143">Remove the namespace that Visual Studio generates for the class.</span></span>
+   > * <span data-ttu-id="8f4f1-144">Воспользуйтесь кнопкой **Копировать** в предыдущем блоке кода и замените все содержимое файла, создаваемого Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-144">Use the **Copy** button in the preceding code block and replace the entire contents of the file that Visual Studio generates.</span></span>
 
-1. <span data-ttu-id="2cce9-145">Вернитесь к компоненту `Todo` и выполните указанные ниже задачи.</span><span class="sxs-lookup"><span data-stu-id="2cce9-145">Return to the `Todo` component and perform the following tasks:</span></span>
+1. <span data-ttu-id="8f4f1-145">Вернитесь к компоненту `Todo` и выполните указанные ниже задачи.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-145">Return to the `Todo` component and perform the following tasks:</span></span>
 
-   * <span data-ttu-id="2cce9-146">Добавьте поле для элементов списка дел в блоке `@code`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-146">Add a field for the todo items in the `@code` block.</span></span> <span data-ttu-id="2cce9-147">Компонент `Todo` использует это поле для сохранения состояния списка дел.</span><span class="sxs-lookup"><span data-stu-id="2cce9-147">The `Todo` component uses this field to maintain the state of the todo list.</span></span>
-   * <span data-ttu-id="2cce9-148">Добавьте разметку неупорядоченного списка и цикл `foreach` для отображения каждого элемента списка дела в виде элемента списка (`<li>`).</span><span class="sxs-lookup"><span data-stu-id="2cce9-148">Add unordered list markup and a `foreach` loop to render each todo item as a list item (`<li>`).</span></span>
+   * <span data-ttu-id="8f4f1-146">Добавьте поле для элементов списка дел в блоке `@code`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-146">Add a field for the todo items in the `@code` block.</span></span> <span data-ttu-id="8f4f1-147">Компонент `Todo` использует это поле для сохранения состояния списка дел.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-147">The `Todo` component uses this field to maintain the state of the todo list.</span></span>
+   * <span data-ttu-id="8f4f1-148">Добавьте разметку неупорядоченного списка и цикл `foreach` для отображения каждого элемента списка дела в виде элемента списка (`<li>`).</span><span class="sxs-lookup"><span data-stu-id="8f4f1-148">Add unordered list markup and a `foreach` loop to render each todo item as a list item (`<li>`).</span></span>
 
-   <span data-ttu-id="2cce9-149">`Pages/Todo.razor`:</span><span class="sxs-lookup"><span data-stu-id="2cce9-149">`Pages/Todo.razor`:</span></span>
+   <span data-ttu-id="8f4f1-149">`Pages/Todo.razor`:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-149">`Pages/Todo.razor`:</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -162,7 +162,7 @@ ms.locfileid: "100280516"
 
    ::: moniker-end
 
-1. <span data-ttu-id="2cce9-150">Приложению необходимы элементы пользовательского интерфейса для добавления элементов в список дел.</span><span class="sxs-lookup"><span data-stu-id="2cce9-150">The app requires UI elements for adding todo items to the list.</span></span> <span data-ttu-id="2cce9-151">Добавьте текстовое поле (`<input>`) и кнопку (`<button>`) под неупорядоченным списком (`<ul>...</ul>`).</span><span class="sxs-lookup"><span data-stu-id="2cce9-151">Add a text input (`<input>`) and a button (`<button>`) below the unordered list (`<ul>...</ul>`):</span></span>
+1. <span data-ttu-id="8f4f1-150">Приложению необходимы элементы пользовательского интерфейса для добавления элементов в список дел.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-150">The app requires UI elements for adding todo items to the list.</span></span> <span data-ttu-id="8f4f1-151">Добавьте текстовое поле (`<input>`) и кнопку (`<button>`) под неупорядоченным списком (`<ul>...</ul>`).</span><span class="sxs-lookup"><span data-stu-id="8f4f1-151">Add a text input (`<input>`) and a button (`<button>`) below the unordered list (`<ul>...</ul>`):</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -176,11 +176,11 @@ ms.locfileid: "100280516"
 
    ::: moniker-end
 
-1. <span data-ttu-id="2cce9-152">Сохраните файл `TodoItem.cs` и обновленный файл `Pages/Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-152">Save the `TodoItem.cs` file and the updated `Pages/Todo.razor` file.</span></span> <span data-ttu-id="2cce9-153">При сохранении файлов в командной оболочке будет автоматически выполнена повторная сборка приложения.</span><span class="sxs-lookup"><span data-stu-id="2cce9-153">In the command shell, the app is automatically rebuilt when the files are saved.</span></span> <span data-ttu-id="2cce9-154">Браузер временно утратит подключение к приложению, но когда подключение будет восстановлено, браузер перезагрузит страницу.</span><span class="sxs-lookup"><span data-stu-id="2cce9-154">The browser temporarily loses its connection to the app and then reloads the page when the connection is re-established.</span></span>
+1. <span data-ttu-id="8f4f1-152">Сохраните файл `TodoItem.cs` и обновленный файл `Pages/Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-152">Save the `TodoItem.cs` file and the updated `Pages/Todo.razor` file.</span></span> <span data-ttu-id="8f4f1-153">При сохранении файлов в командной оболочке будет автоматически выполнена повторная сборка приложения.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-153">In the command shell, the app is automatically rebuilt when the files are saved.</span></span> <span data-ttu-id="8f4f1-154">Браузер временно утратит подключение к приложению, но когда подключение будет восстановлено, браузер перезагрузит страницу.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-154">The browser temporarily loses its connection to the app and then reloads the page when the connection is re-established.</span></span>
 
-1. <span data-ttu-id="2cce9-155">При нажатии кнопки **`Add todo`** ничего не происходит, так как к кнопке не подключен обработчик событий.</span><span class="sxs-lookup"><span data-stu-id="2cce9-155">When the **`Add todo`** button is selected, nothing happens because an event handler isn't attached to the button.</span></span>
+1. <span data-ttu-id="8f4f1-155">При нажатии кнопки **`Add todo`** ничего не происходит, так как к кнопке не подключен обработчик событий.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-155">When the **`Add todo`** button is selected, nothing happens because an event handler isn't attached to the button.</span></span>
 
-1. <span data-ttu-id="2cce9-156">Добавьте метод `AddTodo` в компонент `Todo` и зарегистрируйте его для нажатий кнопки с помощью атрибута `@onclick`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-156">Add an `AddTodo` method to the `Todo` component and register the method for the button using the `@onclick` attribute.</span></span> <span data-ttu-id="2cce9-157">Теперь при нажатии кнопки вызывается метод C# `AddTodo`:</span><span class="sxs-lookup"><span data-stu-id="2cce9-157">The `AddTodo` C# method is called when the button is selected:</span></span>
+1. <span data-ttu-id="8f4f1-156">Добавьте метод `AddTodo` в компонент `Todo` и зарегистрируйте его для нажатий кнопки с помощью атрибута `@onclick`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-156">Add an `AddTodo` method to the `Todo` component and register the method for the button using the `@onclick` attribute.</span></span> <span data-ttu-id="8f4f1-157">Теперь при нажатии кнопки вызывается метод C# `AddTodo`:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-157">The `AddTodo` C# method is called when the button is selected:</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -194,7 +194,7 @@ ms.locfileid: "100280516"
 
    ::: moniker-end
 
-1. <span data-ttu-id="2cce9-158">Чтобы получить заголовок нового элемента списка дел, добавьте строковое поле `newTodo` в начало блока `@code`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-158">To get the title of the new todo item, add a `newTodo` string field at the top of the `@code` block:</span></span>
+1. <span data-ttu-id="8f4f1-158">Чтобы получить заголовок нового элемента списка дел, добавьте строковое поле `newTodo` в начало блока `@code`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-158">To get the title of the new todo item, add a `newTodo` string field at the top of the `@code` block:</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -208,13 +208,13 @@ ms.locfileid: "100280516"
 
    ::: moniker-end
 
-   <span data-ttu-id="2cce9-159">Измените текстовый элемент `<input>`, чтобы привязать `newTodo` с помощью атрибута `@bind`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-159">Modify the text `<input>` element to bind `newTodo` with the `@bind` attribute:</span></span>
+   <span data-ttu-id="8f4f1-159">Измените текстовый элемент `<input>`, чтобы привязать `newTodo` с помощью атрибута `@bind`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-159">Modify the text `<input>` element to bind `newTodo` with the `@bind` attribute:</span></span>
 
    ```razor
    <input placeholder="Something todo" @bind="newTodo" />
    ```
 
-1. <span data-ttu-id="2cce9-160">Обновите метод `AddTodo`, чтобы добавить `TodoItem` с указываемым названием в список.</span><span class="sxs-lookup"><span data-stu-id="2cce9-160">Update the `AddTodo` method to add the `TodoItem` with the specified title to the list.</span></span> <span data-ttu-id="2cce9-161">Очистите значение текстового поля, задав пустую строку в качестве значения для `newTodo`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-161">Clear the value of the text input by setting `newTodo` to an empty string:</span></span>
+1. <span data-ttu-id="8f4f1-160">Обновите метод `AddTodo`, чтобы добавить `TodoItem` с указываемым названием в список.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-160">Update the `AddTodo` method to add the `TodoItem` with the specified title to the list.</span></span> <span data-ttu-id="8f4f1-161">Очистите значение текстового поля, задав пустую строку в качестве значения для `newTodo`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-161">Clear the value of the text input by setting `newTodo` to an empty string:</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -228,9 +228,9 @@ ms.locfileid: "100280516"
 
    ::: moniker-end
 
-1. <span data-ttu-id="2cce9-162">Сохраните файл `Pages/Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-162">Save the `Pages/Todo.razor` file.</span></span> <span data-ttu-id="2cce9-163">В командной оболочке будет автоматически выполнена повторная сборка приложения.</span><span class="sxs-lookup"><span data-stu-id="2cce9-163">The app is automatically rebuilt in the command shell.</span></span> <span data-ttu-id="2cce9-164">После повторного подключения браузера к приложению страница в браузере перезагрузится.</span><span class="sxs-lookup"><span data-stu-id="2cce9-164">The page reloads in the browser after the browser reconnects to the app.</span></span>
+1. <span data-ttu-id="8f4f1-162">Сохраните файл `Pages/Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-162">Save the `Pages/Todo.razor` file.</span></span> <span data-ttu-id="8f4f1-163">В командной оболочке будет автоматически выполнена повторная сборка приложения.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-163">The app is automatically rebuilt in the command shell.</span></span> <span data-ttu-id="8f4f1-164">После повторного подключения браузера к приложению страница в браузере перезагрузится.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-164">The page reloads in the browser after the browser reconnects to the app.</span></span>
 
-1. <span data-ttu-id="2cce9-165">Вы можете сделать текст заголовка для каждого элемента списка дел редактируемым, а по дополнительному флажку пользователь сможет отслеживать завершение задач.</span><span class="sxs-lookup"><span data-stu-id="2cce9-165">The title text for each todo item can be made editable, and a check box can help the user keep track of completed items.</span></span> <span data-ttu-id="2cce9-166">Добавьте флажок для каждого элемента списка дел и привяжите его значение к свойству `IsDone`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-166">Add a check box input for each todo item and bind its value to the `IsDone` property.</span></span> <span data-ttu-id="2cce9-167">Замените `@todo.Title` элементом `<input>`, который привязан к `todo.Title` с помощью `@bind`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-167">Change `@todo.Title` to an `<input>` element bound to `todo.Title` with `@bind`:</span></span>
+1. <span data-ttu-id="8f4f1-165">Вы можете сделать текст заголовка для каждого элемента списка дел редактируемым, а по дополнительному флажку пользователь сможет отслеживать завершение задач.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-165">The title text for each todo item can be made editable, and a check box can help the user keep track of completed items.</span></span> <span data-ttu-id="8f4f1-166">Добавьте флажок для каждого элемента списка дел и привяжите его значение к свойству `IsDone`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-166">Add a check box input for each todo item and bind its value to the `IsDone` property.</span></span> <span data-ttu-id="8f4f1-167">Замените `@todo.Title` элементом `<input>`, который привязан к `todo.Title` с помощью `@bind`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-167">Change `@todo.Title` to an `<input>` element bound to `todo.Title` with `@bind`:</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -244,13 +244,13 @@ ms.locfileid: "100280516"
 
    ::: moniker-end
 
-1. <span data-ttu-id="2cce9-168">Обновите заголовок `<h3>`, чтобы в нем отображалось количество незавершенных дел в списке (`IsDone` имеет значение `false`).</span><span class="sxs-lookup"><span data-stu-id="2cce9-168">Update the `<h3>` header to show a count of the number of todo items that aren't complete (`IsDone` is `false`).</span></span>
+1. <span data-ttu-id="8f4f1-168">Обновите заголовок `<h3>`, чтобы в нем отображалось количество незавершенных дел в списке (`IsDone` имеет значение `false`).</span><span class="sxs-lookup"><span data-stu-id="8f4f1-168">Update the `<h3>` header to show a count of the number of todo items that aren't complete (`IsDone` is `false`).</span></span>
 
    ```razor
    <h3>Todo (@todos.Count(todo => !todo.IsDone))</h3>
    ```
 
-1. <span data-ttu-id="2cce9-169">Готовый компонент `Todo` (`Pages/Todo.razor`):</span><span class="sxs-lookup"><span data-stu-id="2cce9-169">The completed `Todo` component (`Pages/Todo.razor`):</span></span>
+1. <span data-ttu-id="8f4f1-169">Готовый компонент `Todo` (`Pages/Todo.razor`):</span><span class="sxs-lookup"><span data-stu-id="8f4f1-169">The completed `Todo` component (`Pages/Todo.razor`):</span></span>
 
    ::: moniker range=">= aspnetcore-5.0"
 
@@ -264,23 +264,23 @@ ms.locfileid: "100280516"
 
    ::: moniker-end
 
-1. <span data-ttu-id="2cce9-170">Сохраните файл `Pages/Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="2cce9-170">Save the `Pages/Todo.razor` file.</span></span> <span data-ttu-id="2cce9-171">В командной оболочке будет автоматически выполнена повторная сборка приложения.</span><span class="sxs-lookup"><span data-stu-id="2cce9-171">The app is automatically rebuilt in the command shell.</span></span> <span data-ttu-id="2cce9-172">После повторного подключения браузера к приложению страница в браузере перезагрузится.</span><span class="sxs-lookup"><span data-stu-id="2cce9-172">The page reloads in the browser after the browser reconnects to the app.</span></span>
+1. <span data-ttu-id="8f4f1-170">Сохраните файл `Pages/Todo.razor`.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-170">Save the `Pages/Todo.razor` file.</span></span> <span data-ttu-id="8f4f1-171">В командной оболочке будет автоматически выполнена повторная сборка приложения.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-171">The app is automatically rebuilt in the command shell.</span></span> <span data-ttu-id="8f4f1-172">После повторного подключения браузера к приложению страница в браузере перезагрузится.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-172">The page reloads in the browser after the browser reconnects to the app.</span></span>
 
-1. <span data-ttu-id="2cce9-173">Добавьте элементы, измените их и пометьте элементы списка дел как завершенные, чтобы протестировать компонент.</span><span class="sxs-lookup"><span data-stu-id="2cce9-173">Add items, edit items, and mark todo items done to test the component.</span></span>
+1. <span data-ttu-id="8f4f1-173">Добавьте элементы, измените их и пометьте элементы списка дел как завершенные, чтобы протестировать компонент.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-173">Add items, edit items, and mark todo items done to test the component.</span></span>
 
-1. <span data-ttu-id="2cce9-174">По окончании завершите работу приложения в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="2cce9-174">When finished, shut down the app in the command shell.</span></span> <span data-ttu-id="2cce9-175">Многие командные оболочки принимают команду клавиатуры <kbd>CTRL</kbd>+<kbd>C</kbd> для остановки приложения.</span><span class="sxs-lookup"><span data-stu-id="2cce9-175">Many command shells accept the keyboard command <kbd>Ctrl</kbd>+<kbd>c</kbd> to stop an app.</span></span>
+1. <span data-ttu-id="8f4f1-174">По окончании завершите работу приложения в командной оболочке.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-174">When finished, shut down the app in the command shell.</span></span> <span data-ttu-id="8f4f1-175">Многие командные оболочки принимают команду клавиатуры <kbd>CTRL</kbd>+<kbd>C</kbd> для остановки приложения.</span><span class="sxs-lookup"><span data-stu-id="8f4f1-175">Many command shells accept the keyboard command <kbd>Ctrl</kbd>+<kbd>c</kbd> to stop an app.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="2cce9-176">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="2cce9-176">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="8f4f1-176">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="8f4f1-176">Next steps</span></span>
 
-<span data-ttu-id="2cce9-177">В этом руководстве вы узнали, как выполнять следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="2cce9-177">In this tutorial, you learned how to:</span></span>
+<span data-ttu-id="8f4f1-177">В этом руководстве вы узнали, как выполнять следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-177">In this tutorial, you learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="2cce9-178">создавать проект приложения Blazor со списком задач;</span><span class="sxs-lookup"><span data-stu-id="2cce9-178">Create a todo list Blazor app project</span></span>
-> * <span data-ttu-id="2cce9-179">изменять компоненты Razor;</span><span class="sxs-lookup"><span data-stu-id="2cce9-179">Modify Razor components</span></span>
-> * <span data-ttu-id="2cce9-180">использовать обработку событий и привязку данных в компонентах;</span><span class="sxs-lookup"><span data-stu-id="2cce9-180">Use event handling and data binding in components</span></span>
-> * <span data-ttu-id="2cce9-181">Использование маршрутизации в приложении Blazor</span><span class="sxs-lookup"><span data-stu-id="2cce9-181">Use routing in a Blazor app</span></span>
+> * <span data-ttu-id="8f4f1-178">создавать проект приложения Blazor со списком задач;</span><span class="sxs-lookup"><span data-stu-id="8f4f1-178">Create a todo list Blazor app project</span></span>
+> * <span data-ttu-id="8f4f1-179">изменять компоненты Razor;</span><span class="sxs-lookup"><span data-stu-id="8f4f1-179">Modify Razor components</span></span>
+> * <span data-ttu-id="8f4f1-180">использовать обработку событий и привязку данных в компонентах;</span><span class="sxs-lookup"><span data-stu-id="8f4f1-180">Use event handling and data binding in components</span></span>
+> * <span data-ttu-id="8f4f1-181">Использование маршрутизации в приложении Blazor</span><span class="sxs-lookup"><span data-stu-id="8f4f1-181">Use routing in a Blazor app</span></span>
 
-<span data-ttu-id="2cce9-182">Подробные сведения об инструментах для ASP.NET Core Blazor:</span><span class="sxs-lookup"><span data-stu-id="2cce9-182">Learn about tooling for ASP.NET Core Blazor:</span></span>
+<span data-ttu-id="8f4f1-182">Подробные сведения об инструментах для ASP.NET Core Blazor:</span><span class="sxs-lookup"><span data-stu-id="8f4f1-182">Learn about tooling for ASP.NET Core Blazor:</span></span>
 
 > [!div class="nextstepaction"]
 > <xref:blazor/tooling>

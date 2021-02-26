@@ -1,4 +1,24 @@
-<span data-ttu-id="17020-101">Если вы сталкиваетесь с ошибкой формирования шаблонов, убедитесь, что моникер целевой платформы (TFM) соответствует версии пакета NuGet в файле проекта.</span><span class="sxs-lookup"><span data-stu-id="17020-101">If you get a scaffolding error, verify the Target Framework Moniker (TFM) matches the NuGet package version in the project file.</span></span> <span data-ttu-id="17020-102">Например, следующий файл проекта использует версию 5.0 для .NET, а также приведенные ниже пакеты NuGet:</span><span class="sxs-lookup"><span data-stu-id="17020-102">For example, the following project file uses version 5.0 for .NET and the listed NuGet packages:</span></span>
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: f0d34557b5442f41ebd1ef9cb3a61122b8516f7d
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552117"
+---
+<span data-ttu-id="a5eed-101">Если вы сталкиваетесь с ошибкой формирования шаблонов, убедитесь, что моникер целевой платформы (TFM) соответствует версии пакета NuGet в файле проекта.</span><span class="sxs-lookup"><span data-stu-id="a5eed-101">If you get a scaffolding error, verify the Target Framework Moniker (TFM) matches the NuGet package version in the project file.</span></span> <span data-ttu-id="a5eed-102">Например, следующий файл проекта использует версию 5.0 для .NET, а также приведенные ниже пакеты NuGet:</span><span class="sxs-lookup"><span data-stu-id="a5eed-102">For example, the following project file uses version 5.0 for .NET and the listed NuGet packages:</span></span>
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
