@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 5bdfcc5660b4c897d3552d4cf25e43dade71541c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 9214fa10a2bf7d53a4cb12263a3fa69bded84b29
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252517"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536237"
 ---
-# <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Отладка в ASP.NET Core Blazor WebAssembly
-
-[Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
+# <a name="debug-aspnet-core-blazor-webassembly"></a>Отладка в ASP.NET Core Blazor WebAssembly
 
 Приложения Blazor WebAssembly можно отлаживать с помощью средств разработки браузера в браузерах на основе Chromium (Microsoft Edge или Chrome). Отлаживать приложение можно также с помощью следующих интегрированных сред разработки (IDE).
 
@@ -164,6 +162,8 @@ ms.locfileid: "98252517"
 
 <h2 id="vscode">Отладка автономного приложения Blazor WebAssembly</h2>
 
+Сведения о настройке ресурсов VS Code в папке `.vscode` см. в руководстве по операционной системе **Linux** в <xref:blazor/tooling>.
+
 1. Откройте автономное приложение Blazor WebAssembly в VS Code.
 
    Вы можете получить уведомление о том, что для включения отладки требуется дополнительная настройка.
@@ -192,13 +192,15 @@ ms.locfileid: "98252517"
 > [!NOTE]
 > Попадание в точки останова **не** происходит во время запуска приложения перед запуском прокси-сервера отладки. Сюда входят точки останова в `Program.Main` (`Program.cs`) и точки останова в [методах `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods) компонентов, загружаемых первой страницей, запрошенной из приложения.
 
-## <a name="debug-hosted-no-locblazor-webassembly"></a>Отладка размещенного приложения Blazor WebAssembly
+## <a name="debug-hosted-blazor-webassembly"></a>Отладка размещенного приложения Blazor WebAssembly
 
 1. Откройте папку решения размещенного приложения Blazor WebAssembly в VS Code.
 
 1. Если для проекта не задана конфигурация запуска, появится следующее уведомление. Выберите ответ **Да**.
 
    > В {ИМЯ ПРИЛОЖЕНИЯ} отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?
+
+   Сведения о настройке ресурсов VS Code в папке `.vscode` см. в руководстве по операционной системе **Linux** в <xref:blazor/tooling>.
 
 1. В палитре команд вверху окна выберите проект *Server* в размещенном решении.
 
@@ -238,7 +240,7 @@ ms.locfileid: "98252517"
 
 ## <a name="example-launch-configurations"></a>Примеры конфигураций запуска
 
-### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>Запуск и отладка автономного приложения Blazor WebAssembly
+### <a name="launch-and-debug-a-standalone-blazor-webassembly-app"></a>Запуск и отладка автономного приложения Blazor WebAssembly
 
 ```json
 {
@@ -259,7 +261,7 @@ ms.locfileid: "98252517"
 }
 ```
 
-### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Запуск и отладка размещенного приложения Blazor WebAssembly с помощью Microsoft Edge
+### <a name="launch-and-debug-a-hosted-blazor-webassembly-app-with-microsoft-edge"></a>Запуск и отладка размещенного приложения Blazor WebAssembly с помощью Microsoft Edge
 
 По умолчанию конфигурация браузера использует Google Chrome. При использовании Microsoft Edge для отладки задайте для параметра `browser` значение `edge`. Чтобы использовать Google Chrome, не задавайте параметр `browser` или задайте для него значение `chrome`.
 

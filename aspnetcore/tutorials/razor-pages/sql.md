@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 8c9d0d9c24e0ce81925ccde463bcf085531b665e
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: fa1060ae1a046a40d55e9fef4a094aa9e51a18af
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024744"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101175"
 ---
-# <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Часть 4 серии руководств по Razor Pages
+# <a name="part-4-of-tutorial-series-on-razor-pages"></a>Часть 4 серии руководств по Razor Pages
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Джо Одетт](https://twitter.com/joeaudette) (Joe Audette)
 
@@ -142,7 +142,7 @@ if (context.Movie.Any())
 
 * Получение экземпляра контекста базы данных из контейнера внедрения зависимостей.
 * Вызовите метод `seedData.Initialize`, передав ему экземпляр контекста базы данных.
-* Высвобождение контекста после завершения работы метода заполнения. [Оператор using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) гарантирует удаление контекста.
+* Высвобождение контекста после завершения работы метода заполнения. [Оператор using](/dotnet/csharp/language-reference/keywords/using-statement) гарантирует удаление контекста.
 
 Если `Update-Database` не выполнялось, возникает следующее исключение:
 
@@ -296,7 +296,7 @@ if (context.Movie.Any())
 
 * Получение экземпляра контекста базы данных из контейнера внедрения зависимостей.
 * Вызовите метод `seedData.Initialize`, передав ему экземпляр контекста базы данных.
-* Высвобождение контекста после завершения работы метода заполнения. [Оператор using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) гарантирует удаление контекста.
+* Высвобождение контекста после завершения работы метода заполнения. [Оператор using](/dotnet/csharp/language-reference/keywords/using-statement) гарантирует удаление контекста.
 
 Если `Update-Database` не выполнялось, возникает следующее исключение:
 
@@ -440,7 +440,7 @@ if (context.Movie.Any())
 
 * Получение экземпляра контекста базы данных из контейнера внедрения зависимостей.
 * Вызовите метод `seedData.Initialize`, передав ему экземпляр контекста базы данных.
-* Высвобождение контекста после завершения работы метода заполнения. [Оператор using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) гарантирует удаление контекста.
+* Высвобождение контекста после завершения работы метода заполнения. [Оператор using](/dotnet/csharp/language-reference/keywords/using-statement) гарантирует удаление контекста.
 
 Рабочее приложение не вызывает `Database.Migrate`. Он добавляется в предыдущем коде, чтобы предотвратить следующее исключение, если `Update-Database` не был запущен.
 

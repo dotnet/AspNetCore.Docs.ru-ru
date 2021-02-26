@@ -20,14 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/dependency-injection
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 3f2b4eff5422acbec80b2fd9b801101271cc3f75
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 30edffedf1faf96ed54d5380762c8558e478966c
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97808729"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106925"
 ---
-# <a name="aspnet-core-no-locblazor-dependency-injection"></a>Внедрение зависимостей Blazor в ASP.NET Core
+# <a name="aspnet-core-blazor-dependency-injection"></a>Внедрение зависимостей Blazor в ASP.NET Core
 
 Авторы: [Райнер Стропек](https://www.timecockpit.com) (Rainer Stropek) и [Майк Роусос](https://github.com/mjrousos) (Mike Rousos)
 
@@ -38,7 +38,7 @@ ms.locfileid: "97808729"
 
 ## <a name="default-services"></a>Службы по умолчанию
 
-В таблице ниже представлены службы, часто используемые в приложениях Blazor.
+В таблице ниже представлены службы, часто используемые в приложениях Blazor.
 
 | Служба | Время существования | Описание |
 | ------- | -------- | ----------- |
@@ -119,7 +119,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-razor[](dependency-injection/samples_snapshot/CustomerList.razor?highlight=2-3,20)]
 
-На внутреннем уровне создаваемое свойство (`DataRepository`) использует атрибут [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute). Как правило, этот атрибут не используется напрямую. Если базовый класс необходим для компонентов, а для базового класса также требуются обязательные свойства, добавьте атрибут [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) вручную:
+На внутреннем уровне создаваемое свойство (`DataRepository`) использует [атрибут `[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute). Как правило, этот атрибут не используется напрямую. Если базовый класс необходим для компонентов, а для базового класса также требуются обязательные свойства, добавьте [атрибут `[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) вручную:
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -144,7 +144,7 @@ public class ComponentBase : IComponent
 
 ## <a name="use-di-in-services"></a>Использование внедрения зависимостей в службах
 
-Для сложных служб могут потребоваться дополнительные службы. В приведенном ниже примере для `DataAccess` требуется служба <xref:System.Net.Http.HttpClient> по умолчанию. [`@inject`](xref:mvc/views/razor#inject) (или атрибут [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute)) невозможно использовать в службах. Вместо этого следует использовать *внедрения конструктора*. Необходимые службы добавляются путем добавления параметров в конструктор службы. Когда система внедрения зависимостей создает службу, она распознает необходимые службы в конструкторе и предоставляет их соответствующим образом. В следующем примере конструктор получает <xref:System.Net.Http.HttpClient> через внедрение зависимостей. <xref:System.Net.Http.HttpClient> — это служба по умолчанию.
+Для сложных служб могут потребоваться дополнительные службы. В приведенном ниже примере для `DataAccess` требуется служба <xref:System.Net.Http.HttpClient> по умолчанию. [`@inject`](xref:mvc/views/razor#inject) (или [атрибут `[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute)) невозможно использовать в службах. Вместо этого следует использовать *внедрения конструктора*. Необходимые службы добавляются путем добавления параметров в конструктор службы. Когда система внедрения зависимостей создает службу, она распознает необходимые службы в конструкторе и предоставляет их соответствующим образом. В следующем примере конструктор получает <xref:System.Net.Http.HttpClient> через внедрение зависимостей. <xref:System.Net.Http.HttpClient> — это служба по умолчанию.
 
 ```csharp
 using System.Net.Http;
@@ -180,7 +180,7 @@ public class DataAccess : IDataAccess
 
 * <xref:Microsoft.AspNetCore.Components.OwningComponentBase> является абстрактной высвобождаемой дочерней версией типа <xref:Microsoft.AspNetCore.Components.ComponentBase> с защищенным свойством <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> типа <xref:System.IServiceProvider>. Этот поставщик можно использовать для разрешения служб, ограниченных временем существования компонента.
 
-  Службы внедрения зависимостей, внедренные в компонент с помощью атрибута [`@inject`](xref:mvc/views/razor#inject) или [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute), не создаются в области компонента. Чтобы использовать область компонента, необходимо разрешить службы с помощью <xref:Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService%2A> или <xref:System.IServiceProvider.GetService%2A>. Все службы, разрешенные с помощью поставщика <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices>, имеют свои зависимости из этой же области.
+  Службы внедрения зависимостей, внедренные в компонент с помощью [атрибута `[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) или [`@inject`](xref:mvc/views/razor#inject), не создаются в области компонента. Чтобы использовать область компонента, необходимо разрешить службы с помощью <xref:Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService%2A> или <xref:System.IServiceProvider.GetService%2A>. Все службы, разрешенные с помощью поставщика <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices>, имеют свои зависимости из этой же области.
 
   [!code-razor[](dependency-injection/samples_snapshot/Preferences.razor?highlight=3,20-21)]
 

@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: d97caeffc6e8beebddb01a5bd126d61ba988de65
-ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
+ms.openlocfilehash: fad569ab06735600299d8051a258651e329db8ce
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689296"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107185"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 
@@ -119,11 +119,11 @@ ms.locfileid: "98689296"
   
   [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-25)]
 
-  В приведенном выше коде резервная политика авторизации требует проверки подлинности ***всех** _ пользователей. Конечные точки, такие как контроллеры, страницы Razor и т. д., которые определяют собственные требования к авторизации, не используют резервную политику авторизации. Например, Razor Pages, контроллеры или методы действий с `[AllowAnonymous]` или `[Authorize(PolicyName="MyPolicy")]` используют примененный атрибут авторизации вместо резервной политики авторизации.
+  В приведенном выше коде резервная политика авторизации требует проверки подлинности ***всех*** пользователей. Конечные точки, такие как контроллеры, страницы Razor и т. д., которые определяют собственные требования к авторизации, не используют резервную политику авторизации. Например, Razor Pages, контроллеры или методы действий с `[AllowAnonymous]` или `[Authorize(PolicyName="MyPolicy")]` используют примененный атрибут авторизации вместо резервной политики авторизации.
 
   <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> добавляет <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> к текущему экземпляру, что обеспечивает проверку подлинности текущего пользователя.
 
-  Статические ресурсы в `wwwroot` являются общедоступными, так как ПО промежуточного слоя для статического файла по умолчанию (`app.UseStaticFiles();`) вызывается перед `UseAuthentication`. Для статических ресурсов в папке _MyStaticFiles* требуется проверка подлинности. Это показано в следующем [примере кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples).
+  Статические ресурсы в `wwwroot` являются общедоступными, так как ПО промежуточного слоя для статического файла по умолчанию (`app.UseStaticFiles();`) вызывается перед `UseAuthentication`. Для статических ресурсов в папке *MyStaticFiles* требуется проверка подлинности. Это показано в следующем [примере кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples).
 
 Альтернативный подход к обработке файлов на основе авторизации:
 
@@ -469,7 +469,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 См. раздел [Типы содержимого MIME](https://www.iana.org/assignments/media-types/media-types.xhtml).
 
-Сведения об использовании настраиваемых <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> и настройке других <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> в приложениях Blazor Server см. в разделе <xref:blazor/fundamentals/additional-scenarios#static-files>.
+Сведения об использовании настраиваемых <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> и настройке других <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> в приложениях Blazor Server см. в разделе <xref:blazor/fundamentals/static-files>.
 
 ## <a name="non-standard-content-types"></a>Нестандартные типы содержимого
 

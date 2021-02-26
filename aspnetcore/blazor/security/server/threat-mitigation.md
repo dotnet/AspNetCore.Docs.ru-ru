@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 4256e90ca5f185992a73d1e43460ca5d27159d6f
-ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
+ms.openlocfilehash: 524a1f85838d083ed2f01afd96601bcd5e6ce12b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98758282"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280980"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>Руководство по предотвращению угроз для ASP.NET Core Blazor Server
-
-Автор: [Javier Calvarro Nelson](https://github.com/javiercn) (Хавьер Кальварро Нельсон)
 
 Приложения Blazor Server поддерживают модель обработки данных *с отслеживанием состояния*, где сервер и клиент сохраняют долгосрочную связь. Устойчивое состояние обеспечивается [каналом](xref:blazor/state-management), который может охватывать соединения, которые также потенциально существуют длительное время.
 
@@ -108,20 +106,18 @@ ms.locfileid: "98758282"
 
 ## <a name="denial-of-service-dos-attacks"></a>Атаки типа "отказ в обслуживании" (DoS)
 
-Атаки типа "отказ в обслуживании" (DoS) подразумевают, что клиент исчерпывает один или несколько ресурсов сервера, в результате чего приложение становится недоступным. Приложения Blazor Server включают некоторые ограничения по умолчанию и используют другие ограничения ASP.NET Core и SignalR для защиты от атак DoS, установленные в <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions>.
+Атаки типа "отказ в обслуживании" (DoS) подразумевают, что клиент исчерпывает один или несколько ресурсов сервера, в результате чего приложение становится недоступным. Приложения Blazor Server включают ограничения по умолчанию и используют другие ограничения ASP.NET Core и SignalR для защиты от атак DoS, установленные в <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions>:
 
-| Ограничение приложения Blazor Server | Описание | Значение по умолчанию |
-| --- | --- | --- |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitMaxRetained> | Максимальное число отключенных каналов, которые заданный сервер удерживает в памяти за один раз. | 100 |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitRetentionPeriod> | Максимальное время, в течение которого отключенный канал удерживается в памяти, прежде чем будет сброшен. | 3 минуты |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout> | Максимальное время ожидания сервера до истечения времени ожидания асинхронного вызова функции JavaScript. | 1 минута |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches> | Максимальное число неподтвержденных пакетов преобразования для просмотра, которые сервер хранит в памяти на канал в указанное время для поддержки надежного повторного подключения. После достижения предела сервер прекращает создавать новые пакеты преобразования для просмотра, пока один или несколько пакетов не будут подтверждены клиентом. | 10 |
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitMaxRetained?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitRetentionPeriod?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions.MaximumReceiveMessageSize?displayProperty=nameWithType>
 
-Задайте максимальный размер сообщения для одного входящего сообщения концентратора с <xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions>.
+Дополнительные сведения и примеры кода для настройки см. в следующих статьях:
 
-| Предел SignalR и ASP.NET Core | Описание | Значение по умолчанию |
-| --- | --- | --- |
-| <xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions.MaximumReceiveMessageSize?displayProperty=nameWithType> | Размер сообщения для отдельного сообщения. | 32 КБ |
+* <xref:blazor/fundamentals/signalr>
+* <xref:signalr/configuration>
 
 ## <a name="interactions-with-the-browser-client"></a>Взаимодействие с браузером (клиент)
 

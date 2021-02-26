@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: 72b33bc3c2861380551915b1e8caab49122e8fab
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: d9fc767a4b5160c616053b075ba92194bcffa275
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529921"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280015"
 ---
 # <a name="aspnet-core-blazor-component-virtualization"></a>Виртуализация компонентов ASP.NET Core Blazor
-
-Автор: [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
 
 Повысьте воспринимаемую производительность отрисовки компонентов с помощью встроенной поддержки виртуализации платформы Blazor. Виртуализация — это метод отображения только видимых в данный момент частей пользовательского интерфейса. Например, виртуализация удобна в случае, когда в приложении должен быть отрисован длинный список элементов и в любой конкретный момент времени должно быть видимым только подмножество элементов. Blazor предоставляет [компонент `Virtualize`](xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601), который можно использовать для добавления виртуализации в компоненты приложения.
 
@@ -156,6 +154,8 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
     ...
 </Virtualize>
 ```
+
+По умолчанию компонент `Virtualize` измеряет фактический размер отрисовки *после* первоначального рендеринга. Используйте <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A>, чтобы заранее предоставить точный размер элемента и обеспечить правильную первоначальную производительность отрисовки, а также убедиться в правильности позиции прокрутки для перегрузки страниц. Если при использовании <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A> по умолчанию некоторые элементы отображаются за пределами видимого в данный момент представления, запускается вторая повторная визуализация. Чтобы обеспечить правильное расположение элементов прокрутки в виртуализированном списке в браузере, начальная прорисовка должна быть правильной. В противном случае пользователи могут просматривать не те элементы. 
 
 ## <a name="overscan-count"></a>Количество элементов в нерабочей области
 

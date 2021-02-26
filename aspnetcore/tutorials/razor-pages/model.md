@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 7ea28e0ecad410335c37c603c8ec1eb5e6e41d33
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 92bfda330399b43871b3ae0e6b609726f7ad4a91
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97485996"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564044"
 ---
-# <a name="part-2-add-a-model-to-a-no-locrazor-pages-app-in-aspnet-core"></a>Часть 2. Добавление модели в приложение Razor Pages в ASP.NET Core
+# <a name="part-2-add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Часть 2. Добавление модели в приложение Razor Pages в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -161,7 +161,7 @@ ms.locfileid: "97485996"
 1. Заполните поля в диалоговом окне **Добавление Razor Pages на основе Entity Framework (CRUD)** :
    1. В раскрывающемся списке **Класс модели** выберите **Фильм (RazorPagesMovie.Models)** .
    1. В строке **Класс контекста данных** щелкните знак плюса ( **+** ).
-      1. В диалоговом окне **Добавление контекста данных** создается имя класса *RazorPagesMovie.Data.RazorPagesMovieContext*.
+      1. В диалоговом окне **Добавление контекста данных** будет сгенерировано имя класса `RazorPagesMovie.Data.RazorPagesMovieContext`.
    1. Нажмите **Добавить**.
 
    ![Изображение из предыдущих инструкций.](model/_static/3/arp.png)
@@ -226,7 +226,7 @@ dotnet-aspnet-codegenerator razorpage -h
    ![Изображение из предыдущих инструкций.](model/_static/add_scaffoldMac.png)
 
 1. Заполните поля в диалоговом окне **Добавление Razor Pages на основе Entity Framework (CRUD)** :
-   1. В классе **DbContext для использования: строки** назовите класс *RazorPagesMovie.Data.Data.RazorPagesMovieContext*.
+   1. В строке **Класс DbContext для использования** присвойте классу имя `RazorPagesMovie.Data.RazorPagesMovieContext`.
    1. Нажмите кнопку **Готово**.
 
    ![Изображение из предыдущих инструкций.](model/_static/5/arpMac.png)

@@ -4,7 +4,7 @@ author: rick-anderson
 description: Узнайте, как создать веб-API с помощью ASP.NET Core.
 ms.author: riande
 ms.custom: mvc, devx-track-js
-ms.date: 08/13/2020
+ms.date: 02/04/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: ccbfc27eb89e23938a69f0ab4cb306d6a4136889
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1f7c7db857090ff0a174d37b86e1265bab40b4fd
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96175056"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564073"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Учебник. Создание веб-API с помощью ASP.NET Core
 
@@ -97,7 +97,6 @@ ms.locfileid: "96175056"
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoApi
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
@@ -127,10 +126,9 @@ ms.locfileid: "96175056"
 
 [!INCLUDE[](~/includes/mac-terminal-access.md)]
 
-Откройте командный терминал в папке проекта и выполните следующие команды:
+Откройте окно терминала в папке проекта и выполните следующую команду.
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
@@ -270,14 +268,11 @@ Swagger используется для создания полезной док
 ### <a name="add-nuget-packages"></a>Добавление пакетов NuGet
 
 * В меню **Сервис** выберите **Диспетчер пакетов NuGet > Управление пакетами NuGet для решения**.
-* Перейдите на вкладку **Обзор** и введите **Microsoft.EntityFrameworkCore.SqlServer** в поле поиска.
-<!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
-* На панели слева выберите **Microsoft.EntityFrameworkCore.SqlServer**.
+* Перейдите на вкладку **Обзор** и введите **Microsoft.EntityFrameworkCore.InMemory** в поле поиска.
+* На панели слева выберите **Microsoft.EntityFrameworkCore.InMemory**.
 * Установите флажок **Проект** на правой панели и выберите **Установить**.
-* Добавьте пакет NuGet **пакет NuGet Microsoft.EntityFrameworkCore.InMemory**, выполнив приведенные выше инструкции.
 
-<!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Update this image at RTM -->
-![диспетчер пакетов NuGet](first-web-api/_static/5/vsNuGet.png);
+![Диспетчер пакетов NuGet](first-web-api/_static/5/vsNuGet.png)
 
 ## <a name="add-the-todocontext-database-context"></a>Добавление контекста базы данных TodoContext
 
@@ -621,7 +616,6 @@ DTO можно использовать для следующего:
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoApi
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
@@ -651,10 +645,9 @@ DTO можно использовать для следующего:
 
 [!INCLUDE[](~/includes/mac-terminal-access.md)]
 
-Откройте командный терминал в папке проекта и выполните следующие команды:
+Откройте окно терминала в папке проекта и выполните следующую команду.
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
@@ -764,10 +757,9 @@ DTO можно использовать для следующего:
 ### <a name="add-nuget-packages"></a>Добавление пакетов NuGet
 
 * В меню **Сервис** выберите **Диспетчер пакетов NuGet > Управление пакетами NuGet для решения**.
-* Перейдите на вкладку **Обзор** и введите **Microsoft.EntityFrameworkCore.SqlServer** в поле поиска.
-* На панели слева выберите **Microsoft.EntityFrameworkCore.SqlServer**.
+* Перейдите на вкладку **Обзор** и введите **Microsoft.EntityFrameworkCore.InMemory** в поле поиска.
+* На панели слева выберите **Microsoft.EntityFrameworkCore.InMemory**.
 * Установите флажок **Проект** на правой панели и выберите **Установить**.
-* Добавьте пакет NuGet **пакет NuGet Microsoft.EntityFrameworkCore.InMemory**, выполнив приведенные выше инструкции.
 
 ![Диспетчер пакетов NuGet](first-web-api/_static/vs3NuGet.png)
 

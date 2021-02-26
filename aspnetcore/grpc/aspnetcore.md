@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: f17ba247747f906cf026fc0f7bc04d51f4c8cb2a
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 1a5510364ee46165e275d07073ab087d79d65313
+ms.sourcegitcommit: 50d3e939a90c5480df480f651dda032901468dd5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530207"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819046"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Службы gRPC в ASP.NET Core
 
@@ -142,7 +142,7 @@ Kestrel [поддерживает HTTP/2](xref:fundamentals/servers/kestrel/http
 
 ## <a name="httpsys"></a>HTTP.sys
 
-[HTTP.sys](xref:fundamentals/servers/httpsys) — это веб-сервер для ASP.NET Core, который запускается только в Windows. Для размещения служб gRPC с HTTP.sys. требуются .NET 5 и Windows 10 сборки 20241 или более поздней.
+[HTTP.sys](xref:fundamentals/servers/httpsys) — это веб-сервер для ASP.NET Core, который запускается только в Windows. Для размещения служб gRPC с HTTP.sys. требуются .NET 5 и Windows 10 сборки 19529 или более поздней.
 
 HTTP.sys необходимо настроить для использования TLS и HTTP/2. Дополнительные сведения см. в разделе [Поддержка HTTP/2 для веб-сервера HTTP.sys](xref:fundamentals/servers/httpsys#http2-support).
 

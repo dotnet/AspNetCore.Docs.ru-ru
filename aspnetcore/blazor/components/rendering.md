@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/rendering
-ms.openlocfilehash: 1a4d4116b8a6d9266bbacbbdd8f20dc49b4e1db0
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: e1222981d4af3f4e233cdc0c57bb96a71972af15
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253861"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280041"
 ---
-# <a name="aspnet-core-no-locblazor-component-rendering"></a>Отрисовка компонента Blazor ASP.NET Core
-
-Автор: [Стив Сандерсон](https://github.com/SteveSandersonMS) (Steve Sanderson)
+# <a name="aspnet-core-blazor-component-rendering"></a>Отрисовка компонента Blazor ASP.NET Core
 
 Компоненты *должны* отрисовываться при первом добавлении в иерархию компонентов их родительским компонентом. Это единственный случай, когда отрисовка компонента строго обязательна.
 
@@ -109,18 +107,20 @@ ms.locfileid: "98253861"
 
 Из-за особенностей определения задач в .NET получатель <xref:System.Threading.Tasks.Task> может наблюдать только за его окончательным завершением, а не за промежуточными асинхронными состояниями. Таким образом, <xref:Microsoft.AspNetCore.Components.ComponentBase> может активировать повторную отрисовку только при первом возвращении <xref:System.Threading.Tasks.Task> и при завершении <xref:System.Threading.Tasks.Task>. Информацию о необходимости повторной отрисовки в промежуточных точках он не получает. Соответственно, если требуется повторная отрисовка в промежуточных точках, следует использовать <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>.
 
-### <a name="receiving-a-call-from-something-external-to-the-no-locblazor-rendering-and-event-handling-system"></a>Получение вызова извне к системе обработки событий Blazor
+### <a name="receiving-a-call-from-something-external-to-the-blazor-rendering-and-event-handling-system"></a>Получение вызова извне к системе обработки событий Blazor
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase> имеет сведения только о собственных методах жизненного цикла и событиях, вызываемых Blazor. Соответственно <xref:Microsoft.AspNetCore.Components.ComponentBase> не располагает информацией о других событиях, которые могут возникать в вашем коде. Например, Blazor не имеет сведений о любых событиях C#, вызываемых пользовательским хранилищем данных. Чтобы такие события вызывали повторную отрисовку для отображения обновленных значений в пользовательском интерфейсе, используйте метод <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>.
 
 Рассмотрим также следующий компонент `Counter`, который использует <xref:System.Timers.Timer?displayProperty=fullName> для обновления счетчика с установленным интервалом и вызывает метод <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> для обновления пользовательского интерфейса.
 
-`Pages/Counter.razor`:
+`Pages/CounterWithTimerDisposal.razor`:
 
 ```razor
-@page "/counter"
+@page "/counter-with-timer-disposal"
 @using System.Timers
 @implements IDisposable
+
+<h1>Counter with <code>Timer</code> disposal</h1>
 
 <p>Current count: @currentCount</p>
 
@@ -134,7 +134,7 @@ ms.locfileid: "98253861"
         timer.Start();
     }
 
-    void OnTimerCallback()
+    private void OnTimerCallback()
     {
         _ = InvokeAsync(() =>
         {
@@ -143,11 +143,14 @@ ms.locfileid: "98253861"
         });
     }
 
-    void IDisposable.Dispose() => timer.Dispose();
+    public void IDisposable.Dispose() => timer.Dispose();
 }
 ```
 
-В предыдущем примере `OnTimerCallback` должен вызвать метод <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>, поскольку Blazor не знает об изменениях `currentCount` в обратном вызове. `OnTimerCallback` выполняется за пределами управляемого потока отрисовки или уведомления о событии Blazor.
+В предшествующем примере:
+
+* `OnTimerCallback` должен вызвать метод <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>, поскольку Blazor не знает об изменениях `currentCount` в обратном вызове. `OnTimerCallback` выполняется за пределами управляемого потока отрисовки или уведомления о событии Blazor.
+* Компонент реализует <xref:System.IDisposable>, где <xref:System.Timers.Timer> удаляется, когда платформа вызывает метод `Dispose`. Для получения дополнительной информации см. <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 Аналогичным образом, поскольку обратный вызов выполняется вне контекста синхронизации Blazor, необходимо упаковать логику в <xref:Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync%2A?displayProperty=nameWithType>, чтобы переместить ее в контекст синхронизации модуля отрисовки. Метод <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> может вызываться только из контекста синхронизации модуля отрисовки и в противном случае приводит к возникновению исключения. Это поведение эквивалентно маршалингу потока пользовательского интерфейса на других платформах пользовательского интерфейса.
 

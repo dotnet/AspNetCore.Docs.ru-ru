@@ -4,7 +4,7 @@ author: ardalis
 description: Сведения о том, как ASP.NET Core поддерживает открытый веб-интерфейс для .NET (OWIN), позволяющий ослабить связь веб-приложений с веб-серверами.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 12/18/2018
+ms.date: 2/8/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,18 +18,23 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/owin
-ms.openlocfilehash: 6085abc45137223d7a676107cf06dc2cf97a5c19
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c44803c6f67d8e03759a01f7aa71d82088be9a11
+ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060681"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975278"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>Открытый веб-интерфейс для .NET (OWIN) в ASP.NET Core
 
 Авторы: [Стив Смит (Steve Smith)](https://ardalis.com/) и [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core поддерживает открытый веб-интерфейс для .NET (OWIN). OWIN позволяет ослабить зависимость веб-приложений от веб-сервера. Он определяет стандартный способ использования ПО промежуточного в конвейере для обработки запросов и связанных с ними откликов. Приложения ASP.NET Core и ПО промежуточного слоя могут взаимодействовать с приложениями, серверами и ПО промежуточного слоя, основанными на OWIN.
+ASP.NET Core:
+
+* поддерживает открытый веб-интерфейс для .NET (OWIN);
+* имеет совместимые с .NET Core замены для библиотек `Microsoft.Owin.*` ([Katana](/aspnet/aspnet/overview/owin-and-katana/)).
+
+OWIN позволяет ослабить зависимость веб-приложений от веб-сервера. Он определяет стандартный способ использования ПО промежуточного в конвейере для обработки запросов и связанных с ними откликов. Приложения ASP.NET Core и ПО промежуточного слоя могут взаимодействовать с приложениями, серверами и ПО промежуточного слоя, основанными на OWIN.
 
 OWIN обеспечивает разделительный уровень, позволяющий совместно использовать две платформы с разнородными объектными моделями. Пакет `Microsoft.AspNetCore.Owin` содержит две реализации адаптера:
 

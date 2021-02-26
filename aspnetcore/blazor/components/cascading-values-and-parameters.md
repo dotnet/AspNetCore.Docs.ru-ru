@@ -5,7 +5,7 @@ description: Сведения о передаче данных из компон
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/06/2020
+ms.date: 02/02/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,105 +19,81 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/cascading-values-and-parameters
-ms.openlocfilehash: 56d70cea50a3a913b4483f6ea488438269aa58fe
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1fb9d75ca1613a7098840efd3ecb86ee90f4064c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94507984"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280235"
 ---
-# <a name="aspnet-core-no-locblazor-cascading-values-and-parameters"></a>Каскадные значения и параметры ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-cascading-values-and-parameters"></a>Каскадные значения и параметры ASP.NET Core Blazor
 
-Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
+*Каскадные значения и параметры* обеспечивают удобный способ передачи данных по иерархии компонентов из компонента-предка в любое количество компонентов, расположенных ниже в иерархии. В отличие от [параметров компонента](xref:blazor/components/index#component-parameters), каскадные значения и параметры не требуют назначения атрибута для каждого компонента-потомка, где используются данные. Каскадные значения и параметры также позволяют компонентам согласовываться друг с другом в иерархии компонентов.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+## <a name="cascadingvalue-component"></a>`CascadingValue`
 
-В некоторых сценариях неудобно передавать данные из компонента-предка в компонент-потомок, используя [параметры компонента](xref:blazor/components/index#component-parameters), особенно если имеется несколько уровней компонентов. Каскадные значения и параметры позволяют решить эту проблему, предоставляя компоненту-предку удобный способ передать значение всем его компонентам-потомкам. Каскадные значения и параметры также предоставляют подход для координации компонентов.
+Компонент-предок предоставляет каскадное значение с помощью компонента [`CascadingValue`](xref:Microsoft.AspNetCore.Components.CascadingValue%601) платформы Blazor, который заключает поддерево иерархии компонентов и предоставляет одно значение для всех компонентов в его поддереве.
 
-### <a name="theme-example"></a>Пример темы
+В следующем примере показана передача сведений о теме оформления в иерархии компонента макета для предоставления класса стиля CSS кнопкам в дочерних компонентах.
 
-В следующем примере из примера приложения класс `ThemeInfo` указывает сведения о теме для передачи вниз по иерархии компонентов, чтобы все кнопки в пределах заданной части приложения использовали одинаковый стиль.
+Следующий класс C# `ThemeInfo` помещается в папку с именем `UIThemeClasses` и задает сведения о теме оформления.
 
-`UIThemeClasses/ThemeInfo.cs`.
+> [!NOTE]
+> В примерах в этом разделе используется пространство имен приложения `BlazorSample`. Экспериментируя с кодом в собственном примере приложения, измените пространство имен приложения на пространство имен своего примера приложения.
+
+`UIThemeClasses/ThemeInfo.cs`:
 
 ```csharp
-public class ThemeInfo
+namespace BlazorSample.UIThemeClasses
 {
-    public string ButtonClass { get; set; }
-}
-```
-
-Компонент-предок может предоставлять каскадное значение с помощью компонента каскадного значения. Компонент <xref:Microsoft.AspNetCore.Components.CascadingValue%601> упаковывает поддерево иерархии компонентов и предоставляет одно значение всем компонентам в этом поддереве.
-
-Например, пример приложения указывает сведения о теме (`ThemeInfo`) в одном из макетов приложения в виде каскадного параметра для всех компонентов, составляющих основной текст макета свойства `@Body`. `ButtonClass` присваивается значение `btn-success` в компоненте макета. Любой компонент-потомок может использовать это свойство через каскадный объект `ThemeInfo`.
-
-Компонент `CascadingValuesParametersLayout`:
-
-```razor
-@inherits LayoutComponentBase
-@using BlazorSample.UIThemeClasses
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3">
-            <NavMenu />
-        </div>
-        <div class="col-sm-9">
-            <CascadingValue Value="theme">
-                <div class="content px-4">
-                    @Body
-                </div>
-            </CascadingValue>
-        </div>
-    </div>
-</div>
-
-@code {
-    private ThemeInfo theme = new ThemeInfo { ButtonClass = "btn-success" };
-}
-```
-
-Чтобы использовать каскадные значения, компоненты объявляют каскадные параметры с помощью атрибута [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute). Каскадные значения привязаны к каскадным параметрам по типу.
-
-В примере приложения компонент `CascadingValuesParametersTheme` привязывает каскадное значение `ThemeInfo` к каскадному параметру. Параметр используется для задания класса CSS для одной из кнопок, отображаемых компонентом.
-
-Компонент `CascadingValuesParametersTheme`:
-
-```razor
-@page "/cascadingvaluesparameterstheme"
-@layout CascadingValuesParametersLayout
-@using BlazorSample.UIThemeClasses
-
-<h1>Cascading Values & Parameters</h1>
-
-<p>Current count: @currentCount</p>
-
-<p>
-    <button class="btn" @onclick="IncrementCount">
-        Increment Counter (Unthemed)
-    </button>
-</p>
-
-<p>
-    <button class="btn @ThemeInfo.ButtonClass" @onclick="IncrementCount">
-        Increment Counter (Themed)
-    </button>
-</p>
-
-@code {
-    private int currentCount = 0;
-
-    [CascadingParameter]
-    protected ThemeInfo ThemeInfo { get; set; }
-
-    private void IncrementCount()
+    public class ThemeInfo
     {
-        currentCount++;
+        public string ButtonClass { get; set; }
     }
 }
 ```
 
-Чтобы каскадировать несколько значений одного типа в одном поддереве, укажите уникальную строку <xref:Microsoft.AspNetCore.Components.CascadingValue%601.Name%2A> для каждого компонента <xref:Microsoft.AspNetCore.Components.CascadingValue%601> и его соответствующего атрибута [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute). В следующем примере два компонента <xref:Microsoft.AspNetCore.Components.CascadingValue%601> каскадируют разные экземпляры `MyCascadingType` по имени:
+Следующий [компонент макета<xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> задает сведения о теме оформления (](xref:blazor/layouts)) как каскадное значение для всех компонентов, составляющих текст макета свойства `ThemeInfo`. `ButtonClass` присваивается значение [`btn-success`](https://getbootstrap.com/docs/5.0/components/buttons/), которое является стилем кнопки начальной загрузки. Любой компонент-потомок в иерархии компонентов может использовать свойство `ButtonClass` через каскадное значение `ThemeInfo`.
+
+`Shared/MainLayout.razor`:
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Shared/MainLayout.razor?highlight=2,10-14,19)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Shared/MainLayout.razor?highlight=2,9-13,17)]
+
+::: moniker-end
+
+## <a name="cascadingparameter-attribute"></a>Атрибут `[CascadingParameter]`
+
+Чтобы использовать каскадные значения, компоненты-потомки объявляют каскадные параметры с помощью [атрибута `[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute). Каскадные значения привязаны к каскадным параметрам **по типу**. Каскадное применение нескольких значений одного и того же типа рассматривается в разделе [Каскадное применение нескольких значений](#cascade-multiple-values) далее в этой статье.
+
+Следующий компонент привязывает каскадное значение `ThemeInfo` к каскадному параметру, при необходимости используя то же имя `ThemeInfo`. Параметр используется для задания класса CSS для кнопки **`Increment Counter (Themed)`** .
+
+`Pages/ThemedCounter.razor`:
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/ThemedCounter.razor?highlight=2,15-17,23-24)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/ThemedCounter.razor?highlight=2,15-17,23-24)]
+
+::: moniker-end
+
+## <a name="cascade-multiple-values"></a>Каскадное применение нескольких значений
+
+Чтобы выполнить каскадное применение нескольких значений одного типа в одном поддереве, укажите уникальную строку <xref:Microsoft.AspNetCore.Components.CascadingValue%601.Name%2A> для каждого компонента [`CascadingValue`](xref:Microsoft.AspNetCore.Components.CascadingValue%601) и его соответствующих [атрибутов `[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute).
+
+В следующем примере два компонента [`CascadingValue`](xref:Microsoft.AspNetCore.Components.CascadingValue%601) выполняют каскадное применение разных экземпляров `CascadingType`:
 
 ```razor
 <CascadingValue Value="@parentCascadeParameter1" Name="CascadeParam1">
@@ -127,41 +103,145 @@ public class ThemeInfo
 </CascadingValue>
 
 @code {
-    private MyCascadingType parentCascadeParameter1;
+    private CascadingType parentCascadeParameter1;
 
     [Parameter]
-    public MyCascadingType ParentCascadeParameter2 { get; set; }
+    public CascadingType ParentCascadeParameter2 { get; set; }
 
     ...
 }
 ```
 
-В компоненте-потомке каскадные параметры получают значения из соответствующих каскадных значений в компоненте-предке по имени:
+В компоненте-потомке каскадные параметры получают значения из соответствующих каскадных значений в компоненте-предке по <xref:Microsoft.AspNetCore.Components.CascadingValue%601.Name%2A>:
 
 ```razor
 ...
 
 @code {
     [CascadingParameter(Name = "CascadeParam1")]
-    protected MyCascadingType ChildCascadeParameter1 { get; set; }
+    protected CascadingType ChildCascadeParameter1 { get; set; }
     
     [CascadingParameter(Name = "CascadeParam2")]
-    protected MyCascadingType ChildCascadeParameter2 { get; set; }
+    protected CascadingType ChildCascadeParameter2 { get; set; }
 }
 ```
 
-### <a name="tabset-example"></a>Пример TabSet
+## <a name="pass-data-across-a-component-hierarchy"></a>Передача данных в иерархии компонентов
 
-Каскадные параметры также позволяют компонентам взаимодействовать в рамках иерархии компонентов. Например, рассмотрим следующий пример `TabSet` в примере приложения.
+Каскадные параметры также позволяют компонентам передавать данные в рамках иерархии компонентов. Рассмотрим следующий пример набора вкладок пользовательского интерфейса, в котором компонент набора вкладок поддерживает ряд отдельных вкладок.
 
-Пример приложения содержит интерфейс `ITab`, реализуемый вкладками:
+> [!NOTE]
+> В примерах в этом разделе используется пространство имен приложения `BlazorSample`. Экспериментируя с кодом в собственном примере приложения, измените пространство имен приложения на пространство имен своего примера приложения.
 
-[!code-csharp[](../common/samples/5.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
+Создайте интерфейс `ITab`, который реализуется вкладками в папке с именем `UIInterfaces`.
 
-Компонент `CascadingValuesParametersTabSet` использует компонент `TabSet`, содержащий несколько компонентов `Tab`:
+`UIInterfaces/ITab.cs`:
+
+```csharp
+using Microsoft.AspNetCore.Components;
+
+namespace BlazorSample.UIInterfaces
+{
+    public interface ITab
+    {
+        RenderFragment ChildContent { get; }
+    }
+}
+```
+
+Следующий компонент `TabSet` содержит набор вкладок. Компоненты набора вкладок `Tab`, которые создаются далее в этом разделе, предоставляют элементы списка (`<li>...</li>`) для списка (`<ul>...</ul>`).
+
+Дочерние компоненты `Tab` не передаются в `TabSet` в качестве параметров явным образом. Вместо этого дочерние компоненты `Tab` являются частью дочернего содержимого `TabSet`. Однако `TabSet` по-прежнему требуется ссылка на каждый компонент `Tab`, чтобы визуализировать заголовки и активную вкладку. Чтобы обеспечить такую координацию без дополнительного кода, компонент `TabSet` *может предоставить себя в качестве каскадного значения*, которое затем используется компонентами-потомками `Tab`.
+
+`Shared/TabSet.razor`:
 
 ```razor
-@page "/CascadingValuesParametersTabSet"
+@using BlazorSample.UIInterfaces
+
+<!-- Display the tab headers -->
+
+<CascadingValue Value=this>
+    <ul class="nav nav-tabs">
+        @ChildContent
+    </ul>
+</CascadingValue>
+
+<!-- Display body for only the active tab -->
+
+<div class="nav-tabs-body p-4">
+    @ActiveTab?.ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    public ITab ActiveTab { get; private set; }
+
+    public void AddTab(ITab tab)
+    {
+        if (ActiveTab == null)
+        {
+            SetActiveTab(tab);
+        }
+    }
+
+    public void SetActiveTab(ITab tab)
+    {
+        if (ActiveTab != tab)
+        {
+            ActiveTab = tab;
+            StateHasChanged();
+        }
+    }
+}
+```
+
+Компоненты-потомки `Tab` захватывают объект, содержащий `TabSet`, в виде каскадного параметра. Компоненты `Tab` добавляют себя в `TabSet` и вместе задают активную вкладку.
+
+`Shared/Tab.razor`:
+
+```razor
+@using BlazorSample.UIInterfaces
+@implements ITab
+
+<li>
+    <a @onclick="ActivateTab" class="nav-link @TitleCssClass" role="button">
+        @Title
+    </a>
+</li>
+
+@code {
+    [CascadingParameter]
+    public TabSet ContainerTabSet { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private string TitleCssClass => 
+        ContainerTabSet.ActiveTab == this ? "active" : null;
+
+    protected override void OnInitialized()
+    {
+        ContainerTabSet.AddTab(this);
+    }
+
+    private void ActivateTab()
+    {
+        ContainerTabSet.SetActiveTab(this);
+    }
+}
+```
+
+Следующий компонент `ExampleTabSet` использует компонент `TabSet`, содержащий три компонента `Tab`.
+
+`Pages/ExampleTabSet.razor`:
+
+```razor
+@page "/example-tab-set"
 
 <TabSet>
     <Tab Title="First tab">
@@ -172,8 +252,9 @@ public class ThemeInfo
             Toggle third tab
         </label>
     </Tab>
+
     <Tab Title="Second tab">
-        <h4>The second tab says Hello World!</h4>
+        <h4>Hello from the second tab!</h4>
     </Tab>
 
     @if (showThirdTab)
@@ -189,15 +270,3 @@ public class ThemeInfo
     private bool showThirdTab;
 }
 ```
-
-Дочерние компоненты `Tab` не передаются в `TabSet` в качестве параметров явным образом. Вместо этого дочерние компоненты `Tab` являются частью дочернего содержимого `TabSet`. Однако `TabSet` по-прежнему необходимо знать о каждом компоненте `Tab`, чтобы визуализировать заголовки и активную вкладку. Чтобы обеспечить такую координацию без дополнительного кода, компонент `TabSet` *может предоставить себя в качестве каскадного значения*, которое затем используется компонентами-потомками `Tab`.
-
-Компонент `TabSet`:
-
-[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/TabSet.razor)]
-
-Компоненты-потомки `Tab` захватывают содержащий `TabSet` в качестве каскадного параметра, поэтому компоненты `Tab` добавляются в `TabSet` и координируют, какая вкладка активна.
-
-Компонент `Tab`:
-
-[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/Tab.razor)]

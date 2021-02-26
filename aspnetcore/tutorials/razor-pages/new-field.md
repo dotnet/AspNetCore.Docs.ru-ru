@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 2961fcaa8bbb93527eb80f5aa7b18ef04761fb50
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 852c26f89b229d89797d9ce6fce2983319defe9c
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486165"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101150"
 ---
-# <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Часть 7. Добавление нового поля на страницу Razor в ASP.NET Core
+# <a name="part-7-add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Часть 7. Добавление нового поля на страницу Razor в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -41,7 +41,7 @@ ms.locfileid: "97486165"
 
 Если вы используете EF Code First для автоматического создания базы данных, Code First:
 
-* Добавляет в базу данных таблицу [`__EFMigrationsHistory`](https://docs.microsoft.com/ef/core/managing-schemas/migrations/history-table), которая позволяет отслеживать синхронизацию схемы базы данных с классами модели, на основе которой она была создана.
+* Добавляет в базу данных таблицу [`__EFMigrationsHistory`](/ef/core/managing-schemas/migrations/history-table), которая позволяет отслеживать синхронизацию схемы базы данных с классами модели, на основе которой она была создана.
 * Если классы модели не синхронизированы с базой данных, EF выдает исключение.
 
 Автоматическая проверка синхронизации схемы и модели упрощает поиск несогласованных проблем в коде базы данных.
@@ -182,7 +182,7 @@ ms.locfileid: "97486165"
 
 Если вы используете EF Code First для автоматического создания базы данных, Code First:
 
-* Добавляет в базу данных таблицу [`__EFMigrationsHistory`](https://docs.microsoft.com/ef/core/managing-schemas/migrations/history-table), которая позволяет отслеживать синхронизацию схемы базы данных с классами модели, на основе которой она была создана.
+* Добавляет в базу данных таблицу [`__EFMigrationsHistory`](/ef/core/managing-schemas/migrations/history-table), которая позволяет отслеживать синхронизацию схемы базы данных с классами модели, на основе которой она была создана.
 * Если классы модели не синхронизированы с базой данных, EF выдает исключение.
 
 Автоматическая проверка синхронизации схемы и модели упрощает поиск несогласованных проблем в коде базы данных.
@@ -323,7 +323,7 @@ ms.locfileid: "97486165"
 
 Если вы используете EF Code First для автоматического создания базы данных, Code First:
 
-* Добавляет в базу данных таблицу [`__EFMigrationsHistory`](https://docs.microsoft.com/ef/core/managing-schemas/migrations/history-table), которая позволяет отслеживать синхронизацию схемы базы данных с классами модели, на основе которой она была создана.
+* Добавляет в базу данных таблицу [`__EFMigrationsHistory`](/ef/core/managing-schemas/migrations/history-table), которая позволяет отслеживать синхронизацию схемы базы данных с классами модели, на основе которой она была создана.
 * Если классы модели не синхронизированы с базой данных, EF выдает исключение.
 
 Автоматическая проверка синхронизации схемы и модели упрощает поиск несогласованных проблем в коде базы данных.

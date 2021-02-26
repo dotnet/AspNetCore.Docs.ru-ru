@@ -16,7 +16,7 @@
 * Если запрос на вытягивание имеет метку "cla-required", [примите лицензионное соглашение с участником (CLA)](https://cla.dotnetfoundation.org/).
 * Ответьте на обратную связь по запросу на вытягивание.
 
-Пример публикации новой статьи в соответствии с этим процессом см. в [проблеме &num;67](https://github.com/dotnet/docs/issues/67) и [запросе на вытягивание &num;798](https://github.com/dotnet/docs/pull/798) в репозитории документов по .NET. Новая статья — [Документирование кода](https://docs.microsoft.com/dotnet/articles/csharp/codedoc).
+Пример публикации новой статьи в соответствии с этим процессом см. в [проблеме 1477](https://github.com/dotnet/docs/issues/1477) и [запросе на вытягивание 18955](https://github.com/dotnet/docs/pull/18955) в репозитории документов по .NET. В новой статье используется [покрытие кода для модульного тестирования](/dotnet/core/testing/unit-testing-code-coverage).
 
 ## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Расширение "Пакет создания документов" в Visual Studio Code
 

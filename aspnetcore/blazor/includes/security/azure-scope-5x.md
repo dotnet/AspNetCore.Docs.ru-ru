@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 5964554c36e2242b70faee390374828acd2bd860
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552864"
+---
 При работе с API сервера, зарегистрированным в AAD, и регистрации приложения AAD в клиенте, который использует [неподтвержденный домен издателя](/azure/active-directory/develop/howto-configure-publisher-domain), URI идентификатора для приложения API сервера будет в формате `https://{TENANT}.onmicrosoft.com/{SERVER API APP CLIENT ID OR CUSTOM VALUE}`, а не `api://{SERVER API APP CLIENT ID OR CUSTOM VALUE}`. В таком случае область маркера доступа по умолчанию в `Program.Main` (`Program.cs`) приложения *`Client`* будет выглядеть следующим образом:
 
 ```csharp

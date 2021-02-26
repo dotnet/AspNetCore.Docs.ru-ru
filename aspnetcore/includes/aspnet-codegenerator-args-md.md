@@ -1,5 +1,25 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 41d4fd2e746e08d32d9f666faab55acc56817be2
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551431"
+---
 <!-- Options common to Razor Pages and Controller -->
-| Параметр               | Description|
+| Параметр               | Описание|
 | ----------------- | ------------ |
 | --model или -m  | Класс модели, который необходимо использовать. |
 | --dataContext или -dc  | Класс `DbContext` для использования. |

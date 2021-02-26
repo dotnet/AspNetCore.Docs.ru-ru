@@ -4,7 +4,7 @@ author: jamesnk
 description: Узнайте, как создавать сообщения protobuf для приложений .NET.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 08/23/2020
+ms.date: 02/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: b70a5ee00405eecfce900b86dc631a54682dce1a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: adb048c9b20e172ef8a7bc13f9b56928b1d4bf77
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058900"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280295"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Создание сообщений protobuf для приложений .NET
 
@@ -48,6 +48,8 @@ message Person {
 ```
 
 В предыдущем определении сообщения указывается три поля в качестве пар "имя — значение". Как и свойства типов .NET, каждое поле имеет имя и тип. Типом поля может быть [скалярный тип значения protobuf](#scalar-value-types), например `int32`, или другое сообщение.
+
+В [инструкции по стилю protobuf`underscore_separated_names` рекомендуется использовать ](https://developers.google.com/protocol-buffers/docs/style) для имен полей. Новые сообщения protobuf, созданные для приложений .NET, должны следовать рекомендациям по стилю protobuf. Инструментарий .NET автоматически создает типы .NET, использующие стандарты именования .NET. Например, поле protobuf `first_name` формирует свойство .NET `FirstName`.
 
 Помимо имени, каждое поле в определении сообщения имеет уникальный номер. Номера полей используются для задания полей при сериализации сообщения в protobuf. Сериализация небольшого числа выполняется быстрее, чем сериализация всего имени поля. Поскольку номера полей указывают на поле, важно соблюдать осторожность при их изменении. Дополнительные сведения об изменении сообщений protobuf см. в разделе <xref:grpc/versioning>.
 

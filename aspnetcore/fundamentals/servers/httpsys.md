@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 9c65abd5a055bb677a14921296316e7e03760bc2
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ad37f8434b6025c5f3ec97dc52987f5660a64edc
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96855369"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106678"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
@@ -62,7 +62,7 @@ HTTP.sys удобно использовать с развертываниями
 
   ![HTTP.sys взаимодействует с Интернетом напрямую](httpsys/_static/httpsys-to-internet.png)
 
-* когда для внутренних развертываний нужна функция, отсутствующая в Kestrel, например [аутентификация Windows](xref:security/authentication/windowsauth).
+* когда для внутренних развертываний нужна функция, отсутствующая в Kestrel. Дополнительные сведения см. в разделе [Сравнение Kestrel и HTTP.sys](xref:fundamentals/servers/index#kestrel-vs-httpsys)
 
   ![HTTP.sys взаимодействует с внутренней сетью напрямую](httpsys/_static/httpsys-to-internal.png)
 
@@ -74,7 +74,7 @@ HTTP.sys — это проверенная технология, которая 
 
 * установлена ОС Windows Server 2016 либо Windows 10 или более поздних версий;
 * установлено подключение с поддержкой [согласования протокола уровня приложений (ALPN)](https://tools.ietf.org/html/rfc7301#section-3);
-* установлено подключение TLS 1.2 или более поздней версии.
+* Подключение TLS 1.2 или более поздней версии.
 
 Если установлено подключение HTTP/2, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) возвращает `HTTP/2`.
 
@@ -278,7 +278,7 @@ public IActionResult MyActionMethod()
 
 Дополнительные возможности HTTP/2 в HTTP.SYS поддерживают gRPC, включая трейлеры ответов и отправку кадров сброса.
 
-Требования для выполнения gRPC в HTTP.SYS
+Требования для выполнения gRPC в HTTP.sys:
 
 * Сборка 19041.508 или более поздняя ОС Windows 10.
 * Подключение TLS 1.2 или более поздней версии.

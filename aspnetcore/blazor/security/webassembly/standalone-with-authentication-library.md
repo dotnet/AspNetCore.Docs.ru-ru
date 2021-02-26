@@ -5,7 +5,7 @@ description: Узнайте, как защитить изолированное 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/27/2020
+ms.date: 02/10/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,20 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 3da9ea045de996602ead052f6f13ffc999273a50
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: a198606caf55232c221f1d1f1224918d3f87f04c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252491"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280883"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>Защита изолированного приложения ASP.NET Core Blazor WebAssembly с помощью библиотеки проверки подлинности
-
-Авторы: [Хавьер Кальварро Нельсон](https://github.com/javiercn) (Javier Calvarro Nelson) и [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Защита изолированного приложения ASP.NET Core Blazor WebAssembly с помощью библиотеки проверки подлинности
 
 *При использовании Azure Active Directory (AAD) и Azure Active Directory B2C (AAD B2C) не следуйте указаниям в этой статье. См. статьи, посвященные AAD и AAD B2C, в этом разделе оглавления.*
 
-Чтобы создать [изолированное приложение Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly), которое использует библиотеку [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication), выполните рекомендации с учетом используемых средств.
+Чтобы создать [изолированное приложение Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly), которое использует библиотеку [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication), выполните рекомендации с учетом используемых средств. При добавлении поддержки проверки подлинности следуйте рекомендациям по настройке и конфигурированию приложения в следующих разделах этой статьи.
 
 > [!NOTE]
 > Поставщик Identity (IP) должен использовать [OpenID Connect (OIDC)](https://openid.net/connect/). Например, поставщик IP Facebook несовместим с OIDC, поэтому к нему не применяются рекомендации, приведенные в этом разделе. Для получения дополнительной информации см. <xref:blazor/security/webassembly/index#authentication-library>.
@@ -43,11 +41,11 @@ ms.locfileid: "98252491"
 
 1. Выбрав шаблон **Приложение Blazor WebAssembly** в диалоговом окне **Создание веб-приложения ASP.NET Core**, щелкните **Изменить** в разделе **Проверка подлинности**.
 
-1. Выберите **Учетные записи отдельных пользователей** с параметром **Хранить учетные записи пользователей в приложении**, чтобы хранить пользователей в приложении с помощью системы [Identity](xref:security/authentication/identity) ASP.NET Core.
+1. Выберите **Учетные записи отдельных пользователей** с параметром **Хранить учетные записи пользователей в приложении**, чтобы использовать систему [Identity](xref:security/authentication/identity) ASP.NET Core. Это позволяет добавить поддержку проверки подлинности и не приводит к хранению пользователей в базе данных. В следующих разделах этой статьи приведены дополнительные сведения.
 
 # <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code или .NET Core CLI](#tab/visual-studio-code+netcore-cli)
 
-Создайте новый проект Blazor WebAssembly с механизмом аутентификации в пустой папке. Задайте механизм аутентификации `Individual` с параметром `-au|--auth`, чтобы сохранить пользователей в приложении с помощью системы [Identity](xref:security/authentication/identity) ASP.NET Core:
+Создайте новый проект Blazor WebAssembly с механизмом аутентификации в пустой папке. Задайте механизм аутентификации `Individual` с параметром `-au|--auth`, чтобы использовать систему [Identity](xref:security/authentication/identity) ASP.NET Core. Это позволяет добавить поддержку проверки подлинности и не приводит к хранению пользователей в базе данных. В следующих разделах этой статьи приведены дополнительные сведения.
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual -o {APP NAME}
@@ -67,7 +65,7 @@ dotnet new blazorwasm -au Individual -o {APP NAME}
 
 1. На шаге **Настройка нового приложения Blazor WebAssembly** выберите **Индивидуальная проверка подлинности (в приложении)** из раскрывающегося списка **Проверка подлинности**.
 
-1. Приложение будет создано для отдельных пользователей, хранимых в приложении, с помощью [Identity](xref:security/authentication/identity) ASP.NET Core.
+1. Приложение создается для использования [Identity](xref:security/authentication/identity) ASP.NET Core и не приводит к хранению пользователей в базе данных. В следующих разделах этой статьи приведены дополнительные сведения.
 
 ---
 
@@ -88,6 +86,8 @@ dotnet new blazorwasm -au Individual -o {APP NAME}
 ## <a name="authentication-service-support"></a>Поддержка службы проверки подлинности
 
 Поддержка проверки подлинности пользователей регистрируется в контейнере службы с помощью метода расширения <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A>, предоставляемого в пакете [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication). Этот метод настраивает службы, необходимые для взаимодействия приложения с поставщиком Identity (IP).
+
+Для нового приложения укажите значения для заполнителей `{AUTHORITY}` и `{CLIENT ID}` в следующей конфигурации. Укажите другие значения конфигурации, необходимые для использования с IP-адресом приложения. В качестве примера используется Google, для чего требуются `PostLogoutRedirectUri`, `RedirectUri` и `ResponseType`. При добавлении проверки подлинности в приложение вручную добавьте следующий код и конфигурацию в приложение со значениями заполнителей и другими значениями конфигурации.
 
 `Program.cs`:
 
@@ -131,7 +131,9 @@ URI перенаправления (`https://localhost:5001/authentication/login
 
 Шаблон Blazor WebAssembly автоматически настраивает области по умолчанию для `openid` и `profile`.
 
-Шаблон Blazor WebAssembly не обеспечивает автоматическую настройку приложения для запроса маркера доступа для защищенного API. Чтобы настроить маркер доступа как часть потока входа, добавьте область в области маркера по умолчанию <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>:
+Шаблон Blazor WebAssembly не обеспечивает автоматическую настройку приложения для запроса маркера доступа для защищенного API. Чтобы настроить маркер доступа в рамках потока данных для входа, добавьте область к областям маркера по умолчанию <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>. При добавлении проверки подлинности в приложение вручную добавьте следующий код и настройте URI области.
+
+`Program.cs`:
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 3591ba18351b89e2d5dfaef796777273c97ce98b
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 03a49c827a1f70e6b721adf293857bb33475ed36
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751620"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107081"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>Жизненный цикл ASP.NET Core Blazor
-
-Авторы: [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Дэниэл Рот](https://github.com/danroth27) (Daniel Roth)
 
 Платформа Blazor содержит синхронные и асинхронные методы жизненного цикла. Переопределяйте методы жизненного цикла для выполнения дополнительных операций с компонентами во время инициализации и отрисовки компонента.
 
@@ -70,7 +68,9 @@ ms.locfileid: "98751620"
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> задает параметры, предоставляемые родительским элементом компонента в дереве отрисовки или из параметров маршрута. Переопределяя метод, код разработчика может напрямую взаимодействовать с параметрами <xref:Microsoft.AspNetCore.Components.ParameterView>.
 
-В следующем примере <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType> присваивает `value` значение параметра`Param`, если анализ параметра маршрута для `Param` выполнен успешно. Если `value` не равно `null`, значение отображается компонентом `SetParametersAsyncExample`.
+В следующем примере <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType> присваивает `value` значение параметра`Param`, если анализ параметра маршрута для `Param` выполнен успешно. Если `value` не равно `null`, значение отображается компонентом.
+
+Несмотря на то, что [сопоставление параметров маршрута не учитывает регистр](xref:blazor/fundamentals/routing#route-parameters), <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A> сопоставляется только с именами параметров, учитывающих регистр, в шаблоне маршрута. В следующем примере для получения значения требуется использовать `/{Param?}`, а не `/{param?}`. Если в этом сценарии используется `/{param?}`, функция <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A> возвращает значение `false`, а `message` не задается в качестве строкового параметра.
 
 `Pages/SetParametersAsyncExample.razor`:
 
@@ -91,11 +91,14 @@ ms.locfileid: "98751620"
     {
         if (parameters.TryGetValue<string>(nameof(Param), out var value))
         {
-            message = $"The value of 'Param' is {value}.";
-        }
-        else 
-        {
-            message = "The value of 'Param' is null.";
+            if (value is null)
+            {
+                message = "The value of 'Param' is null.";
+            }
+            else
+            {
+                message = $"The value of 'Param' is {value}.";
+            }
         }
 
         await base.SetParametersAsync(parameters);
@@ -105,7 +108,7 @@ ms.locfileid: "98751620"
 
 <xref:Microsoft.AspNetCore.Components.ParameterView> содержит набор значений параметров для компонента при каждом вызове <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A>.
 
-Реализация <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> по умолчанию задает значение каждого свойства с атрибутом [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) или [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute), имеющим соответствующее значение в <xref:Microsoft.AspNetCore.Components.ParameterView>. Параметры, у которых нет соответствующего значения в <xref:Microsoft.AspNetCore.Components.ParameterView>, остаются неизменными.
+Реализация <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> по умолчанию задает значение каждого свойства с [атрибутом `[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) или [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute), имеющим соответствующее значение в <xref:Microsoft.AspNetCore.Components.ParameterView>. Параметры, у которых нет соответствующего значения в <xref:Microsoft.AspNetCore.Components.ParameterView>, остаются неизменными.
 
 Если [`base.SetParametersAsync`](xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A) не вызывается, пользовательский код может интерпретировать значение входящих параметров любым необходимым образом. Например, нет необходимости назначать входящие параметры свойствам класса.
 
@@ -135,7 +138,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Приложения Blazor Server, которые [предварительно отрисовывают свое содержимое](xref:blazor/fundamentals/additional-scenarios#render-mode), вызывают <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> *дважды*:
+Приложения Blazor Server, которые [предварительно отрисовывают свое содержимое](xref:blazor/fundamentals/signalr#render-mode), вызывают <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> *дважды*:
 
 * Один раз, когда компонент изначально отрисовывается статически как часть страницы.
 * Второй раз, когда браузер устанавливает соединение с сервером.
@@ -314,7 +317,7 @@ public class WeatherForecastService
 }
 ```
 
-Дополнительные сведения об элементе <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> см. в разделе <xref:blazor/fundamentals/additional-scenarios#render-mode>.
+Дополнительные сведения об элементе <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> см. в разделе <xref:blazor/fundamentals/signalr#render-mode>.
 
 ## <a name="detect-when-the-app-is-prerendering"></a>Обнаружение предварительной отрисовки приложения
 
@@ -338,7 +341,45 @@ public class WeatherForecastService
 }
 ```
 
-Для задач асинхронной реализации используйте `DisposeAsync` вместо `Dispose` в предыдущем примере:
+Если объект требуется удалить, при вызове <xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType> можно использовать лямбда-выражение для удаления объекта:
+
+`Pages/CounterWithTimerDisposal.razor`:
+
+```razor
+@page "/counter-with-timer-disposal"
+@using System.Timers
+@implements IDisposable
+
+<h1>Counter with <code>Timer</code> disposal</h1>
+
+<p>Current count: @currentCount</p>
+
+@code {
+    private int currentCount = 0;
+    private Timer timer = new Timer(1000);
+
+    protected override void OnInitialized()
+    {
+        timer.Elapsed += (sender, eventArgs) => OnTimerCallback();
+        timer.Start();
+    }
+
+    private void OnTimerCallback()
+    {
+        _ = InvokeAsync(() =>
+        {
+            currentCount++;
+            StateHasChanged();
+        });
+    }
+
+    public void IDisposable.Dispose() => timer.Dispose();
+}
+```
+
+Предыдущий пример находится в <xref:blazor/components/rendering#receiving-a-call-from-something-external-to-the-blazor-rendering-and-event-handling-system>.
+
+Для задач асинхронного удаления используйте `DisposeAsync` вместо <xref:System.IDisposable.Dispose>:
 
 ```csharp
 public async ValueTask DisposeAsync()
@@ -350,7 +391,7 @@ public async ValueTask DisposeAsync()
 > [!NOTE]
 > Вызов <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> в `Dispose` не поддерживается. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> может вызываться в процессе уничтожения отрисовщика, поэтому запрос обновлений пользовательского интерфейса на этом этапе не поддерживается.
 
-Отмена подписки на обработчики событий из событий .NET. В следующих примерах [формы Blazor](xref:blazor/forms-validation) показано, как отсоединить обработчик событий в методе `Dispose`.
+Отмена подписки на обработчики событий из событий .NET. В следующих примерах [формы Blazor](xref:blazor/forms-validation) показано, как отсоединить обработчик событий в методе `Dispose`:
 
 * Подход с использованием частного поля и лямбда-выражения
 
@@ -359,7 +400,47 @@ public async ValueTask DisposeAsync()
 * Подход с использованием частного метода
 
   [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
-  
+
+При использовании [анонимных функций](/dotnet/csharp/programming-guide/statements-expressions-operators/anonymous-functions), методов или выражений нет необходимости реализовывать <xref:System.IDisposable> и отсоединять делегаты. Однако отсоединение делегата может стать проблемой, **когда объект, предоставляющий событие, переживает время существования компонента, регистрирующего делегат**. В этом случае возникает утечка памяти, поскольку зарегистрированный делегат сохраняет исходный объект в активном состоянии. Поэтому следует использовать только следующие подходы, если известно, что делегат события быстро удаляется. Если неизвестно точное время существования объектов, требующих удаления, подключите метод делегата и правильно удалите делегат, как показано в предыдущих примерах.
+
+* Подход с использованием анонимного лямбда-метода (явное удаление не требуется)
+
+  ```csharp
+  private void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+  {
+      formInvalid = !editContext.Validate();
+      StateHasChanged();
+  }
+
+  protected override void OnInitialized()
+  {
+      editContext = new EditContext(starship);
+      editContext.OnFieldChanged += (s, e) => HandleFieldChanged((editContext)s, e);
+  }
+  ```
+
+* Подход с использованием анонимного лямбда-выражения (явное удаление не требуется)
+
+  ```csharp
+  private ValidationMessageStore messageStore;
+
+  [CascadingParameter]
+  private EditContext CurrentEditContext { get; set; }
+
+  protected override void OnInitialized()
+  {
+      ...
+
+      messageStore = new ValidationMessageStore(CurrentEditContext);
+
+      CurrentEditContext.OnValidationRequested += (s, e) => messageStore.Clear();
+      CurrentEditContext.OnFieldChanged += (s, e) => 
+          messageStore.Clear(e.FieldIdentifier);
+  }
+  ```
+
+  Полный пример предыдущего кода с анонимными лямбда-выражениями представлен в <xref:blazor/forms-validation#validator-components>.
+
 Дополнительные сведения см. в статье [Очистка неуправляемых ресурсов](/dotnet/standard/garbage-collection/unmanaged) и следующих разделах, в которых описана реализация методов `Dispose` и `DisposeAsync`.
 
 ## <a name="cancelable-background-work"></a>Отменяемая фоновая операция
@@ -434,4 +515,4 @@ public async ValueTask DisposeAsync()
 
 ## <a name="blazor-server-reconnection-events"></a>События повторного подключения Blazor Server
 
-События жизненного цикла компонента, описываемые в этой статье, работают отдельно от [обработчиков событий повторного подключения Blazor Server](xref:blazor/fundamentals/additional-scenarios#reflect-the-connection-state-in-the-ui). Когда приложение Blazor Server теряет подключение SignalR к клиенту, прерываются только операции обновления пользовательского интерфейса. Они возобновляются при восстановлении подключения. Дополнительные сведения о конфигурации и событиях обработчика канала см. в статье <xref:blazor/fundamentals/additional-scenarios>.
+События жизненного цикла компонента, описываемые в этой статье, работают отдельно от [обработчиков событий повторного подключения Blazor Server](xref:blazor/fundamentals/signalr#reflect-the-connection-state-in-the-ui). Когда приложение Blazor Server теряет подключение SignalR к клиенту, прерываются только операции обновления пользовательского интерфейса. Они возобновляются при восстановлении подключения. Дополнительные сведения о конфигурации и событиях обработчика канала см. в статье <xref:blazor/fundamentals/signalr>.

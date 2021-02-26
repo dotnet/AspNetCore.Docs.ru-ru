@@ -5,7 +5,7 @@ description: Сведения об инструментах, доступных 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/28/2020
+ms.date: 02/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 5901a1cb693dfe8e34e62ce2a28456bcf584221c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 6b61d9a4645d273b0c78fae0388d569771c43a2d
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252270"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536250"
 ---
-# <a name="tooling-for-aspnet-core-no-locblazor"></a>Инструменты для Blazor ASP.NET Core
-
-Авторы: [Дэниэл Рот (Daniel Roth)](https://github.com/danroth27) и [Люк Лэтем (Luke Latham)](https://github.com/guardrex)
+# <a name="tooling-for-aspnet-core-blazor"></a>Инструменты для Blazor ASP.NET Core
 
 ::: zone pivot="windows"
 
@@ -50,6 +48,8 @@ ms.locfileid: "98252270"
 1. Нажмите клавишу <kbd>Ctrl</kbd>+<kbd>F5</kbd> для запуска приложения.
 
 Дополнительные сведения об установке доверия к сертификату разработки HTTPS ASP.NET Core см. здесь: <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos>.
+
+При выполнении размещенного приложения Blazor WebAssembly запустите приложение из проекта **`Server`** решения.
 
 ::: zone-end
 
@@ -72,11 +72,11 @@ ms.locfileid: "98252270"
    ```
 
    Для работы с размещенной платформой Blazor WebAssembly добавьте параметр hosted (`-ho` или `--hosted`) в команду.
-   
+
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1 -ho
    ```
-   
+
    Для работы с Blazor Server выполните следующую команду в командной оболочке:
 
    ```dotnetcli
@@ -87,7 +87,58 @@ ms.locfileid: "98252270"
 
 1. Откройте папку `WebApplication1` в Visual Studio Code.
 
-1. Среда IDE запрашивает добавление ресурсов для сборки и отладки проекта. Выберите **Да**.
+1. Среда IDE запрашивает добавление ресурсов для сборки и отладки проекта. Выберите ответ **Да**.
+
+   **Запуск размещенного Blazor WebAssembly и конфигурация задачи**
+
+   Для размещенных решений Blazor WebAssembly добавьте (или переместите) папку`.vscode` с файлами `launch.json` и `tasks.json` в родительскую папку решения — папку, содержащую типичные имена папок проекта `Client`, `Server` и `Shared`. Обновите или подтвердите, что конфигурация в файлах `launch.json` и `tasks.json` выполняет размещенное приложение Blazor WebAssembly из проекта **`Server`** .
+
+   **`.vscode/launch.json`** (конфигурация `launch`):
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/{SERVER APP FOLDER}",
+   ...
+   ```
+
+   В предыдущей конфигурации для текущего рабочего каталога (`cwd`) заполнителем `{SERVER APP FOLDER}` является папка проекта **`Server`** , обычно "`Server`".
+
+   Если используется Microsoft Edge и в системе не установлен браузер Google Chrome, добавьте в конфигурацию дополнительное свойство `"browser": "edge"`.
+
+   Пример для папки проекта `Server`, которая порождает Microsoft Edge в качестве браузера для выполнения отладки, вместо браузера по умолчанию Google Chrome:
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/Server",
+   "browser": "edge"
+   ...
+   ```
+
+   **`.vscode/tasks.json`** (аргументы [команды `dotnet`](/dotnet/core/tools/dotnet)):
+
+   ```json
+   ...
+   "${workspaceFolder}/{SERVER APP FOLDER}/{PROJECT NAME}.csproj",
+   ...
+   ```
+
+   В предыдущем аргументе:
+
+   * Заполнитель `{SERVER APP FOLDER}` — это папка проекта **`Server`** , обычно "`Server`".
+   * Заполнитель `{PROJECT NAME}` — это имя приложения, обычно основанное на имени решения, за которым следует "`.Server`" в приложении, созданном на основе шаблона проекта Blazor.
+
+   В следующем примере из [руководства по использованию SignalR с приложением Blazor WebAssembly](xref:tutorials/signalr-blazor) используется имя папки проекта `Server` и имя проекта `BlazorWebAssemblySignalRApp.Server`:
+
+   ```json
+   ...
+   "args": [
+     "build",
+       "${workspaceFolder}/Server/BlazorWebAssemblySignalRApp.Server.csproj",
+       "/property:GenerateFullPaths=true",
+       "/consoleloggerparameters:NoSummary"
+   ],
+   ...
+   ```
 
 1. Нажмите клавишу <kbd>Ctrl</kbd>+<kbd>F5</kbd> для запуска приложения.
 
@@ -119,19 +170,21 @@ ms.locfileid: "98252270"
 
 1. Для работы с размещенной платформой Blazor WebAssembly установите флажок **Размещенный проект ASP.NET Core**.
 
-1. В поле **Имя проекта** присвойте имя приложению `WebApplication1`. Выберите **Создать**.
+1. В поле **Имя проекта** присвойте имя приложению `WebApplication1`. Нажмите кнопку **создания**.
 
 1. Выберите **Выполнить** > **Запуск без отладки**, чтобы запустить приложение *без отладчика*. Запустите приложение с помощью **Выполнить** > **Начать отладку** или с помощью кнопки "Выполнить" (&#9654;), чтобы запустить приложение *с отладчиком*.
 
 При появлении подтверждения доверия к сертификату разработки подтвердите доверие, чтобы продолжить. Для доверия к сертификату необходимы пароли пользователя и цепочки ключей. Дополнительные сведения об установке доверия к сертификату разработки HTTPS ASP.NET Core см. здесь: <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos>.
 
+При выполнении размещенного приложения Blazor WebAssembly запустите приложение из проекта **`Server`** решения.
+
 ::: zone-end
 
-## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>Использование Visual Studio для кроссплатформенной разработки на Blazor
+## <a name="use-visual-studio-code-for-cross-platform-blazor-development"></a>Использование Visual Studio для кроссплатформенной разработки на Blazor
 
 [Visual Studio Code](https://code.visualstudio.com/) — это кроссплатформенная интегрированная среда разработки (IDE) с открытым кодом, которую можно использовать для разработки приложений Blazor. Используйте .NET CLI для создания приложения Blazor, которое будет разрабатываться в Visual Studio Code. Дополнительные сведения см. в [варианте этой статьи для Linux](?pivots=linux).
 
-## <a name="no-locblazor-template-options"></a>Параметры шаблона Blazor
+## <a name="blazor-template-options"></a>Параметры шаблона Blazor
 
 Платформа Blazor предоставляет шаблоны для создания приложений с использованием каждой из двух моделей размещения Blazor. Шаблоны служат для создания проектов и решений Blazor независимо от того, какие средства выбраны для разработки на Blazor (Visual Studio, Visual Studio для Mac, Visual Studio Code или .NET CLI).
 
