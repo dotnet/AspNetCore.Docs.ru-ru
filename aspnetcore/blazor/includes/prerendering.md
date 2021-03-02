@@ -1,4 +1,24 @@
-Когда приложение Blazor Server выполняет предварительную отрисовку, некоторые действия, такие как вызов в JavaScript, невозможны, так как подключение к браузеру не установлено. При предварительной отрисовке компоненты могут отрисовываться иначе.
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: c152524e0acd3803bd3b8078f667cce01180e25d
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551900"
+---
+Когда приложение Blazor Server выполняет предварительную отрисовку, некоторые действия, такие как вызов в JavaScript, невозможны, так как подключение к браузеру не установлено. При предварительной отрисовке компоненты могут отрисовываться иначе.
 
 Чтобы отложить вызовы взаимодействия с JavaScript до установки подключения к браузеру, можно использовать [событие жизненного цикла компонента OnAfterRenderAsync](xref:blazor/components/lifecycle#after-component-render). Это событие вызывается только после полной отрисовки приложения и установки клиентского подключения.
 
@@ -22,7 +42,7 @@
 }
 ```
 
-Для предыдущего примера кода предоставьте функцию JavaScript `setElementText` внутри элемента `<head>` файла `wwwroot/index.html` (Blazor WebAssembly) или `Pages/_Host.cshtml` (Blazor Server). Функция вызывается с помощью метода <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> и не возвращает значение:
+Для предыдущего примера кода укажите функцию JavaScript `setElementText` в элементе `<head>` `wwwroot/index.html` (Blazor WebAssembly) или `Pages/_Host.cshtml` (Blazor Server). Функция вызывается с помощью метода <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> и не возвращает значение:
 
 ```html
 <script>
@@ -31,7 +51,7 @@
 ```
 
 > [!WARNING]
-> В предыдущем примере прямое изменение модели DOM показано только в демонстрационных целях. В большинстве сценариев выполнять непосредственное изменение модели DOM с помощью JavaScript не рекомендуется, поскольку JavaScript может повлиять на отслеживание изменений в Blazor.
+> В предыдущем примере прямое изменение модели DOM показано только в демонстрационных целях. В большинстве сценариев выполнять непосредственное изменение модели DOM с помощью JavaScript не рекомендуется, поскольку JavaScript может повлиять на отслеживание изменений Blazor.
 
 В следующем компоненте показано, как использовать взаимодействие с JavaScript в составе логики инициализации компонента, совместимое с предварительной отрисовкой. Компонент показывает, что обновление отрисовки можно активировать из <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A>. В этом сценарии разработчику следует избегать создания бесконечного цикла.
 
@@ -70,7 +90,7 @@ Set value via JS interop call:
 }
 ```
 
-Для предыдущего примера кода предоставьте функцию JavaScript `setElementText` внутри элемента `<head>` файла `wwwroot/index.html` (Blazor WebAssembly) или `Pages/_Host.cshtml` (Blazor Server). Функция вызывается с помощью метода <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> и возвращает значение:
+Для предыдущего примера кода укажите функцию JavaScript `setElementText` в элементе `<head>` `wwwroot/index.html` (Blazor WebAssembly) или `Pages/_Host.cshtml` (Blazor Server). Функция вызывается с помощью метода <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> и возвращает значение:
 
 ```html
 <script>
@@ -82,4 +102,4 @@ Set value via JS interop call:
 ```
 
 > [!WARNING]
-> В предыдущем примере прямое изменение модели DOM показано только в демонстрационных целях. В большинстве сценариев выполнять непосредственное изменение модели DOM с помощью JavaScript не рекомендуется, поскольку JavaScript может повлиять на отслеживание изменений в Blazor.
+> В предыдущем примере прямое изменение модели DOM показано только в демонстрационных целях. В большинстве сценариев выполнять непосредственное изменение модели DOM с помощью JavaScript не рекомендуется, поскольку JavaScript может повлиять на отслеживание изменений Blazor.

@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 76dbf3cae1c264fa474101bc4398da28f45a1c10
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100254388"
+---
 Вложенные компоненты обычно привязываются к данным с помощью *цепочки привязки*, как описано в статье <xref:blazor/components/data-binding>. Вложенные и невложенные компоненты могут иметь общий доступ к данным с помощью зарегистрированного контейнера состояния в памяти. Пользовательский класс контейнера состояния может использовать назначаемое действие <xref:System.Action> для уведомления компонентов в других частях приложения об изменениях состояния. В следующем примере:
 
 * Пара компонентов использует контейнер состояния для отслеживания свойства.
@@ -59,7 +79,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 1 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 1: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -91,7 +111,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 2 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 2: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -100,3 +120,5 @@ services.AddSingleton<StateContainer>();
     }
 }
 ```
+
+Предыдущие компоненты реализуют <xref:System.IDisposable>, а подписка на делегаты `OnChange` отменяется в методах `Dispose`, которые вызываются платформой при удалении компонентов. Для получения дополнительной информации см. <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
