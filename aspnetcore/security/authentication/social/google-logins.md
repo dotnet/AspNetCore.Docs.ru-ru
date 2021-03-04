@@ -4,7 +4,7 @@ author: rick-anderson
 description: В этом руководстве демонстрируется Интеграция проверки подлинности пользователя учетной записи Google с существующим ASP.NET Core приложением.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 03/19/2020
+ms.date: 02/18/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/google-logins
-ms.openlocfilehash: 111ea7c972778dfd5296d0401c16563aeaa36a63
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 181ce87e8085839e0fcc0d77010c588ef7a290b1
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060317"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110135"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Настройка внешнего входа Google в ASP.NET Core
 
@@ -33,12 +33,16 @@ ms.locfileid: "93060317"
 
 ## <a name="create-a-google-api-console-project-and-client-id"></a>Создание проекта консоли Google API и идентификатора клиента
 
-* Установите [Microsoft. AspNetCore. Authentication. Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google).
-* Перейдите к [разделу интеграция Google Sign-In в веб-приложение](https://developers.google.com/identity/sign-in/web/sign-in) и выберите **Настройка проекта** .
-* В диалоговом окне **Настройка клиента OAuth** выберите **веб-сервер** .
-* В текстовом поле " **зарегистрированные URI перенаправления** " задайте URI перенаправления. Например `https://localhost:44312/signin-google`.
-* Сохраните **идентификатор клиента** и **секрет клиента** .
-* При развертывании сайта зарегистрируйте новый общедоступный URL-адрес из **консоли Google** .
+* Добавьте в приложение пакет NuGet [Microsoft. AspNetCore. Authentication. Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google) .
+* Следуйте указаниям в статье [Интеграция google Sign-In в веб-приложение](https://developers.google.com/identity/sign-in/web/sign-in) (документация Google).
+* На странице **учетные данные** [консоли Google](https://console.developers.google.com/apis/credentials)выберите **создать учетные данные**  >  **идентификатор клиента OAuth**.
+* В диалоговом окне **Тип приложения** выберите **веб-приложение**. Укажите **имя** приложения.
+* В разделе " **зарегистрированные URI перенаправления** " выберите **Добавить URI** , чтобы задать URI перенаправления. Пример URI перенаправления: `https://localhost:{PORT}/signin-google` , где `{PORT}` заполнитель является портом приложения.
+* Нажмите кнопку **создать** .
+* Сохраните **идентификатор клиента** и **секрет клиента** для использования в конфигурации приложения.
+* При развертывании сайта выполните одно из следующих действий.
+  * Обновите URI перенаправления приложения в **консоли Google** до развернутого URI перенаправления приложения.
+  * Создайте новую регистрацию Google API в **консоли Google** для рабочего приложения с помощью его URI перенаправления рабочей среды.
 
 ## <a name="store-the-google-client-id-and-secret"></a>Хранение идентификатора и секрета клиента Google
 
@@ -66,7 +70,7 @@ ms.locfileid: "93060317"
 
 ## <a name="sign-in-with-google"></a>Вход с учетными данными Google
 
-* Запустите приложение и нажмите кнопку **войти** . Появится возможность войти в систему с помощью Google.
+* Запустите приложение и нажмите кнопку **войти**. Появится возможность войти в систему с помощью Google.
 * Нажмите кнопку **Google** , которая перенаправляет на Google для проверки подлинности.
 * После ввода учетных данных Google вы будете перенаправлены обратно на веб-сайт.
 
@@ -78,12 +82,12 @@ ms.locfileid: "93060317"
 
 ## <a name="change-the-default-callback-uri"></a>Изменение URI обратного вызова по умолчанию
 
-Сегмент URI `/signin-google` задается в качестве обратного вызова по умолчанию для поставщика проверки подлинности Google. Вы можете изменить URI обратного вызова по умолчанию при настройке по промежуточного слоя для проверки подлинности Google с помощью унаследованного свойства [ремотеаусентикатионоптионс. каллбаккпас](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) класса [гуглеоптионс](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions) .
+Сегмент URI `/signin-google` задается в качестве обратного вызова по умолчанию для поставщика проверки подлинности Google. Вы можете изменить URI обратного вызова по умолчанию при настройке по промежуточного слоя проверки подлинности Google с помощью свойства унаследовано <xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.CallbackPath?displayProperty=nameWithType> ) <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> класса.
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
 * Если вход не работает и вы не получаете никаких ошибок, переключитесь в режим разработки, чтобы упростить отладку.
-* Если Identity не настроен с помощью вызова `services.AddIdentity` в `ConfigureServices` , попытка проверки подлинности результатов в *ArgumentException: необходимо указать параметр "сигнинсчеме"* . Шаблон проекта, используемый в этом руководстве, гарантирует, что это будет сделано.
+* Если Identity не настроен с помощью вызова `services.AddIdentity` в `ConfigureServices` , попытка проверки подлинности результатов в *ArgumentException: необходимо указать параметр "сигнинсчеме"*. Шаблон проекта, используемый в этом руководстве, гарантирует, что это будет сделано.
 * Если база данных сайта не была создана путем применения первоначальной миграции, то при обработке ошибки запроса возникнет *Ошибка операции с базой данных* . Выберите **Применить миграции** , чтобы создать базу данных, и обновите страницу, чтобы продолжить работу после ошибки.
 
 ## <a name="next-steps"></a>Дальнейшие действия

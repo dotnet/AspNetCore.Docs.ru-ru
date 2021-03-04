@@ -19,14 +19,14 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: f1aa388015bd540a6fda263eac53753ada63bf79
-ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
+ms.openlocfilehash: e06c73edfc999053e0aa37f05d984a2b428f69a9
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94673995"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109940"
 ---
-# <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Работа с SameSite cookie s в ASP.NET Core
+# <a name="work-with-samesite-cookies-in-aspnet-core"></a>Работа с SameSite cookie s в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -42,13 +42,13 @@ SameSite — это стандартный черновик [IETF](https://ietf.
 
 Каждый компонент ASP.NET Core, порождаемый cookie s, должен решить, подходит ли SameSite.
 
-## <a name="samesite-and-no-locidentity"></a>SameSite и Identity
+## <a name="samesite-and-identity"></a>SameSite и Identity
 
 [!INCLUDE[](~/includes/SameSiteIdentity.md)]
 
 ## <a name="samesite-test-sample-code"></a>Пример кода теста SameSite
 
- ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
+::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
 Следующие примеры можно скачать и протестировать:
 
@@ -62,7 +62,6 @@ SameSite — это стандартный черновик [IETF](https://ietf.
 ::: moniker range=">= aspnetcore-3.0"
 
 Следующий пример можно скачать и протестировать:
-
 
 | Образец               | Документ |
 | ----------------- | ------------ |
@@ -87,7 +86,7 @@ SameSite — это стандартный черновик [IETF](https://ietf.
 
 ## <a name="december-patch-behavior-changes"></a>Изменения режима работы с декабрьским обновлением
 
-Изменение поведения для .NET Framework и .NET Core 2,1 заключается в том, как `SameSite` свойство интерпретирует это `None` значение. Перед исправлением значение "не `None` создавать атрибут вообще", после исправления "выдает атрибут со значением `None` ". После того как исправление будет иметь `SameSite` значение, `(SameSiteMode)(-1)` атрибут не будет выдаваться.
+Изменение поведения для платформа .NET Framework и .NET Core 2,1 заключается в том, как `SameSite` свойство интерпретирует это `None` значение. Перед исправлением значение "не `None` создавать атрибут вообще", после исправления "выдает атрибут со значением `None` ". После того как исправление будет иметь `SameSite` значение, `(SameSiteMode)(-1)` атрибут не будет выдаваться.
 
 Значение SameSite по умолчанию для проверки подлинности форм и состояния сеанса cookie s изменено с `None` на `Lax` .
 
@@ -227,7 +226,7 @@ Safari 12 строго реализовал ранее созданный чер
 
 На странице установлены флаги SameSite `edge://flags/#same-site-by-default-cookies` . С пограничным Chromium проблем совместимости не обнаружено.
 
-### <a name="test-with-no-locelectron"></a>Тест с Electron
+### <a name="test-with-electron"></a>Тест с Electron
 
 Версии Electron включают более старые версии Chromium. Например, версия, Electron используемая группами, — это Chromium 66, что приводит к более старому поведению. Необходимо выполнить собственное тестирование совместимости с используемой версией Electron продукта. См. раздел [Поддержка более старых браузеров](#sob) в следующем разделе.
 

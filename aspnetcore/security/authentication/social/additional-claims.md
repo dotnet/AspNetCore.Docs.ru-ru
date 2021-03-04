@@ -5,7 +5,7 @@ description: Узнайте, как устанавливать дополнит�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/30/2020
+ms.date: 02/18/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 4503291ff887f79b1ad6eacd4e56943ce23335bc
-ms.sourcegitcommit: 5156eab2118584405eb663e1fcd82f8bd7764504
+ms.openlocfilehash: 9c04ca466566e956b5e6dfec8131096c3995bc14
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/31/2020
-ms.locfileid: "93141512"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110148"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Сохранение дополнительных утверждений и маркеров от внешних поставщиков в ASP.NET Core
 
@@ -61,7 +61,7 @@ ms.locfileid: "93141512"
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
 | Google    | `profile`, `email`, `openid`                                     |
-| Майкрософт | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
+| пиринг Майкрософт. | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
 | Twitter   | `https://api.twitter.com/oauth/authenticate`                     |
 
 В примере приложения `profile` платформа Google, `email` и `openid` области автоматически добавляются платформой при <xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle%2A> вызове в <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder> . Если приложению требуются дополнительные области, добавьте их в параметры. В следующем примере `https://www.googleapis.com/auth/user.birthday.read` добавлена область Google для получения дня рождения пользователя:
@@ -80,7 +80,7 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 В службах `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync` <xref:Microsoft.AspNetCore.Identity.IdentityUser> ( `ApplicationUser` ) выполняется вход в приложение с помощью <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*> . Во время входа в систему <xref:Microsoft.AspNetCore.Identity.UserManager%601> можно хранить `ApplicationUser` утверждения для пользовательских данных, доступных в <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*> .
 
-В примере приложения `OnPostConfirmationAsync` ( *Account/екстерналлогин. cshtml. CS* ) устанавливает утверждения языкового стандарта ( `urn:google:locale` ) и изображения ( `urn:google:picture` ) для входа `ApplicationUser` , включая утверждение для <xref:System.Security.Claims.ClaimTypes.GivenName> :
+В примере приложения `OnPostConfirmationAsync` (*Account/екстерналлогин. cshtml. CS*) устанавливает утверждения языкового стандарта ( `urn:google:locale` ) и изображения ( `urn:google:picture` ) для входа `ApplicationUser` , включая утверждение для <xref:System.Security.Claims.ClaimTypes.GivenName> :
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
 
@@ -104,9 +104,12 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 Когда `OnPostConfirmationAsync` выполняется, сохраните маркер доступа ([Екстерналлогининфо. аусентикатионтокенс](xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.AuthenticationTokens*)) из внешнего поставщика в `ApplicationUser` `AuthenticationProperties` .
 
-Пример приложения сохраняет маркер доступа в `OnPostConfirmationAsync` (регистрация нового пользователя) и `OnGetCallbackAsync` (ранее зарегистрированный пользователь) в *Account/екстерналлогин. cshtml. CS* :
+Пример приложения сохраняет маркер доступа в `OnPostConfirmationAsync` (регистрация нового пользователя) и `OnGetCallbackAsync` (ранее зарегистрированный пользователь) в *Account/екстерналлогин. cshtml. CS*:
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=54-56)]
+
+> [!NOTE]
+> Сведения о передаче маркеров Razor компонентам Blazor Server приложения см. в разделе <xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app> .
 
 ## <a name="how-to-add-additional-custom-tokens"></a>Добавление дополнительных настраиваемых токенов
 
@@ -121,6 +124,131 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 Пользователи могут определять пользовательские действия, производя от <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction> и реализуя абстрактный <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.Run*> метод.
 
 Для получения дополнительной информации см. <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>.
+
+## <a name="add-and-update-user-claims"></a>Добавление и обновление утверждений пользователей
+
+Утверждения копируются из внешних поставщиков в базу данных пользователя при первой регистрации, а не при входе. Если в приложении будут включены дополнительные утверждения после того, как пользователь зарегистрируется для использования приложения, вызовите [SignInManager. рефрешсигнинасинк](xref:Microsoft.AspNetCore.Identity.SignInManager%601) для пользователя, чтобы принудительно создать новую проверку подлинности cookie .
+
+В среде разработки, работающей с тестовыми учетными записями пользователей, можно просто удалить и повторно создать учетную запись пользователя. В производственных системах новые заявки, добавленные в приложение, могут быть заполнены в учетных записях пользователей. После [формирования шаблона `ExternalLogin` страницы](xref:security/authentication/scaffold-identity) в приложении в добавьте в `Areas/Pages/Identity/Account/Manage` файл следующий код `ExternalLoginModel` `ExternalLogin.cshtml.cs` .
+
+Добавьте словарь добавленных утверждений. Используйте ключи словаря для хранения типов утверждений и используйте значения для хранения значения по умолчанию. Добавьте следующую строку в начало класса. В следующем примере предполагается, что одно утверждение добавляется для аватара пользователя с универсальным образом хеадшот в качестве значения по умолчанию:
+
+```csharp
+private readonly IReadOnlyDictionary<string, string> _claimsToSync = 
+    new Dictionary<string, string>()
+    {
+        { "urn:google:picture", "https://localhost:5001/headshot.png" },
+    };
+```
+
+Замените код метода по умолчанию `OnGetCallbackAsync` следующим кодом. Код проходит через словарь утверждений. Утверждения добавляются (заполнены) или обновляются для каждого пользователя. При добавлении или обновлении утверждений вход пользователя обновляется с помощью <xref:Microsoft.AspNetCore.Identity.SignInManager%601> , сохраняя существующие свойства проверки подлинности ( `AuthenticationProperties` ).
+
+```csharp
+public async Task<IActionResult> OnGetCallbackAsync(
+    string returnUrl = null, string remoteError = null)
+{
+    returnUrl = returnUrl ?? Url.Content("~/");
+
+    if (remoteError != null)
+    {
+        ErrorMessage = $"Error from external provider: {remoteError}";
+
+        return RedirectToPage("./Login", new {ReturnUrl = returnUrl });
+    }
+
+    var info = await _signInManager.GetExternalLoginInfoAsync();
+
+    if (info == null)
+    {
+        ErrorMessage = "Error loading external login information.";
+        return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
+    }
+
+    // Sign in the user with this external login provider if the user already has a 
+    // login.
+    var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, 
+        info.ProviderKey, isPersistent: false, bypassTwoFactor : true);
+
+    if (result.Succeeded)
+    {
+        _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", 
+            info.Principal.Identity.Name, info.LoginProvider);
+
+        if (_claimsToSync.Count > 0)
+        {
+            var user = await _userManager.FindByLoginAsync(info.LoginProvider, 
+                info.ProviderKey);
+            var userClaims = await _userManager.GetClaimsAsync(user);
+            bool refreshSignIn = false;
+
+            foreach (var addedClaim in _claimsToSync)
+            {
+                var userClaim = userClaims
+                    .FirstOrDefault(c => c.Type == addedClaim.Key);
+
+                if (info.Principal.HasClaim(c => c.Type == addedClaim.Key))
+                {
+                    var externalClaim = info.Principal.FindFirst(addedClaim.Key);
+
+                    if (userClaim == null)
+                    {
+                        await _userManager.AddClaimAsync(user, 
+                            new Claim(addedClaim.Key, externalClaim.Value));
+                        refreshSignIn = true;
+                    }
+                    else if (userClaim.Value != externalClaim.Value)
+                    {
+                        await _userManager
+                            .ReplaceClaimAsync(user, userClaim, externalClaim);
+                        refreshSignIn = true;
+                    }
+                }
+                else if (userClaim == null)
+                {
+                    // Fill with a default value
+                    await _userManager.AddClaimAsync(user, new Claim(addedClaim.Key, 
+                        addedClaim.Value));
+                    refreshSignIn = true;
+                }
+            }
+
+            if (refreshSignIn)
+            {
+                await _signInManager.RefreshSignInAsync(user);
+            }
+        }
+
+        return LocalRedirect(returnUrl);
+    }
+
+    if (result.IsLockedOut)
+    {
+        return RedirectToPage("./Lockout");
+    }
+    else
+    {
+        // If the user does not have an account, then ask the user to create an 
+        // account.
+        ReturnUrl = returnUrl;
+        ProviderDisplayName = info.ProviderDisplayName;
+
+        if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+        {
+            Input = new InputModel
+            {
+                Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+            };
+        }
+
+        return Page();
+    }
+}
+```
+
+Аналогичный подход принимается при изменении утверждений, когда пользователь вошел в, но шаг обратной записи не требуется. Чтобы обновить утверждения пользователя, вызовите следующую команду для пользователя:
+
+* [UserManager. реплацеклаимасинк](xref:Microsoft.AspNetCore.Identity.UserManager%601) для пользователя для утверждений, хранящихся в базе данных удостоверений.
+* [SignInManager. рефрешсигнинасинк](xref:Microsoft.AspNetCore.Identity.SignInManager%601) для пользователя, чтобы принудительно создать новую проверку подлинности cookie .
 
 ## <a name="removal-of-claim-actions-and-claims"></a>Удаление действий утверждений и утверждений
 
@@ -201,7 +329,7 @@ Authentication Properties
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
 | Google    | `https://www.googleapis.com/auth/userinfo.profile`               |
-| Майкрософт | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
+| пиринг Майкрософт. | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
 | Twitter   | `https://api.twitter.com/oauth/authenticate`                     |
 
 В примере приложения `userinfo.profile` область Google автоматически добавляется платформой при <xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle*> вызове в <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder> . Если приложению требуются дополнительные области, добавьте их в параметры. В следующем примере `https://www.googleapis.com/auth/user.birthday.read` область Google добавляется для получения дня рождения пользователя:
@@ -220,7 +348,7 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 В службах `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync` <xref:Microsoft.AspNetCore.Identity.IdentityUser> ( `ApplicationUser` ) выполняется вход в приложение с помощью <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*> . Во время входа в систему <xref:Microsoft.AspNetCore.Identity.UserManager%601> можно хранить `ApplicationUser` утверждения для пользовательских данных, доступных в <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*> .
 
-В примере приложения `OnPostConfirmationAsync` ( *Account/екстерналлогин. cshtml. CS* ) устанавливает утверждения языкового стандарта ( `urn:google:locale` ) и изображения ( `urn:google:picture` ) для входа `ApplicationUser` , включая утверждение для <xref:System.Security.Claims.ClaimTypes.GivenName> :
+В примере приложения `OnPostConfirmationAsync` (*Account/екстерналлогин. cshtml. CS*) устанавливает утверждения языкового стандарта ( `urn:google:locale` ) и изображения ( `urn:google:picture` ) для входа `ApplicationUser` , включая утверждение для <xref:System.Security.Claims.ClaimTypes.GivenName> :
 
 [!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
 
@@ -244,7 +372,7 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 Когда `OnPostConfirmationAsync` выполняется, сохраните маркер доступа ([Екстерналлогининфо. аусентикатионтокенс](xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.AuthenticationTokens*)) из внешнего поставщика в `ApplicationUser` `AuthenticationProperties` .
 
-Пример приложения сохраняет маркер доступа в `OnPostConfirmationAsync` (регистрация нового пользователя) и `OnGetCallbackAsync` (ранее зарегистрированный пользователь) в *Account/екстерналлогин. cshtml. CS* :
+Пример приложения сохраняет маркер доступа в `OnPostConfirmationAsync` (регистрация нового пользователя) и `OnGetCallbackAsync` (ранее зарегистрированный пользователь) в *Account/екстерналлогин. cshtml. CS*:
 
 [!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=54-56)]
 
