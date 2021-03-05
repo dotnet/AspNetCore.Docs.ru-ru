@@ -5,6 +5,8 @@
     - name: 2021
       expanded: true
       items:
+        - name: Февраль
+          href: 2021-02.md
         - name: Январь
           href: 2021-01.md
     - name: 2020
@@ -18,5 +20,3 @@
           href: 2020-10.md
         - name: Сентябрь
           href: 2020-09.md
-        - name: Август
-          href: 2020-08.md
