@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 5d228af00ee34e7f8ca60a5085872fdb93842367
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 5fa7bc15bac2609c89fea54f8a788aaf9f5ad055
+ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057503"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119036"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Форматирование данных отклика в веб-API ASP.NET Core
 
@@ -132,7 +132,7 @@ ms.locfileid: "99057503"
 
 При использовании приведенного выше кода методы контроллера возвращают соответствующий формат на основе заголовка `Accept` запроса.
 
-### <a name="configure-systemtextjson-based-formatters"></a>Настройка модулей форматирования System.Text.Jsна основе
+### <a name="configure-systemtextjson-based-formatters"></a>Настройка `System.Text.Json` модулей форматирования на основе
 
 Функции для `System.Text.Json` модулей форматирования на основе можно настроить с помощью <xref:Microsoft.AspNetCore.Mvc.JsonOptions.JsonSerializerOptions?displayProperty=fullName> . Форматирование по умолчанию — camelCase. Следующий выделенный код задает форматирование PascalCase:
 
@@ -160,7 +160,7 @@ services.AddControllers().AddJsonOptions(options =>
 });
 ```
 
-Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Например:
+Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Пример:
 
 ```csharp
 public IActionResult Get()
@@ -207,7 +207,7 @@ services.AddControllers().AddNewtonsoftJson(options =>
 });
 ```
 
-Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Например:
+Параметры сериализации выходных данных для отдельных действий можно настроить с помощью `JsonResult`. Пример:
 
 ```csharp
 public IActionResult Get()
@@ -263,7 +263,7 @@ public IActionResult Get()
 
 Без `StringOutputFormatter`, встроенный модуль форматирования JSON форматирует типы возвращаемого значения `string`. Если встроенный модуль форматирования JSON удален и доступен модуль форматирования XML, то типы возвращаемого значения `string` форматирует модуль форматирования XML. В противном случае, `string` типы возвращаемого значения возвращают `406 Not Acceptable`.
 
-Без `HttpNoContentOutputFormatter` объекты со значением null форматируются с помощью настроенного модуля форматирования. Например:
+Без `HttpNoContentOutputFormatter` объекты со значением null форматируются с помощью настроенного модуля форматирования. Пример:
 
 * Форматировщик JSON возвращает ответ с текстом `null`.
 * Форматировщик XML возвращает пустой XML-элемент с атрибутом `xsi:nil="true"`.
@@ -275,7 +275,7 @@ public IActionResult Get()
 * В строке запроса или в части пути.
 * С использованием расширения файла конкретного формата, такого как XML или JSON.
 
-Сопоставление из пути запроса должно быть указано в маршруте, используемом API. Например:
+Сопоставление из пути запроса должно быть указано в маршруте, используемом API. Пример:
 
 [!code-csharp[](./formatting/sample/Controllers/ProductsController.cs?name=snippet)]
 
