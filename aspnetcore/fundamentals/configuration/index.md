@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 0f069b049889f7caade493e238ac7a23db5e79af
-ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.openlocfilehash: 24b4d5fc11d21dce4d9e0fd2f8f0dd2d45e82baa
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100536328"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110083"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -91,6 +91,8 @@ ms.locfileid: "100536328"
 
 * В среде разработки конфигурация *appsettings*.***Development** _._json* перезаписывает значения, найденные в *appsettings.json* .
 * В рабочей среде конфигурация *appsettings*.***Production** _._json* перезаписывает значения, найденные в *appsettings.json* . Например, при развертывании приложения в Azure.
+
+Если необходимо гарантировать значение конфигурации, см. раздел о [GetValue](#getvalue). Предыдущий пример поддерживает только считывание строк и не поддерживает значение по умолчанию.
 
 <a name="optpat"></a>
 

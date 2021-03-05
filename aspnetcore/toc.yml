@@ -462,6 +462,8 @@
               href: blazor/forms-validation.md#built-in-forms-components
             - name: InputTextArea
               href: blazor/forms-validation.md#built-in-forms-components
+            - name: LayoutView
+              href: blazor/layouts.md#apply-a-layout-to-arbitrary-content-layoutview-component
             - name: MainLayout
               href: blazor/layouts.md#mainlayout-component
             - name: NavLink
@@ -1366,6 +1368,9 @@
       uid: fundamentals/middleware/extensibility-third-party-container
 - name: Миграция
   items:
+    - name: С версии 5.0 на 6.0
+      displayName: 'migrate, migration'
+      uid: migration/50-to-60
     - name: "С версии\_3.1 на\_5.0"
       displayName: 'migrate, migration'
       uid: migration/31-to-50

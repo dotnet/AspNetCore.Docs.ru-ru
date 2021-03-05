@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 5a3d3c6e06653de7f0d01565444d37013f347a5b
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 41b588acdef3eedd9fc081f50040d160147bab4b
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280317"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109654"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>Защита приложений ASP.NET Core Blazor Server
 
@@ -124,6 +124,10 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 * [Без существующей авторизации](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-without-existing-authorization).
 * [С авторизацией](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-with-authorization).
+
+## <a name="additional-claims-and-tokens-from-external-providers"></a>Дополнительные утверждения и маркеры от внешних поставщиков
+
+Сведения о хранении дополнительных утверждений от внешних поставщиков см. в этой статье: <xref:security/authentication/social/additional-claims>.
 
 ## <a name="azure-app-service-on-linux-with-identity-server"></a>Служба приложений Azure в Linux с сервером Identity
 
