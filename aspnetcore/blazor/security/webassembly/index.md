@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 48a6227c30f025e118782b13e46fe0c7d6505851
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: c7bedd0b6990ab9991c1cce14f603bcda06c22aa
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280842"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394685"
 ---
 # <a name="secure-aspnet-core-blazor-webassembly"></a>Защита ASP.NET Core Blazor WebAssembly
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 9a14a8e16d8e50b47c479cf4d973459fbf61cec7
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: a840e5d54d48441e10c2a58af591a530c8fd7de9
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280364"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394893"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Проверка подлинности и авторизация в ASP.NET Core Blazor
 
@@ -299,7 +299,7 @@ builder.Services.AddAuthorizationCore();
 
 Компонент <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> можно использовать в компоненте `NavMenu` (`Shared/NavMenu.razor`) для отображения элемента списка (`<li>...</li>`) для [компонента `NavLink`](xref:blazor/fundamentals/routing#navlink-and-navmenu-components) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), но следует учитывать, что при использовании этого подхода удаляется только элемент списка из отображаемых выходных данных. Пользователь по-прежнему может переходить к компоненту.
 
-Приложения, созданные на основе шаблона проекта Blazor, который включает проверку подлинности, используют компонент `LoginDisplay`, который зависит от компонента `AuthorizeView`. Компонент `AuthorizeView` выборочно отображает пользователям содержимое для операций, связанных с Identity. Следующий пример относится к шаблону проекта Blazor WebAssembly.
+Приложения, созданные на основе [шаблона проекта Blazor](xref:blazor/project-structure), который включает проверку подлинности, используют компонент `LoginDisplay`, который зависит от компонента `AuthorizeView`. Компонент `AuthorizeView` выборочно отображает пользователям содержимое для операций, связанных с Identity. Следующий пример относится к [шаблону проекта Blazor WebAssembly](xref:blazor/project-structure).
 
 `Shared/LoginDisplay.razor`:
 
@@ -329,7 +329,7 @@ builder.Services.AddAuthorizationCore();
 }
 ```
 
-Следующий пример относится к шаблону проекта Blazor Server и использует конечные точки ASP.NET Core Identity в области `Identity` приложения для обработки операций, связанных с Identity.
+Следующий пример относится к [шаблону проекта Blazor Server](xref:blazor/project-structure) и использует конечные точки ASP.NET Core Identity в области `Identity` приложения для обработки операций, связанных с Identity.
 
 `Shared/LoginDisplay.razor`:
 
@@ -442,7 +442,7 @@ You can only see this if you're signed in.
 * Выполняется асинхронная авторизация. Как правило, это означает, что выполняется проверка подлинности пользователя. Отображается разметка для элемента [`<Authorizing>`](xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing?displayProperty=nameWithType).
 * Содержимое не найдено. Отображается разметка для элемента [`<NotFound>`](xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound?displayProperty=nameWithType).
 
-В стандартном шаблоне проекта приложения Blazor Server есть компонент `App` (`App.razor`) для настройки пользовательского содержимого.
+В стандартном [шаблоне проекта Blazor Server](xref:blazor/project-structure) приложения есть компонент `App` (`App.razor`) для настройки пользовательского содержимого.
 
 ```razor
 <CascadingAuthenticationState>

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 41b588acdef3eedd9fc081f50040d160147bab4b
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: 147ebbeb84e1755307d627ef428d92d1b0248c74
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109654"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394867"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>Защита приложений ASP.NET Core Blazor Server
 
@@ -32,7 +32,7 @@ ms.locfileid: "102109654"
 
 ## <a name="blazor-server-project-template"></a>Шаблон проекта Blazor Server
 
-Шаблон проекта Blazor Server можно настроить для проверки подлинности при создании проекта.
+[Шаблон проекта Blazor Server](xref:blazor/project-structure) можно настроить для проверки подлинности при создании проекта.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
