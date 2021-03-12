@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 55993f951bfe910fb179fdb25b8d04f81d4ee2c9
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 44e6570090de9c5f3550d18a30fcde758fb16f85
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057464"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588527"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ПО промежуточного слоя для переопределения URL-адресов в ASP.NET Core
 
@@ -47,7 +47,7 @@ ms.locfileid: "99057464"
 > [!NOTE]
 > Переопределение URL-адресов может снижать производительность приложения. Следует по возможности ограничить число и сложность правил.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>Перенаправление и переопределение URL-адресов
 
@@ -77,7 +77,7 @@ ms.locfileid: "99057464"
 
 ## <a name="url-rewriting-sample-app"></a>Пример приложения с переопределением URL-адресов
 
-Вы можете ознакомиться с функциями ПО промежуточного слоя переопределения URL-адресов на [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). Это приложение применяет правила перенаправления и переопределения и показывает перенаправленный или переопределенный URL-адрес для нескольких сценариев.
+Вы можете ознакомиться с функциями ПО промежуточного слоя переопределения URL-адресов на [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/). Это приложение применяет правила перенаправления и переопределения и показывает перенаправленный или переопределенный URL-адрес для нескольких сценариев.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>Условия для использования ПО промежуточного слоя для переопределения URL-адресов
 
@@ -399,7 +399,7 @@ public void Configure(IApplicationBuilder app)
 > [!NOTE]
 > Переопределение URL-адресов может снижать производительность приложения. Следует по возможности ограничить число и сложность правил.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>Перенаправление и переопределение URL-адресов
 
@@ -429,7 +429,7 @@ public void Configure(IApplicationBuilder app)
 
 ## <a name="url-rewriting-sample-app"></a>Пример приложения с переопределением URL-адресов
 
-Вы можете ознакомиться с функциями ПО промежуточного слоя переопределения URL-адресов на [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). Это приложение применяет правила перенаправления и переопределения и показывает перенаправленный или переопределенный URL-адрес для нескольких сценариев.
+Вы можете ознакомиться с функциями ПО промежуточного слоя переопределения URL-адресов на [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/). Это приложение применяет правила перенаправления и переопределения и показывает перенаправленный или переопределенный URL-адрес для нескольких сценариев.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>Условия для использования ПО промежуточного слоя для переопределения URL-адресов
 

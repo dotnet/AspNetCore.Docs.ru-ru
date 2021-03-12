@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 6f89046f2e1805111dd81b3282253a72a7c6ea09
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: a4fd179772a26ffd20fa79cef4720cd5a4746ab3
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100281016"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588618"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Распределенное кэширование в ASP.NET Core
 
@@ -44,7 +44,7 @@ ms.locfileid: "100281016"
 
 Конфигурация распределенного кэша зависит от конкретной реализации. В этой статье описывается настройка распределенных кэшей SQL Server и Redis. Также доступны реализации сторонних производителей, например [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache на GitHub](https://github.com/Alachisoft/NCache)). Независимо от выбранной реализации приложение взаимодействует с кэшем с помощью <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> интерфейса.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/distributed/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -173,7 +173,7 @@ Table and index were created successfully.
 
 * Существующая инфраструктура
 * Требования к производительности
-* Стоимость
+* Cost
 * Опыт работы в группе
 
 Для обеспечения быстрого извлечения кэшированных данных решения кэширования обычно используют хранилище в памяти, но память является ограниченным ресурсом и может быть расширена. Хранение часто используемых данных в кэше.
@@ -211,7 +211,7 @@ Table and index were created successfully.
 
 Конфигурация распределенного кэша зависит от конкретной реализации. В этой статье описывается настройка распределенных кэшей SQL Server и Redis. Также доступны реализации сторонних производителей, например [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache на GitHub](https://github.com/Alachisoft/NCache)). Независимо от выбранной реализации приложение взаимодействует с кэшем с помощью <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> интерфейса.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/distributed/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -343,7 +343,7 @@ Table and index were created successfully.
 
 * Существующая инфраструктура
 * Требования к производительности
-* Стоимость
+* Cost
 * Опыт работы в группе
 
 Для обеспечения быстрого извлечения кэшированных данных решения кэширования обычно используют хранилище в памяти, но память является ограниченным ресурсом и может быть расширена. Хранение часто используемых данных в кэше.
@@ -381,7 +381,7 @@ Table and index were created successfully.
 
 Конфигурация распределенного кэша зависит от конкретной реализации. В этой статье описывается настройка распределенных кэшей SQL Server и Redis. Также доступны реализации сторонних производителей, например [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache на GitHub](https://github.com/Alachisoft/NCache)). Независимо от выбранной реализации приложение взаимодействует с кэшем с помощью <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> интерфейса.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/distributed/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -519,7 +519,7 @@ services.AddDistributedRedisCache(options =>
 
 * Существующая инфраструктура
 * Требования к производительности
-* Стоимость
+* Cost
 * Опыт работы в группе
 
 Для обеспечения быстрого извлечения кэшированных данных решения кэширования обычно используют хранилище в памяти, но память является ограниченным ресурсом и может быть расширена. Хранение часто используемых данных в кэше.

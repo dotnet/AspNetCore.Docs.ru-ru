@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 3f7cce475b5c7b0fcbb93644b2c39acd637a6f9d
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ce6804a58c5b17b57732713acc3aeca15042da0a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94595484"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589716"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -40,7 +40,7 @@ ASP.NET Core поддерживает проектирование програ�
 
 В этой статье приводятся сведения о внедрении зависимостей в ASP.NET Core. Основная документация по использованию внедрения зависимостей указана в статье [Внедрение зависимостей в .NET](/dotnet/core/extensions/dependency-injection).
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/dependency-injection/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="overview-of-dependency-injection"></a>Общие сведения о внедрении зависимостей
 
@@ -82,7 +82,7 @@ public class IndexModel : PageModel
 * Зависимость регистрируется в контейнере служб. ASP.NET Core предоставляет встроенный контейнер служб, <xref:System.IServiceProvider>. Как правило, службы регистрируются в приложении в методе `Startup.ConfigureServices`.
 * Служба *внедряется* в конструктор класса там, где он используется. Платформа берет на себя создание экземпляра зависимости и его удаление, когда он больше не нужен.
 
-В [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) интерфейс `IMyDependency` определяет метод `WriteMessage`:
+В [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/dependency-injection/samples) интерфейс `IMyDependency` определяет метод `WriteMessage`:
 
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
 
@@ -427,7 +427,7 @@ ASP.NET Core поддерживает проектирование програ�
 
 Дополнительные сведения о внедрении зависимостей в контроллерах MVC см. в статье <xref:mvc/controllers/dependency-injection>.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/dependency-injection/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="overview-of-dependency-injection"></a>Общие сведения о внедрении зависимостей
 
@@ -477,7 +477,7 @@ public class IndexModel : PageModel
 * Зависимость регистрируется в контейнере служб. ASP.NET Core предоставляет встроенный контейнер служб, <xref:System.IServiceProvider>. Службы регистрируются в приложении в методе `Startup.ConfigureServices`.
 * Служба *внедряется* в конструктор класса там, где он используется. Платформа берет на себя создание экземпляра зависимости и его удаление, когда он больше не нужен.
 
-В [примере приложения](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) интерфейс `IMyDependency` определяет метод, который служба предоставляет приложению.
+В [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/dependency-injection/samples) интерфейс `IMyDependency` определяет метод, который служба предоставляет приложению.
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
 
@@ -544,7 +544,7 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 }
 ```
 
-Дополнительные сведения см. в разделе <xref:fundamentals/startup>.
+Для получения дополнительной информации см. <xref:fundamentals/startup>.
 
 ## <a name="framework-provided-services"></a>Платформенные службы
 
@@ -606,7 +606,7 @@ public void ConfigureServices(IServiceCollection services)
 В приложениях, обрабатывающих запросы, службы с заданной областью удаляются в конце запроса.
 
 > [!WARNING]
-> При использовании такой службы в ПО промежуточного слоя внедрите ее в метод `Invoke` или `InvokeAsync`. Не внедряйте службу с помощью [внедрения через конструктор](xref:mvc/controllers/dependency-injection#constructor-injection), поскольку в таком случае служба будет вести себя как одноэлементный объект. Дополнительные сведения см. в разделе <xref:fundamentals/middleware/write#per-request-middleware-dependencies>.
+> При использовании такой службы в ПО промежуточного слоя внедрите ее в метод `Invoke` или `InvokeAsync`. Не внедряйте службу с помощью [внедрения через конструктор](xref:mvc/controllers/dependency-injection#constructor-injection), поскольку в таком случае служба будет вести себя как одноэлементный объект. Для получения дополнительной информации см. <xref:fundamentals/middleware/write#per-request-middleware-dependencies>.
 
 ### <a name="singleton"></a>Одноэлементный
 
@@ -835,7 +835,7 @@ public class Program
 
 Службы с заданной областью удаляются создавшим их контейнером. Если служба с заданной областью создается в корневом контейнере, время существования службы повышается до уровня одноэлементного объекта, поскольку она удаляется только корневым контейнером при завершении работы приложения или сервера. Проверка областей службы перехватывает эти ситуации при вызове `BuildServiceProvider`.
 
-Дополнительные сведения см. в разделе <xref:fundamentals/host/web-host#scope-validation>.   
+Для получения дополнительной информации см. <xref:fundamentals/host/web-host#scope-validation>.   
 
 ## <a name="request-services"></a>Службы запросов
 

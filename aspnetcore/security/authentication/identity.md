@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 4fa49f795b78b88e00bd32d04f74acd8689383b2
-ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
+ms.openlocfilehash: 7141808b3190db2c882d562d753cd68fe3f985ff
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2021
-ms.locfileid: "102394477"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589742"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Введение в Identity ASP.NET Core
 
@@ -52,7 +52,7 @@ Identity обычно настраивается с помощью SQL Server б
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
-[Просмотр или скачивание образца кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample) ([Загрузка](xref:index#how-to-download-a-sample)).
+[Просмотр или скачивание образца кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/identity/sample) ([Загрузка](xref:index#how-to-download-a-sample)).
 
 <a name="adi"></a>
 
@@ -183,7 +183,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=9)]
 
 <!-- .NET 5 fixes this, see
-https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
+https://github.com/dotnet/aspnetcore/blob/main/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
 -->
 [!INCLUDE[](~/includes/disableVer.md)]
 
@@ -271,9 +271,9 @@ IdentityБолее подробное изучение:
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Следующие шаги
 
-* [Исходный код ASP.NET Core Identity](https://github.com/dotnet/aspnetcore/tree/master/src/Identity)
+* [Исходный код ASP.NET Core Identity](https://github.com/dotnet/aspnetcore/tree/main/src/Identity)
 * Сведения о настройке с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) Identity .
 * [Настройка Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
@@ -294,7 +294,7 @@ ASP.NET Core Identity — Это система членства, которая
 
 Identity можно настроить с помощью SQL Server базы данных для хранения имен пользователей, паролей и данных профилей. Кроме того, можно использовать еще одно постоянное хранилище, например хранилище таблиц Azure.
 
-[Просмотр или скачивание образца кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([Загрузка](xref:index#how-to-download-a-sample)).
+[Просмотр или скачивание образца кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([Загрузка](xref:index#how-to-download-a-sample)).
 
 В этом разделе вы узнаете, как использовать Identity для регистрации, входа и выхода пользователя. Более подробные инструкции по созданию приложений, использующих Identity , см. в разделе дальнейшие действия в конце этой статьи.
 
@@ -469,7 +469,7 @@ IdentityБолее подробное изучение:
 
 См. раздел [Конфигурация](#pw) для примера, который устанавливает минимальные требования к паролю.
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Следующие шаги
 
 * Сведения о настройке с помощью SQLite см. в [этой статье о проблемах GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) Identity .
 * [Настройка Identity](xref:security/authentication/identity-configuration)

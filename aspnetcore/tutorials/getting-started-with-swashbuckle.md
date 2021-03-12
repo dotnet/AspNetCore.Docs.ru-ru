@@ -18,16 +18,16 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: df9c78770f3494b1ae9e0d3604926d77cb1e67bb
-ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
+ms.openlocfilehash: fdec03422f4a4517950ff6de2a0400df5307b40f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99578325"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588540"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Начало работы с Swashbuckle и ASP.NET Core
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Swashbuckle включает три основных компонента.
 

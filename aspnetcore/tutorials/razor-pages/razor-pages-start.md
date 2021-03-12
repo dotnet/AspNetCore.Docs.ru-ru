@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 4d4e50f8acea73859f5e839616f13f90a42291c4
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 61ff4edfaedb22ea88d6bb0be2390ff734879942
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97486230"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588442"
 ---
-# <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
+# <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Учебник. Начало работы с Razor Pages в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -37,7 +37,7 @@ ms.locfileid: "97486230"
 
 Пройдя всю серию, вы получите приложение, которое управляет базой данных фильмов.  
 
-[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 В этом учебнике рассмотрены следующие задачи.
 
@@ -66,7 +66,7 @@ ms.locfileid: "97486230"
 
 ---
 
-## <a name="create-a-no-locrazor-pages-web-app"></a>Создание веб-приложения Razor Pages
+## <a name="create-a-razor-pages-web-app"></a>Создание веб-приложения Razor Pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -185,7 +185,7 @@ ms.locfileid: "97486230"
 
 Пройдя всю серию, вы получите приложение, которое управляет базой данных фильмов.  
 
-[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 В этом учебнике рассмотрены следующие задачи.
 
@@ -214,7 +214,7 @@ ms.locfileid: "97486230"
 
 ---
 
-## <a name="create-a-no-locrazor-pages-web-app"></a>Создание веб-приложения Razor Pages
+## <a name="create-a-razor-pages-web-app"></a>Создание веб-приложения Razor Pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -327,7 +327,7 @@ ms.locfileid: "97486230"
 
 Пройдя всю серию, вы получите приложение, которое управляет базой данных фильмов.  
 
-[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 В этом учебнике рассмотрены следующие задачи.
 
@@ -356,7 +356,7 @@ ms.locfileid: "97486230"
 
 ---
 
-## <a name="create-a-no-locrazor-pages-web-app"></a>Создание веб-приложения Razor Pages
+## <a name="create-a-razor-pages-web-app"></a>Создание веб-приложения Razor Pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/action-return-types
-ms.openlocfilehash: 62c8227ca770a3a9adbe780685b140bc0e86841e
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: b377025a843f82a57fd0aac4961ddcedc67ff3b9
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710702"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589729"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Типы возвращаемых значений действий контроллера в веб-API ASP.NET Core
 
 Автор: [Скотт Адди](https://github.com/scottaddie) (Scott Addie)
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/action-return-types/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/action-return-types/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ASP.NET Core предоставляет следующие параметры для типов возвращаемых значений действий контроллера веб-API:
 

@@ -18,20 +18,20 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: c89098bf0b2c4396f9856aca2be9967af5df0cb7
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f1c4366e4e4afa3dd86a816a649ad0a8b2ce817b
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051906"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588631"
 ---
-# <a name="custom-storage-providers-for-no-locaspnet-core-identity"></a>Пользовательские поставщики хранилища для ASP.NET Core Identity
+# <a name="custom-storage-providers-for-aspnet-core-identity"></a>Пользовательские поставщики хранилища для ASP.NET Core Identity
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
 ASP.NET Core Identity — это расширяемая система, которая позволяет создать пользовательский поставщик хранилища и подключить его к приложению. В этом разделе описывается создание настраиваемого поставщика хранилища для ASP.NET Core Identity . В нем рассматриваются важные понятия создания собственного поставщика хранилища, но не пошаговое пошаговое руководство.
 
-[Просмотрите или Скачайте пример из GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample).
+[Просмотрите или Скачайте пример из GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample).
 
 ## <a name="introduction"></a>Введение
 
@@ -51,7 +51,7 @@ ASP.NET Core Identity включается в шаблоны проектов Vi
 dotnet new mvc -au Individual
 ```
 
-## <a name="the-no-locaspnet-core-identity-architecture"></a>ASP.NET Core IdentityАрхитектура
+## <a name="the-aspnet-core-identity-architecture"></a>ASP.NET Core IdentityАрхитектура
 
 ASP.NET Core Identity состоит из классов, именуемых диспетчерами и хранилищами. *Руководители* — это высокоуровневые классы, которые разработчик приложений использует для выполнения таких операций, как создание Identity пользователя. *Магазины* — это классы более низкого уровня, указывающие, как сохраняются сущности, например пользователи и роли. Хранилища соответствуют шаблону репозитория и тесно связаны с механизмом сохраняемости. Менеджеры отделяются от магазинов, что означает возможность замены механизма сохраняемости без изменения кода приложения (кроме конфигурации).
 
@@ -65,7 +65,7 @@ ASP.NET Core Identity состоит из классов, именуемых д�
 
 [Перенастроить приложение для использования нового поставщика хранилища](#reconfigure-app-to-use-a-new-storage-provider) показывает, как создавать экземпляры `UserManager` и `RoleManager` с настроенным хранилищем.
 
-## <a name="no-locaspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity хранит типы данных
+## <a name="aspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity хранит типы данных
 
 [ASP.NET Core Identity](https://github.com/aspnet/identity) типы данных подробно описаны в следующих разделах:
 
@@ -150,7 +150,7 @@ ASP.NET Core Identity состоит из классов, именуемых д�
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
 * [иусерлоккаутсторе](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)
 
-Необязательные интерфейсы наследуются от `IUserStore<TUser>` . В [примере приложения](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)можно увидеть частично реализованное хранилище пользователей с примером.
+Необязательные интерфейсы наследуются от `IUserStore<TUser>` . В [примере приложения](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)можно увидеть частично реализованное хранилище пользователей с примером.
 
 В рамках `UserStore` класса используются классы доступа к данным, созданные для выполнения операций. Они передаются при помощи внедрения зависимостей. Например, в SQL Server с реализацией Dapper `UserStore` класс содержит `CreateAsync` метод, который использует экземпляр `DapperUsersTable` для вставки новой записи:
 
@@ -195,7 +195,7 @@ public class UserStore : IUserStore<IdentityUser>,
 }
 ```
 
-### <a name="no-locidentityuserclaim-no-locidentityuserlogin-and-no-locidentityuserrole"></a>IdentityУсерклаим, Identity UserLogin и Identity UserRole
+### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityУсерклаим, Identity UserLogin и Identity UserRole
 
 `Microsoft.AspNet.Identity.EntityFramework`Пространство имен содержит реализации классов [ Identity усерклаим](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [ Identity UserLogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)и [ Identity UserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) . При использовании этих функций может потребоваться создать собственные версии этих классов и определить свойства приложения. Однако иногда эффективнее не загружать эти сущности в память при выполнении основных операций (например, при добавлении или удалении утверждения пользователя). Вместо этого классы хранилища серверной части могут выполнять эти операции непосредственно в источнике данных. Например, `UserStore.GetClaimsAsync` метод может вызвать `userClaimTable.FindByUserId(user.Id)` метод, чтобы выполнить запрос к этой таблице напрямую и вернуть список заявок.
 
@@ -227,7 +227,7 @@ public class UserStore : IUserStore<IdentityUser>,
 1. Если вы используете роли, обновите, `RoleManager` чтобы использовать свой `RoleStore` класс.
 1. Обновите строку подключения и учетные данные в конфигурации приложения.
 
-Пример
+Пример:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -250,4 +250,4 @@ public void ConfigureServices(IServiceCollection services)
 ## <a name="references"></a>Ссылки
 
 * [Пользовательские поставщики хранилища для ASP.NET 4. x Identity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-* [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/master/src/Identity): Этот репозиторий содержит ссылки на поставщики хранилища, поддерживаемые сообществом.
+* [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/main/src/Identity): Этот репозиторий содержит ссылки на поставщики хранилища, поддерживаемые сообществом.
