@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 997d4dec05ddb6b9d0acb5ed36a6510c0836a4fb
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: b9e95afc2ccff95c6acd215a70c8b0f92fb1b8c0
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280494"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394737"
 ---
 # <a name="use-graph-api-with-aspnet-core-blazor-webassembly"></a>Использование API Graph в ASP.NET Core Blazor WebAssembly
 
@@ -36,7 +36,7 @@ ms.locfileid: "100280494"
 
 [Пакеты SDK для Microsoft Graph](/graph/sdks/sdks-overview) предназначены для упрощения создания высококачественных, эффективных и устойчивых приложений, обращающихся к Microsoft Graph.
 
-Для примеров этого раздела в файле проекта изолированного приложения или приложения *`Client`* требуются ссылки на следующие пакеты:
+Для примеров этого раздела в файле проекта изолированного приложения или приложения **`Client`** требуются ссылки на следующие пакеты:
 
 * [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 * [`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph)
@@ -48,7 +48,7 @@ ms.locfileid: "100280494"
 
 После добавления областей API Microsoft Graph в область AAD на портале Azure:
 
-* Добавьте следующий класс `GraphClientExtensions.cs` в изолированное приложение или приложение *`Client`* размещенного решения Blazor.
+* Добавьте следующий класс `GraphClientExtensions.cs` в изолированное приложение или приложение **`Client`** размещенного решения Blazor.
 * Укажите необходимые области для свойства <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions.Scopes> из <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions> в методе `AuthenticateRequestAsync`. В следующем примере область `User.Read` указана в соответствии с примерами в последующих разделах этой статьи.
 
 ```csharp
@@ -291,7 +291,7 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState,
 
 В примере этого раздела используется именованный клиент <xref:System.Net.Http.HttpClient> для API Graph для получения номера мобильного телефона пользователя с целью обработки вызова.
 
-Для примеров этого раздела в файле проекта изолированного приложения или приложения *`Client`* требуется ссылка на пакет [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http).
+Для примеров этого раздела в файле проекта изолированного приложения или приложения **`Client`** требуется ссылка на пакет [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http).
 
 Создайте следующий класс и конфигурацию проекта для работы с API Graph. Следующий класс и конфигурация используются в каждом из следующих подразделов этой статьи:
 

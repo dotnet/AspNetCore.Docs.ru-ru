@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 91148c67d5dc0bf97e2f926f50dcff5dd0708f4b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f71ae5e619b875c03401fa78320582c406875401
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052322"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586115"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и восстановление пароля в ASP.NET Core
 
@@ -57,7 +57,7 @@ dotnet run
 * Выберите `Click here to confirm your account` ссылку.
 * Выберите ссылку для **входа** и выполните вход с теми же учетными данными.
 * Выберите `Hello YourEmail@provider.com!` ссылку, которая перенаправит вас на `/Identity/Account/Manage/PersonalData` страницу.
-* Выберите вкладку **личные данные** слева, а затем щелкните **Удалить** .
+* Выберите вкладку **личные данные** слева, а затем щелкните **Удалить**.
 
 ### <a name="configure-an-email-provider"></a>Настройка поставщика электронной почты
 
@@ -65,7 +65,7 @@ dotnet run
 
 Для учетной записи SendGrid может потребоваться [Добавить отправителя](https://sendgrid.com/docs/ui/sending-email/senders/).
 
-Создайте класс для выборки ключа защищенной электронной почты. Для этого примера создайте *Services/аусмессажесендероптионс. CS* :
+Создайте класс для выборки ключа защищенной электронной почты. Для этого примера создайте *Services/аусмессажесендероптионс. CS*:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
@@ -139,7 +139,7 @@ dotnet add package SendGrid
 Следуйте инструкциям по [формированию Identity шаблонов](xref:security/authentication/scaffold-identity) и шаблонов `RegisterConfirmation` .
 
 <!-- .NET 5 fixes this, see
-https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
+https://github.com/dotnet/aspnetcore/blob/main/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
 -->
 
 [!INCLUDE[](~/includes/disableVer.md)]
@@ -156,7 +156,7 @@ https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Ident
 
 ### <a name="test-password-reset"></a>Проверка сброса пароля
 
-* Если вы вошли в этот компьютер, выберите **выход** .
+* Если вы вошли в этот компьютер, выберите **выход**.
 * Щелкните ссылку **войти** и выберите ссылку **забыли пароль?** .
 * Введите адрес электронной почты, использованный для регистрации учетной записи.
 * Отправляется сообщение электронной почты со ссылкой для сброса пароля. Проверьте свой адрес электронной почты и щелкните ссылку, чтобы сбросить пароль. После успешного сброса пароля можно выполнить вход с помощью электронной почты и нового пароля.
@@ -241,7 +241,7 @@ https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Ident
 
 [Пакет SDK для .NET Core 2,2 или более поздней версии](https://dotnet.microsoft.com/download/dotnet-core)
 
-## <a name="create-a-web--app-and-scaffold-no-locidentity"></a>Создание веб-приложения и шаблона Identity
+## <a name="create-a-web--app-and-scaffold-identity"></a>Создание веб-приложения и шаблона Identity
 
 Выполните следующие команды, чтобы создать веб-приложение с проверкой подлинности.
 
@@ -267,7 +267,7 @@ dotnet run
 
 Обратите внимание, что `EmailConfirmed` поле таблицы имеет значение `False` .
 
-Вы можете снова использовать это сообщение на следующем шаге, когда приложение отправит сообщение электронной почты с подтверждением. Щелкните строку правой кнопкой мыши и выберите команду **Удалить** . Удаление псевдонима электронной почты упрощает следующие шаги.
+Вы можете снова использовать это сообщение на следующем шаге, когда приложение отправит сообщение электронной почты с подтверждением. Щелкните строку правой кнопкой мыши и выберите команду **Удалить**. Удаление псевдонима электронной почты упрощает следующие шаги.
 
 <a name="prevent-login-at-registration"></a>
 
@@ -287,7 +287,7 @@ dotnet run
 
 В этом руководстве [SendGrid](https://sendgrid.com) используется для отправки электронной почты. Для отправки электронной почты требуется учетная запись SendGrid и ключ. Вы можете использовать другие поставщики электронной почты. ASP.NET Core 2. x включает `System.Net.Mail` , что позволяет отправлять электронную почту из приложения. Для отправки электронной почты рекомендуется использовать SendGrid или другую почтовую службу. Протокол SMTP трудно защитить и настроить правильно.
 
-Создайте класс для выборки ключа защищенной электронной почты. Для этого примера создайте *Services/аусмессажесендероптионс. CS* :
+Создайте класс для выборки ключа защищенной электронной почты. Для этого примера создайте *Services/аусмессажесендероптионс. CS*:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
@@ -356,7 +356,7 @@ dotnet add package SendGrid
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Включение подтверждения учетной записи и восстановление пароля
 
-Шаблон содержит код для подтверждения учетной записи и восстановления пароля. Найдите `OnPostAsync` метод в *области (Areas/ Identity /Пажес/аккаунт/регистер.кштмл.КС* ).
+Шаблон содержит код для подтверждения учетной записи и восстановления пароля. Найдите `OnPostAsync` метод в *области (Areas/ Identity /Пажес/аккаунт/регистер.кштмл.КС*).
 
 Запретите автоматический вход новых зарегистрированных пользователей с помощью комментария к следующей строке:
 
@@ -386,7 +386,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 ### <a name="test-password-reset"></a>Проверка сброса пароля
 
-* Если вы вошли в этот компьютер, выберите **выход** .
+* Если вы вошли в этот компьютер, выберите **выход**.
 * Щелкните ссылку **войти** и выберите ссылку **забыли пароль?** .
 * Введите адрес электронной почты, использованный для регистрации учетной записи.
 * Отправляется сообщение электронной почты со ссылкой для сброса пароля. Проверьте свой адрес электронной почты и щелкните ссылку, чтобы сбросить пароль. После успешного сброса пароля можно выполнить вход с помощью электронной почты и нового пароля.

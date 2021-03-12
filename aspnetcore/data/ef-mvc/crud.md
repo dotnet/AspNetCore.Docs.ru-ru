@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 043fe513f370cf63637733b66ca195e7887faab0
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c3cfee107541a20a089809193d4bf7fa08730bd2
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93054298"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586401"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Учебник. Использование ASP.NET MVC с EF Core. Реализация функциональности CRUD
 
@@ -132,7 +132,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 Помимо атрибута `Bind`, в шаблонном коде изменяется только блок try-catch. Если во время сохранения изменений перехватывается исключение, производное от `DbUpdateException`, отображается сообщение об общей ошибке. Исключения `DbUpdateException` иногда связаны с внешними факторами, а не с ошибкой при программировании приложения, поэтому рекомендуется попробовать повторить выполненные действия снова. В этом примере такое поведение не реализовано, однако в рабочем приложении, как правило, исключения заносятся в журнал. Дополнительные сведения см. в разделе **Ведение журналов для анализа** статьи [Мониторинг и телеметрия (построение реальных облачных приложений для Azure)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).
 
-Атрибут `ValidateAntiForgeryToken` позволяет предотвратить атаки с подделкой межсайтовых запросов. Токен автоматически вставляется в представление с помощью [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) и включается при отправке формы пользователем. Токен проверяется по атрибуту `ValidateAntiForgeryToken`. Дополнительные сведения см. в разделе <xref:security/anti-request-forgery>.
+Атрибут `ValidateAntiForgeryToken` позволяет предотвратить атаки с подделкой межсайтовых запросов. Токен автоматически вставляется в представление с помощью [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) и включается при отправке формы пользователем. Токен проверяется по атрибуту `ValidateAntiForgeryToken`. Для получения дополнительной информации см. <xref:security/anti-request-forgery>.
 
 <a id="overpost"></a>
 
@@ -305,7 +305,7 @@ public class Student
 
 ## <a name="get-the-code"></a>Получите код
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Следующие шаги
 

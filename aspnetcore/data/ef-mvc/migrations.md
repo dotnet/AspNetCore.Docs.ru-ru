@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 7c8f562bcf0b7e2672f2f1ac244e0d9278e4c204
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: aebbc3f29b0356c7993abd83869ab21d3613bf61
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97485931"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589352"
 ---
 # <a name="tutorial-part-5-apply-migrations-to-the-contoso-university-sample"></a>Учебник. Часть 5. Применение миграций к примеру приложения университета Contoso
 
@@ -171,7 +171,7 @@ Done.
 
 ## <a name="get-the-code"></a>Получение кода
 
-[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples)
+[Скачайте или ознакомьтесь с готовым приложением.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-mvc/intro/samples)
 
 ## <a name="next-step"></a>Следующий шаг
 

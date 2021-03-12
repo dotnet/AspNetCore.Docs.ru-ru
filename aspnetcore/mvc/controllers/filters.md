@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 416fc292d82cf841b2134e23a8e494e3e8d945ca
-ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
+ms.openlocfilehash: b53b017e63ada62438e352a6c5112b7584ff0b26
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100563981"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589105"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -45,7 +45,7 @@ ms.locfileid: "100563981"
 * Компонент внедряется в страницу или представление.
 * Страница, контроллер или представление использует фильтр.
 
-[Просмотреть или скачать пример](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) ([как скачивать](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/3.1sample) ([как скачивать](xref:index#how-to-download-a-sample)).
 
 ## <a name="how-filters-work"></a>Как работают фильтры
 
@@ -88,7 +88,7 @@ ms.locfileid: "100563981"
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/MySampleActionFilter.cs?name=snippet_ActionFilter)]
 
-В приведенном выше коде [мидебуг](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs) — это служебная функция в [примере загрузки](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs).
+В приведенном выше коде [мидебуг](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs) — это служебная функция в [примере загрузки](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs).
 
 Асинхронные фильтры определяют метод `On-Stage-ExecutionAsync`. Например, <xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*>:
 
@@ -232,7 +232,7 @@ ASP.NET Core включает встроенные фильтры на осно�
   * `MySampleActionFilter.OnActionExecuted`
 * `TestController.OnActionExecuted`
 
-Фильтры на уровне контроллера задают для свойства [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) значение `int.MinValue`. Их **нельзя** настроить, чтобы они запускались после применения фильтров к методам. Свойство Order рассматривается в следующем разделе.
+Фильтры на уровне контроллера задают для свойства [Order](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) значение `int.MinValue`. Их **нельзя** настроить, чтобы они запускались после применения фильтров к методам. Свойство Order рассматривается в следующем разделе.
 
 Для Razor страниц см. раздел [реализация Razor фильтров страниц путем переопределения методов фильтров](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).
 
@@ -265,7 +265,7 @@ ASP.NET Core включает встроенные фильтры на осно�
   * `MySampleActionFilter.OnActionExecuted`
 * `Test2Controller.OnActionExecuted`
 
-Свойство `Order` переопределяет область при определении порядка выполнения фильтров. Фильтры сначала сортируются по порядку, а затем очередность окончательно определяется по области. Все встроенные фильтры реализуют `IOrderedFilter` и задают значение по умолчанию `Order`, равное 0. Как упоминалось ранее, фильтры на уровне контроллера задают для свойства [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) значение `int.MinValue`. Во встроенных фильтрах область определяет порядок, если для `Order` не задано ненулевое значение.
+Свойство `Order` переопределяет область при определении порядка выполнения фильтров. Фильтры сначала сортируются по порядку, а затем очередность окончательно определяется по области. Все встроенные фильтры реализуют `IOrderedFilter` и задают значение по умолчанию `Order`, равное 0. Как упоминалось ранее, фильтры на уровне контроллера задают для свойства [Order](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) значение `int.MinValue`. Во встроенных фильтрах область определяет порядок, если для `Order` не задано ненулевое значение.
 
 В указанном выше коде `MySampleActionFilter` имеет глобальную область действия и запускается перед `MyAction2FilterAttribute`, у которого область действия контроллера. Чтобы `MyAction2FilterAttribute` запускался первым, задайте для свойства Order значение `int.MinValue`:
 
@@ -576,10 +576,10 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet3&highlight=21)]
 
-Проверьте приведенный выше код, выполнив [скачиваемый пример](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample):
+Проверьте приведенный выше код, выполнив [скачиваемый пример](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/3.1sample):
 
 * Вызовите средства для разработчика (F12).
-* Перейдите на страницу `https://localhost:5001/Sample/HeaderWithFactory`.
+* Перейдите к `https://localhost:5001/Sample/HeaderWithFactory`.
 
 В средствах для разработчика (F12) отобразятся следующие заголовки ответа, добавленные примером кода:
 
@@ -628,7 +628,7 @@ What's a non-named attribute?
 ## <a name="next-actions"></a>Дальнейшие действия
 
 * См. раздел [методы фильтров для Razor страниц](xref:razor-pages/filter).
-* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените пример с GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample).
+* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените пример с GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/3.1sample).
 
 ::: moniker-end
 
@@ -647,7 +647,7 @@ What's a non-named attribute?
 
 Этот документ применяется к Razor страницам, контроллерам API и контроллерам с представлениями.
 
-[Просмотреть или скачать пример](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) ([как скачивать](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/sample) ([как скачивать](xref:index#how-to-download-a-sample)).
 
 ## <a name="how-filters-work"></a>Как работают фильтры
 
@@ -1099,10 +1099,10 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
 
-Приведенный выше код можно проверить, выполнив [скачиваемый пример](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample):
+Приведенный выше код можно проверить, выполнив [скачиваемый пример](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/sample):
 
 * Вызовите средства для разработчика (F12).
-* Перейдите на страницу `https://localhost:5001/Sample/HeaderWithFactory`.
+* Перейдите к `https://localhost:5001/Sample/HeaderWithFactory`.
 
 В средствах для разработчика (F12) отобразятся следующие заголовки ответа, добавленные примером кода:
 
@@ -1151,6 +1151,6 @@ What's a non-named attribute?
 ## <a name="next-actions"></a>Дальнейшие действия
 
 * См. раздел [методы фильтров для Razor страниц](xref:razor-pages/filter).
-* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените пример с GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
+* Чтобы поэкспериментировать с фильтрами, [скачайте, протестируйте и измените пример с GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/sample).
 
 ::: moniker-end

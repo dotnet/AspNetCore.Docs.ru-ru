@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: c720747983da4ef6997d95d77c3f5305cfd7d3c0
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: af3c059e7192d6b0d2b0a902b6e3a6121fdf6709
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100279920"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395036"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>Настройка компоновщика для ASP.NET Core Blazor
 
@@ -91,7 +91,7 @@ Blazor WebAssembly выполняет компоновку [промежуточ
 </linker>
 ```
 
-Дополнительные сведения см. в разделе [Форматы данных (репозиторий GitHub для mono/компоновщика)](https://github.com/mono/linker/blob/master/docs/data-formats.md).
+Дополнительные сведения см. в разделе [Форматы данных (репозиторий GitHub для mono/компоновщика)](https://github.com/mono/linker/blob/main/docs/data-formats.md).
 
 ## <a name="add-an-xml-linker-configuration-file-to-a-library"></a>Добавление файла конфигурации компоновщика XML в библиотеку
 

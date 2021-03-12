@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 61fcc07aeb30db15014fb716194328d366f27859
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 1d0e0da3a5d047d7457e7ca7587c81029e33cb69
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058341"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586011"
 ---
 # <a name="view-components-in-aspnet-core"></a>Просмотр компонентов в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/view-components/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="view-components"></a>Компоненты представлений
 
@@ -167,7 +167,7 @@ ms.locfileid: "98058341"
 
 ## <a name="walkthrough-creating-a-simple-view-component"></a>Пошаговое руководство. Создание простого компонента представления
 
-[Скачайте](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) начальный код и выполните его сборку и тестирование. Это простой проект с `ToDo` контроллером, отображающим список элементов *TODO* .
+[Скачайте](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/view-components/sample) начальный код и выполните его сборку и тестирование. Это простой проект с `ToDo` контроллером, отображающим список элементов *TODO* .
 
 ![Список дел](view-components/_static/2dos.png)
 
@@ -193,7 +193,7 @@ ms.locfileid: "98058341"
 * `InvokeAsync` предоставляет метод, который возможно вызывать из представления и который может принять произвольное число аргументов.
 * Метод `InvokeAsync` возвращает набор элементов `ToDo`, удовлетворяющих параметрам `isDone` и `maxPriority`.
 
-### <a name="create-the-view-component-no-locrazor-view"></a>Создание представления компонента представления Razor
+### <a name="create-the-view-component-razor-view"></a>Создание представления компонента представления Razor
 
 * Создайте папку *Views/Shared/Components*. Она **должна** называться *Components*.
 

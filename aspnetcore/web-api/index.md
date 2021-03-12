@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 03debcb211a8cb8f0ebd6d5e67fbc8de7b574e27
-ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
+ms.openlocfilehash: fb7dfa53be1fee9904b4539a5c9da0700c2aa884
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551660"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585738"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Создание веб-API с помощью ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "99551660"
 
 ASP.NET Core поддерживает создание служб RESTful, также известных как веб-API, с помощью C#. Для обработки запросов веб-API использует контроллеры. В веб-API *контроллеры* — это классы, производные от `ControllerBase`. В этой статье показано, как использовать контроллеры для обработки веб-запросов API.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/index/samples). ([Инструкция по скачиванию](xref:index#how-to-download-a-sample).)
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/index/samples). ([Инструкция по скачиванию](xref:index#how-to-download-a-sample).)
 
 ## <a name="controllerbase-class"></a>Класс ControllerBase
 

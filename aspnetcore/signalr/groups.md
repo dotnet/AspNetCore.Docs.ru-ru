@@ -19,22 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/groups
-ms.openlocfilehash: a86408eaae8d3df32faef79453d9db0cdbd64a78
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8f9e91f34386bb5b4cf79bee429a39ae27c03c5e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050957"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589222"
 ---
-# <a name="manage-users-and-groups-in-no-locsignalr"></a>Управление пользователями и группами в SignalR
+# <a name="manage-users-and-groups-in-signalr"></a>Управление пользователями и группами в SignalR
 
 По [Бреннан Конрой](https://github.com/BrennanConroy)
 
 SignalR разрешает отправлять сообщения всем соединениям, связанным с конкретным пользователем, а также именованным группам подключений.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/groups/sample/) [(описание загрузки)](xref:index#how-to-download-a-sample)
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/groups/sample/) [(описание загрузки)](xref:index#how-to-download-a-sample)
 
-## <a name="users-in-no-locsignalr"></a>Пользователи в SignalR
+## <a name="users-in-signalr"></a>Пользователи в SignalR
 
 Один пользователь в SignalR может иметь несколько подключений к приложению. Например, пользователь может подключаться к рабочему столу, а также по телефону. Каждое устройство имеет отдельное SignalR соединение, но все они связаны с одним и тем же пользователем. При отправке пользователю сообщения все соединения, связанные с этим пользователем, получают сообщение. Доступ к идентификатору пользователя для соединения может осуществляться `Context.UserIdentifier` свойством в концентраторе.
 
@@ -47,7 +47,7 @@ SignalR разрешает отправлять сообщения всем со
 
 [!code-csharp[Configure service](groups/sample/Hubs/ChatHub.cs?range=29-32)]
 
-## <a name="groups-in-no-locsignalr"></a>Группы в SignalR
+## <a name="groups-in-signalr"></a>Группы в SignalR
 
 Группа — это коллекция соединений, связанных с именем. Сообщения могут отправляться всем подключениям в группе. Группы — это рекомендуемый способ отправки на подключение или несколько подключений, так как группы управляются приложением. Соединение может быть членом нескольких групп. Группы идеально подходят для приложения разговора, где каждая комната может быть представлена группой. Соединения добавляются в группы или удаляются из групп с помощью `AddToGroupAsync` `RemoveFromGroupAsync` методов и.
 

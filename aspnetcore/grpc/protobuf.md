@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: adb048c9b20e172ef8a7bc13f9b56928b1d4bf77
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 65a84c34e182b7a330d14e1f7ace17790ee4ed47
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280295"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110174"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Создание сообщений protobuf для приложений .NET
 
@@ -443,7 +443,7 @@ status.Data = Value.Parser.ParseJson(@"{
 
 // Convert dynamic values to JSON.
 // JSON can be read with a library like System.Text.Json or Newtonsoft.Json
-var json = JsonFormatter.Default.Format(status.Metadata);
+var json = JsonFormatter.Default.Format(status.Data);
 var document = JsonDocument.Parse(json);
 ```
 

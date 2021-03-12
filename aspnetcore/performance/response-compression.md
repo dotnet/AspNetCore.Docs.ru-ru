@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: 9327c98c22a4d42d31ea8ba1eb8337153040b5b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 239f9e84d068bfd75c84ccf16f0e74cdbbbebfb2
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056976"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586323"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Сжатие ответов в ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "93056976"
 
 Пропускная способность сети является ограниченным ресурсом. Уменьшение размера ответа обычно значительно увеличивает скорость реагирования приложения. Одним из способов уменьшения размера полезных данных является сжатие ответов приложения.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>Использование по промежуточного слоя сжатия ответа
 
@@ -74,7 +74,7 @@ ms.locfileid: "93056976"
 
 Заголовки, используемые для запроса, отправки, кэширования и получения сжатого содержимого, описаны в таблице ниже.
 
-| Header             | Роль |
+| Заголовок             | Роль |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Отправляется с клиента на сервер, чтобы указать схемы кодировки содержимого, приемлемые для клиента. |
 | `Content-Encoding` | Отправляется с сервера клиенту для указания кодировки содержимого в полезных данных. |
@@ -83,7 +83,7 @@ ms.locfileid: "93056976"
 | `Content-Type`     | Указывает тип MIME содержимого. Каждый ответ должен указывать его `Content-Type` . По промежуточного слоя проверяет это значение, чтобы определить, следует ли сжимать ответ. По промежуточного слоя указывает набор [типов MIME по умолчанию](#mime-types) , которые он может кодировать, но можно заменить или добавить типы MIME. |
 | `Vary`             | При отправке сервером значения `Accept-Encoding` для клиентов и прокси `Vary` Заголовок указывает клиенту или прокси-серверу, что он должен кэшировать (варьировать) ответы в зависимости от значения `Accept-Encoding` заголовка запроса. Результат возврата содержимого с `Vary: Accept-Encoding` заголовком заключается в том, что как сжатые, так и несжатые ответы кэшируются отдельно. |
 
-Изучите функции по промежуточного слоя сжатия ответов с [примером приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). В примере показано следующее:
+Изучите функции по промежуточного слоя сжатия ответов с [примером приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples). В примере показано следующее:
 
 * Сжатие ответов приложений с помощью gzip и пользовательских поставщиков сжатия.
 * Добавление типа MIME в список по умолчанию типов MIME для сжатия.
@@ -92,7 +92,7 @@ ms.locfileid: "93056976"
 
 По промежуточного слоя сжатия ответа предоставляется пакетом [Microsoft. AspNetCore. респонсекомпрессион](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) , который неявно включается в ASP.NET Core приложения.
 
-## <a name="configuration"></a>Параметр Configuration
+## <a name="configuration"></a>Конфигурация
 
 В следующем коде показано, как включить по промежуточного слоя сжатия ответа для типов MIME по умолчанию и поставщиков сжатия ([Brotli](#brotli-compression-provider) и [gzip](#gzip-compression-provider)):
 
@@ -234,7 +234,7 @@ public void ConfigureServices(IServiceCollection services)
 * `text/plain`
 * `text/xml`
 
-Замените или добавьте типы MIME с помощью параметров по промежуточного слоя сжатия ответа. Обратите внимание, что типы MIME с подстановочными знаками, такие как, `text/*` не поддерживаются. Пример приложения добавляет тип MIME для `image/svg+xml` и сжимает и обслуживает изображение ASP.NET Core баннера ( *Banner. SVG* ).
+Замените или добавьте типы MIME с помощью параметров по промежуточного слоя сжатия ответа. Обратите внимание, что типы MIME с подстановочными знаками, такие как, `text/*` не поддерживаются. Пример приложения добавляет тип MIME для `image/svg+xml` и сжимает и обслуживает изображение ASP.NET Core баннера (*Banner. SVG*).
 
 [!code-csharp[](response-compression/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -254,7 +254,7 @@ public void ConfigureServices(IServiceCollection services)
 
 При наличии активного модуля динамического сжатия IIS, настроенного на уровне сервера, который вы хотите отключить для приложения, отключите модуль, дополнив добавление к файлу *web.config* . Дополнительные сведения см. в разделе [Отключение модулей IIS](xref:host-and-deploy/iis/modules#disabling-iis-modules).
 
-## <a name="troubleshooting"></a>Устранение неполадок
+## <a name="troubleshooting"></a>Диагностика
 
 Используйте такие средства, как [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)или [POST](https://www.getpostman.com/), которые позволяют задать `Accept-Encoding` заголовок запроса и изучить заголовки, размер и текст ответа. По умолчанию по промежуточного слоя для сжатия ответов сжимает ответы, соответствующие следующим условиям.
 
@@ -278,7 +278,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Пропускная способность сети является ограниченным ресурсом. Уменьшение размера ответа обычно значительно увеличивает скорость реагирования приложения. Одним из способов уменьшения размера полезных данных является сжатие ответов приложения.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>Использование по промежуточного слоя сжатия ответа
 
@@ -320,7 +320,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Заголовки, используемые для запроса, отправки, кэширования и получения сжатого содержимого, описаны в таблице ниже.
 
-| Header             | Роль |
+| Заголовок             | Роль |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Отправляется с клиента на сервер, чтобы указать схемы кодировки содержимого, приемлемые для клиента. |
 | `Content-Encoding` | Отправляется с сервера клиенту для указания кодировки содержимого в полезных данных. |
@@ -329,7 +329,7 @@ public void ConfigureServices(IServiceCollection services)
 | `Content-Type`     | Указывает тип MIME содержимого. Каждый ответ должен указывать его `Content-Type` . По промежуточного слоя проверяет это значение, чтобы определить, следует ли сжимать ответ. По промежуточного слоя указывает набор [типов MIME по умолчанию](#mime-types) , которые он может кодировать, но можно заменить или добавить типы MIME. |
 | `Vary`             | При отправке сервером значения `Accept-Encoding` для клиентов и прокси `Vary` Заголовок указывает клиенту или прокси-серверу, что он должен кэшировать (варьировать) ответы в зависимости от значения `Accept-Encoding` заголовка запроса. Результат возврата содержимого с `Vary: Accept-Encoding` заголовком заключается в том, что как сжатые, так и несжатые ответы кэшируются отдельно. |
 
-Изучите функции по промежуточного слоя сжатия ответов с [примером приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). В примере показано следующее:
+Изучите функции по промежуточного слоя сжатия ответов с [примером приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples). В примере показано следующее:
 
 * Сжатие ответов приложений с помощью gzip и пользовательских поставщиков сжатия.
 * Добавление типа MIME в список по умолчанию типов MIME для сжатия.
@@ -338,7 +338,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Чтобы включить по промежуточного слоя в проект, добавьте ссылку на [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app), которая включает пакет [Microsoft. AspNetCore. респонсекомпрессион](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) .
 
-## <a name="configuration"></a>Параметр Configuration
+## <a name="configuration"></a>Конфигурация
 
 В следующем коде показано, как включить по промежуточного слоя сжатия ответа для типов MIME по умолчанию и поставщиков сжатия ([Brotli](#brotli-compression-provider) и [gzip](#gzip-compression-provider)):
 
@@ -479,7 +479,7 @@ public void ConfigureServices(IServiceCollection services)
 * `text/plain`
 * `text/xml`
 
-Замените или добавьте типы MIME с помощью параметров по промежуточного слоя сжатия ответа. Обратите внимание, что типы MIME с подстановочными знаками, такие как, `text/*` не поддерживаются. Пример приложения добавляет тип MIME для `image/svg+xml` и сжимает и обслуживает изображение ASP.NET Core баннера ( *Banner. SVG* ).
+Замените или добавьте типы MIME с помощью параметров по промежуточного слоя сжатия ответа. Обратите внимание, что типы MIME с подстановочными знаками, такие как, `text/*` не поддерживаются. Пример приложения добавляет тип MIME для `image/svg+xml` и сжимает и обслуживает изображение ASP.NET Core баннера (*Banner. SVG*).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -499,7 +499,7 @@ public void ConfigureServices(IServiceCollection services)
 
 При наличии активного модуля динамического сжатия IIS, настроенного на уровне сервера, который вы хотите отключить для приложения, отключите модуль, дополнив добавление к файлу *web.config* . Дополнительные сведения см. в разделе [Отключение модулей IIS](xref:host-and-deploy/iis/modules#disabling-iis-modules).
 
-## <a name="troubleshooting"></a>Устранение неполадок
+## <a name="troubleshooting"></a>Диагностика
 
 Используйте такие средства, как [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)или [POST](https://www.getpostman.com/), которые позволяют задать `Accept-Encoding` заголовок запроса и изучить заголовки, размер и текст ответа. По умолчанию по промежуточного слоя для сжатия ответов сжимает ответы, соответствующие следующим условиям.
 
@@ -523,7 +523,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Пропускная способность сети является ограниченным ресурсом. Уменьшение размера ответа обычно значительно увеличивает скорость реагирования приложения. Одним из способов уменьшения размера полезных данных является сжатие ответов приложения.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>Использование по промежуточного слоя сжатия ответа
 
@@ -565,7 +565,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Заголовки, используемые для запроса, отправки, кэширования и получения сжатого содержимого, описаны в таблице ниже.
 
-| Header             | Роль |
+| Заголовок             | Роль |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Отправляется с клиента на сервер, чтобы указать схемы кодировки содержимого, приемлемые для клиента. |
 | `Content-Encoding` | Отправляется с сервера клиенту для указания кодировки содержимого в полезных данных. |
@@ -574,7 +574,7 @@ public void ConfigureServices(IServiceCollection services)
 | `Content-Type`     | Указывает тип MIME содержимого. Каждый ответ должен указывать его `Content-Type` . По промежуточного слоя проверяет это значение, чтобы определить, следует ли сжимать ответ. По промежуточного слоя указывает набор [типов MIME по умолчанию](#mime-types) , которые он может кодировать, но можно заменить или добавить типы MIME. |
 | `Vary`             | При отправке сервером значения `Accept-Encoding` для клиентов и прокси `Vary` Заголовок указывает клиенту или прокси-серверу, что он должен кэшировать (варьировать) ответы в зависимости от значения `Accept-Encoding` заголовка запроса. Результат возврата содержимого с `Vary: Accept-Encoding` заголовком заключается в том, что как сжатые, так и несжатые ответы кэшируются отдельно. |
 
-Изучите функции по промежуточного слоя сжатия ответов с [примером приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). В примере показано следующее:
+Изучите функции по промежуточного слоя сжатия ответов с [примером приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples). В примере показано следующее:
 
 * Сжатие ответов приложений с помощью gzip и пользовательских поставщиков сжатия.
 * Добавление типа MIME в список по умолчанию типов MIME для сжатия.
@@ -583,7 +583,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Чтобы включить по промежуточного слоя в проект, добавьте ссылку на [Microsoft. AspNetCore. app метапакет](xref:fundamentals/metapackage-app), которая включает пакет [Microsoft. AspNetCore. респонсекомпрессион](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) .
 
-## <a name="configuration"></a>Параметр Configuration
+## <a name="configuration"></a>Конфигурация
 
 В следующем коде показано, как включить по промежуточного слоя сжатия ответов для типов MIME по умолчанию и [поставщика сжатия Gzip](#gzip-compression-provider):
 
@@ -684,7 +684,7 @@ public void ConfigureServices(IServiceCollection services)
 * `text/plain`
 * `text/xml`
 
-Замените или добавьте типы MIME с помощью параметров по промежуточного слоя сжатия ответа. Обратите внимание, что типы MIME с подстановочными знаками, такие как, `text/*` не поддерживаются. Пример приложения добавляет тип MIME для `image/svg+xml` и сжимает и обслуживает изображение ASP.NET Core баннера ( *Banner. SVG* ).
+Замените или добавьте типы MIME с помощью параметров по промежуточного слоя сжатия ответа. Обратите внимание, что типы MIME с подстановочными знаками, такие как, `text/*` не поддерживаются. Пример приложения добавляет тип MIME для `image/svg+xml` и сжимает и обслуживает изображение ASP.NET Core баннера (*Banner. SVG*).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -704,7 +704,7 @@ public void ConfigureServices(IServiceCollection services)
 
 При наличии активного модуля динамического сжатия IIS, настроенного на уровне сервера, который вы хотите отключить для приложения, отключите модуль, дополнив добавление к файлу *web.config* . Дополнительные сведения см. в разделе [Отключение модулей IIS](xref:host-and-deploy/iis/modules#disabling-iis-modules).
 
-## <a name="troubleshooting"></a>Устранение неполадок
+## <a name="troubleshooting"></a>Диагностика
 
 Используйте такие средства, как [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)или [POST](https://www.getpostman.com/), которые позволяют задать `Accept-Encoding` заголовок запроса и изучить заголовки, размер и текст ответа. По умолчанию по промежуточного слоя для сжатия ответов сжимает ответы, соответствующие следующим условиям.
 

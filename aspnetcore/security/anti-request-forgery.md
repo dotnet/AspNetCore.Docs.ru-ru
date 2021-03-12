@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 3bb3c059eafa8e948fe2e719207927c009902e59
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 5d6f2915dd9b27142ac7d8ac55e68c6a26e41f81
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057451"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585790"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвращение атак с подделкой межсайтовых запросов (XSRF/CSRF) в ASP.NET Core
 
@@ -85,7 +85,7 @@ CSRF атаки могут использоваться для веб-прило
 
 CookieАутентификация на основе — это популярная форма проверки подлинности. Системы проверки подлинности на основе маркеров растут по популярности, особенно для одностраничных приложений (одностраничные приложения).
 
-### <a name="no-loccookie-based-authentication"></a>CookieПроверка подлинности на основе
+### <a name="cookie-based-authentication"></a>CookieПроверка подлинности на основе
 
 Когда пользователь проходит проверку подлинности с использованием имени пользователя и пароля, он выдает маркер, содержащий билет проверки подлинности, который можно использовать для проверки подлинности и авторизации. Маркер сохраняется в виде cookie , сопровождающем каждый запрос, создаваемый клиентом. Создание и проверка cookie выполняется по Cookie промежуточного слоя проверки подлинности. По [промежуточного слоя](xref:fundamentals/middleware/index) пользователь сериализует субъект-пользователя в зашифрованный cookie . При последующих запросах по промежуточного слоя проверяет cookie , повторно создает субъект и назначает участника свойству [пользователя](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user) [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext).
 
@@ -250,7 +250,7 @@ services.AddAntiforgery(options =>
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания защиты от подделки cookie . |
 | [CookieДомен](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Домен cookie . По умолчанию — `null`. Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать Cookie . Поддомен. |
-| [Cookiename](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Имя cookie. Если значение не задано, система создает уникальное имя, начинающееся [с Cookie префикса по умолчанию](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. подделка. "). Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать Cookie . Безымян. |
+| [CookieИмя](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Имя cookie. Если значение не задано, система создает уникальное имя, начинающееся [с Cookie префикса по умолчанию](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. подделка. "). Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать Cookie . Безымян. |
 | [CookieПуть](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Путь, заданный для cookie . Это свойство устарело и будет удалено в следующей версии. Взамен рекомендуется использовать Cookie . Путь. |
 | [формфиелднаме](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Имя скрытого поля формы, используемое системой защиты от подделки для отображения маркеров подделки в представлениях. |
 | [хеадернаме](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Имя заголовка, используемого системой защиты от подделки. Если `null` значение равно, система рассматривает только данные формы. |
@@ -487,9 +487,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="windows-authentication-and-antiforgery-no-loccookies"></a>Проверка подлинности Windows и подделка cookie s
+## <a name="windows-authentication-and-antiforgery-cookies"></a>Проверка подлинности Windows и подделка cookie s
 
 При использовании проверки подлинности Windows конечные точки приложения должны быть защищены от атак CSRF так же, как и для cookie s.  Браузер неявно отправляет контекст проверки подлинности на сервер, поэтому конечные точки должны быть защищены от атак CSRF.
 

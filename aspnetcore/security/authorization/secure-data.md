@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: ebd3c0dc9baa63b30f142773d7a3d621ce4082d9
-ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
+ms.openlocfilehash: 662456af59c453df66ca48139a6de40d0e2cbf0d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689309"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589196"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Создание ASP.NET Core веб-приложения с данными пользователя, защищенными с помощью авторизации
 
@@ -75,7 +75,7 @@ ms.locfileid: "98689309"
 * `ContactManagerAuthorizationHandler`: Позволяет руководителям утверждать или отклонять контакты.
 * `ContactAdministratorsAuthorizationHandler`: Позволяет администраторам утверждать или отклонять контакты, а также изменять и удалять контакты.
 
-## <a name="prerequisites"></a>Предварительные условия
+## <a name="prerequisites"></a>Предварительные требования
 
 Этот учебник расширен. Вы должны быть знакомы с:
 
@@ -87,11 +87,11 @@ ms.locfileid: "98689309"
 
 ## <a name="the-starter-and-completed-app"></a>Начальное и завершенное приложение
 
-[Скачайте](xref:index#how-to-download-a-sample) [готовое](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) приложение. [Протестируйте](#test-the-completed-app) готовое приложение, чтобы ознакомиться с его функциями безопасности.
+[Скачайте](xref:index#how-to-download-a-sample) [готовое](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples) приложение. [Протестируйте](#test-the-completed-app) готовое приложение, чтобы ознакомиться с его функциями безопасности.
 
 ### <a name="the-starter-app"></a>Начальное приложение
 
-[Скачайте](xref:index#how-to-download-a-sample) [Начальное](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) приложение.
+[Скачайте](xref:index#how-to-download-a-sample) [Начальное](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/) приложение.
 
 Запустите приложение, коснитесь ссылки **ContactManager** и убедитесь, что вы можете создать, изменить и удалить контакт. Сведения о создании начального приложения см. в разделе [Создание начального приложения](#create-the-starter-app).
 
@@ -114,7 +114,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>Добавление служб ролей в Identity
+### <a name="add-role-services-to-identity"></a>Добавление служб ролей в Identity
 
 Добавление [аддролес](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) для добавления служб ролей:
 
@@ -128,13 +128,13 @@ dotnet ef database update
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-Выделенный выше код задает [политику резервной проверки подлинности](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). Для применения политики резервной проверки подлинности требуется **_ALL_* _ Users, за исключением Razor страниц, контроллеров или методов действий с атрибутом проверки подлинности. Например, Razor страницы, контроллеры или методы действий с `[AllowAnonymous]` или `[Authorize(PolicyName="MyPolicy")]` используют примененный атрибут проверки подлинности, а не политику резервной проверки подлинности.
+Выделенный выше код задает [политику резервной проверки подлинности](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). Политика резервной проверки подлинности требует, чтобы ***все*** пользователи прошли проверку подлинности, за исключением Razor страниц, контроллеров или методов действий с атрибутом проверки подлинности. Например, Razor страницы, контроллеры или методы действий с `[AllowAnonymous]` или `[Authorize(PolicyName="MyPolicy")]` используют примененный атрибут проверки подлинности, а не политику резервной проверки подлинности.
 
-<xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> Добавляет <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> к текущему экземпляру, который обеспечивает проверку подлинности текущего пользователя.
+<xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> добавляет <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> к текущему экземпляру, что обеспечивает проверку подлинности текущего пользователя.
 
 Резервная политика проверки подлинности:
 
-_ Применяется ко всем запросам, которые не указывают политику проверки подлинности явным образом. Для запросов, обслуживаемых маршрутизацией конечных точек, сюда входят все конечные точки, не указывающие атрибут авторизации. Для запросов, обслуживаемых другим по промежуточного слоя, после по промежуточного слоя авторизации, например [статических файлов](xref:fundamentals/static-files), эта политика будет применена ко всем запросам.
+* Применяется ко всем запросам, которые не указывают политику проверки подлинности явным образом. Для запросов, обслуживаемых маршрутизацией конечных точек, сюда входят все конечные точки, не указывающие атрибут авторизации. Для запросов, обслуживаемых другим по промежуточного слоя, после по промежуточного слоя авторизации, например [статических файлов](xref:fundamentals/static-files), эта политика будет применена ко всем запросам.
 
 Настройка политики резервной проверки подлинности на требование проверки подлинности пользователей защищает вновь добавленные Razor страницы и контроллеры. Необходимость проверки подлинности по умолчанию более безопасна, чем использование новых контроллеров и Razor страниц для включения `[Authorize]` атрибута.
 
@@ -221,7 +221,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final3/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>Создание базового класса для Razor страниц контактов
+### <a name="create-a-base-class-for-the-contacts-razor-pages"></a>Создание базового класса для Razor страниц контактов
 
 Создайте базовый класс, содержащий службы, используемые на Razor страницах контактов. Базовый класс помещает код инициализации в одно расположение:
 
@@ -306,7 +306,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/Details2.cshtml.cs?name=snippet)]
 
-В предыдущем коде:
+В приведенном выше коде:
 
 * Если пользователь **не** прошел проверку подлинности, `ChallengeResult` возвращается значение. Когда `ChallengeResult` возвращается, пользователь перенаправляется на страницу входа.
 * Если пользователь прошел проверку подлинности, но не авторизован, `ForbidResult` возвращается значение. Когда `ForbidResult` возвращается значение, пользователь перенаправляется на страницу отказ в доступе.
@@ -334,7 +334,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * Руководители могут утверждать и отклонять контактные данные. В `Details` представлении отображаются кнопки **утвердить** и **отклонить** .
 * Администраторы могут утверждать, отклонять и изменять и удалять все данные.
 
-| User                | Заполнено приложением | Параметры                                  |
+| Пользователь                | Заполнено приложением | Варианты                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | Нет                | Изменение или удаление собственных данных.                |
 | manager@contoso.com | Да               | Утвердите, отклоните и измените или удалите собственные данные. |
@@ -381,7 +381,7 @@ dotnet ef database update
 
 ### <a name="seed-the-database"></a>Заполнение базы данных
 
-Добавьте класс [сиддата](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) в папку *Data* :
+Добавьте класс [сиддата](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) в папку *Data* :
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
@@ -431,7 +431,7 @@ dotnet ef database update
 * `ContactManagerAuthorizationHandler`: Позволяет руководителям утверждать или отклонять контакты.
 * `ContactAdministratorsAuthorizationHandler`: Позволяет администраторам утверждать или отклонять контакты, а также изменять и удалять контакты.
 
-## <a name="prerequisites"></a>Предварительные условия
+## <a name="prerequisites"></a>Предварительные требования
 
 Этот учебник расширен. Вы должны быть знакомы с:
 
@@ -443,11 +443,11 @@ dotnet ef database update
 
 ## <a name="the-starter-and-completed-app"></a>Начальное и завершенное приложение
 
-[Скачайте](xref:index#how-to-download-a-sample) [готовое](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) приложение. [Протестируйте](#test-the-completed-app) готовое приложение, чтобы ознакомиться с его функциями безопасности.
+[Скачайте](xref:index#how-to-download-a-sample) [готовое](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples) приложение. [Протестируйте](#test-the-completed-app) готовое приложение, чтобы ознакомиться с его функциями безопасности.
 
 ### <a name="the-starter-app"></a>Начальное приложение
 
-[Скачайте](xref:index#how-to-download-a-sample) [Начальное](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) приложение.
+[Скачайте](xref:index#how-to-download-a-sample) [Начальное](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/) приложение.
 
 Запустите приложение, коснитесь ссылки **ContactManager** и убедитесь, что вы можете создать, изменить и удалить контакт.
 
@@ -470,7 +470,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>Добавление служб ролей в Identity
+### <a name="add-role-services-to-identity"></a>Добавление служб ролей в Identity
 
 Добавление [аддролес](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) для добавления служб ролей:
 
@@ -557,7 +557,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>Создание базового класса для Razor страниц контактов
+### <a name="create-a-base-class-for-the-contacts-razor-pages"></a>Создание базового класса для Razor страниц контактов
 
 Создайте базовый класс, содержащий службы, используемые на Razor страницах контактов. Базовый класс помещает код инициализации в одно расположение:
 
@@ -661,7 +661,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * Руководители могут утверждать и отклонять контактные данные. В `Details` представлении отображаются кнопки **утвердить** и **отклонить** .
 * Администраторы могут утверждать, отклонять и изменять и удалять все данные.
 
-| User                | Заполнено приложением | Параметры                                  |
+| Пользователь                | Заполнено приложением | Варианты                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | Нет                | Изменение или удаление собственных данных.                |
 | manager@contoso.com | Да               | Утвердите, отклоните и измените или удалите собственные данные. |
@@ -704,7 +704,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ### <a name="seed-the-database"></a>Заполнение базы данных
 
-Добавьте класс [сиддата](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) в папку *Data* .
+Добавьте класс [сиддата](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) в папку *Data* .
 
 Вызов `SeedData.Initialize` из `Main` :
 

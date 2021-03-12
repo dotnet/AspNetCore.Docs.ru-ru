@@ -10,12 +10,12 @@ metadata:
   author: WadePickett
   ms.author: wpickett
   ms.date: 06/05/2020
-  ms.openlocfilehash: b4da6289e2534e01f1d00d5d0812b6cd28f50229
-  ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+  ms.openlocfilehash: 917e909bc9368a007dad22f992dc96819ebce988
+  ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
   ms.translationtype: HT
   ms.contentlocale: ru-RU
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "101101137"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102588794"
 highlightedContent:
   items:
   - title: Создание приложения ASP.NET Core на любой платформе за 5 минут
@@ -373,4 +373,4 @@ additionalContent:
         text: Распространенные клиентские веб-технологии
       - url: /dotnet/architecture/modern-web-apps-azure/development-process-for-azure
         text: Процесс разработки для Azure
-  footer: Примите участие в создании документации по ASP.NET Core. Ознакомьтесь с нашим [руководством для соавторов](https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md).
+  footer: Примите участие в создании документации по ASP.NET Core. Ознакомьтесь с нашим [руководством для соавторов](https://github.com/dotnet/AspNetCore.Docs/blob/main/CONTRIBUTING.md).

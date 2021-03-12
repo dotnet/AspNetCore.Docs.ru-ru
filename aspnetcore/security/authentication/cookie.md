@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 04469e0e75c433b40b364873a7e72e30421936f4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5b1f1bb3de7126c401a81b89b99a45c7e45f8f8d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061357"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586297"
 ---
-# <a name="use-no-loccookie-authentication-without-no-locaspnet-core-identity"></a>Использовать cookie проверку подлинности без ASP.NET Core Identity
+# <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Использовать cookie проверку подлинности без ASP.NET Core Identity
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -33,11 +33,11 @@ ms.locfileid: "93061357"
 
 ASP.NET Core Identity — полноценный полнофункциональный поставщик проверки подлинности для создания и обслуживания имен входа. Однако cookie поставщик проверки подлинности на основе не ASP.NET Core Identity может использоваться. Для получения дополнительной информации см. <xref:security/authentication/identity>.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/cookie/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 В демонстрационных целях в примере приложения учетная запись пользователя для гипотетического пользователя, Мария Rodriguez, жестко закодирована в приложении. Используйте адрес **электронной почты** `maria.rodriguez@contoso.com` и любой пароль для входа пользователя. Пользователь прошел проверку подлинности в `AuthenticateUser` методе в файле *pages/Account/Login. cshtml. CS* . В реальном примере пользователь будет проходить проверку подлинности в базе данных.
 
-## <a name="configuration"></a>Параметр Configuration
+## <a name="configuration"></a>Конфигурация
 
 В `Startup.ConfigureServices` методе создайте службы промежуточного слоя для проверки подлинности с помощью <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> методов и:
 
@@ -65,7 +65,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-## <a name="no-loccookie-policy-middleware"></a>Cookie По промежуточного слоя политики
+## <a name="cookie-policy-middleware"></a>Cookie По промежуточного слоя политики
 
 По [ Cookie промежуточного слоя политики](xref:Microsoft.AspNetCore.CookiePolicy.CookiePolicyMiddleware) включает cookie возможности политики. Добавление по промежуточного слоя в конвейер обработки приложений зависит от порядка, &mdash; оно влияет только на нисходящие компоненты, зарегистрированные в конвейере.
 
@@ -92,7 +92,7 @@ CookieПараметр по промежуточного слоя политик
 | Самеситемоде. нестрогий      | Самеситемоде. None<br>Самеситемоде. нестрогий<br>Самеситемоде. | Самеситемоде. нестрогий<br>Самеситемоде. нестрогий<br>Самеситемоде. |
 | Самеситемоде.   | Самеситемоде. None<br>Самеситемоде. нестрогий<br>Самеситемоде. | Самеситемоде.<br>Самеситемоде.<br>Самеситемоде. |
 
-## <a name="create-an-authentication-no-loccookie"></a>Создание проверки подлинности cookie
+## <a name="create-an-authentication-cookie"></a>Создание проверки подлинности cookie
 
 Чтобы создать cookie данные о пользователе, создайте <xref:System.Security.Claims.ClaimsPrincipal> . Сведения о пользователе сериализуются и хранятся в cookie . 
 
@@ -209,7 +209,7 @@ services.AddScoped<CustomCookieAuthenticationEvents>();
 > [!WARNING]
 > Описанный здесь подход срабатывает при каждом запросе. Проверка подлинности cookie для всех пользователей при каждом запросе может привести к значительному снижению производительности приложения.
 
-## <a name="persistent-no-loccookies"></a>Постоянный cookie s
+## <a name="persistent-cookies"></a>Постоянный cookie s
 
 Может потребоваться, cookie чтобы объект сохранялся между сеансами браузера. Это сохраняемость следует включать только при явном согласии пользователей с флажком "Запомнить меня" при входе или аналогичном механизме. 
 
@@ -229,7 +229,7 @@ await HttpContext.SignInAsync(
     });
 ```
 
-## <a name="absolute-no-loccookie-expiration"></a>Абсолютный cookie срок действия
+## <a name="absolute-cookie-expiration"></a>Абсолютный cookie срок действия
 
 Абсолютный срок действия можно задать с помощью <xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.ExpiresUtc> . Для создания постоянного cookie `IsPersistent` необходимо также задать значение. В противном случае объект cookie создается с временем существования на основе сеанса и может истечь до или после полученного билета проверки подлинности. Если задан `ExpiresUtc` параметр, он переопределяет значение <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions.ExpireTimeSpan> параметра <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions> , если оно задано.
 
@@ -254,11 +254,11 @@ await HttpContext.SignInAsync(
 
 ASP.NET Core Identity — полноценный полнофункциональный поставщик проверки подлинности для создания и обслуживания имен входа. Однако cookie поставщик проверки подлинности на основе не ASP.NET Core Identity может использоваться. Для получения дополнительной информации см. <xref:security/authentication/identity>.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/cookie/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 В демонстрационных целях в примере приложения учетная запись пользователя для гипотетического пользователя, Мария Rodriguez, жестко закодирована в приложении. Используйте адрес **электронной почты** `maria.rodriguez@contoso.com` и любой пароль для входа пользователя. Пользователь прошел проверку подлинности в `AuthenticateUser` методе в файле *pages/Account/Login. cshtml. CS* . В реальном примере пользователь будет проходить проверку подлинности в базе данных.
 
-## <a name="configuration"></a>Параметр Configuration
+## <a name="configuration"></a>Конфигурация
 
 Если приложение не использует [метапакет Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), создайте ссылку на пакет в файле проекта для [Microsoft. AspNetCore. Authentication. Cookie пакет.](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)
 
@@ -288,7 +288,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-## <a name="no-loccookie-policy-middleware"></a>Cookie По промежуточного слоя политики
+## <a name="cookie-policy-middleware"></a>Cookie По промежуточного слоя политики
 
 По [ Cookie промежуточного слоя политики](xref:Microsoft.AspNetCore.CookiePolicy.CookiePolicyMiddleware) включает cookie возможности политики. Добавление по промежуточного слоя в конвейер обработки приложений зависит от порядка, &mdash; оно влияет только на нисходящие компоненты, зарегистрированные в конвейере.
 
@@ -315,7 +315,7 @@ CookieПараметр по промежуточного слоя политик
 | Самеситемоде. нестрогий      | Самеситемоде. None<br>Самеситемоде. нестрогий<br>Самеситемоде. | Самеситемоде. нестрогий<br>Самеситемоде. нестрогий<br>Самеситемоде. |
 | Самеситемоде.   | Самеситемоде. None<br>Самеситемоде. нестрогий<br>Самеситемоде. | Самеситемоде.<br>Самеситемоде.<br>Самеситемоде. |
 
-## <a name="create-an-authentication-no-loccookie"></a>Создание проверки подлинности cookie
+## <a name="create-an-authentication-cookie"></a>Создание проверки подлинности cookie
 
 Чтобы создать cookie данные о пользователе, создайте <xref:System.Security.Claims.ClaimsPrincipal> . Сведения о пользователе сериализуются и хранятся в cookie . 
 
@@ -426,7 +426,7 @@ services.AddScoped<CustomCookieAuthenticationEvents>();
 > [!WARNING]
 > Описанный здесь подход срабатывает при каждом запросе. Проверка подлинности cookie для всех пользователей при каждом запросе может привести к значительному снижению производительности приложения.
 
-## <a name="persistent-no-loccookies"></a>Постоянный cookie s
+## <a name="persistent-cookies"></a>Постоянный cookie s
 
 Может потребоваться, cookie чтобы объект сохранялся между сеансами браузера. Это сохраняемость следует включать только при явном согласии пользователей с флажком "Запомнить меня" при входе или аналогичном механизме. 
 
@@ -446,7 +446,7 @@ await HttpContext.SignInAsync(
     });
 ```
 
-## <a name="absolute-no-loccookie-expiration"></a>Абсолютный cookie срок действия
+## <a name="absolute-cookie-expiration"></a>Абсолютный cookie срок действия
 
 Абсолютный срок действия можно задать с помощью <xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.ExpiresUtc> . Для создания постоянного cookie `IsPersistent` необходимо также задать значение. В противном случае объект cookie создается с временем существования на основе сеанса и может истечь до или после полученного билета проверки подлинности. Если задан `ExpiresUtc` параметр, он переопределяет значение <xref:Microsoft.AspNetCore.Builder.CookieAuthenticationOptions.ExpireTimeSpan> параметра <xref:Microsoft.AspNetCore.Builder.CookieAuthenticationOptions> , если оно задано.
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: 1c97f5d7fbf64c5043e6d2277091b9a477833bf1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ae2bc34edaea2df6f329e47b00c7c02cc59d03bd
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93054714"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589274"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Использование LibMan с ASP.NET Core в Visual Studio
 
@@ -36,7 +36,7 @@ ms.locfileid: "93054714"
 * диалоговое окно для поиска библиотек и добавления файлов в проект;
 * поддержку редактирования *libman.json* &mdash; файла манифеста LibMan.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/) ([описание загрузки](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/client-side/libman/samples/) ([описание загрузки](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 

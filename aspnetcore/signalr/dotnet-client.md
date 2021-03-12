@@ -19,22 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/dotnet-client
-ms.openlocfilehash: 7849322e50aeceda0850d94f9c9bcda79a6051c8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: db2bfa6d3aa440615c5a9c17ae843dbe22755c97
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061227"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589248"
 ---
-# <a name="aspnet-core-no-locsignalr-net-client"></a>ASP.NET Core SignalR клиент .NET
+# <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR клиент .NET
 
 SignalRКлиентская библиотека ASP.NET Core .NET позволяет взаимодействовать с SignalR концентраторами из приложений .NET.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/dotnet-client/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 Пример кода в этой статье — это приложение WPF, которое использует клиент ASP.NET Core SignalR .NET.
 
-## <a name="install-the-no-locsignalr-net-client-package"></a>Установка SignalR клиентского пакета .NET
+## <a name="install-the-signalr-net-client-package"></a>Установка SignalR клиентского пакета .NET
 
 Элемент [Microsoft. AspNetCore. SignalR . ](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) Для подключения клиентов .NET к концентраторам требуется клиентский пакет SignalR .
 

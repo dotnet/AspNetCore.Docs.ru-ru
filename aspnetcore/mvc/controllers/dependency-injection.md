@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 1282cd984584be423fba755e64e5d2f1afd2af89
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f3654e008733c57b4cd4cd34a52b747af2258be1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060616"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589079"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Внедрение зависимостей в контроллеры в ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "93060616"
 
 Контроллеры ASP.NET Core MVC запрашивают зависимости явно с помощью конструкторов. ASP.NET Core имеет встроенную поддержку [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection). Внедрение зависимостей упрощает тестирование и поддержку приложений.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/dependency-injection/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="constructor-injection"></a>Внедрение через конструктор
 
@@ -64,7 +64,7 @@ ms.locfileid: "93060616"
 
 ## <a name="access-settings-from-a-controller"></a>Доступ к параметрам из контроллера
 
-Доступ к параметрам приложения или конфигурации из контроллера относится к типичным шаблонам. *Шаблон параметров* , описанный в разделе <xref:fundamentals/configuration/options>, является предпочтительным подходом для управления параметрами. Как правило, не следует напрямую внедрять <xref:Microsoft.Extensions.Configuration.IConfiguration> в контроллер.
+Доступ к параметрам приложения или конфигурации из контроллера относится к типичным шаблонам. *Шаблон параметров*, описанный в разделе <xref:fundamentals/configuration/options>, является предпочтительным подходом для управления параметрами. Как правило, не следует напрямую внедрять <xref:Microsoft.Extensions.Configuration.IConfiguration> в контроллер.
 
 Создайте класс, представляющий параметры. Пример:
 
@@ -96,7 +96,7 @@ ms.locfileid: "93060616"
 
 Контроллеры ASP.NET Core MVC запрашивают зависимости явно с помощью конструкторов. ASP.NET Core имеет встроенную поддержку [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection). Внедрение зависимостей упрощает тестирование и поддержку приложений.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/dependency-injection/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="constructor-injection"></a>Внедрение через конструктор
 
@@ -128,7 +128,7 @@ ms.locfileid: "93060616"
 
 ## <a name="access-settings-from-a-controller"></a>Доступ к параметрам из контроллера
 
-Доступ к параметрам приложения или конфигурации из контроллера относится к типичным шаблонам. *Шаблон параметров* , описанный в разделе <xref:fundamentals/configuration/options>, является предпочтительным подходом для управления параметрами. Как правило, не следует напрямую внедрять <xref:Microsoft.Extensions.Configuration.IConfiguration> в контроллер.
+Доступ к параметрам приложения или конфигурации из контроллера относится к типичным шаблонам. *Шаблон параметров*, описанный в разделе <xref:fundamentals/configuration/options>, является предпочтительным подходом для управления параметрами. Как правило, не следует напрямую внедрять <xref:Microsoft.Extensions.Configuration.IConfiguration> в контроллер.
 
 Создайте класс, представляющий параметры. Пример:
 

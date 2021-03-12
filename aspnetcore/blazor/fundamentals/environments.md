@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: a5ead59e467da331b585e8daefb1d7d259c7edba
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: 86484fe2e2ce8e20e397a78f118d8b1bbe0cc88a
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101052"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395114"
 ---
 # <a name="aspnet-core-blazor-environments"></a>Среды ASP.NET Core Blazor
 
@@ -33,7 +33,7 @@ ms.locfileid: "101101052"
 
 При локальном запуске приложения среда по умолчанию имеет значение Development. При публикации приложения среда по умолчанию имеет значение Production.
 
-Клиентское приложение Blazor ( *`Client`* ) размещенного решения Blazor WebAssembly выбирает среду в приложении *`Server`* решения через ПО промежуточного слоя, которое передает данные о среде в браузер. Приложение *`Server`* добавляет заголовок с именем `blazor-environment` и средой в качестве значения. Приложение *`Client`* считывает заголовок. Приложение *`Server`* решения — это приложение ASP.NET Core, поэтому дополнительные сведения о настройке среды см. здесь: <xref:fundamentals/environments>.
+Клиентское приложение Blazor ( **`Client`** ) размещенного решения Blazor WebAssembly выбирает среду в приложении **`Server`** решения через ПО промежуточного слоя, которое передает данные о среде в браузер. Приложение **`Server`** добавляет заголовок с именем `blazor-environment` и средой в качестве значения. Приложение **`Client`** считывает заголовок. Приложение **`Server`** решения — это приложение ASP.NET Core, поэтому дополнительные сведения о настройке среды см. здесь: <xref:fundamentals/environments>.
 
 Для автономного приложения Blazor WebAssembly, выполняемого локально, сервер разработки добавляет заголовок `blazor-environment`, чтобы указать среду разработки. Чтобы указать среду для других сред размещения, добавьте заголовок `blazor-environment`.
 

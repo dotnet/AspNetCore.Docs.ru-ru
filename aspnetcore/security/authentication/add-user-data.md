@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/add-user-data
-ms.openlocfilehash: a4e1fd780947cfa5f09fb1e03964595fa09f0f18
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 2d921a0c72fb7c03cd88966077e2d33e4b19ffa1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061422"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585920"
 ---
-# <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a>Добавление, скачивание и удаление пользовательских данных Identity в проекте ASP.NET Core
+# <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Добавление, скачивание и удаление пользовательских данных Identity в проекте ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -36,7 +36,7 @@ ms.locfileid: "93061422"
 
 Пример проекта создается на основе Razor веб-приложения для страниц, но эти инструкции похожи на ASP.NET Core веб-приложение MVC.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/add-user-data) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -52,13 +52,13 @@ ms.locfileid: "93061422"
 
 ::: moniker-end
 
-## <a name="create-a-no-locrazor-web-app"></a>Создание Razor веб-приложения
+## <a name="create-a-razor-web-app"></a>Создание Razor веб-приложения
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* В Visual Studio в меню **Файл** щелкните **Создать** > **Проект** . Присвойте проекту имя **APP1** , если вы хотите, чтобы оно соответствовало пространству имен примера кода для [скачивания](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* В Visual Studio в меню **Файл** щелкните **Создать** > **Проект**. Присвойте проекту имя **APP1** , если вы хотите, чтобы оно соответствовало пространству имен примера кода для [скачивания](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
 * Выберите **ASP.NET Core веб-приложение** > **ОК**
 * Выберите **ASP.NET Core 3,0** в раскрывающемся списке.
 * Выберите **веб-приложение** > **ОК** .
@@ -68,7 +68,7 @@ ms.locfileid: "93061422"
 
 ::: moniker range="< aspnetcore-3.0"
 
-* В Visual Studio в меню **Файл** щелкните **Создать** > **Проект** . Присвойте проекту имя **APP1** , если вы хотите, чтобы оно соответствовало пространству имен примера кода для [скачивания](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* В Visual Studio в меню **Файл** щелкните **Создать** > **Проект**. Присвойте проекту имя **APP1** , если вы хотите, чтобы оно соответствовало пространству имен примера кода для [скачивания](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
 * Выберите **ASP.NET Core веб-приложение** > **ОК**
 * Выберите **ASP.NET Core 2,2** в раскрывающемся списке.
 * Выберите **веб-приложение** > **ОК** .
@@ -85,20 +85,20 @@ dotnet new webapp -o WebApp1
 
 ---
 
-## <a name="run-the-no-locidentity-scaffolder"></a>Запуск Identity механизма формирования шаблонов
+## <a name="run-the-identity-scaffolder"></a>Запуск Identity механизма формирования шаблонов
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В **Обозреватель решений** щелкните правой кнопкой мыши проект > **Добавить**  >  **Новый** шаблонный элемент.
-* В левой области диалогового окна **Добавление шаблона** выберите **Identity**  >  **Добавить** .
+* В левой области диалогового окна **Добавление шаблона** выберите **Identity**  >  **Добавить**.
 * В диалоговом окне **Добавить можно задать Identity** следующие параметры.
   * Выберите существующий файл макета  *~/пажес/шаред/_layout. cshtml*
   * Выберите следующие файлы для переопределения:
     * **Учетная запись или регистр**
     * **Учетная запись/управление/индекс**
-  * Нажмите **+** кнопку, чтобы создать новый **класс контекста данных** . Примите тип ("имя_проекта **. Models. WebApp1Context** ", если проект называется " **APP1** ").
-  * Нажмите **+** кнопку, чтобы создать новый **класс пользователя** . Примите тип ( **WebApp1User** , если проект называется "имя_проекта **") >** **добавить** .
-* Выберите **Добавить** .
+  * Нажмите **+** кнопку, чтобы создать новый **класс контекста данных**. Примите тип ("имя_проекта **. Models. WebApp1Context** ", если проект называется " **APP1**").
+  * Нажмите **+** кнопку, чтобы создать новый **класс пользователя**. Примите тип (**WebApp1User** , если проект называется "имя_проекта **") >** **добавить**.
+* Выберите **Добавить**.
 
 # <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
@@ -141,9 +141,9 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
   * Нажмите кнопку **скачать** и проверите *PersonalData.js* файла.
   * Протестируйте кнопку **Удалить** , которая удаляет пользователя, выполнившего вход в систему.
 
-## <a name="add-custom-user-data-to-the-no-locidentity-db"></a>Добавление пользовательских данных в базу данных Identity
+## <a name="add-custom-user-data-to-the-identity-db"></a>Добавление пользовательских данных в базу данных Identity
 
-Обновите `IdentityUser` производный класс с помощью пользовательских свойств. Если вы назвали имя проекта Project, файл будет называться *Areas/ Identity /Data/WebApp1User.CS* . Обновите файл, используя следующий код:
+Обновите `IdentityUser` производный класс с помощью пользовательских свойств. Если вы назвали имя проекта Project, файл будет называться *Areas/ Identity /Data/WebApp1User.CS*. Обновите файл, используя следующий код:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -241,7 +241,7 @@ dotnet ef database update
 * Просмотр настраиваемых данных пользователя на `/Identity/Account/Manage` странице.
 * Скачайте и просмотрите персональные данные пользователей на `/Identity/Account/Manage/PersonalData` странице.
 
-## <a name="add-claims-to-no-locidentity-using-iuserclaimsprincipalfactoryapplicationuser"></a>Добавление утверждений для Identity использования иусерклаимспринЦипалфактори<ApplicationUser>
+## <a name="add-claims-to-identity-using-iuserclaimsprincipalfactoryapplicationuser"></a>Добавление утверждений для Identity использования иусерклаимспринЦипалфактори<ApplicationUser>
 
 > [!NOTE]
 > Этот раздел не является расширением предыдущего руководства. Чтобы применить следующие действия к приложению, созданному с помощью учебника, см. [эту ошибку в GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/18797).

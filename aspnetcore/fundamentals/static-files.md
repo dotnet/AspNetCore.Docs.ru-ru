@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: fad569ab06735600299d8051a258651e329db8ce
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 807cffb2f9b3bf89ff06c62e76d51d4040b8d91a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107185"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589014"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "100107185"
 
 Статические файлы, такие как HTML, CSS, изображения и JavaScript, являются ресурсами, которые приложения ASP.NET Core предоставляют клиентам напрямую по умолчанию.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/static-files/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="serve-static-files"></a>Обслуживание статических файлов
 
@@ -123,7 +123,7 @@ ms.locfileid: "100107185"
 
   <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> добавляет <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> к текущему экземпляру, что обеспечивает проверку подлинности текущего пользователя.
 
-  Статические ресурсы в `wwwroot` являются общедоступными, так как ПО промежуточного слоя для статического файла по умолчанию (`app.UseStaticFiles();`) вызывается перед `UseAuthentication`. Для статических ресурсов в папке *MyStaticFiles* требуется проверка подлинности. Это показано в следующем [примере кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples).
+  Статические ресурсы в `wwwroot` являются общедоступными, так как ПО промежуточного слоя для статического файла по умолчанию (`app.UseStaticFiles();`) вызывается перед `UseAuthentication`. Для статических ресурсов в папке *MyStaticFiles* требуется проверка подлинности. Это показано в следующем [примере кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/static-files/samples).
 
 Альтернативный подход к обработке файлов на основе авторизации:
 
@@ -289,7 +289,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 Статические файлы, такие как HTML, CSS, изображения и JavaScript, являются ресурсами, которые приложения ASP.NET Core предоставляют клиентам напрямую. Для обслуживания таких файлов требуется настроить некоторые параметры.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/static-files/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="serve-static-files"></a>Обслуживание статических файлов
 

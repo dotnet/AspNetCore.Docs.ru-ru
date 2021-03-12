@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/memory
-ms.openlocfilehash: 19e8dc0ae4d5f8fd28d03d5be87c0b1bbf32d940
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: d71678aeee9b3fca717129a2fbed1f75b593e010
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107224"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586310"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэширование в памяти в ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "100107224"
 
 [Рик Андерсон (](https://twitter.com/RickAndMSFT), [Джон Луо](https://github.com/JunTaoLuo)и [Стив Смит](https://ardalis.com/)
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/3.0sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/memory/3.0sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>Основы кэширования
 
@@ -125,7 +125,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 `MemoryCache`Экземпляр может дополнительно задавать и применять ограничение размера. Ограничение размера кэша не имеет определенной единицы измерения, так как кэш не имеет механизма для измерения размера записей. Если установлен предел размера кэша, то для всех записей должен быть указан размер. Среда выполнения ASP.NET Core не ограничивает размер кэша на основе нехватки памяти. Разработчик может ограничить размер кэша. Указанный размер находится в единицах, которые выбирает разработчик.
 
-Например:
+Пример:
 
 * Если веб-приложение в основном кэширует строки, каждый размер записи кэша может быть длиной строки.
 * Приложение может указать размер всех записей как 1, а максимальный размер — число записей.
@@ -215,7 +215,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 <!-- This is the 2.1 version -->
 [Рик Андерсон (](https://twitter.com/RickAndMSFT), [Джон Луо](https://github.com/JunTaoLuo)и [Стив Смит](https://ardalis.com/)
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/memory/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>Основы кэширования
 
@@ -301,7 +301,7 @@ ASP.NET Core поддерживает несколько разных кэшей
 
 `MemoryCache`Экземпляр может дополнительно задавать и применять ограничение размера. Ограничение размера кэша не имеет определенной единицы измерения, так как кэш не имеет механизма для измерения размера записей. Если установлен предел размера кэша, то для всех записей должен быть указан размер. Среда выполнения ASP.NET Core не ограничивает размер кэша на основе нехватки памяти. Разработчик может ограничить размер кэша. Указанный размер находится в единицах, которые выбирает разработчик.
 
-Например:
+Пример:
 
 * Если веб-приложение в основном кэширует строки, каждый размер записи кэша может быть длиной строки.
 * Приложение может указать размер всех записей как 1, а максимальный размер — число записей.

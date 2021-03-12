@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: tutorials/signalr-blazor
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: f4e51b39c4c3b0c444b08025e9bd74eec0747541
-ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.openlocfilehash: e9bb79eb5bd8f56fe8014981de76e210eb35c2de
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100536406"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589534"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor"></a>Использование SignalR для ASP.NET Core с Blazor
 
@@ -40,7 +40,7 @@ ms.locfileid: "100536406"
 
 Когда вы выполните задачи из этого руководства, у вас будет работающее приложение чата.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/signalr-blazor/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -290,13 +290,13 @@ dotnet add Server package System.Text.Encodings.Web
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
@@ -314,14 +314,14 @@ dotnet add Server package System.Text.Encodings.Web
 
 1. Добавьте службы SignalR и промежуточного ПО для сжатия ответа в `Startup.ConfigureServices`:
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
 
 1. В `Startup.Configure`:
 
    * Используйте ПО промежуточного слоя для сжатия ответа в верхней части конфигурации конвейера обработки.
    * Между конечными точками для контроллера и отката на стороне клиента добавьте конечную точку для концентратора.
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
 
 ::: moniker-end
 
@@ -329,14 +329,14 @@ dotnet add Server package System.Text.Encodings.Web
 
 1. Добавьте службы SignalR и промежуточного ПО для сжатия ответа в `Startup.ConfigureServices`:
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
 
 1. В `Startup.Configure`:
 
    * Используйте ПО промежуточного слоя для сжатия ответа в верхней части конфигурации конвейера обработки.
    * Между конечными точками для контроллера и отката на стороне клиента добавьте конечную точку для концентратора.
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
 
 ::: moniker-end
 
@@ -348,7 +348,7 @@ dotnet add Server package System.Text.Encodings.Web
 
 1. Замените разметку следующим кодом:
 
-   [!code-razor[](signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/5.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
 
 ::: moniker-end
 
@@ -356,7 +356,7 @@ dotnet add Server package System.Text.Encodings.Web
 
 1. Замените разметку следующим кодом:
 
-   [!code-razor[](signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/3.x/BlazorWebAssemblySignalRApp/Client/Pages/Index.razor)]
 
 ::: moniker-end
 
@@ -615,13 +615,13 @@ dotnet add package System.Text.Encodings.Web
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-[!code-csharp[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
+[!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Hubs/ChatHub.cs)]
 
 ::: moniker-end
 
@@ -640,14 +640,14 @@ dotnet add package System.Text.Encodings.Web
 
 1. Добавьте службы промежуточного ПО для сжатия ответа в `Startup.ConfigureServices`:
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
 
 1. В `Startup.Configure`:
 
    * Используйте ПО промежуточного слоя для сжатия ответа в верхней части конфигурации конвейера обработки.
    * Между конечными точками для сопоставления концентратора Blazor и отката на стороне клиента добавьте конечную точку для концентратора.
 
-   [!code-csharp[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
 
 ::: moniker-end
 
@@ -655,14 +655,14 @@ dotnet add package System.Text.Encodings.Web
 
 1. Добавьте службы промежуточного ПО для сжатия ответа в `Startup.ConfigureServices`:
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
 
 1. В `Startup.Configure`:
 
    * Используйте ПО промежуточного слоя для сжатия ответа в верхней части конфигурации конвейера обработки.
    * Между конечными точками для сопоставления концентратора Blazor и отката на стороне клиента добавьте конечную точку для концентратора.
 
-   [!code-csharp[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
+   [!code-csharp[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Startup.cs?name=snippet_Configure&highlight=3,23)]
 
 ::: moniker-end
 
@@ -674,7 +674,7 @@ dotnet add package System.Text.Encodings.Web
 
 1. Замените разметку следующим кодом:
 
-   [!code-razor[](signalr-blazor/samples/5.x/BlazorServerSignalRApp/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/5.x/BlazorServerSignalRApp/Pages/Index.razor)]
 
 ::: moniker-end
 
@@ -682,7 +682,7 @@ dotnet add package System.Text.Encodings.Web
 
 1. Замените разметку следующим кодом:
 
-   [!code-razor[](signalr-blazor/samples/3.x/BlazorServerSignalRApp/Pages/Index.razor)]
+   [!code-razor[](~/tutorials/signalr-blazor/samples/3.x/BlazorServerSignalRApp/Pages/Index.razor)]
 
 ::: moniker-end
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: a568ad481eb09587e2ddce8e84d0ac3eff01e990
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 51e5f2f74493e7f4c18273c8589ed0424a1f2cac
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060902"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585985"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Вспомогательные функции тегов в формах в ASP.NET Core
 
@@ -68,7 +68,7 @@ ms.locfileid: "93060902"
 
 [!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-Многие представления в папке *Views/Account* (сформированные при создании веб-приложения с *учетными записями отдельных пользователей* ) содержат атрибут [asp-route-returnurl](xref:mvc/views/working-with-forms):
+Многие представления в папке *Views/Account* (сформированные при создании веб-приложения с *учетными записями отдельных пользователей*) содержат атрибут [asp-route-returnurl](xref:mvc/views/working-with-forms):
 
 ```cshtml
 <form asp-controller="Account" asp-action="Login"
@@ -191,7 +191,7 @@ public class HomeController : Controller
 
 * Создает атрибуты проверки [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) из атрибутов [заметок к данным](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter), примененным к свойствам модели.
 
-* Располагает перекрытием вспомогательного метода HTML с `Html.TextBoxFor` и `Html.EditorFor`. Дополнительные сведения см. в разделе **Альтернативы вспомогательного метода HTML вспомогательной функции тега входных данных** .
+* Располагает перекрытием вспомогательного метода HTML с `Html.TextBoxFor` и `Html.EditorFor`. Дополнительные сведения см. в разделе **Альтернативы вспомогательного метода HTML вспомогательной функции тега входных данных**.
 
 * Обеспечивает строгую типизацию. Если после изменения имени свойства не выполнить обновление вспомогательной функции тега, возникнет ошибка следующего вида:
 
@@ -331,7 +331,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
-Шаблон *Views/Shared/EditorTemplates/String.cshtml* :
+Шаблон *Views/Shared/EditorTemplates/String.cshtml*:
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
 
@@ -343,7 +343,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
-Шаблон *Views/Shared/EditorTemplates/ToDoItem.cshtml* :
+Шаблон *Views/Shared/EditorTemplates/ToDoItem.cshtml*:
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
@@ -465,10 +465,10 @@ public IActionResult Edit(int id, int colorIndex)
 |asp-validation-summary|Отображаемые сообщения о проверке|
 |--- |--- |
 |ValidationSummary.All|Свойство и уровень модели|
-|ValidationSummary.ModelOnly|Модель|
+|ValidationSummary.ModelOnly|Моделирование|
 |ValidationSummary.None|Нет|
 
-### <a name="sample"></a>Пример
+### <a name="sample"></a>Образец
 
 В следующем примере модель данных имеет атрибуты `DataAnnotation`, в результате чего создаются сообщения об ошибках проверки для элемента `<input>`.  При возникновении ошибки проверки вспомогательная функция тега проверки отображает следующее сообщение об ошибке:
 
@@ -647,7 +647,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
 
-Шаблон *Views/Shared/EditorTemplates/CountryViewModel.cshtml* :
+Шаблон *Views/Shared/EditorTemplates/CountryViewModel.cshtml*:
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
@@ -682,4 +682,4 @@ public IActionResult Edit(int id, int colorIndex)
 * <xref:mvc/models/model-binding>
 * <xref:mvc/models/validation>
 * [Интерфейс IAttributeAdapter](/dotnet/api/Microsoft.AspNetCore.Mvc.DataAnnotations.IAttributeAdapter)
-* [Фрагменты кода для этого документа](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/working-with-forms/sample/final)
+* [Фрагменты кода для этого документа](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/working-with-forms/sample/final)

@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: d984023a1c46c5383d47a1634c54e61747b83d60
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: 260d921316d6fadecbd42db11048593b19a5ddee
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101214"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394438"
 ---
 # <a name="build-a-blazor-todo-list-app"></a>Создание приложения Blazor со списком дел
 
-В этом учебнике показано, как создать и изменить приложение Blazor. Вы научитесь:
+В этом учебнике показано, как создать и изменить приложение Blazor. Вы узнаете, как выполнять следующие задачи:
 
 > [!div class="checklist"]
 > * создавать проект приложения Blazor со списком задач;
@@ -138,7 +138,7 @@ ms.locfileid: "101101214"
    ::: moniker-end
 
    > [!NOTE]
-   > При использовании Visual Studio для создания файла `ToDoItem.cs` и класса `ToDoItem` используйте один из следующих подходов:
+   > При использовании Visual Studio для создания файла `TodoItem.cs` и класса `TodoItem` используйте один из следующих подходов:
    >
    > * Удалите пространство имен, создаваемое Visual Studio для класса.
    > * Воспользуйтесь кнопкой **Копировать** в предыдущем блоке кода и замените все содержимое файла, создаваемого Visual Studio.

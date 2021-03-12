@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/samesite/mvc21
-ms.openlocfilehash: 8f819d283e136a63ad9f82d6432a93866210b36b
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: a7b7ce0d0fff2953097f29a2b6d2c5a539cac3a5
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102110109"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586531"
 ---
 # <a name="aspnet-core-21-mvc-samesite-cookie-sample"></a>Пример SameSite ASP.NET Core 2,1 MVC cookie
 
@@ -154,7 +154,7 @@ private void CheckSameSite(HttpContext httpContext, CookieOptions options)
 
 * Вызывается, когда cookie s добавляется к запросу или удаляется из запроса.
 * Проверяет, `SameSite` имеет ли свойство значение `None` .
-* Если параметр `SameSite` имеет значение `None` , а для текущего агента пользователя известно, что он не поддерживает значение атрибута None. Проверка выполняется с помощью класса [самеситесуппорт](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/samesite/sample/snippets/SameSiteSupport.cs) :
+* Если параметр `SameSite` имеет значение `None` , а для текущего агента пользователя известно, что он не поддерживает значение атрибута None. Проверка выполняется с помощью класса [самеситесуппорт](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/samesite/sample/snippets/SameSiteSupport.cs) :
   * Задает, чтобы не выдавало `SameSite` значение, задав для свойства `(SameSiteMode)(-1)`
 
 ## <a name="targeting-net-framework"></a>Нацеливание на платформа .NET Framework
