@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/jsonpatch
-ms.openlocfilehash: da507974b88c21de22e2c7a56950943207565138
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4ed44a0fca9e0834a78e433cdd48cbd153c58666
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060551"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587857"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>JsonPatch в веб-API ASP.NET Core
 
@@ -68,7 +68,7 @@ ms.locfileid: "93060551"
 
 ## <a name="json-patch"></a>JSON PATCH
 
-Формат [JSON Patch](https://tools.ietf.org/html/rfc6902) используется для указания обновлений, применяемых к ресурсу. Документ JSON Patch содержит массив *операций* . Каждая операция определяет конкретный тип изменения. Примерами таких изменений являются добавление элемента массива или замена значения свойства.
+Формат [JSON Patch](https://tools.ietf.org/html/rfc6902) используется для указания обновлений, применяемых к ресурсу. Документ JSON Patch содержит массив *операций*. Каждая операция определяет конкретный тип изменения. Примерами таких изменений являются добавление элемента массива или замена значения свойства.
 
 Например, следующие документы JSON представляют ресурс, документ исправления JSON для ресурса и результат применения операций исправления.
 
@@ -118,7 +118,7 @@ ms.locfileid: "93060551"
 
 Для указания элементов массива используются числовые индексы, начиная с нуля. Первый элемент массива `addresses` будет обозначаться как `/addresses/0`. В `add` конец массива используйте дефис ( `-` ), а не номер индекса: `/addresses/-` .
 
-### <a name="operations"></a>Операции
+### <a name="operations"></a>Operations
 
 В следующей таблице перечислены поддерживаемые операции, которые определены в [спецификации JSON Patch](https://tools.ietf.org/html/rfc6902).
 
@@ -251,7 +251,7 @@ ms.locfileid: "93060551"
 
 ## <a name="get-the-code"></a>Получение кода
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples). ([Инструкция по скачиванию](xref:index#how-to-download-a-sample).)
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/jsonpatch/samples). ([Инструкция по скачиванию](xref:index#how-to-download-a-sample).)
 
 Чтобы проверить этот пример, запустите приложение и отправьте HTTP-запросы со следующими параметрами:
 
@@ -266,7 +266,7 @@ ms.locfileid: "93060551"
 * [Спецификация IETF RFC 6902 для JSON Patch](https://tools.ietf.org/html/rfc6902)
 * [Спецификация IETF RFC 6901 для формата Path в JSON Patch](https://tools.ietf.org/html/rfc6901)
 * [Документация по JSON Patch](https://jsonpatch.com/). Содержит ссылки на ресурсы для создания документов JSON Patch.
-* [Исходный код JSON Patch для ASP.NET Core](https://github.com/dotnet/AspNetCore/tree/master/src/Features/JsonPatch/src)
+* [Исходный код JSON Patch для ASP.NET Core](https://github.com/dotnet/AspNetCore/tree/main/src/Features/JsonPatch/src)
 
 ::: moniker-end
 
@@ -280,7 +280,7 @@ ms.locfileid: "93060551"
 
 ## <a name="json-patch"></a>JSON PATCH
 
-Формат [JSON Patch](https://tools.ietf.org/html/rfc6902) используется для указания обновлений, применяемых к ресурсу. Документ JSON Patch содержит массив *операций* . Каждая операция обозначает определенный тип изменений, например добавление элемента массива или замену значения свойства.
+Формат [JSON Patch](https://tools.ietf.org/html/rfc6902) используется для указания обновлений, применяемых к ресурсу. Документ JSON Patch содержит массив *операций*. Каждая операция обозначает определенный тип изменений, например добавление элемента массива или замену значения свойства.
 
 Так, следующие документы JSON описывают ресурс, сведения JSON Patch для изменения этого ресурса и результат применения операций изменения.
 
@@ -330,7 +330,7 @@ ms.locfileid: "93060551"
 
 Для указания элементов массива используются числовые индексы, начиная с нуля. Первый элемент массива `addresses` будет обозначаться как `/addresses/0`. Чтобы применить `add` для последнего элемента массива, укажите дефис (-) вместо номера индекса: `/addresses/-`.
 
-### <a name="operations"></a>Операции
+### <a name="operations"></a>Operations
 
 В следующей таблице перечислены поддерживаемые операции, которые определены в [спецификации JSON Patch](https://tools.ietf.org/html/rfc6902).
 
@@ -463,7 +463,7 @@ ms.locfileid: "93060551"
 
 ## <a name="get-the-code"></a>Получение кода
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2). ([Инструкция по скачиванию](xref:index#how-to-download-a-sample).)
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/jsonpatch/samples/2.2). ([Инструкция по скачиванию](xref:index#how-to-download-a-sample).)
 
 Чтобы проверить этот пример, запустите приложение и отправьте HTTP-запросы со следующими параметрами:
 
@@ -478,6 +478,6 @@ ms.locfileid: "93060551"
 * [Спецификация IETF RFC 6902 для JSON Patch](https://tools.ietf.org/html/rfc6902)
 * [Спецификация IETF RFC 6901 для формата Path в JSON Patch](https://tools.ietf.org/html/rfc6901)
 * [Документация по JSON Patch](https://jsonpatch.com/). Содержит ссылки на ресурсы для создания документов JSON Patch.
-* [Исходный код JSON Patch для ASP.NET Core](https://github.com/dotnet/AspNetCore/tree/master/src/Features/JsonPatch/src)
+* [Исходный код JSON Patch для ASP.NET Core](https://github.com/dotnet/AspNetCore/tree/main/src/Features/JsonPatch/src)
 
 ::: moniker-end

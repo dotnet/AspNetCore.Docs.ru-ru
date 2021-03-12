@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/java-client
-ms.openlocfilehash: 92941d21820de90eb2ae8fb76c21c588ed9f1ffb
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: bdfaf50895612e739eb5ca068a76755f97cf24c2
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024760"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588078"
 ---
-# <a name="aspnet-core-no-locsignalr-java-client"></a>SignalRКлиент Java ASP.NET Core
+# <a name="aspnet-core-signalr-java-client"></a>SignalRКлиент Java ASP.NET Core
 
 Авторы: [Микаэль Менгисту](https://twitter.com/MikaelM_12) (Mikael Mengistu)
 
@@ -34,9 +34,9 @@ ms.locfileid: "98024760"
 
 Пример консольного приложения Java, упоминаемого в этой статье, использует SignalR клиент Java.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/java-client/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/java-client/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="install-the-no-locsignalr-java-client-package"></a>Установка SignalR клиентского пакета Java
+## <a name="install-the-signalr-java-client-package"></a>Установка SignalR клиентского пакета Java
 
 JAR *-файл 1.0.0* позволяет клиентам подключаться к SignalR концентраторам. Чтобы найти последний номер версии JAR-файла, см. [Результаты поиска Maven](https://search.maven.org/search?q=g:com.microsoft.signalr%20AND%20a:signalr).
 

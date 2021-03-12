@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: f3d76f612e67aeabf1f7fef694199332c732c593
-ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
+ms.openlocfilehash: f3bd2d3eac97e0fd64d1e3a98a9d1750f7a607a8
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97878416"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588377"
 ---
 # <a name="areas-in-aspnet-core"></a>Области в ASP.NET Core
 
@@ -44,7 +44,7 @@ ms.locfileid: "97878416"
 * Приложение состоит из нескольких высокоуровневых функциональных частей, которые могут быть разделены логически.
 * Необходимо разделить приложение так, чтобы с каждой функциональной областью можно было работать отдельно.
 
-[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples) ([описание скачивания](xref:index#how-to-download-a-sample)). Пример загрузки содержит простое приложение для тестирования областей.
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples) ([описание скачивания](xref:index#how-to-download-a-sample)). Пример загрузки содержит простое приложение для тестирования областей.
 
 Если вы используете Razor страницы, см. раздел [области со Razor страницами](#areas-with-razor-pages) в этом документе.
 
@@ -122,7 +122,7 @@ ms.locfileid: "97878416"
 
 ### <a name="link-generation-with-mvc-areas"></a>Создание ссылки с областями MVC
 
-В следующем коде из [примера загрузки](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples) показано создание ссылок с указанной областью:
+В следующем коде из [примера загрузки](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples) показано создание ссылок с указанной областью:
 
 [!code-cshtml[](areas/31samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -166,9 +166,9 @@ ms.locfileid: "97878416"
 
 <a name="arp"></a>
 
-## <a name="areas-with-no-locrazor-pages"></a>Области со Razor страницами
+## <a name="areas-with-razor-pages"></a>Области со Razor страницами
 
-Для областей со Razor страницами требуется `Areas/<area name>/Pages` Папка в корне приложения. В [этом примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples) используется следующая структура папок:
+Для областей со Razor страницами требуется `Areas/<area name>/Pages` Папка в корне приложения. В [этом примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples) используется следующая структура папок:
 
 * Имя проекта
   * Области
@@ -183,9 +183,9 @@ ms.locfileid: "97878416"
           * Сведения
           * Индекс
 
-### <a name="link-generation-with-no-locrazor-pages-and-areas"></a>Создание ссылок с помощью Razor страниц и областей
+### <a name="link-generation-with-razor-pages-and-areas"></a>Создание ссылок с помощью Razor страниц и областей
 
-В следующем коде из [этого примера](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) показано создание ссылок с указанной областью (например, `asp-area="Products"`).
+В следующем коде из [этого примера](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples/RPareas) показано создание ссылок с указанной областью (например, `asp-area="Products"`).
 
 [!code-cshtml[](areas/31samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -199,7 +199,7 @@ ms.locfileid: "97878416"
 
 * Ссылка, созданная с помощью `<a asp-page="/Manage/About">` будет правильной, только если последний запрос был к странице в области `Services`. Например, `/Services/Manage/`, `/Services/Manage/Index` или `/Services/Manage/About`.
 * Ссылка, созданная с помощью `<a asp-page="/About">` будет правильной, только если последний запрос был к странице в области `/Home`.
-* Это код из [этого примера](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples/RPareas).
+* Это код из [этого примера](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples/RPareas).
 
 ### <a name="import-namespace-and-tag-helpers-with-_viewimports-file"></a>Импорт пространства имен и вспомогательных функций тегов с помощью файла _ViewImports
 
@@ -226,7 +226,7 @@ ms.locfileid: "97878416"
 
 Дополнительные сведения см. в разделах [Управление областью действия вспомогательной функции тега](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) и [Импорт общих директив](xref:mvc/views/layout#importing-shared-directives).
 
-### <a name="shared-layout-for-no-locrazor-pages-areas"></a>Общий макет для Razor областей страниц
+### <a name="shared-layout-for-razor-pages-areas"></a>Общий макет для Razor областей страниц
 
 Чтобы совместно использовать общий макет для всего приложения, переместите *_ViewStart.cshtml* в корневую папку приложения.
 
@@ -246,7 +246,7 @@ ms.locfileid: "97878416"
 * Приложение состоит из нескольких высокоуровневых функциональных частей, которые могут быть разделены логически.
 * Необходимо разделить приложение так, чтобы с каждой функциональной областью можно было работать отдельно.
 
-[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([описание скачивания](xref:index#how-to-download-a-sample)). Пример загрузки содержит простое приложение для тестирования областей.
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples) ([описание скачивания](xref:index#how-to-download-a-sample)). Пример загрузки содержит простое приложение для тестирования областей.
 
 Если вы используете Razor страницы, см. раздел [области со Razor страницами](#areas-with-razor-pages) в этом документе.
 
@@ -323,7 +323,7 @@ ms.locfileid: "97878416"
 
 ### <a name="link-generation-with-mvc-areas"></a>Создание ссылки с областями MVC
 
-В следующем коде из [примера загрузки](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) показано создание ссылок с указанной областью:
+В следующем коде из [примера загрузки](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples) показано создание ссылок с указанной областью:
 
 [!code-cshtml[](areas/samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -353,9 +353,9 @@ ms.locfileid: "97878416"
 
 <a name="arp"></a>
 
-## <a name="areas-with-no-locrazor-pages"></a>Области со Razor страницами
+## <a name="areas-with-razor-pages"></a>Области со Razor страницами
 
-Для областей со Razor страницами требуется `Areas/<area name>/Pages` Папка в корне приложения. В [этом примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) используется следующая структура папок:
+Для областей со Razor страницами требуется `Areas/<area name>/Pages` Папка в корне приложения. В [этом примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples) используется следующая структура папок:
 
 * Имя проекта
   * Области
@@ -370,9 +370,9 @@ ms.locfileid: "97878416"
           * Сведения
           * Индекс
 
-### <a name="link-generation-with-no-locrazor-pages-and-areas"></a>Создание ссылок с помощью Razor страниц и областей
+### <a name="link-generation-with-razor-pages-and-areas"></a>Создание ссылок с помощью Razor страниц и областей
 
-В следующем коде из [этого примера](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) показано создание ссылок с указанной областью (например, `asp-area="Products"`).
+В следующем коде из [этого примера](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples/RPareas) показано создание ссылок с указанной областью (например, `asp-area="Products"`).
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -388,7 +388,7 @@ ms.locfileid: "97878416"
 
 * Ссылка, созданная с помощью `<a asp-page="/Manage/About">` будет правильной, только если последний запрос был к странице в области `Services`. Например, `/Services/Manage/`, `/Services/Manage/Index` или `/Services/Manage/About`.
 * Ссылка, созданная с помощью `<a asp-page="/About">` будет правильной, только если последний запрос был к странице в области `/Home`.
-* Это код из [этого примера](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas).
+* Это код из [этого примера](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples/RPareas).
 
 ### <a name="import-namespace-and-tag-helpers-with-_viewimports-file"></a>Импорт пространства имен и вспомогательных функций тегов с помощью файла _ViewImports
 
@@ -415,7 +415,7 @@ ms.locfileid: "97878416"
 
 Дополнительные сведения см. в разделах [Управление областью действия вспомогательной функции тега](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) и [Импорт общих директив](xref:mvc/views/layout#importing-shared-directives).
 
-### <a name="shared-layout-for-no-locrazor-pages-areas"></a>Общий макет для Razor областей страниц
+### <a name="shared-layout-for-razor-pages-areas"></a>Общий макет для Razor областей страниц
 
 Чтобы совместно использовать общий макет для всего приложения, переместите *_ViewStart.cshtml* в корневую папку приложения.
 

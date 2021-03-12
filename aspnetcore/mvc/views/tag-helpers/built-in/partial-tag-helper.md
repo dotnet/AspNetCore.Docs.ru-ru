@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: 124f23caa4a757f63a80dfea627304204ba2cdca
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 184901ad0bb6188ed908d41dabf2433c5ca7c1ce
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061435"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587168"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега частичного представления в ASP.NET Core
 
@@ -32,9 +32,9 @@ ms.locfileid: "93061435"
 
 Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="overview"></a>Обзор
+## <a name="overview"></a>Общие сведения
 
 Вспомогательная функция тега partial используется для отрисовки [частичного представления](xref:mvc/views/partial) на Razor страницах и приложениях MVC. Примечания.
 
@@ -49,7 +49,7 @@ ms.locfileid: "93061435"
 * [`@Html.Partial`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial)
 * [`@Html.RenderPartial`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial)
 
-В примерах в этом документе используется модель *Product* :
+В примерах в этом документе используется модель *Product*:
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Models/Product.cs)]
 
@@ -59,7 +59,7 @@ ms.locfileid: "93061435"
 
 Атрибут `name` является обязательным. Она указывает имя или путь для отображения частичного представления, которое будет отрисовано. Если указано имя частичного представления, запускается процесс [обнаружения представления](xref:mvc/views/overview#view-discovery). Этот процесс пропускается, если предоставлен явный путь. Все допустимые значения `name` см. в разделе [Обнаружение частичного представления](xref:mvc/views/partial#partial-view-discovery).
 
-В приведенной ниже разметке используется явный путь, указывающий, что файл *_ProductPartial.cshtml* необходимо загрузить из папки *Shared* . При использовании атрибута [for](#for) модель передается в частичное представление для привязки.
+В приведенной ниже разметке используется явный путь, указывающий, что файл *_ProductPartial.cshtml* необходимо загрузить из папки *Shared*. При использовании атрибута [for](#for) модель передается в частичное представление для привязки.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Product.cshtml?name=snippet_Name)]
 
@@ -67,7 +67,7 @@ ms.locfileid: "93061435"
 
 Атрибут `for` назначает [ModelExpression](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.modelexpression) для сравнения с текущей моделью. Класс `ModelExpression` выводит синтаксис `@Model.`. Например, можно использовать `for="Product"` вместо `for="@Model.Product"`. Это поведение вывода по умолчанию переопределяется с помощью символа `@` для определения встроенного выражения.
 
-Приведенная ниже разметка загружает *_ProductPartial.cshtml* :
+Приведенная ниже разметка загружает *_ProductPartial.cshtml*:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Product.cshtml?name=snippet_For)]
 
@@ -97,7 +97,7 @@ ms.locfileid: "93061435"
 
 ## <a name="migrate-from-an-html-helper"></a>Перенос из вспомогательного метода HTML
 
-Рассмотрим следующий пример асинхронного вспомогательного метода HTML. Выполняется итерация и отображение коллекции продуктов. Для первого параметра метода `PartialAsync` загружается частичное представление *_ProductPartial.cshtml* . Экземпляр модели `Product` передается в частичное представление для привязки.
+Рассмотрим следующий пример асинхронного вспомогательного метода HTML. Выполняется итерация и отображение коллекции продуктов. Для первого параметра метода `PartialAsync` загружается частичное представление *_ProductPartial.cshtml*. Экземпляр модели `Product` передается в частичное представление для привязки.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Products.cshtml?name=snippet_HtmlHelper&highlight=3)]
 

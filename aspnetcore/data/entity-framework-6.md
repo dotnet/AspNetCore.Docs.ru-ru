@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/entity-framework-6
-ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 44211ac7fa2acc7a7a9471ef362cff02f94fa2b6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059459"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588273"
 ---
 # <a name="aspnet-core-and-entity-framework-6"></a>ASP.NET Core и Entity Framework 6
 ::: moniker range=">= aspnetcore-3.0"
@@ -30,7 +30,7 @@ ms.locfileid: "93059459"
 
 ## <a name="using-entity-framework-6-with-aspnet-core"></a>Использование Entity Framework 6 с ASP.NET Core
 
-Для новых разработок следует использовать [Entity Framework Core](/ef/). В [загружаемом примере](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/3.xsample) используется [Entity Framework 6 (EF6)](/ef/ef6), который можно использовать для переноса существующих приложений в ASP.NET Core.
+Для новых разработок следует использовать [Entity Framework Core](/ef/). В [загружаемом примере](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/entity-framework-6/3.xsample) используется [Entity Framework 6 (EF6)](/ef/ef6), который можно использовать для переноса существующих приложений в ASP.NET Core.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -48,7 +48,7 @@ ms.locfileid: "93059459"
 
 Чтобы использовать платформу Entity Framework 6, проект необходимо компилировать на основе .NET Framework, поскольку Entity Framework 6 не поддерживает .NET Core. Если вам требуются какие-либо кроссплатформенные функции, необходимо выполнить обновление до [Entity Framework Core](/ef/).  
 
-Рекомендуемый способ использования платформы Entity Framework 6 в приложении ASP.NET Core заключается в помещении контекста и классов модели EF6 в проект библиотеки классов, который предназначен для .NET Framework. Добавьте ссылку на библиотеку классов из проекта ASP.NET Core. См. пример [решения Visual Studio с проектами EF6 и ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).  
+Рекомендуемый способ использования платформы Entity Framework 6 в приложении ASP.NET Core заключается в помещении контекста и классов модели EF6 в проект библиотеки классов, который предназначен для .NET Framework. Добавьте ссылку на библиотеку классов из проекта ASP.NET Core. См. пример [решения Visual Studio с проектами EF6 и ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/entity-framework-6/sample/).    
 
 Контекст EF6 нельзя поместить в проект ASP.NET Core, поскольку проекты .NET Core поддерживают не все функции, используемые командами EF6, например *Enable-Migrations*.    
 
@@ -86,7 +86,7 @@ ms.locfileid: "93059459"
 
 ## <a name="sample-application"></a>Пример приложения   
 
-Рабочий пример приложения см. в разделе [пример решения Visual Studio](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/), который прилагается к этой статье.  
+Рабочий пример приложения см. в разделе [пример решения Visual Studio](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/entity-framework-6/sample/), который прилагается к этой статье.    
 
 Этот пример можно создать с нуля, выполнив следующие действия в Visual Studio:    
 

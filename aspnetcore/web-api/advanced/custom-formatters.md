@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: e4d73fdc0db3faeace5d68b3d71718315e68cae3
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 91c9c6513d7c8df671e283508ecc276768d79539
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058926"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587831"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>Пользовательские модули форматирования для веб-API в ASP.NET Core
 
@@ -34,7 +34,7 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 
 В этой статье показано, как добавить поддержку дополнительных форматов, создав пользовательские модули форматирования. Пример пользовательского модуля форматирования ввода обычного текста см. в разделе [текстплаининпутформаттер](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) на GitHub.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/advanced/custom-formatters/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>Когда следует использовать пользовательские модули форматирования
 
@@ -57,7 +57,7 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 * Переопределите методы <xref:Microsoft.AspNetCore.Mvc.Formatters.InputFormatter.CanReadType%2A> и <xref:Microsoft.AspNetCore.Mvc.Formatters.OutputFormatter.CanWriteType%2A>.
 * Переопределите методы <xref:Microsoft.AspNetCore.Mvc.Formatters.InputFormatter.ReadRequestBodyAsync%2A> и `WriteResponseBodyAsync`.
 
-В следующем коде показан `VcardOutputFormatter` класс из [примера](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/samples):
+В следующем коде показан `VcardOutputFormatter` класс из [примера](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/advanced/custom-formatters/samples):
 
 [!code-csharp[](custom-formatters/samples/3.x/CustomFormattersSample/Formatters/VcardOutputFormatter.cs?name=snippet_Class)]
   
@@ -75,7 +75,7 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 
 [!code-csharp[](custom-formatters/samples/3.x/CustomFormattersSample/Formatters/VcardOutputFormatter.cs?name=snippet_ctor)]
 
-Класс модуля форматирования **не** может использовать внедрение конструктора для своих зависимостей. Например, `ILogger<VcardOutputFormatter>` нельзя добавить в конструктор в качестве параметра. Для доступа к службам используйте объект контекста, который передается методам. Пример кода в этой статье и [Пример](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/samples) показывает, как это сделать.
+Класс модуля форматирования **не** может использовать внедрение конструктора для своих зависимостей. Например, `ILogger<VcardOutputFormatter>` нельзя добавить в конструктор в качестве параметра. Для доступа к службам используйте объект контекста, который передается методам. Пример кода в этой статье и [Пример](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/advanced/custom-formatters/samples) показывает, как это сделать.
 
 ### <a name="override-canreadtype-and-canwritetype"></a>Переопределение Канреадтипе и Канвритетипе
 
@@ -129,13 +129,13 @@ ASP.NET Core MVC поддерживает обмен данными в веб-AP
 
 ## <a name="the-complete-vcardinputformatter-class"></a>Полный `VcardInputFormatter` класс
 
-В следующем коде показан `VcardInputFormatter` класс из [примера](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/samples):
+В следующем коде показан `VcardInputFormatter` класс из [примера](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/advanced/custom-formatters/samples):
 
 [!code-csharp[](custom-formatters/samples/3.x/CustomFormattersSample/Formatters/VcardInputFormatter.cs?name=snippet_Class)]
 
 ## <a name="test-the-app"></a>Тестирование приложения
 
-[Запустите пример приложения для этой статьи, в](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/samples)котором реализованы базовые модули форматирования входных и выходных данных vCard. Приложение считывает и записывает визитные карточки следующего вида:
+[Запустите пример приложения для этой статьи, в](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/advanced/custom-formatters/samples)котором реализованы базовые модули форматирования входных и выходных данных vCard. Приложение считывает и записывает визитные карточки следующего вида:
 
 ```
 BEGIN:VCARD

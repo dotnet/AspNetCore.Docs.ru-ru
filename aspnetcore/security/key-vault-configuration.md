@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: 4b035fe59b8576eb387ddce67943386ccab55492
-ms.sourcegitcommit: 8dfcd2b4be936950c228b4d98430622a04254cd7
+ms.openlocfilehash: ab3a462a3e09113e96c6bdd0c034bff3e0bebdfa
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/26/2020
-ms.locfileid: "97792078"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588299"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации Azure Key Vault в ASP.NET Core
 
@@ -37,7 +37,7 @@ ms.locfileid: "97792078"
 * Управление доступом к конфиденциальным данным конфигурации.
 * Соблюдайте требования для FIPS 140-2 уровня 2 проверенных аппаратных модулей безопасности (HSM) при хранении данных конфигурации.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/key-vault-configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="packages"></a>Пакеты
 
@@ -145,7 +145,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. Нажмите **Добавить политику доступа**.
 1. Откройте **разрешения для секрета** и предоставьте приложению разрешения **Get** и **List** .
 1. Щелкните **выбрать субъект** и выберите зарегистрированное приложение по имени. Нажмите кнопку **Выбрать**.
-1. Нажмите кнопку **ОК**.
+1. Щелкните **ОК**.
 1. Щелкните **Сохранить**.
 1. Разверните приложение.
 
@@ -384,7 +384,7 @@ Configuration.Reload();
 * Управление доступом к конфиденциальным данным конфигурации.
 * Соблюдайте требования для FIPS 140-2 уровня 2 проверенных аппаратных модулей безопасности (HSM) при хранении данных конфигурации.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/key-vault-configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="packages"></a>Пакеты
 
@@ -489,7 +489,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. Нажмите **Добавить политику доступа**.
 1. Откройте **разрешения для секрета** и предоставьте приложению разрешения **Get** и **List** .
 1. Щелкните **выбрать субъект** и выберите зарегистрированное приложение по имени. Нажмите кнопку **Выбрать**.
-1. Нажмите кнопку **ОК**.
+1. Щелкните **ОК**.
 1. Щелкните **Сохранить**.
 1. Разверните приложение.
 

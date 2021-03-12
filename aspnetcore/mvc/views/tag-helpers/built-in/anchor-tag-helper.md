@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: d39db59b0fc273fe4193a4864f302ecd3f4ad348
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 2e49c545b0d343475ce44a636a6ae66324f9d3bf
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060915"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587207"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега привязки в ASP.NET Core MVC
 
@@ -33,7 +33,7 @@ ms.locfileid: "93060915"
 
 Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 В примерах в этом документе используется *SpeakerController*
 
@@ -53,7 +53,7 @@ ms.locfileid: "93060915"
 <a href="/Speaker">All Speakers</a>
 ```
 
-Если атрибут `asp-controller` указан, а атрибут `asp-action` — нет, действием контроллера, связанным с выполняющимся представлением, будет заданное по умолчанию значение `asp-action`. Если `asp-action` исключается из предыдущего исправления, а в представлении *Index* ( */Home* ) *HomeController* используется вспомогательная функция тега привязки, создается следующий код HTML:
+Если атрибут `asp-controller` указан, а атрибут `asp-action` — нет, действием контроллера, связанным с выполняющимся представлением, будет заданное по умолчанию значение `asp-action`. Если `asp-action` исключается из предыдущего исправления, а в представлении *Index* (*/Home*) *HomeController* используется вспомогательная функция тега привязки, создается следующий код HTML:
 
 ```html
 <a href="/Home">All Speakers</a>
@@ -83,7 +83,7 @@ ms.locfileid: "93060915"
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
 
-С шаблоном маршрута по умолчанию, определенным в *Startup.Configure* :
+С шаблоном маршрута по умолчанию, определенным в *Startup.Configure*:
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
 
@@ -185,7 +185,7 @@ ms.locfileid: "93060915"
 
 Атрибут [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) указывает имя области, используемое платформой для определения соответствующего маршрута. Ниже приведен пример того, как атрибут `asp-area` приводит к повторному сопоставлению маршрутов.
 
-#### <a name="usage-in-no-locrazor-pages"></a>Использование на Razor страницах
+#### <a name="usage-in-razor-pages"></a>Использование на Razor страницах
 
 Razor Области страниц поддерживаются в ASP.NET Core 2,1 или более поздней версии.
 
@@ -236,7 +236,7 @@ Razor Области страниц поддерживаются в ASP.NET Core
         * *\_Виевстарт. cshtml*
   * **Контроллеры**
 
-При установке для атрибута `asp-area` значения Blogs перед маршрутами связанных контроллеров и представлений для этого тега привязки добавляется каталог *Areas/Blogs* . Исправления для ссылки на представление *AboutBlog* :
+При установке для атрибута `asp-area` значения Blogs перед маршрутами связанных контроллеров и представлений для этого тега привязки добавляется каталог *Areas/Blogs*. Исправления для ссылки на представление *AboutBlog*:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspArea)]
 
@@ -247,7 +247,7 @@ Razor Области страниц поддерживаются в ASP.NET Core
 ```
 
 > [!TIP]
-> Для поддержки областей в приложении MVC в шаблон маршрута необходимо включить ссылку на область, если она существует. Этот шаблон представлен вторым параметром `routes.MapRoute` вызова метода в *Startup.Configключать* :
+> Для поддержки областей в приложении MVC в шаблон маршрута необходимо включить ссылку на область, если она существует. Этот шаблон представлен вторым параметром `routes.MapRoute` вызова метода в *Startup.Configключать*:
 >
 > [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 

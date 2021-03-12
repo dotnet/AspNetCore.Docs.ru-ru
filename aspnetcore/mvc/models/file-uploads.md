@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: c32d20d4616650db004c78fb4d8ea9a4d5a3beab
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 90bde63ac94ba3fd29a067962989cf773ec613db
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252803"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587247"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Передача файлов в ASP.NET Core
 
@@ -34,7 +34,7 @@ ms.locfileid: "98252803"
 
 Действия ASP.NET Core поддерживают передачу одного или нескольких файлов с помощью привязки модели с буферизацией для небольших файлов или потоковой передачи без буферизации для более крупных файлов.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Вопросы безопасности
 
@@ -238,7 +238,7 @@ ms.locfileid: "98252803"
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/).
 >
 > * [Вопросы безопасности](#security-considerations)
 > * [Проверка](#validation)
@@ -254,7 +254,7 @@ ms.locfileid: "98252803"
 > [!NOTE]
 > Привязка сопоставляет файлы форм по имени. Например, значение HTML `name` в `<input type="file" name="formFile">` должно соответствовать привязанному к C# параметру или свойству (`FormFile`). Дополнительные сведения см. в разделе [Сопоставление значения атрибута имени и имени параметра метода POST](#match-name-attribute-value-to-parameter-name-of-post-method).
 
-Следующий пример:
+В следующем примере происходит следующее:
 
 * Циклично отправляет один или несколько передаваемых файлов.
 * Использует метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы вернуть полный путь к файлу, включая его имя. 
@@ -409,7 +409,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 >
 > Свойство `FileName` параметра <xref:Microsoft.AspNetCore.Http.IFormFile> требует обязательной проверки. Свойство `FileName` следует использовать только в целях вывода и только после HTML-кодирования.
 >
-> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/).
 >
 > * [Вопросы безопасности](#security-considerations)
 > * [Проверка](#validation)
@@ -758,7 +758,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 Действия ASP.NET Core поддерживают передачу одного или нескольких файлов с помощью привязки модели с буферизацией для небольших файлов или потоковой передачи без буферизации для более крупных файлов.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Вопросы безопасности
 
@@ -962,7 +962,7 @@ The request filtering module is configured to deny a request that exceeds the re
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/).
 >
 > * [Вопросы безопасности](#security-considerations)
 > * [Проверка](#validation)
@@ -978,7 +978,7 @@ The request filtering module is configured to deny a request that exceeds the re
 > [!NOTE]
 > Привязка сопоставляет файлы форм по имени. Например, значение HTML `name` в `<input type="file" name="formFile">` должно соответствовать привязанному к C# параметру или свойству (`FormFile`). Дополнительные сведения см. в разделе [Сопоставление значения атрибута имени и имени параметра метода POST](#match-name-attribute-value-to-parameter-name-of-post-method).
 
-Следующий пример:
+В следующем примере происходит следующее:
 
 * Циклично отправляет один или несколько передаваемых файлов.
 * Использует метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы вернуть полный путь к файлу, включая его имя. 
@@ -1133,7 +1133,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 >
 > Свойство `FileName` параметра <xref:Microsoft.AspNetCore.Http.IFormFile> требует обязательной проверки. Свойство `FileName` следует использовать только в целях вывода и только после HTML-кодирования.
 >
-> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/).
 >
 > * [Вопросы безопасности](#security-considerations)
 > * [Проверка](#validation)
@@ -1493,7 +1493,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 Действия ASP.NET Core поддерживают передачу одного или нескольких файлов с помощью привязки модели с буферизацией для небольших файлов или потоковой передачи без буферизации для более крупных файлов.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Вопросы безопасности
 
@@ -1697,7 +1697,7 @@ The request filtering module is configured to deny a request that exceeds the re
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/).
 >
 > * [Вопросы безопасности](#security-considerations)
 > * [Проверка](#validation)
@@ -1713,7 +1713,7 @@ The request filtering module is configured to deny a request that exceeds the re
 > [!NOTE]
 > Привязка сопоставляет файлы форм по имени. Например, значение HTML `name` в `<input type="file" name="formFile">` должно соответствовать привязанному к C# параметру или свойству (`FormFile`). Дополнительные сведения см. в разделе [Сопоставление значения атрибута имени и имени параметра метода POST](#match-name-attribute-value-to-parameter-name-of-post-method).
 
-Следующий пример:
+В следующем примере происходит следующее:
 
 * Циклично отправляет один или несколько передаваемых файлов.
 * Использует метод [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*), чтобы вернуть полный путь к файлу, включая его имя. 
@@ -1868,7 +1868,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 >
 > Свойство `FileName` параметра <xref:Microsoft.AspNetCore.Http.IFormFile> требует обязательной проверки. Свойство `FileName` следует использовать только в целях вывода и только после HTML-кодирования.
 >
-> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/).
+> В приведенных выше примерах не учитываются вопросы безопасности. Дополнительные сведения приведены в следующих разделах и в [примере приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/).
 >
 > * [Вопросы безопасности](#security-considerations)
 > * [Проверка](#validation)

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 27420fe00ba6375e15b67fb359be06df055eff1f
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 84cae3b3babe28c2ebf6dba50023b020112d1bb3
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060044"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587584"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Разработка приложений ASP.NET Core с использованием наблюдателя файлов
 
@@ -32,7 +32,7 @@ ms.locfileid: "93060044"
 
 В этом руководстве используется уже существующее приложение веб-API с двумя конечными точками, одна из которых возвращает сумму, а другая — произведение. В методе произведения есть ошибка, которая исправлена в этом руководстве.
 
-Скачайте [образец приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Он содержит два проекта: *WebApp* (веб-API ASP.NET Core) и *WebAppTests* (модульные тесты для веб-API).
+Скачайте [образец приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/dotnet-watch/sample). Он содержит два проекта: *WebApp* (веб-API ASP.NET Core) и *WebAppTests* (модульные тесты для веб-API).
 
 В командной оболочке перейдите в папку *WebApp*. Выполните следующую команду:
 
@@ -219,7 +219,3 @@ VSTest выполняется при изменении любого файла 
 | `DOTNET_WATCH_SUPPRESS_MSBUILD_INCREMENTALISM`   | По умолчанию `dotnet watch` оптимизирует сборку, исключая определенные операции, такие как восстановление или повторная оценка набора отслеживаемых файлов при каждом изменении. Если задано значение 1 или true, эти оптимизации отключены. |
 | `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`   | `dotnet watch run` пытается запускать веб-приложения в браузерах с использованием параметра `launchBrowser`, настроенного в файле *launchSettings.json*. Если задано значение 1 или true, это поведение подавляется. |
 | `DOTNET_WATCH_SUPPRESS_BROWSER_REFRESH`   | `dotnet watch run` пытается обновлять содержимое в браузерах при обнаружении изменений в файлах. Если задано значение 1 или true, это поведение подавляется. Это поведение также подавляется, если задан параметр `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`. |
-
-## <a name="dotnet-watch-in-github"></a>`dotnet-watch` на GitHub
-
-`dotnet-watch` предоставляется в репозитории [dotnet/AspNetCore](https://github.com/dotnet/AspNetCore/tree/master/src/Tools/dotnet-watch) на GitHub.

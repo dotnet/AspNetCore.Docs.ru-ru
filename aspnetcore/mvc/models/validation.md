@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: d6fa7e4524a8afdc23d4ad46354d9d8b395656a3
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 412f95e67fa35e952a907db328395183f1698b9e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530194"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587220"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Проверка модели в ASP.NET Core MVC и Razor страницах
 
@@ -33,7 +33,7 @@ ms.locfileid: "99530194"
 
 В этой статье объясняется, как проверить ввод пользователя в ASP.NET Core приложении MVC или Razor pages.
 
-[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>Состояние модели
 
@@ -94,7 +94,7 @@ ms.locfileid: "99530194"
 
 ## <a name="non-nullable-reference-types-and-required-attribute"></a>Ссылочные типы, не допускающие значения NULL, и атрибут [Required]
 
-Система проверки рассматривает параметры, не допускающие значения NULL, или привязанные свойства так, как если бы они имели `[Required]` атрибут. При [включении `Nullable` контекстов](/dotnet/csharp/nullable-references#nullable-contexts)MVC неявно запускает проверку свойств или параметров, не допускающих значения NULL, как если бы они были помечены `[Required]` атрибутом. Рассмотрим следующий код:
+Система проверки рассматривает параметры, не допускающие значения NULL, или привязанные свойства так, как если бы они имели `[Required]` атрибут. При [включении `Nullable` контекстов](/dotnet/csharp/nullable-references#nullable-contexts)MVC неявно запускает проверку свойств или параметров, не допускающих значения NULL, как если бы они были помечены `[Required]` атрибутом. Рассмотрим следующий код.
 
 ```csharp
 public class Person
@@ -419,7 +419,7 @@ $.get({
 
 В этой статье объясняется, как проверить ввод пользователя в ASP.NET Core приложении MVC или Razor pages.
 
-[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/sample) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>Состояние модели
 
@@ -439,7 +439,7 @@ $.get({
 
 ## <a name="validation-attributes"></a>Атрибуты проверки
 
-Атрибуты проверки позволяют задать правила проверки для свойств модели. В следующем примере из [примера приложения](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) показан класс модели, который помечается с помощью атрибутов проверки. `[ClassicMovie]` является настраиваемым атрибутом проверки; остальные являются встроенными. Не показан `[ClassicMovie2]`, который демонстрирует альтернативный способ реализации настраиваемого атрибута.
+Атрибуты проверки позволяют задать правила проверки для свойств модели. В следующем примере из [примера приложения](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/sample) показан класс модели, который помечается с помощью атрибутов проверки. `[ClassicMovie]` является настраиваемым атрибутом проверки; остальные являются встроенными. Не показан `[ClassicMovie2]`, который демонстрирует альтернативный способ реализации настраиваемого атрибута.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/Movie.cs?name=snippet_ModelClass)]
 

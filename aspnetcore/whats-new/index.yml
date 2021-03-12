@@ -6,12 +6,12 @@ metadata:
   description: Узнайте о новом и измененном содержимом в документации по ASP.NET Core.
   ms.topic: landing-page
   ms.date: 03/04/2021
-  ms.openlocfilehash: a4ef3edbf260c6f2ee34ac739884bd9a605bd396
-  ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
+  ms.openlocfilehash: 5982d49321739b637e8a7352145da18c69705c88
+  ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
   ms.translationtype: HT
   ms.contentlocale: ru-RU
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102119010"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102605663"
 landingContent:
 - title: Поиск обновлений в документации по ASP.NET Core
   linkLists:
@@ -34,17 +34,17 @@ landingContent:
   - linkListType: overview
     links:
     - text: Репозиторий документов по ASP.NET Core
-      url: https://github.com/dotnet/AspNetCore.Docs/blob/master/README.md
+      url: https://github.com/dotnet/AspNetCore.Docs/blob/main/README.md
     - text: Структура и метки проекта для проблем и запросов на вытягивание
-      url: https://github.com/dotnet/docs/blob/master/styleguide/labels-projects.md
+      url: https://github.com/dotnet/docs/blob/main/styleguide/labels-projects.md
   - linkListType: concept
     links:
     - text: Руководство для соавторов документации Майкрософт
       url: /contribute
     - text: Руководство для соавторов документации по ASP.NET Core
-      url: https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md
+      url: https://github.com/dotnet/AspNetCore.Docs/blob/main/CONTRIBUTING.md
     - text: Руководство для соавторов справочной документации по API ASP.NET Core
-      url: https://github.com/dotnet/AspNetApiDocs/blob/master/CONTRIBUTING.md
+      url: https://github.com/dotnet/AspNetApiDocs/blob/main/CONTRIBUTING.md
 - title: Сообщество
   linkLists:
   - linkListType: whats-new
@@ -58,11 +58,11 @@ landingContent:
     - text: Обновления документации по Xamarin
       url: /xamarin/whats-new/
     - text: Заметки о выпуске .NET Core
-      url: https://github.com/dotnet/core/blob/master/release-notes/README.md
+      url: https://github.com/dotnet/core/blob/main/release-notes/README.md
     - text: Заметки о выпуске ASP.NET Core
       url: ../release-notes/aspnetcore-3.1.md
     - text: Заметки о выпуске компилятора C# (Roslyn)
-      url: https://github.com/dotnet/roslyn/tree/master/docs/ide
+      url: https://github.com/dotnet/roslyn/tree/main/docs/ide
     - text: Заметки о выпуске Visual Studio
       url: /visualstudio/releases/2019/release-notes
     - text: Заметки о выпуске Visual Studio для Mac

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
-ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
+ms.openlocfilehash: ab09867a1b1aa73e423babbe295036e292fc733f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "93051412"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586583"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Управление сеансами и состояниями в ASP.NET Core
 
@@ -33,7 +33,7 @@ ms.locfileid: "93051412"
 
 HTTP — это протокол без отслеживания состояния. По умолчанию HTTP-запросы являются независимыми сообщениями, которые не сохраняют значения пользователя. В этой статье описывается несколько подходов для сохранения данных пользователя между запросами.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/app-state/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="state-management"></a>Управление состоянием
 
@@ -303,7 +303,7 @@ ASP.NET Core предоставляет [TempData](xref:Microsoft.AspNetCore.Mv
 
 HTTP — это протокол без отслеживания состояния. Без дополнительных действий HTTP-запросы являются независимыми сообщениями, которые не сохраняют значения пользователя или состояние приложения. В этой статье описывается несколько подходов для сохранения данных пользователя и состояния приложения между запросами.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/app-state/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="state-management"></a>Управление состоянием
 

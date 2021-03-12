@@ -19,24 +19,24 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: 4a31c16eb44e2244574d0df49c30e7a44b2bba6e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 872b88cc3c87137365de8c50a37bf5dd5fd9fe10
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050944"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587870"
 ---
-# <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a>Использование концентраторов в SignalR для ASP.NET Core
+# <a name="use-hubs-in-signalr-for-aspnet-core"></a>Использование концентраторов в SignalR для ASP.NET Core
 
 [Рейчел Аппель (](https://twitter.com/rachelappel) и [Кевин Гриффин](https://twitter.com/1kevgriff)
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(описание загрузки)](xref:index#how-to-download-a-sample)
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/hubs/sample/ ) [(описание загрузки)](xref:index#how-to-download-a-sample)
 
-## <a name="what-is-a-no-locsignalr-hub"></a>Что такое SignalR центр
+## <a name="what-is-a-signalr-hub"></a>Что такое SignalR центр
 
 SignalRAPI концентраторов позволяет вызывать методы на подключенных клиентах с сервера. В серверном коде определяются методы, вызываемые клиентом. В клиентском коде определяются методы, которые вызываются с сервера. SignalR позаботится обо всем, за сценой, которая делает возможными обмен данными между клиентом и сервером в реальном времени.
 
-## <a name="configure-no-locsignalr-hubs"></a>Настройка SignalR концентраторов
+## <a name="configure-signalr-hubs"></a>Настройка SignalR концентраторов
 
 По SignalR промежуточного слоя требуются некоторые службы, которые настраиваются путем вызова `services.AddSignalR` .
 
@@ -90,7 +90,7 @@ public class ChatHub : Hub
 
 `Hub`Класс имеет `Context` свойство, которое содержит следующие свойства со сведениями о соединении:
 
-| Свойство. | Описание |
+| Свойство | Описание |
 | ------ | ----------- |
 | `ConnectionId` | Возвращает уникальный идентификатор соединения, присвоенный SignalR . Для каждого соединения существует один идентификатор подключения.|
 | `UserIdentifier` | Возвращает [идентификатор пользователя](xref:signalr/groups). По умолчанию SignalR использует `ClaimTypes.NameIdentifier` из из, `ClaimsPrincipal` связанного с соединением, в качестве идентификатора пользователя. |
@@ -110,7 +110,7 @@ public class ChatHub : Hub
 
 `Hub`Класс имеет `Clients` свойство, которое содержит следующие свойства для обмена данными между сервером и клиентом:
 
-| Свойство. | Описание |
+| Свойство | Описание |
 | ------ | ----------- |
 | `All` | Вызывает метод для всех подключенных клиентов |
 | `Caller` | Вызывает метод для клиента, который вызвал метод концентратора |
@@ -200,7 +200,7 @@ Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking
 
 Непредвиденные исключения часто содержат конфиденциальные сведения, такие как имя сервера базы данных в исключении, которое запускается при сбое подключения к базе данных. SignalR не предоставляет эти подробные сообщения об ошибках по умолчанию в качестве меры безопасности. Дополнительные сведения о том, почему сведения об исключении подавляются, см. в [статье вопросы безопасности](xref:signalr/security#exceptions) .
 
-При наличии исключительных условий *, которые нужно* распространить на клиент, можно использовать `HubException` класс. Если вы выдаете `HubException` из метода концентратора, SignalR **will** отправляет клиенту все сообщение без изменений.
+При наличии исключительных условий *, которые нужно* распространить на клиент, можно использовать `HubException` класс. Если вы выдаете `HubException` из метода концентратора, SignalR  отправляет клиенту все сообщение без изменений.
 
 [!code-csharp[ThrowHubException](hubs/sample/hubs/chathub.cs?name=ThrowHubException&highlight=3)]
 

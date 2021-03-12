@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: 3a7b054adc50be57028dfa0364f80ae8733b02f7
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 0a8e4a4fdecd657840c6c02424ffffa64d4ab473
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252712"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586882"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Частичные представления в ASP.NET Core
 
@@ -37,7 +37,7 @@ ms.locfileid: "98252712"
 
 ::: moniker-end
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/partial/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-partial-views"></a>Когда следует использовать частичные представления
 
@@ -84,7 +84,7 @@ ms.locfileid: "98252712"
 
 ::: moniker range=">= aspnetcore-2.0"
 
-### <a name="use-a-partial-view-in-a-no-locrazor-pages-pagemodel"></a>Использование частичного представления на Razor страницах PageModel
+### <a name="use-a-partial-view-in-a-razor-pages-pagemodel"></a>Использование частичного представления на Razor страницах PageModel
 
 В ASP.NET Core 2,0 или 2,1 следующий метод обработчика преобразует частичное представление *\_ аусорпартиалрп. cshtml* в ответ:
 
@@ -353,7 +353,7 @@ public IActionResult OnGetPartial() =>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-* [Razor Справочник по синтаксису для ASP.NET Core](xref:mvc/views/razor)
+* [Справочник по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor)
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>
 * <xref:mvc/views/view-components>
@@ -363,7 +363,7 @@ public IActionResult OnGetPartial() =>
 
 ::: moniker range="< aspnetcore-2.1"
 
-* [Razor Справочник по синтаксису для ASP.NET Core](xref:mvc/views/razor)
+* [Справочник по синтаксису Razor для ASP.NET Core](xref:mvc/views/razor)
 * <xref:mvc/views/view-components>
 * <xref:mvc/controllers/areas>
 

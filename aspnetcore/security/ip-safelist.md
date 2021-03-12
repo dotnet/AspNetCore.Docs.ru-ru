@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/ip-safelist
-ms.openlocfilehash: dfc134b97bb0976bc682a53d536cd27785550c7d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f89191cff1faa5b55ee9031a6a6d0749a74e43c0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059667"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587545"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Адрес списка надежных IP-адресов клиента для ASP.NET Core
 
@@ -43,7 +43,7 @@ ms.locfileid: "93059667"
 
 Доступ разрешен, если массив содержит IP-адрес. В противном случае возвращается код состояния HTTP 403 запрещено.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/ip-safelist/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="ip-address-safelist"></a>Адрес списка надежных IP-адресов
 
@@ -103,7 +103,7 @@ ms.locfileid: "93059667"
 
 * Команда HTTP-запроса, отличная от GET, по `AdminSafeListMiddleware` промежуточного слоя проверяет IP-адрес клиента.
 
-## <a name="no-locrazor-pages-filter"></a>Razor Фильтр страниц
+## <a name="razor-pages-filter"></a>Razor Фильтр страниц
 
 Если требуется управлять доступом к спискам надежных отправителей для Razor приложения страниц, используйте Razor Фильтр страниц. Пример:
 
@@ -123,7 +123,7 @@ ms.locfileid: "93059667"
 
 ::: moniker-end
 
-Когда *Index* Razor запрашивается страница индекса примера приложения, Razor Фильтр страниц проверяет IP-адрес клиента. Фильтр создает разновидность следующих выходных данных консоли:
+Когда  Razor запрашивается страница индекса примера приложения, Razor Фильтр страниц проверяет IP-адрес клиента. Фильтр создает разновидность следующих выходных данных консоли:
 
 ```
 dbug: ClientIpSafelistComponents.Filters.ClientIpCheckPageFilter[0]

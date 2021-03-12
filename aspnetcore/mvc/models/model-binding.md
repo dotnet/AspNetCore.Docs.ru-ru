@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: 4de34a75da932b41190caa8434ac5be8cc0710fd
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 5eaedf6dbe5df59848b9cf8a5bda67add48db2a6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981938"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586947"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Привязка модели в ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "94981938"
 
 В этой статье объясняется, что такое привязка модели, как это работает и как настроить ее поведение.
 
-[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/model-binding/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Что такое привязка модели
 
@@ -42,7 +42,7 @@ ms.locfileid: "94981938"
 * Преобразует строковые данные в типы .NET.
 * Обновляет свойства сложных типов.
 
-## <a name="example"></a>Пример
+## <a name="example"></a>Например, .
 
 Предположим, у вас есть следующий метод действия:
 
@@ -165,7 +165,7 @@ public class Pet
 * Создайте класс, реализующий `IValueProviderFactory`.
 * Зарегистрируйте класс фабрики в `Startup.ConfigureServices`.
 
-Пример приложения включает в себя [поставщик значений](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) и пример [фабрики](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) , который получает значения из cookie s. Ниже приведен код регистрации в `Startup.ConfigureServices`:
+Пример приложения включает в себя [поставщик значений](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) и пример [фабрики](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) , который получает значения из cookie s. Ниже приведен код регистрации в `Startup.ConfigureServices`:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4)]
 
@@ -204,21 +204,21 @@ public class Pet
 
 Связыватель модели может преобразовать исходные строки в следующие примитивные типы:
 
-* [Boolean](xref:System.ComponentModel.BooleanConverter)
+* [Логический](xref:System.ComponentModel.BooleanConverter)
 * [Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)
 * [Char](xref:System.ComponentModel.CharConverter)
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
-* [Decimal](xref:System.ComponentModel.DecimalConverter)
+* [Десятичное число](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
 * [Enum](xref:System.ComponentModel.EnumConverter)
-* [Устройства](xref:System.ComponentModel.GuidConverter)
+* [Guid](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [URI](xref:System.UriTypeConverter)
-* [Version](xref:System.ComponentModel.VersionConverter)
+* [Версия](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>Сложные типы
 
@@ -280,11 +280,11 @@ public IActionResult OnPost(
 * `[BindNever]`
 
 > [!WARNING]
-> Эти атрибуты влияют на привязку модели, если опубликованные данные формы являются источником значений. Они делают ***Not** _ на модули форматирования ввода, которые обрабатывают опубликованные тексты запросов JSON и XML. Форматировщики входных данных описываются [далее в этой статье](#input-formatters).
+> Эти атрибуты влияют на привязку модели, если опубликованные данные формы являются источником значений. Они ***не*** влияют на модули форматирования ввода, которые обрабатывают опубликованные тексты JSON и XML-запросов. Форматировщики входных данных описываются [далее в этой статье](#input-formatters).
 
 ### <a name="bind-attribute"></a>Атрибут [Bind]
 
-Может быть применен к классу или параметру метода. Указывает, какие свойства модели должны быть включены в привязку модели. `[Bind]` не _*_влияет на_*_ модули форматирования ввода.
+Может быть применен к классу или параметру метода. Указывает, какие свойства модели должны быть включены в привязку модели. `[Bind]` не ***влияет на*** модули форматирования ввода.
 
 В следующем примере только указанные свойства модели `Instructor` привязываются, когда вызывается любой метод действия или обработчик:
 
@@ -300,7 +300,7 @@ public class Instructor
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-`[Bind]`Атрибут можно использовать для защиты от перенесения в сценариях _create *. Он не работает в сценариях редактирования, поскольку исключенным свойствам задается значение NULL или значение по умолчанию, но не оставляется значение без изменений. Для защиты от чрезмерной передачи данных рекомендуется использовать модели представлений вместо атрибута `[Bind]`. Дополнительные сведения см. в разделе [Примечание по безопасности о чрезмерной передаче данных](xref:data/ef-mvc/crud#security-note-about-overposting).
+Атрибут `[Bind]` может использоваться для защиты от чрезмерной передачи данных при *создании*. Он не работает в сценариях редактирования, поскольку исключенным свойствам задается значение NULL или значение по умолчанию, но не оставляется значение без изменений. Для защиты от чрезмерной передачи данных рекомендуется использовать модели представлений вместо атрибута `[Bind]`. Дополнительные сведения см. в разделе [Примечание по безопасности о чрезмерной передаче данных](xref:data/ef-mvc/crud#security-note-about-overposting).
 
 ### <a name="modelbinder-attribute"></a>Атрибут [Моделбиндер]
 
@@ -325,7 +325,7 @@ public class Instructor
 
 ### <a name="bindrequired-attribute"></a>Атрибут [BindRequired]
 
-Может применяться только к свойствам модели, а не к параметрам метода. Приводит к тому, что привязка модели добавляет ошибку состояния модели, если привязка для свойства модели невозможна. Пример:
+Может применяться только к свойствам модели, а не к параметрам метода. Приводит к тому, что привязка модели добавляет ошибку состояния модели, если привязка для свойства модели невозможна. Ниже приведен пример:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
@@ -333,7 +333,7 @@ public class Instructor
 
 ### <a name="bindnever-attribute"></a>Атрибут [BindNever]
 
-Может применяться только к свойствам модели, а не к параметрам метода. Запрещает привязке модели задавать свойство модели. Пример:
+Может применяться только к свойствам модели, а не к параметрам метода. Запрещает привязке модели задавать свойство модели. Ниже приведен пример:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -471,7 +471,7 @@ Age: <input asp-for="Age" />
 Чтобы поставщик значений маршрутов и поставщик значений для строк запросов ASP.NET Core производили преобразование с учетом языка и региональных параметров, выполните указанные ниже действия.
 
 * наследуют от <xref:Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory>.
-* Скопируйте код из [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) или [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
+* Скопируйте код из [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) или [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
 * Замените [значение языка и региональных параметров](https://github.com/dotnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30), передаваемое в конструктор поставщика значений, на [CultureInfo.CurrentCulture](xref:System.Globalization.CultureInfo.CurrentCulture)
 * Замените метод производства поставщика значений по умолчанию в параметрах MVC на новый:
 
@@ -554,7 +554,7 @@ ASP.NET Core выбирает форматировщики входных дан
 
 ## <a name="manual-model-binding"></a>Привязка модели вручную 
 
-Привязка модели может вызываться вручную с помощью метода <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. Этот метод определен в классах `ControllerBase` и `PageModel`. Перегрузки метода позволяют задать поставщик префиксов и значений. Этот метод возвращает `false` при сбое привязки модели. Пример:
+Привязка модели может вызываться вручную с помощью метода <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. Этот метод определен в классах `ControllerBase` и `PageModel`. Перегрузки метода позволяют задать поставщик префиксов и значений. Этот метод возвращает `false` при сбое привязки модели. Ниже приведен пример:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 
@@ -580,7 +580,7 @@ ASP.NET Core выбирает форматировщики входных дан
 
 В этой статье объясняется, что такое привязка модели, как это работает и как настроить ее поведение.
 
-[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/model-binding/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Что такое привязка модели
 
@@ -591,7 +591,7 @@ ASP.NET Core выбирает форматировщики входных дан
 * Преобразует строковые данные в типы .NET.
 * Обновляет свойства сложных типов.
 
-## <a name="example"></a>Пример
+## <a name="example"></a>Например, .
 
 Предположим, у вас есть следующий метод действия:
 
@@ -714,7 +714,7 @@ public class Pet
 * Создайте класс, реализующий `IValueProviderFactory`.
 * Зарегистрируйте класс фабрики в `Startup.ConfigureServices`.
 
-Пример приложения включает в себя [поставщик значений](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) и пример [фабрики](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) , который получает значения из cookie s. Ниже приведен код регистрации в `Startup.ConfigureServices`:
+Пример приложения включает в себя [поставщик значений](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) и пример [фабрики](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) , который получает значения из cookie s. Ниже приведен код регистрации в `Startup.ConfigureServices`:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=3)]
 
@@ -753,21 +753,21 @@ public class Pet
 
 Связыватель модели может преобразовать исходные строки в следующие примитивные типы:
 
-* [Boolean](xref:System.ComponentModel.BooleanConverter)
+* [Логический](xref:System.ComponentModel.BooleanConverter)
 * [Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)
 * [Char](xref:System.ComponentModel.CharConverter)
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
-* [Decimal](xref:System.ComponentModel.DecimalConverter)
+* [Десятичное число](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
 * [Enum](xref:System.ComponentModel.EnumConverter)
-* [Устройства](xref:System.ComponentModel.GuidConverter)
+* [Guid](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [URI](xref:System.UriTypeConverter)
-* [Version](xref:System.ComponentModel.VersionConverter)
+* [Версия](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>Сложные типы
 
@@ -835,13 +835,13 @@ public IActionResult OnPost(
 
 ### <a name="bindrequired-attribute"></a>Атрибут [BindRequired]
 
-Может применяться только к свойствам модели, а не к параметрам метода. Приводит к тому, что привязка модели добавляет ошибку состояния модели, если привязка для свойства модели невозможна. Пример:
+Может применяться только к свойствам модели, а не к параметрам метода. Приводит к тому, что привязка модели добавляет ошибку состояния модели, если привязка для свойства модели невозможна. Ниже приведен пример:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>Атрибут [BindNever]
 
-Может применяться только к свойствам модели, а не к параметрам метода. Запрещает привязке модели задавать свойство модели. Пример:
+Может применяться только к свойствам модели, а не к параметрам метода. Запрещает привязке модели задавать свойство модели. Ниже приведен пример:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -958,7 +958,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 Чтобы поставщик значений маршрутов и поставщик значений для строк запросов ASP.NET Core производили преобразование с учетом языка и региональных параметров, выполните указанные ниже действия.
 
 * наследуют от <xref:Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory>.
-* Скопируйте код из [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) или [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
+* Скопируйте код из [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) или [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
 * Замените [значение языка и региональных параметров](https://github.com/dotnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30), передаваемое в конструктор поставщика значений, на [CultureInfo.CurrentCulture](xref:System.Globalization.CultureInfo.CurrentCulture)
 * Замените метод производства поставщика значений по умолчанию в параметрах MVC на новый:
 
@@ -1023,7 +1023,7 @@ ASP.NET Core выбирает форматировщики входных дан
 
 ## <a name="manual-model-binding"></a>Привязка модели вручную
 
-Привязка модели может вызываться вручную с помощью метода <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. Этот метод определен в классах `ControllerBase` и `PageModel`. Перегрузки метода позволяют задать поставщик префиксов и значений. Этот метод возвращает `false` при сбое привязки модели. Пример:
+Привязка модели может вызываться вручную с помощью метода <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. Этот метод определен в классах `ControllerBase` и `PageModel`. Перегрузки метода позволяют задать поставщик префиксов и значений. Этот метод возвращает `false` при сбое привязки модели. Ниже приведен пример:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 

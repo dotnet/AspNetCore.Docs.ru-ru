@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: 1810fef903362addcef4a6c9ec53264604f58d2b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5e3a96d38424b895fa8f34897a4f0a1d818ff479
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051477"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588091"
 ---
-# <a name="introduction-to-aspnet-core-no-locsignalr"></a>Введение в ASP.NET Core SignalR
+# <a name="introduction-to-aspnet-core-signalr"></a>Введение в ASP.NET Core SignalR
 
-## <a name="what-is-no-locsignalr"></a>Что такое SignalR?
+## <a name="what-is-signalr"></a>Что такое SignalR?
 
 ASP.NET Core SignalR — это библиотека с открытым исходным кодом, которая упрощает добавление веб-функций в режиме реального времени в приложения. Веб-функции в режиме реального времени позволяют коду на стороне сервера мгновенно отправлять содержимое на клиенты.
 
@@ -48,7 +48,7 @@ SignalR предоставляет API для создания [удаленны
 * Отправляет сообщения конкретным клиентам или группам клиентов.
 * Масштабируется для управления увеличением трафика.
 
-Источник размещается в [ SignalR репозитории на сайте GitHub](https://github.com/dotnet/AspNetCore/tree/master/src/SignalR).
+Источник размещается в [ SignalR репозитории на сайте GitHub](https://github.com/dotnet/AspNetCore/tree/main/src/SignalR).
 
 ## <a name="transports"></a>Транспорты
 

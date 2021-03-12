@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 67f245b7f4e4aa97b30c5318c73732617aea44c7
-ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
+ms.openlocfilehash: 8212025bbf778334045b8fbe7a5dae312524b426
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217574"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588026"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -42,7 +42,7 @@ ms.locfileid: "99217574"
 1. предоставление локализованных ресурсов для поддерживаемых языков и региональных параметров;
 1. реализацию стратегии по выбору языка и региональных параметров для каждого запроса.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/3.x/Localization) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/3.x/Localization) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Обеспечение возможности локализации для содержимого приложения
 
@@ -396,7 +396,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 1. предоставление локализованных ресурсов для поддерживаемых языков и региональных параметров;
 1. реализацию стратегии по выбору языка и региональных параметров для каждого запроса.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/Localization) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Обеспечение возможности локализации для содержимого приложения
 
@@ -751,7 +751,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 1. предоставление локализованных ресурсов для поддерживаемых языков и региональных параметров;
 1. реализацию стратегии по выбору языка и региональных параметров для каждого запроса.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/2.x/) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/2.x/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Обеспечение возможности локализации для содержимого приложения
 

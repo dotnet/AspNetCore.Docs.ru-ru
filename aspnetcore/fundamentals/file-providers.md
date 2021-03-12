@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/file-providers
-ms.openlocfilehash: 16e5ead9898125c804da4d60322510474201d897
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c66c35e93991333229e367e9f371b125d8067131
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059446"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588221"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Поставщики файлов в ASP.NET Core
 
@@ -39,7 +39,7 @@ ASP.NET Core абстрагирует доступ к файловой сист�
 * [Razor](xref:mvc/views/razor) использует поставщики файлов для поиска страниц и представлений.
 * Инструменты .NET Core используют поставщики файлов и стандартные маски, чтобы указать файлы для публикации.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/file-providers/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="file-provider-interfaces"></a>Интерфейсы поставщика файлов
 
@@ -190,7 +190,7 @@ ASP.NET Core абстрагирует доступ к файловой сист�
 * [Razor](xref:mvc/views/razor) использует поставщики файлов для поиска страниц и представлений.
 * Инструменты .NET Core используют поставщики файлов и стандартные маски, чтобы указать файлы для публикации.
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) ([как скачивать](xref:index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/file-providers/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="file-provider-interfaces"></a>Интерфейсы поставщика файлов
 

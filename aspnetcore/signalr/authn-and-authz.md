@@ -19,20 +19,20 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 0e220d72fe9ef4ada402b449ef20e31324f7bcd2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 9a3102e4451bbc5cd9ff15e88bebd4e4f2c115f4
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060122"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588104"
 ---
-# <a name="authentication-and-authorization-in-aspnet-core-no-locsignalr"></a>Проверка подлинности и авторизация в ASP.NET Core SignalR
+# <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Проверка подлинности и авторизация в ASP.NET Core SignalR
 
 [Эндрю Стантон-медперсонала](https://twitter.com/anurse)
 
-[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(описание загрузки)](xref:index#how-to-download-a-sample)
+[Просмотреть или скачать образец кода](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/authn-and-authz/sample/) [(описание загрузки)](xref:index#how-to-download-a-sample)
 
-## <a name="authenticate-users-connecting-to-a-no-locsignalr-hub"></a>Проверка подлинности пользователей, подключающихся к SignalR концентратору
+## <a name="authenticate-users-connecting-to-a-signalr-hub"></a>Проверка подлинности пользователей, подключающихся к SignalR концентратору
 
 SignalR можно использовать с [проверкой подлинности ASP.NET Core](xref:security/authentication/identity) , чтобы связать пользователя с каждым соединением. В центре данные проверки подлинности можно получить из свойства [хубконнектионконтекст. User](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) . Проверка подлинности позволяет концентратору вызывать методы для всех соединений, связанных с пользователем. Дополнительные сведения см. [в разделе Управление пользователями и группами SignalR в ](xref:signalr/groups). Несколько подключений могут быть связаны с одним пользователем.
 
@@ -90,7 +90,7 @@ public void Configure(IApplicationBuilder app)
 
 ::: moniker-end
 
-### <a name="no-loccookie-authentication"></a>Cookie аутентификация
+### <a name="cookie-authentication"></a>Cookie аутентификация
 
 В приложении, основанном на браузере, cookie Проверка подлинности позволяет существующим учетным данным пользователя автоматически передаваться на SignalR подключения. При использовании клиента браузера дополнительная настройка не требуется. Если пользователь вошел в приложение, SignalR подключение автоматически наследует эту проверку подлинности.
 
@@ -131,7 +131,7 @@ var connection = new HubConnectionBuilder()
 > [!NOTE]
 > Строка запроса используется в браузерах при подключении с помощью WebSockets и событий Server-Sent из-за ограничений API браузера. При использовании HTTPS значения строки запроса защищаются с помощью подключения TLS. Однако многие серверы заносить в журнал значения строки запроса. Дополнительные сведения см. [в разделе вопросы безопасности в SignalR ASP.NET Core ](xref:signalr/security). SignalR использует заголовки для передачи токенов в средах, которые их поддерживают (например, клиенты .NET и Java).
 
-#### <a name="no-locidentity-server-jwt-authentication"></a>Identity Проверка подлинности сервера JWT
+#### <a name="identity-server-jwt-authentication"></a>Identity Проверка подлинности сервера JWT
 
 При использовании Identity сервера добавьте <xref:Microsoft.Extensions.Options.PostConfigureOptions%601> службу в проект:
 
@@ -173,7 +173,7 @@ services.TryAddEnumerable(
         ConfigureJwtBearerOptions>());
 ```
 
-### <a name="no-loccookies-vs-bearer-tokens"></a>Cookieи токены носителя 
+### <a name="cookies-vs-bearer-tokens"></a>Cookieи токены носителя 
 
 Cookieотносятся только к браузерам. Их отправка из других типов клиентов повышает сложность по сравнению с отправкой токенов носителя. Следовательно, cookie Проверка подлинности не рекомендуется, если приложению требуется только проверка подлинности пользователей только от клиента браузера. Проверка подлинности маркера носителя является рекомендуемым подходом при использовании клиентов, отличных от клиента браузера.
 
