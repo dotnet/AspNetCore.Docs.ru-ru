@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 059ddc18d0c531efaba8aab916ddbb27b42b5e2c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7961890becc8f4513e0750f28341c9d4cf94e7ad
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053557"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413342"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
 
 Автор [Айзек Левин](https://isaaclevin.com) (Isaac Levin)
 
-Данная статья служит руководством по миграции приложений ASP.NET на ASP.NET Core.
+Данная статья служит руководством по миграции приложений ASP.NET на ASP.NET Core. Полное руководство по переносу см. в книге [Перенос существующих приложений ASP.NET в .NET Core](https://aka.ms/aspnet-porting-ebook) .
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -92,7 +92,7 @@ ASP.NET Core использует аналогичный подход, но не
 
 ## <a name="store-configurations"></a>Конфигурации хранения
 
-ASP.NET поддерживает параметры хранения. Эти параметры используются, например, для поддержки среды, в которой развертываются приложения. Как правило, все пользовательские пары ключей и значений хранятся в разделе `<appSettings>` файла *Web.config* :
+ASP.NET поддерживает параметры хранения. Эти параметры используются, например, для поддержки среды, в которой развертываются приложения. Как правило, все пользовательские пары ключей и значений хранятся в разделе `<appSettings>` файла *Web.config*:
 
 [!code-xml[](samples/webconfig-sample.xml)]
 
@@ -104,7 +104,7 @@ ASP.NET Core может сохранять данные конфигурации
 
 [!code-json[](samples/appsettings-sample.json)]
 
-Загрузка этого файла в экземпляр `IConfiguration` в вашем приложении выполняется в файле *Startup.cs* :
+Загрузка этого файла в экземпляр `IConfiguration` в вашем приложении выполняется в файле *Startup.cs*:
 
 [!code-csharp[](samples/startup-builder.cs)]
 
@@ -140,7 +140,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 [!code-csharp[](samples/sample5.cs)]
 
-Так как внедрение зависимостей является частью ASP.NET Core, вы можете добавить свою службу в метод `ConfigureServices` файла *Startup.cs* :
+Так как внедрение зависимостей является частью ASP.NET Core, вы можете добавить свою службу в метод `ConfigureServices` файла *Startup.cs*:
 
 [!code-csharp[](samples/configure-services.cs)]
 
@@ -155,7 +155,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 В ASP.NET статические файлы хранятся в разных папках со ссылками в представлениях.
 
-В ASP.NET Core, если не заданы другие настройки, статические файлы хранятся на корневом веб-узле ( *&lt;содержимое корневой папки&gt;/wwwroot* ). Файлы загружаются в конвейер запросов путем вызова метода расширения `UseStaticFiles` из `Startup.Configure`:
+В ASP.NET Core, если не заданы другие настройки, статические файлы хранятся на корневом веб-узле ( *&lt;содержимое корневой папки&gt;/wwwroot*). Файлы загружаются в конвейер запросов путем вызова метода расширения `UseStaticFiles` из `Startup.Configure`:
 
 [!code-csharp[](../../fundamentals/static-files/samples/1.x/StaticFilesSample/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
@@ -167,13 +167,17 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 > [!NOTE]
 > Более подробное руководство по обработке статических файлов в ASP.NET Core см. в статье [Статические файлы](xref:fundamentals/static-files).
 
-## <a name="multi-value-no-loccookies"></a>Файлы cookie с несколькими значениями
+## <a name="multi-value-cookies"></a>Файлы cookie с несколькими значениями
 
 [Файлы cookie с несколькими значениями](xref:System.Web.HttpCookie.Values) не поддерживаются в ASP.NET Core. Создайте один файл cookie для каждого значения.
 
+## <a name="authentication-cookies-are-not-compressed-in-aspnet-core"></a>Файлы cookie проверки подлинности не сжимаются в ASP.NET Core
+
+[!INCLUDE[](~/includes/cookies-not-compressed.md)]
+
 ## <a name="partial-app-migration"></a>Частичная миграция приложений
 
-Один из способов выполнить частичную миграцию приложений предусматривает создание вспомогательного приложения IIS и перенос из ASP.NET 4.x в ASP.NET Core только некоторых маршрутов с сохранением структуры URL-адресов приложения. Рассмотрим структуру URL-адресов приложения из файла *applicationHost.config* :
+Один из способов выполнить частичную миграцию приложений предусматривает создание вспомогательного приложения IIS и перенос из ASP.NET 4.x в ASP.NET Core только некоторых маршрутов с сохранением структуры URL-адресов приложения. Рассмотрим структуру URL-адресов приложения из файла *applicationHost.config*:
 
 ```xml
 <sites>
