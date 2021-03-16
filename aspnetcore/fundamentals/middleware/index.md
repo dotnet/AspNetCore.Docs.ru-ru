@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/index
-ms.openlocfilehash: bdeccf81a3bb620c2e1fe15a798d5a83375842c8
-ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
+ms.openlocfilehash: 15d011e88ab291173668a0b6dc5f46e97fdfeff0
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96556545"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102605715"
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -258,7 +258,7 @@ app.Map("/level1", level1App => {
 | Запрос                       | Ответ                     |
 | ----------------------------- | ---------------------------- |
 | localhost:1234                | Hello from non-Map delegate. |
-| localhost:1234/?branch=master | Branch used = master         |
+| localhost:1234/?branch=main | Branch used = main         |
 
 <xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen%2A> также осуществляет ветвление конвейера запросов на основе результата заданного предиката. В отличие от `MapWhen`, эта ветвь снова объединяется с основным конвейером, если она не выполняется по сокращенной схеме или не содержит конечное ПО промежуточного слоя:
 
@@ -455,7 +455,7 @@ public void Configure(IApplicationBuilder app)
 | Запрос                       | Ответ                     |
 | ----------------------------- | ---------------------------- |
 | localhost:1234                | Hello from non-Map delegate. |
-| localhost:1234/?branch=master | Branch used = master         |
+| localhost:1234/?branch=main | Branch used = main         |
 
 `Map` поддерживает вложение, например:
 
